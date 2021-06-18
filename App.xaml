@@ -1,0 +1,19 @@
+﻿<Application x:Class="LojaOlharDeMenina_WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:view="clr-namespace:LojaOlharDeMenina_WPF.MVVW.View"
+             xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.MVVW.ViewModel"
+             StartupUri="Visao/Login.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/TextboxTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
