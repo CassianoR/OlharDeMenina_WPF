@@ -1,6 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 
-namespace LojaOlharDeMenina_WPF.MVVW.ViewModel
+namespace LojaOlharDeMenina_WPF.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {

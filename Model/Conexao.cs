@@ -3,7 +3,7 @@ using System;
 using System.Configuration;
 using System.Windows;
 
-namespace LojaOlharDeMenina_WPF.Modelo
+namespace LojaOlharDeMenina_WPF.Model
 {
     internal class Conexao
     {

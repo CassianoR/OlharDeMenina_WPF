@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace LojaOlharDeMenina_WPF.MVVW.View
+namespace LojaOlharDeMenina_WPF.View
 {
     /// <summary>
     /// Interação lógica para HomeView.xam

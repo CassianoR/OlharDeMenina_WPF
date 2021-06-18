@@ -1,5 +1,5 @@
-﻿using LojaOlharDeMenina_WPF.Modelo;
-using LojaOlharDeMenina_WPF.Visao;
+﻿using LojaOlharDeMenina_WPF.Model;
+using LojaOlharDeMenina_WPF.View;
 using MySql.Data.MySqlClient;
 using System.Windows;
 using System.Windows.Input;

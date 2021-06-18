@@ -1,7 +1,8 @@
 ﻿using System.Windows;
+using System;
 using System.Windows.Input;
 
-namespace LojaOlharDeMenina_WPF.Visao
+namespace LojaOlharDeMenina_WPF.View
 {
     /// <summary>
     /// Lógica interna para Window1.xaml
