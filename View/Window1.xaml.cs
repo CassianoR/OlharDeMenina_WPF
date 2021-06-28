@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System;
 using System.Windows.Input;
+using LojaOlharDeMenina_WPF.ViewModel;
+using System.Windows.Data;
 
 namespace LojaOlharDeMenina_WPF.View
 {
@@ -12,8 +14,9 @@ namespace LojaOlharDeMenina_WPF.View
         public Window1()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
-
+        
         public string username { get; set; }
         public string password { get; set; }
         public string idFunc { get; set; }
@@ -30,6 +33,11 @@ namespace LojaOlharDeMenina_WPF.View
             {
                 DragMove();
             }
+        }
+
+        private void rbMenu_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new HomeViewModel();
         }
     }
 }

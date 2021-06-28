@@ -4,15 +4,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+        xmlns:view="clr-namespace:LojaOlharDeMenina_WPF.View"
         mc:Ignorable="d"
         WindowStyle="None"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         Background="Transparent"
         AllowsTransparency="True"
         Title="Window1" Height="600" Width="920" Icon="/LojaOlharDeMenina_WPF;component/Images/icon.ico">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewModel:HomeViewModel}">
+            <view:HomeView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
     <Border
             CornerRadius="20">
         <Border.Background>
@@ -57,11 +63,12 @@
                        FontSize="22"
                        Margin="20,20,20,30" FontFamily="Candara Light" FontWeight="Medium" FontStyle="Oblique" />
 
-                <RadioButton Content="Menu"
+                <RadioButton x:Name="rbMenu" Content="Menu"
                              Height="50"
                              Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="rbMenu_Click"/>
                 <RadioButton Content="Vendas"
                              Height="50"
                              Foreground="White"
@@ -98,11 +105,11 @@
                      Grid.ColumnSpan="2"
                      Style="{StaticResource ModernTextbox}" />
 
-            <ContentControl Grid.Row="1"
+            <ContentControl x:Name="contentControl" Grid.Row="1"
                             Grid.Column="1"
                             Grid.ColumnSpan="6"
                             Margin="10"
-                            Content="{Binding CurrentView}" />
+                            Content="{Binding HomeVM}" />
         </Grid>
     </Border>
 </Window>
