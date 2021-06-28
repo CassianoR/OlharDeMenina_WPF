@@ -205,15 +205,16 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ClientesViewModel.cs" />
+    <Compile Include="ViewModel\FuncionariosViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\VendasViewModel.cs" />
     <Compile Include="View\Funcionarios.xaml.cs">
       <DependentUpon>Funcionarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="View\Vendas.xaml.cs">
       <DependentUpon>Vendas.xaml</DependentUpon>
     </Compile>
@@ -221,7 +222,6 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Funcionarios.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -329,6 +329,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Maxbtn.png" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
