@@ -100,6 +100,7 @@
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="View\Vendas.xaml.cs">
       <DependentUpon>Vendas.xaml</DependentUpon>
     </Compile>
@@ -107,6 +108,7 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Funcionarios.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
