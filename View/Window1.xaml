@@ -55,37 +55,37 @@
                    HorizontalAlignment="Center"
                        Foreground="White"
                        FontSize="22"
-                       Margin="20,20,0,20" FontFamily="Candara Light" FontWeight="Medium" FontStyle="Oblique" />
+                       Margin="20,20,20,30" FontFamily="Candara Light" FontWeight="Medium" FontStyle="Oblique" />
 
                 <RadioButton Content="Menu"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton Content="Vendas"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton Content="Funcionários"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton Content="Histórico"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton Content="Produtos"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
                 <RadioButton Content="Clientes"
                              Height="50"
                              Foreground="White"
-                             FontSize="14"
+                             FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
             </StackPanel>
 
