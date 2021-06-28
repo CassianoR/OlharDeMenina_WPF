@@ -1,25 +1,26 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using System;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Windows;
 
 namespace LojaOlharDeMenina_WPF.Model
 {
     internal class Conexao
     {
-        private static MySqlConnection databaseConnection = null;
+        private static SqlConnection databaseConnection = null;
 
-        public MySqlConnection getDBConnection()
+        public SqlConnection getDBConnection()
         {
             if (databaseConnection == null)
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["myDatabaseConnection"].ConnectionString;
-                databaseConnection = new MySqlConnection(connectionString);
+                databaseConnection = new SqlConnection(connectionString);
             }
             return databaseConnection;
         }
 
-        public MySqlConnection Conectar()
+        public SqlConnection Conectar()
         {
             getDBConnection();
             if (databaseConnection.State != System.Data.ConnectionState.Open)
