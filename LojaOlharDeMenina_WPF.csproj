@@ -94,19 +94,21 @@
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="View\Cliente.xaml.cs">
-      <DependentUpon>Cliente.xaml</DependentUpon>
+    <Compile Include="View\Funcionarios.xaml.cs">
+      <DependentUpon>Funcionarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Produtos.xaml.cs">
-      <DependentUpon>Produtos.xaml</DependentUpon>
+
+    <Compile Include="View\Vendas.xaml.cs">
+      <DependentUpon>Vendas.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Cliente.xaml">
+    <Page Include="View\Funcionarios.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,7 +136,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Produtos.xaml">
+    <Page Include="View\Vendas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
