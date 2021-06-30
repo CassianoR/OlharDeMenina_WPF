@@ -59,5 +59,15 @@ namespace LojaOlharDeMenina_WPF.View
         {
             DataContext = new FuncionariosViewModel();
         }
+
+        private void rbCli_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ClientesViewModel();
+        }
+
+        private void rbProd_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ProdutosViewModel();
+        }
     }
 }
