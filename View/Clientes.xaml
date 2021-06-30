@@ -47,12 +47,14 @@
 
         <!--buttons-->
 
-        <Button x:Name="btnCadastrar" Content="Cadastrar" Grid.Column="3" Grid.Row="1" Grid.RowSpan="3" Margin="25 30 25 0" Width="120" Height="55" VerticalAlignment="Bottom" Background="#FF0AC14D" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center"/>
-        <Button x:Name="btnCancelarr" Content="Cancelar" Grid.Column="3" Grid.Row="3" Grid.RowSpan="3" Margin="25 58 25 0" Width="120" Height="55" VerticalAlignment="Bottom" Background="#FFC11B0A" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center"/>
+        <Button x:Name="btnCadastrar" Content="Cadastrar" Grid.Column="3" Grid.Row="1" Grid.RowSpan="3" Margin="25 30 25 0" Width="120" Height="55" VerticalAlignment="Bottom" Background="#FF0AC14D" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center" Command="{Binding DataContext.AddClienteCommand,RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" 
+                CommandParameter="{Binding}"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Grid.Column="3" Grid.Row="3" Grid.RowSpan="3" Margin="25 58 25 0" Width="120" Height="55" VerticalAlignment="Bottom" Background="#FFC11B0A" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center" Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type ListView}}}" 
+                CommandParameter="{Binding}"/>
 
         <!--listview-->
 
-        <DataGrid x:Name="datagrid_cleinte" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Margin="0 20 0 0" AutoGenerateColumns="False" FontSize="22" Width="800">
+        <DataGrid ItemsSource="{Binding}" x:Name="datagrid_cliente" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Margin="0 20 0 0" AutoGenerateColumns="False" FontSize="22" Width="800">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto"/>

@@ -24,6 +24,12 @@
         <DataTemplate x:Name="funcViewTemplate" DataType="{x:Type viewModel:FuncionariosViewModel}">
             <view:Funcionarios DataContext="{Binding}" />
         </DataTemplate>
+        <DataTemplate x:Name="cliViewTemplate" DataType="{x:Type viewModel:ClientesViewModel}">
+            <view:Cliente DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Name="prodViewTemplate" DataType="{x:Type viewModel:ProdutosViewModel}">
+            <view:Produtos DataContext="{Binding}" />
+        </DataTemplate>
     </Window.Resources>
     <Border
             CornerRadius="20">
@@ -97,16 +103,18 @@
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton Content="Produtos"
+                <RadioButton x:Name="rbProd" Content="Produtos"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton Content="Clientes"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="rbProd_Click"/>
+                <RadioButton x:Name="rbCli" Content="Clientes"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="rbCli_Click"/>
             </StackPanel>
 
             <TextBox Width="250"
