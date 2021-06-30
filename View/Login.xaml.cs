@@ -1,6 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Model;
 using LojaOlharDeMenina_WPF.View;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
 
@@ -34,11 +34,11 @@ namespace LojaOlharDeMenina_WPF
             {
                 if (txtNome.Text != "" && pb.Password.ToString() != "")
                 {
-                    MySqlCommand objCmd = new MySqlCommand("select ID, Cargo, Nome, Senha from funcionarios WHERE Nome = @nome AND Senha = @senha", objCon.Conectar());
+                    SqlCommand objCmd = new SqlCommand("select ID, Cargo, Nome, Senha from funcionarios WHERE Nome = @nome AND Senha = @senha", objCon.Conectar());
                     objCmd.Parameters.Clear();
                     objCmd.Parameters.AddWithValue("nome", txtNome.Text);
                     objCmd.Parameters.AddWithValue("senha", pb.Password.ToString());
-                    MySqlDataReader dr;
+                    SqlDataReader dr;
                     dr = objCmd.ExecuteReader();
                     dr.Read();
 
@@ -54,8 +54,8 @@ namespace LojaOlharDeMenina_WPF
                             f.Adm = false;
                         }
                         f.idFunc = dr.GetInt32(0).ToString();
-                        f.username = dr.GetString("Nome");
-                        f.password = dr.GetInt32("Senha").ToString();
+                        f.username = dr.GetString(2);
+                        f.password = dr.GetInt32(3).ToString();
                         f.Show();
                         Close();
                         objCon.Close();
@@ -71,7 +71,7 @@ namespace LojaOlharDeMenina_WPF
                     lblErro.Content = "Campos de texto não podem estar vazios.";
                 }
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Erro de conexão: " + ex);
             }

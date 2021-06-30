@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System;
+﻿using LojaOlharDeMenina_WPF.ViewModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.View
@@ -12,6 +12,7 @@ namespace LojaOlharDeMenina_WPF.View
         public Window1()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
 
         public string username { get; set; }
@@ -24,12 +25,39 @@ namespace LojaOlharDeMenina_WPF.View
             System.Windows.Application.Current.Shutdown();
         }
 
+        private void btnMax_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            }
+            else if (WindowState == WindowState.Normal)
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            }
+        }
+
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
+        }
+
+        private void rbMenu_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new HomeViewModel();
+        }
+
+        private void rbVendas_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new VendasViewModel();
+        }
+
+        private void rbFunc_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new FuncionariosViewModel();
         }
     }
 }

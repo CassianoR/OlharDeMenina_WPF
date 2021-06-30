@@ -19,6 +19,9 @@
                 <Rectangle.Fill>
                     <ImageBrush ImageSource="/Images/fundo_login.jpg" />
                 </Rectangle.Fill>
+                <Rectangle.Clip>
+                    <RectangleGeometry Rect="0,0,350,2500" RadiusX="15" RadiusY="15" />
+                </Rectangle.Clip>
             </Rectangle>
 
             <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,80" RadiusY="10" RadiusX="10" Fill="LavenderBlush">
@@ -55,7 +58,7 @@
                         <iconPacks:PackIconMaterial Kind="Account"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Right"
-                                                    Foreground="Black" />
+                                                    Foreground="PaleVioletRed" />
                     </StackPanel>
                     <Border Width="250"
                         Height="2"
@@ -67,7 +70,7 @@
                         <iconPacks:PackIconMaterial Kind="FormTextboxPassword"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Foreground="Black" />
+                                                Foreground="PaleVioletRed" />
                     </StackPanel>
                     <Border Width="250"
                         Height="2"
