@@ -20,7 +20,7 @@
                     <ImageBrush ImageSource="/Images/fundo_login.jpg" />
                 </Rectangle.Fill>
                 <Rectangle.Clip>
-                    <RectangleGeometry Rect="0,0,350,2500" RadiusX="15" RadiusY="15"/>
+                    <RectangleGeometry Rect="0,0,350,2500" RadiusX="15" RadiusY="15" />
                 </Rectangle.Clip>
             </Rectangle>
 
