@@ -16,13 +16,13 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewModel:HomeViewModel}">
-            <view:HomeView DataContext="{Binding}"/>
+            <view:HomeView DataContext="{Binding}" />
         </DataTemplate>
         <DataTemplate x:Name="vendasViewTemplate" DataType="{x:Type viewModel:VendasViewModel}">
-            <view:Vendas DataContext="{Binding}"/>
+            <view:Vendas DataContext="{Binding}" />
         </DataTemplate>
         <DataTemplate x:Name="funcViewTemplate" DataType="{x:Type viewModel:FuncionariosViewModel}">
-            <view:Funcionarios DataContext="{Binding}"/>
+            <view:Funcionarios DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
     <Border
@@ -79,19 +79,19 @@
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="rbMenu_Click"/>
+                             Click="rbMenu_Click" />
                 <RadioButton x:Name="rbVendas" Content="Vendas"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="rbVendas_Click"/>
+                             Click="rbVendas_Click" />
                 <RadioButton x:Name="rbFunc" Content="Funcionários"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="rbFunc_Click"/>
+                             Click="rbFunc_Click" />
                 <RadioButton Content="Histórico"
                              Height="50"
                              Foreground="White"

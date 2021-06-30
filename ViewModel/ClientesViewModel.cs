@@ -1,12 +1,9 @@
 ﻿using LojaOlharDeMenina_WPF.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
@@ -20,7 +17,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        
         private ObservableCollection<Clientes> _lstClientes;
 
         public ObservableCollection<Clientes> lstClientes
@@ -38,24 +34,27 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public Clientes SelectedCliente
         {
             get { return _selectedCliente; }
-            set { _selectedCliente = value;
+            set
+            {
+                _selectedCliente = value;
                 OnPropertyChanged(nameof(SelectedCliente));
             }
         }
-
 
         private Clientes _clientes = new Clientes();
 
         public Clientes Clientes
         {
             get { return _clientes; }
-            set { _clientes = value;
+            set
+            {
+                _clientes = value;
                 OnPropertyChanged(nameof(Clientes));
             }
         }
-        
 
         olharmeninabdEntities1 clientesEntities;
+
         public ClientesViewModel()
         {
             clientesEntities = new olharmeninabdEntities1();
@@ -73,7 +72,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             clientesEntities.SaveChanges();
             lstClientes.Add(Clientes);
             Clientes = new Clientes();
-
         }
 
         private void UpdateCliente(object obj) //Update cliente
@@ -92,7 +90,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             var cl = obj as Clientes;
             clientesEntities.Clientes.Remove(cl);
             clientesEntities.SaveChanges();
-            lstClientes.Remove(cl); 
+            lstClientes.Remove(cl);
         }
 
         private void LoadCliente() //Read
@@ -113,6 +111,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             MethodCanExecute = methodCanExecute;
             MethodExecute = methodExecute;
         }
+
         Action<object> MethodExecute;
         Func<object, bool> MethodCanExecute;
 
@@ -131,6 +130,5 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-
     }
 }

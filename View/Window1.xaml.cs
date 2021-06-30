@@ -1,8 +1,6 @@
-﻿using System.Windows;
-using System;
+﻿using LojaOlharDeMenina_WPF.ViewModel;
+using System.Windows;
 using System.Windows.Input;
-using LojaOlharDeMenina_WPF.ViewModel;
-using System.Windows.Data;
 
 namespace LojaOlharDeMenina_WPF.View
 {
@@ -16,7 +14,7 @@ namespace LojaOlharDeMenina_WPF.View
             InitializeComponent();
             this.DataContext = new MainViewModel();
         }
-        
+
         public string username { get; set; }
         public string password { get; set; }
         public string idFunc { get; set; }
@@ -37,7 +35,7 @@ namespace LojaOlharDeMenina_WPF.View
             {
                 Application.Current.MainWindow.WindowState = WindowState.Maximized;
             }
-    }
+        }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -60,7 +58,6 @@ namespace LojaOlharDeMenina_WPF.View
         private void rbFunc_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new FuncionariosViewModel();
-            
         }
     }
 }
