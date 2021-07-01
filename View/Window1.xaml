@@ -108,13 +108,13 @@
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="rbProd_Click"/>
+                             Click="rbProd_Click" />
                 <RadioButton x:Name="rbCli" Content="Clientes"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
-                             Click="rbCli_Click"/>
+                             Click="rbCli_Click" />
             </StackPanel>
 
             <TextBox Width="250"

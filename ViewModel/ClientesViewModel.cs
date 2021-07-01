@@ -53,7 +53,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        olharmeninabdEntities1 clientesEntities;
+        private olharmeninabdEntities1 clientesEntities;
 
         public ClientesViewModel()
         {
@@ -104,7 +104,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand AddClienteCommand { get; set; }
     }
 
-    class Command : ICommand
+    internal class Command : ICommand
     {
         public Command(Func<object, bool> methodCanExecute, Action<object> methodExecute)
         {
@@ -112,8 +112,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             MethodExecute = methodExecute;
         }
 
-        Action<object> MethodExecute;
-        Func<object, bool> MethodCanExecute;
+        private Action<object> MethodExecute;
+        private Func<object, bool> MethodCanExecute;
 
         public bool CanExecute(object parameter)
         {
