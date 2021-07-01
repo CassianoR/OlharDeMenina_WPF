@@ -1,6 +1,6 @@
 ﻿namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    class VendasViewModel
+    internal class VendasViewModel
     {
     }
 }
