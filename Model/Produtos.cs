@@ -12,12 +12,13 @@ namespace LojaOlharDeMenina_WPF.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Produto
+    public partial class Produtos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Produto()
+        public Produtos()
         {
             this.Estoque = new HashSet<Estoque>();
+            this.Venda = new HashSet<Venda>();
         }
     
         public int Codigo { get; set; }
@@ -29,5 +30,7 @@ namespace LojaOlharDeMenina_WPF.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque> Estoque { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venda> Venda { get; set; }
     }
 }

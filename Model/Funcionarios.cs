@@ -17,7 +17,7 @@ namespace LojaOlharDeMenina_WPF.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
         {
-            this.Vendas = new HashSet<Vendas>();
+            this.Venda = new HashSet<Venda>();
         }
     
         public int ID { get; set; }
@@ -25,10 +25,10 @@ namespace LojaOlharDeMenina_WPF.Model
         public string Nome { get; set; }
         public string CPF { get; set; }
         public int Senha { get; set; }
-        public string Telefone { get; set; }
         public string Endereco { get; set; }
+        public string Telefone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vendas> Vendas { get; set; }
+        public virtual ICollection<Venda> Venda { get; set; }
     }
 }

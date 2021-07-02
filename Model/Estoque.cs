@@ -15,16 +15,16 @@ namespace LojaOlharDeMenina_WPF.Model
     public partial class Estoque
     {
         public int ID { get; set; }
-        public int FK_CodigoProduto { get; set; }
         public int NumLote { get; set; }
-        public int TotalProdutos { get; set; }
-        public Nullable<decimal> Frete { get; set; }
+        public int TotalProdutosLote { get; set; }
+        public decimal Frete { get; set; }
         public string Fornecedor { get; set; }
         public System.DateTime DataCompra { get; set; }
-        public int Quantidade { get; set; }
-        public decimal PrecoCusto { get; set; }
-        public System.DateTime Validade { get; set; }
+        public decimal PrecoLote { get; set; }
+        public int QuantidadeEstoque { get; set; }
+        public Nullable<System.DateTime> Validade { get; set; }
+        public int FK_CodigoProduto { get; set; }
     
-        public virtual Produto Produto { get; set; }
+        public virtual Produtos Produtos { get; set; }
     }
 }
