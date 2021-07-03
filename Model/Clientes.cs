@@ -27,7 +27,7 @@ namespace LojaOlharDeMenina_WPF.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clientes()
         {
-            this.Vendas = new HashSet<Venda>();
+            this.Venda = new HashSet<Venda>();
         }
 
         public int ID
@@ -81,7 +81,7 @@ namespace LojaOlharDeMenina_WPF.Model
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venda> Vendas { get; set; }
+        public virtual ICollection<Venda> Venda { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -37,7 +37,7 @@
         <TextBox x:Name="txtBox_DataNasc" MinHeight="30" Grid.Column="0" Grid.Row="3" Text="{Binding SelectedCliente.DataNasc}"/>-->
         <!--buttons-->
 
-        <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" FontFamily="Segoe UI Semilight" Foreground="White" 
+        <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White" 
                 Command="{Binding DataContext.AddClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                 CommandParameter="{Binding}" >
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
