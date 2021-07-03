@@ -84,6 +84,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private void Update(object obj) //Update, recarrega
         {
             SelectedCliente = obj as Clientes;
+            LoadCliente();
         }
 
         private void Delete(object obj) //Delete
