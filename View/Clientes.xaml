@@ -39,10 +39,10 @@
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White" 
                 Command="{Binding DataContext.AddClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                CommandParameter="{Binding}" >
+                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" >
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
                                                 VerticalAlignment="Center"
-                                                HorizontalAlignment="Center"
+                                                HorizontalAlignment="Right"
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
@@ -59,22 +59,50 @@
         <!--listview-->
          
         <DataGrid ItemsSource="{Binding lstClientes}" AutoGenerateColumns="False" x:Name="datagrid_cliente" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7" Margin="20" FontSize="22" AlternatingRowBackground="WhiteSmoke">
+            <DataGrid.Resources>
+                <Style x:Key="editStyle" TargetType="TextBox">
+                    <Setter Property="Background" Value="Silver"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Setters>
+                        <EventSetter Event="MouseEnter" Handler="OnMouseEnter"/>
+                        <EventSetter Event="MouseLeave" Handler="OnMouseLeave"/>
+                    </Style.Setters>
+                </Style>
+            </DataGrid.ItemContainerStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Telefone}" Header="Telefone" Width="auto" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d}" Header="Data Nasc." Width="auto" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Endereco}" Header="Endereço" Width="auto" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
+                <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
+                <DataGridTextColumn Binding="{Binding Telefone}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
+                <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
+                <DataGridTextColumn Binding="{Binding Endereco}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="4">
-                                <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" Content="Selecionar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black" 
+                                <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black" 
                                 Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}" />
-                                <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" Content="Deletar" Background="#FFC11B0A" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" 
+                                CommandParameter="{Binding}" >
+                                    <iconPacks:PackIconMaterial Kind="Send"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Width="auto"
+                                                Height="auto"
+                                                Foreground="Black" />
+                                </Button>
+                                <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" 
                                 Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}" />
+                                CommandParameter="{Binding}" >
+                                    <iconPacks:PackIconMaterial Kind="Delete"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Width="auto"
+                                                Height="auto"
+                                                Foreground="Black" />
+                                </Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
