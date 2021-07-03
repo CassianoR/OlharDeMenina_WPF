@@ -20,18 +20,6 @@ namespace LojaOlharDeMenina_WPF.View
         public string idFunc { get; set; }
         public bool Adm { get; set; }
 
-        private void btnMax_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
-            {
-                Application.Current.MainWindow.WindowState = WindowState.Normal;
-            }
-            else if (WindowState == WindowState.Normal)
-            {
-                Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            }
-        }
-
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -63,6 +51,11 @@ namespace LojaOlharDeMenina_WPF.View
         private void rbProd_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new ProdutosViewModel();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = new HomeViewModel();
         }
     }
 }
