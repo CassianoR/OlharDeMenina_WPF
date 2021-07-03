@@ -1,9 +1,11 @@
 ﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Cliente"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Transparent">
@@ -30,73 +32,71 @@
         <TextBlock Text="Telefone" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black" Grid.Column="2" Grid.Row="0" />
         <TextBlock Text="Data Nasc."  Foreground="Black" FontSize="22" FontFamily="Segoe UI Semilight" Grid.Column="0" Grid.Row="2" />
         <TextBlock Text="Endereço" Foreground="Black" FontSize="22" FontFamily="Segoe UI Semilight" Grid.Column="1" Grid.Row="2" />
-        <TextBox x:Name="txtBox_Nome" Grid.Column="0" Grid.Row="1" Text="{Binding SelectedCliente.Nome}"/>
-        <TextBox x:Name="txtBox_CPF" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedCliente.CPF}"/>
-        <TextBox x:Name="txtBox_Endereco" MinHeight="30" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedCliente.Endereco}"/>
-        <TextBox x:Name="txtBox_Telefone" MinHeight="30" Grid.Column="2" Grid.Row="1" Text="{Binding SelectedCliente.Telefone}"/>
-        <TextBox x:Name="txtBox_DataNasc" MinHeight="30" Grid.Column="0" Grid.Row="3" Text="{Binding SelectedCliente.DataNasc}"/>-->
+        <TextBox x:Name="txtBox_Nome" Grid.Column="0" Grid.Row="1" Text="{Binding SelectedCliente.Nome}" />
+        <TextBox x:Name="txtBox_CPF" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedCliente.CPF}" />
+        <TextBox x:Name="txtBox_Endereco" MinHeight="30" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedCliente.Endereco}" />
+        <TextBox x:Name="txtBox_Telefone" MinHeight="30" Grid.Column="2" Grid.Row="1" Text="{Binding SelectedCliente.Telefone}" />
+        <TextBox x:Name="txtBox_DataNasc" MinHeight="30" Grid.Column="0" Grid.Row="3" Text="{Binding SelectedCliente.DataNasc}" />-->
         <!--buttons-->
-
-        <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White" 
-                Command="{Binding DataContext.AddClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" >
+        <ComboBox IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
+                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" />
+        <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
+                Command="{Binding Path=AddClienteCommand}"
+                CommandParameter="{Binding}" Cursor="Hand" Focusable="False">
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
-            
         </Button>
-        <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White" 
-                Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                CommandParameter="{Binding}" Cursor="Hand" Focusable="False"  >
+        <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
+                Command="{Binding Path=UpdateCommand}"
+                CommandParameter="{Binding}" Cursor="Hand" Focusable="False">
             <iconPacks:PackIconMaterial Kind="Refresh"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
-
         </Button>
         <!--<Button Grid.Column="3" Grid.Row="3" x:Name="btnEditar" Content="Editar"  FontSize="22" FontFamily="Segoe UI Semilight"
                 Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                 CommandParameter="{Binding}" />-->
 
-
-        <!--<Button Grid.Column="3" Grid.Row="3" x:Name="btnDeletar" Content="Deletar" Background="#FFC11B0A" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" 
+        <!--<Button Grid.Column="3" Grid.Row="3" x:Name="btnDeletar" Content="Deletar" Background="#FFC11B0A" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                     CommandParameter="{Binding}" />-->
         <!--listview-->
-         
+
         <DataGrid ItemsSource="{Binding lstClientes}" AutoGenerateColumns="False" x:Name="datagrid_cliente" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7" Margin="20" FontSize="22" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Resources>
                 <Style x:Key="editStyle" TargetType="TextBox">
-                    <Setter Property="Background" Value="Silver"/>
+                    <Setter Property="Background" Value="Silver" />
                 </Style>
             </DataGrid.Resources>
             <DataGrid.ItemContainerStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Setters>
-                        <EventSetter Event="MouseEnter" Handler="OnMouseEnter"/>
-                        <EventSetter Event="MouseLeave" Handler="OnMouseLeave"/>
+                        <EventSetter Event="MouseEnter" Handler="OnMouseEnter" />
+                        <EventSetter Event="MouseLeave" Handler="OnMouseLeave" />
                     </Style.Setters>
                 </Style>
             </DataGrid.ItemContainerStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
-                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
-                <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
-                <DataGridTextColumn Binding="{Binding Telefone}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
-                <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
-                <DataGridTextColumn Binding="{Binding Endereco}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}"/>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                <DataGridTextColumn Binding="{Binding Telefone}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                <DataGridTextColumn Binding="{Binding Endereco}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="4">
-                                <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black" 
+                                <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
                                 Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}" >
+                                CommandParameter="{Binding}">
                                     <iconPacks:PackIconMaterial Kind="Send"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
@@ -104,9 +104,9 @@
                                                 Height="auto"
                                                 Foreground="Black" />
                                 </Button>
-                                <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" 
+                                <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
                                 Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}" >
+                                CommandParameter="{Binding}">
                                     <iconPacks:PackIconMaterial Kind="Delete"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"

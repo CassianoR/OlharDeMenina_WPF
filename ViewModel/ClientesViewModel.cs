@@ -52,6 +52,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Clientes));
             }
         }
+
         //Mudei o entities aqui, agora está belezinha com o banco novo bb's
 
         private OlhardeMeninaBDEntities clientesEntities;

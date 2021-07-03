@@ -87,7 +87,7 @@ namespace LojaOlharDeMenina_WPF
 
         private void pb_LostFocus(object sender, RoutedEventArgs e)
         {
-            if(pb.Password == "")
+            if (pb.Password == "")
             {
                 pb.Password = "Password";
             }

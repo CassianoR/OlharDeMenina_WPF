@@ -10,7 +10,7 @@
         ResizeMode="CanResize"
         Background="Transparent"
         AllowsTransparency="False"
-        Title="Window1" Height="600" Width="920" Icon="/LojaOlharDeMenina_WPF;component/Images/icon.ico">
+        Title="Window1" Height="600" Width="920" Icon="/LojaOlharDeMenina_WPF;component/Images/icon.ico" Loaded="Window_Loaded">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
@@ -53,7 +53,6 @@
             <Grid Background="Transparent"
               Grid.ColumnSpan="6"
               MouseDown="Grid_MouseDown">
-                
             </Grid>
 
             <StackPanel Grid.Row="0" Grid.RowSpan="2">

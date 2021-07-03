@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -17,7 +15,9 @@ namespace LojaOlharDeMenina_WPF.View
         public Cliente()
         {
             InitializeComponent();
+            DataContext = new ClientesViewModel();
         }
+
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
             DataGridRow row = sender as DataGridRow;
@@ -47,7 +47,6 @@ namespace LojaOlharDeMenina_WPF.View
                 }
             }
         }
-
 
         private static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
         {
