@@ -76,5 +76,21 @@ namespace LojaOlharDeMenina_WPF
                 MessageBox.Show("Erro de conexão: " + ex);
             }
         }
+
+        private void pb_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (pb.Password == "Password")
+            {
+                pb.Password = "";
+            }
+        }
+
+        private void pb_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(pb.Password == "")
+            {
+                pb.Password = "Password";
+            }
+        }
     }
 }

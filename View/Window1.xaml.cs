@@ -20,11 +20,6 @@ namespace LojaOlharDeMenina_WPF.View
         public string idFunc { get; set; }
         public bool Adm { get; set; }
 
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            System.Windows.Application.Current.Shutdown();
-        }
-
         private void btnMax_Click(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Maximized)

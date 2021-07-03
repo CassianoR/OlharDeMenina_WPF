@@ -65,7 +65,7 @@
                         Background="PaleVioletRed"
                         Opacity="0.5" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <PasswordBox Width="230" BorderThickness="0" Name="pb" Password="Password" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="20" Background="#FFF0F5">
+                        <PasswordBox Width="230" BorderThickness="0" Name="pb" Password="Password" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="20" Background="#FFF0F5" GotFocus="pb_GotFocus" LostFocus="pb_LostFocus">
                         </PasswordBox>
                         <iconPacks:PackIconMaterial Kind="FormTextboxPassword"
                                                 VerticalAlignment="Center"
