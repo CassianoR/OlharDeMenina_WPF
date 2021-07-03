@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[Venda] (
+    [CodigoVendas]      INT             IDENTITY (1, 1) NOT NULL,
+    [FK_IDFuncionario]  INT             NOT NULL,
+    [FK_IDCliente]      INT             NOT NULL,
+    [FK_CodigoProduto]  INT             NOT NULL,
+    [Valor]             DECIMAL (15, 2) NOT NULL,
+    [MetodoPagamento]   VARCHAR (50)    NOT NULL,
+    [Data]              DATE            NOT NULL,
+    [QuantidadeVendida] INT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([CodigoVendas] ASC),
+    CONSTRAINT [FK_Venda] FOREIGN KEY ([FK_IDFuncionario]) REFERENCES [dbo].[Funcionarios] ([ID]),
+    CONSTRAINT [FK_Venda2] FOREIGN KEY ([FK_IDCliente]) REFERENCES [dbo].[Clientes] ([ID]),
+    CONSTRAINT [FK_Venda3] FOREIGN KEY ([FK_CodigoProduto]) REFERENCES [dbo].[Produtos] ([Codigo])
+);
+

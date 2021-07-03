@@ -12,17 +12,19 @@ namespace LojaOlharDeMenina_WPF.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Vendas
+    public partial class Venda
     {
-        public int Codigo { get; set; }
+        public int CodigoVendas { get; set; }
         public int FK_IDFuncionario { get; set; }
         public int FK_IDCliente { get; set; }
+        public int FK_CodigoProduto { get; set; }
         public decimal Valor { get; set; }
         public string MetodoPagamento { get; set; }
         public System.DateTime DataHora { get; set; }
-        public int Quantidade { get; set; }
+        public int QuantidadeVendida { get; set; }
     
         public virtual Clientes Clientes { get; set; }
         public virtual Funcionarios Funcionarios { get; set; }
+        public virtual Produtos Produtos { get; set; }
     }
 }

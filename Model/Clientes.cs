@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+
 namespace LojaOlharDeMenina_WPF.Model
 {
     using System;
@@ -26,7 +27,7 @@ namespace LojaOlharDeMenina_WPF.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clientes()
         {
-            this.Vendas = new HashSet<Vendas>();
+            this.Vendas = new HashSet<Venda>();
         }
 
         public int ID
@@ -46,41 +47,41 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Nome));
             }
         }
-        public string CPF 
-        { 
+        public string CPF
+        {
             get => cpf; set
             {
                 cpf = value;
                 OnPropertyChanged(nameof(CPF));
             }
         }
-        public string Telefone 
-        { 
-            get => telefone; set 
+        public string Telefone
+        {
+            get => telefone; set
             {
                 telefone = value;
                 OnPropertyChanged(nameof(Telefone));
-            } 
+            }
         }
-        public string Endereco 
-        { 
-            get => endereco; set 
+        public string Endereco
+        {
+            get => endereco; set
             {
                 endereco = value;
                 OnPropertyChanged(nameof(Endereco));
-            } 
+            }
         }
-        public System.DateTime DataNasc 
-        { 
-            get => datanasc; set 
+        public System.DateTime DataNasc
+        {
+            get => datanasc; set
             {
                 datanasc = value;
                 OnPropertyChanged(nameof(DataNasc));
-            } 
+            }
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vendas> Vendas { get; set; }
+        public virtual ICollection<Venda> Vendas { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
