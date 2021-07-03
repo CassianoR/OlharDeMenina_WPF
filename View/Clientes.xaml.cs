@@ -64,5 +64,10 @@ namespace LojaOlharDeMenina_WPF.View
             }
             return null;
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
