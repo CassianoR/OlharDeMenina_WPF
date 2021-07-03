@@ -6,10 +6,10 @@
         xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
         xmlns:view="clr-namespace:LojaOlharDeMenina_WPF.View"
         mc:Ignorable="d"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="CanResize"
         Background="Transparent"
-        AllowsTransparency="True"
+        AllowsTransparency="False"
         Title="Window1" Height="600" Width="920" Icon="/LojaOlharDeMenina_WPF;component/Images/icon.ico">
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -31,8 +31,7 @@
             <view:Produtos DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
-    <Border
-            CornerRadius="20">
+    <Border>
         <Border.Background>
             <ImageBrush ImageSource="/LojaOlharDeMenina_WPF;component/Images/fundo_login.jpg" />
         </Border.Background>
@@ -54,16 +53,7 @@
             <Grid Background="Transparent"
               Grid.ColumnSpan="6"
               MouseDown="Grid_MouseDown">
-                <Button HorizontalAlignment="Right" Name="btnMax" Click="btnMax_Click" BorderThickness="0" Height="28" Width="35" Margin="0,0,50,0" Cursor="Hand">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/LojaOlharDeMenina_WPF;component/Images/Maxbtn.png" Stretch="Uniform" />
-                    </Button.Background>
-                </Button>
-                <Button HorizontalAlignment="Right" Name="btnClose" Click="btnClose_Click" BorderThickness="0" Height="35" Width="40" Margin="0,0,10,0" Cursor="Hand">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/LojaOlharDeMenina_WPF;component/Images/closebtnn.png" Stretch="Uniform" />
-                    </Button.Background>
-                </Button>
+                
             </Grid>
 
             <StackPanel Grid.Row="0" Grid.RowSpan="2">
