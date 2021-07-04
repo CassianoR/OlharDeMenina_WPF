@@ -1,5 +1,7 @@
 ﻿using System.Windows.Controls;
+using LojaOlharDeMenina_WPF.View.Dialogs;
 using LojaOlharDeMenina_WPF.ViewModel;
+
 namespace LojaOlharDeMenina_WPF.View
 {
     /// <summary>
@@ -11,11 +13,9 @@ namespace LojaOlharDeMenina_WPF.View
         {
             InitializeComponent();
             DataContext = new ProdutosViewModel();
-        }
-
-        private void btnCadastrar_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
 
         }
+
+
     }
 }
