@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View"
              d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -25,21 +25,9 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-
-        <!--textblock-->
-        <!--<TextBlock Text="Nome" Foreground="Black" FontSize="22" FontFamily="Segoe UI Semilight" Grid.Column="0" Grid.Row="0" />
-        <TextBlock Text="CPF" Foreground="Black" FontSize="22" FontFamily="Segoe UI Semilight" Grid.Column="1" Grid.Row="0" />
-        <TextBlock Text="Telefone" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black" Grid.Column="2" Grid.Row="0" />
-        <TextBlock Text="Data Nasc."  Foreground="Black" FontSize="22" FontFamily="Segoe UI Semilight" Grid.Column="0" Grid.Row="2" />
-        <TextBlock Text="Endereço" Foreground="Black" FontSize="22" FontFamily="Segoe UI Semilight" Grid.Column="1" Grid.Row="2" />
-        <TextBox x:Name="txtBox_Nome" Grid.Column="0" Grid.Row="1" Text="{Binding SelectedCliente.Nome}" />
-        <TextBox x:Name="txtBox_CPF" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedCliente.CPF}" />
-        <TextBox x:Name="txtBox_Endereco" MinHeight="30" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedCliente.Endereco}" />
-        <TextBox x:Name="txtBox_Telefone" MinHeight="30" Grid.Column="2" Grid.Row="1" Text="{Binding SelectedCliente.Telefone}" />
-        <TextBox x:Name="txtBox_DataNasc" MinHeight="30" Grid.Column="0" Grid.Row="3" Text="{Binding SelectedCliente.DataNasc}" />-->
-        <!--buttons-->
-        <ComboBox IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
-                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" />
+        
+        <!--ComboBox IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
+                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged"/>-->
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding Path=AddClienteCommand}"
                 CommandParameter="{Binding}" Cursor="Hand" Focusable="False">
@@ -69,7 +57,84 @@
                     CommandParameter="{Binding}" />-->
         <!--listview-->
 
-        <DataGrid ItemsSource="{Binding lstClientes}" AutoGenerateColumns="False" x:Name="datagrid_cliente" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7" Margin="20" FontSize="22" AlternatingRowBackground="WhiteSmoke">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
+            <!--<TextBox Name="SearchBox" />-->
+            <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
+                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged"/>
+            <DataGrid AutoGenerateColumns="False" x:Name="datagrid_cliente" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" 
+                  ItemsSource="{Binding lstClientes}" >
+                <DataGrid.Resources>
+                    
+                        <Style x:Key="editStyle" TargetType="TextBox">
+                            <Setter Property="Background" Value="Silver" />
+                        </Style>
+                    
+                    
+                    <local:SearchValueConverter x:Key="SearchValueConverter" />
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="local:DataGridTextSearch.IsTextMatch">
+                            <Setter.Value>
+                                <MultiBinding Converter="{StaticResource SearchValueConverter}">
+                                    <Binding RelativeSource="{RelativeSource Self}" Path="Content.Text" />
+                                    <Binding RelativeSource="{RelativeSource Self}" Path="(local:DataGridTextSearch.SearchValue)" />
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="local:DataGridTextSearch.IsTextMatch" Value="True">
+                                <Setter Property="Background" Value="LightBlue" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.ItemContainerStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Setters>
+                            <EventSetter Event="MouseEnter" Handler="OnMouseEnter" />
+                            <EventSetter Event="MouseLeave" Handler="OnMouseLeave" />
+                        </Style.Setters>
+                    </Style>
+                </DataGrid.ItemContainerStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Telefone}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Endereco}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="4">
+                                    <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
+                                Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                CommandParameter="{Binding}">
+                                        <iconPacks:PackIconMaterial Kind="Send"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Width="auto"
+                                                Height="auto"
+                                                Foreground="Black" />
+                                    </Button>
+                                    <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
+                                Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                CommandParameter="{Binding}">
+                                        <iconPacks:PackIconMaterial Kind="Delete"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Width="auto"
+                                                Height="auto"
+                                                Foreground="Black" />
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <!--<DataGrid ItemsSource="{Binding lstClientes}" AutoGenerateColumns="False" x:Name="datagrid_cliente" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7" Margin="20" FontSize="22" AlternatingRowBackground="WhiteSmoke">
             <DataGrid.Resources>
                 <Style x:Key="editStyle" TargetType="TextBox">
                     <Setter Property="Background" Value="Silver" />
@@ -119,6 +184,6 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
     </Grid>
 </UserControl>

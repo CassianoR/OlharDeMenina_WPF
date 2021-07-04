@@ -30,7 +30,7 @@
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
                     <Label x:Name="lblTelefone" Content="Telefone" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,10,0,0" />
-                    <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="260" Height="35" Margin="20,5,20,5" UndoLimit="11" />
+                    <TextBox x:Name="txtTelefone" HorizontalAlignment="Left" VerticalAlignment="Top" Width="260" Height="35" Margin="20,5,20,5" UndoLimit="11"  />
                 </StackPanel>
             </StackPanel>
         </Grid>
