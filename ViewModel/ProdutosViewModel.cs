@@ -17,26 +17,29 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private ObservableCollection<Produtos> _lstprodutos;
+
+        private ObservableCollection<Produtos> _lstProdutos;
+
 
         public ObservableCollection<Produtos> lstProdutos
         {
-            get { return _lstprodutos; }
+            get { return _lstProdutos; }
             set
             {
-                _lstprodutos = value;
+                _lstProdutos = value;
                 OnPropertyChanged(nameof(lstProdutos));
             }
         }
 
-        private Produtos _selectedProduto;
+        private Produtos _selectedProdutos;
+
 
         public Produtos SelectedProduto
         {
-            get { return _selectedProduto; }
+            get { return _selectedProdutos; }
             set
             {
-                _selectedProduto = value;
+                _selectedProdutos = value;
                 OnPropertyChanged(nameof(SelectedProduto));
             }
         }
@@ -53,26 +56,23 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
         private OlhardeMeninaBDEntities produtosEntities;
-
         public ProdutosViewModel()
         {
             produtosEntities = new OlhardeMeninaBDEntities();
-            LoadProduto();
-            DeleteCommand = new CommandProd((s) => true, Delete);
-            UpdateCommand = new CommandProd((s) => true, Update);
-            UpdateProdutoCommand = new CommandProd((s) => true, UpdateProduto);
-            AddProdutoCommand = new CommandProd((s) => true, AddProduto);
+            LoadProdutos();
+            DeleteCommand = new CommandP((s) => true, Delete);
+            UpdateCommand = new CommandP((s) => true, Update);
+            UpdateProdutoCommand = new CommandP((s) => true, UpdateProduto);
+            AddProdutoCommand = new CommandP((s) => true, AddProduto);
         }
-
         private void AddProduto(object obj)
         {
-            Produtos.Codigo = produtosEntities.Produtos.Count();
+            Produtos.Codigo = produtosEntities.Clientes.Count();
             produtosEntities.Produtos.Add(Produtos);
             produtosEntities.SaveChanges();
             lstProdutos.Add(Produtos);
             Produtos = new Produtos();
         }
-
             private void UpdateProduto(object obj) //Update cliente
             {
                 produtosEntities.SaveChanges();
