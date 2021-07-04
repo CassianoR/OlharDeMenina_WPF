@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View"
+             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Transparent">
@@ -40,21 +40,21 @@
 
         <!--textbox-->
 
-        <TextBox Margin="10" x:Name="txtBox_NomeProduto" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
-        <TextBox Margin="10" x:Name="txtBox_Marca" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" />
-        <TextBox Margin="10" x:Name="txtBox_Categoria" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" />
-        <TextBox Margin="10" x:Name="txtBox_Descricao" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" />
-        <TextBox Margin="10" x:Name="txtBox_Preco" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" />
-        <TextBox Margin="10" x:Name="txtBox_Quantidade" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" />
+        <TextBox Margin="10" x:Name="txtBox_NomeProduto" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Produtos.NomeProduto}" />
+        <TextBox Margin="10" x:Name="txtBox_Marca" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Produtos.Marca}" />
+        <TextBox Margin="10" x:Name="txtBox_Categoria" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Produtos.Categoria}" />
+        <TextBox Margin="10" x:Name="txtBox_Descricao" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Text="{Binding Produtos.Descricao}" />
+        <TextBox Margin="10" x:Name="txtBox_Preco" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Produtos.Valor}" />
+        <TextBox Margin="10" x:Name="txtBox_Quantidade" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"/>
 
         <!--buttons-->
 
-        <Button x:Name="btnCadastrar" Content="Cadastrar" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Margin="10" Background="#FF0AC14D" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center" />
+        <Button x:Name="btnCadastrar" Content="Cadastrar" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Margin="10" Background="#FF0AC14D" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center" Click="btnCadastrar_Click" Command="{Binding AddProdutoCommand}"/>
         <Button x:Name="btnCancelarr" Content="Cancelar" Grid.Column="4" Grid.Row="4" Grid.RowSpan="2" Margin="10" Background="#FFC11B0A" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White" VerticalContentAlignment="Center" />
 
         <!--listview-->
 
-        <DataGrid x:Name="datagrid_cleinte" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="4" FontSize="22" Margin="10">
+        <DataGrid x:Name="datagrid_cleinte" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="4" FontSize="22" Margin="10" ItemsSource="{Binding lstProdutos}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding NomeProduto}" Header="Nome Produto" Width="auto" />
                 <DataGridTextColumn Binding="{Binding Marca}" Header="Marca" Width="auto" />

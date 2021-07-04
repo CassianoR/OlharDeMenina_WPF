@@ -64,7 +64,7 @@
                 <Button Grid.Row="6" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
                 Command="{Binding AddClienteCommand}"
                 Content="Cadastrar novo cliente"
-                Foreground="Black" />
+                Foreground="Black" Click="btnCadastrar_Click" />
             </Grid>
         </Grid>
     </Border>

@@ -14,6 +14,15 @@
         <AssociationConnector Association="OlharMeninaBDModel.FK_Estoque" ManuallyRouted="false" />
         <AssociationConnector Association="OlharMeninaBDModel.FK_Venda" ManuallyRouted="false" />
         <AssociationConnector Association="OlharMeninaBDModel.FK_Venda3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OlhardeMeninaBDModel.Clientes" Width="1.5" PointX="2" PointY="1" />
+        <EntityTypeShape EntityType="OlhardeMeninaBDModel.Estoque" Width="1.5" PointX="7.875" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OlhardeMeninaBDModel.Funcionarios" Width="1.5" PointX="0.875" PointY="5.375" />
+        <EntityTypeShape EntityType="OlhardeMeninaBDModel.Produtos" Width="1.5" PointX="10.5" PointY="4.875" />
+        <AssociationConnector Association="OlhardeMeninaBDModel.FK_Estoque" />
+        <EntityTypeShape EntityType="OlhardeMeninaBDModel.Venda" Width="1.5" PointX="6" PointY="5.375" />
+        <AssociationConnector Association="OlhardeMeninaBDModel.FK_Venda2" />
+        <AssociationConnector Association="OlhardeMeninaBDModel.FK_Venda" />
+        <AssociationConnector Association="OlhardeMeninaBDModel.FK_Venda3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

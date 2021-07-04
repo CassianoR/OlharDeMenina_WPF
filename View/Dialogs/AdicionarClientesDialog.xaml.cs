@@ -37,5 +37,10 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
             if (e.Key == Key.Escape)
                 this.Close();
         }
+
+        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

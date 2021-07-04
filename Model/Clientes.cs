@@ -7,87 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace LojaOlharDeMenina_WPF.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
-    public partial class Clientes : INotifyPropertyChanged
+    
+    public partial class Clientes
     {
-        private int id;
-        private string nome;
-        private string cpf;
-        private string telefone;
-        private string endereco;
-        private DateTime datanasc;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clientes()
         {
             this.Venda = new HashSet<Venda>();
         }
-
-        public int ID
-        {
-            get => id; set
-            {
-                id = value;
-                OnPropertyChanged(nameof(ID));
-            }
-        }
-
-        public string Nome
-        {
-            get => nome; set
-            {
-                nome = value;
-                OnPropertyChanged(nameof(Nome));
-            }
-        }
-        public string CPF
-        {
-            get => cpf; set
-            {
-                cpf = value;
-                OnPropertyChanged(nameof(CPF));
-            }
-        }
-        public string Telefone
-        {
-            get => telefone; set
-            {
-                telefone = value;
-                OnPropertyChanged(nameof(Telefone));
-            }
-        }
-        public string Endereco
-        {
-            get => endereco; set
-            {
-                endereco = value;
-                OnPropertyChanged(nameof(Endereco));
-            }
-        }
-        public System.DateTime DataNasc
-        {
-            get => datanasc; set
-            {
-                datanasc = value;
-                OnPropertyChanged(nameof(DataNasc));
-            }
-        }
-
+    
+        public int ID { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public string Endereco { get; set; }
+        public string Telefone { get; set; }
+        public System.DateTime DataNasc { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 }

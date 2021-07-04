@@ -61,10 +61,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             clientesEntities = new OlhardeMeninaBDEntities();
             LoadCliente();
-            DeleteCommand = new Command((s) => true, Delete);
-            UpdateCommand = new Command((s) => true, Update);
-            UpdateClienteCommand = new Command((s) => true, UpdateCliente);
-            AddClienteCommand = new Command((s) => true, AddCliente);
+            DeleteCommand = new CommandCli((s) => true, Delete);
+            UpdateCommand = new CommandCli((s) => true, Update);
+            UpdateClienteCommand = new CommandCli((s) => true, UpdateCliente);
+            AddClienteCommand = new CommandCli((s) => true, AddCliente);
         }
 
         private void AddCliente(object obj)
@@ -107,9 +107,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand AddClienteCommand { get; set; }
     }
 
-    internal class Command : ICommand
+    internal class CommandCli : ICommand
     {
-        public Command(Func<object, bool> methodCanExecute, Action<object> methodExecute)
+        public CommandCli(Func<object, bool> methodCanExecute, Action<object> methodExecute)
         {
             MethodCanExecute = methodCanExecute;
             MethodExecute = methodExecute;
