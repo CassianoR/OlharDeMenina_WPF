@@ -10,7 +10,7 @@
         ResizeMode="CanResize"
         Background="Transparent"
         AllowsTransparency="False"
-        Title="Window1" Height="600" Width="920" Icon="/LojaOlharDeMenina_WPF;component/Images/icon.ico" Loaded="Window_Loaded">
+        Title="Olhar de Menina" Height="600" Width="920" Icon="/LojaOlharDeMenina_WPF;component/Images/icon.ico" Loaded="Window_Loaded">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>

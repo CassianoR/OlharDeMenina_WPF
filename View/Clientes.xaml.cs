@@ -1,4 +1,5 @@
-﻿using LojaOlharDeMenina_WPF.ViewModel;
+﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using LojaOlharDeMenina_WPF.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -87,6 +88,12 @@ namespace LojaOlharDeMenina_WPF.View
         {
             get { return _testData; }
             set { _testData = value; }
+        }
+
+        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            AdicionarClientesDialog acd = new AdicionarClientesDialog();
+            acd.ShowDialog();
         }
     }
 
