@@ -1,0 +1,71 @@
+﻿<Window x:Class="LojaOlharDeMenina_WPF.View.Dialogs.AdicionarClientesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View.Dialogs" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Cadastrar cliente" Height="236" Width="400" Background="Transparent" ResizeMode="NoResize">
+    <Border CornerRadius="15" >
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFFDFF8" Offset="0"/>
+                <GradientStop Color="#FFFFD0DA" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid >
+            <Grid Name="grid1" VerticalAlignment="Center" Margin="10" Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Right" Content="Nome:" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}" 
+                     VerticalAlignment="Top" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:"/>
+                <TextBox Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Endereço:"/>
+                <TextBox Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" />
+                <TextBox Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5"/>
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data de nasc.:" />
+                <TextBox Text="{Binding Clientes.DataNasc,StringFormat=\{0:dd/MM/yyyy\}}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5"/>
+                    </TextBox.Background>
+                </TextBox>
+
+                <Button Grid.Row="6" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                Command="{Binding AddClienteCommand}"
+                Content="Cadastrar novo cliente"
+                Foreground="Black" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
