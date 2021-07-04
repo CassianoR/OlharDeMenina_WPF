@@ -74,7 +74,6 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
 
         private string GetRandomText()
@@ -83,6 +82,7 @@ namespace LojaOlharDeMenina_WPF.View
         }
 
         private ObservableCollection<TestClass> _testData = new ObservableCollection<TestClass>();
+
         public ObservableCollection<TestClass> TestData
         {
             get { return _testData; }
@@ -99,7 +99,6 @@ namespace LojaOlharDeMenina_WPF.View
 
     public static class DataGridTextSearch
     {
-        // Using a DependencyProperty as the backing store for SearchValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SearchValueProperty =
             DependencyProperty.RegisterAttached("SearchValue", typeof(string), typeof(DataGridTextSearch),
                 new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.Inherits));
@@ -114,7 +113,6 @@ namespace LojaOlharDeMenina_WPF.View
             obj.SetValue(SearchValueProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for IsTextMatch.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsTextMatchProperty =
             DependencyProperty.RegisterAttached("IsTextMatch", typeof(bool), typeof(DataGridTextSearch), new UIPropertyMetadata(false));
 
