@@ -33,7 +33,6 @@
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
-            
         </Button>
         <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding Path=UpdateCommand}"
@@ -85,11 +84,11 @@
                 </DataGrid.ItemContainerStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Nome}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding CPF}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Telefone}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Endereco}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding DataNasc,StringFormat=d,UpdateSourceTrigger=PropertyChanged}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -97,7 +96,7 @@
                                     <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
                                 Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 CommandParameter="{Binding}">
-                                        <iconPacks:PackIconMaterial Kind="Send"
+                                        <iconPacks:PackIconMaterial Kind="AccountEdit"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
                                                 Width="auto"
