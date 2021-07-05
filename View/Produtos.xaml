@@ -33,7 +33,6 @@
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
-
         </Button>
         <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding Path=UpdateCommand}"
@@ -85,11 +84,11 @@
                 </DataGrid.ItemContainerStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" Header="Codigo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding NomeProduto}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Marca}" Header="Marca" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Categoria}" Header="Categoria" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Descricao}" Header="Descricao" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Valor}" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Marca,UpdateSourceTrigger=PropertyChanged}" Header="Marca" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Categoria,UpdateSourceTrigger=PropertyChanged}" Header="Categoria" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Descricao,UpdateSourceTrigger=PropertyChanged}" Header="Descricao" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
