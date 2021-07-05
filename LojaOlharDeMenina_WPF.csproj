@@ -213,6 +213,9 @@
     <Compile Include="View\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialogs\AdicionarProdutosDialog.xaml.cs">
+      <DependentUpon>AdicionarProdutosDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Dialogs\AdicionarClientesDialog.xaml.cs">
       <DependentUpon>AdicionarClientesDialog.xaml</DependentUpon>
     </Compile>
@@ -235,6 +238,10 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Clientes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Dialogs\AdicionarProdutosDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
