@@ -16,7 +16,7 @@
             </LinearGradientBrush>
         </Border.Background>
         <Grid>
-            <Grid Name="grid1" VerticalAlignment="Center" Margin="10" Background="Transparent">
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,40" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -61,11 +61,11 @@
                     </TextBox.Background>
                 </TextBox>
 
-                <Button Grid.Row="6" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
                 Command="{Binding AddProdutoCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0, 10, 0,0"
+                        Margin="0,3,0,-8"
                         Click="btnCadastrar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
