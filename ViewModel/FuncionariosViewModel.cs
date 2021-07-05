@@ -1,5 +1,4 @@
 ﻿using LojaOlharDeMenina_WPF.Model;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -78,6 +77,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void UpdateFuncionario(object obj) //Update funcionario
         {
+            SelectedFuncionario = obj as Funcionarios;
+            funcionariosEntities.Funcionarios.Attach(Funcionarios);
             funcionariosEntities.SaveChanges();
             SelectedFuncionario = new Funcionarios();
         }
@@ -106,5 +107,4 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand UpdateFuncionarioCommand { get; set; }
         public ICommand AddFuncionarioCommand { get; set; }
     }
-
 }
