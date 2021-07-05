@@ -78,6 +78,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void UpdateCliente(object obj) //Update cliente
         {
+            SelectedCliente = obj as Clientes;
+            clientesEntities.Clientes.Attach(Clientes);
             clientesEntities.SaveChanges();
             SelectedCliente = new Clientes();
         }
