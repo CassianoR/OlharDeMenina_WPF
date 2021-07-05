@@ -3,6 +3,7 @@ using LojaOlharDeMenina_WPF.View;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace LojaOlharDeMenina_WPF
 {
@@ -90,6 +91,25 @@ namespace LojaOlharDeMenina_WPF
             if (pb.Password == "")
             {
                 pb.Password = "Password";
+            }
+        }
+
+        //
+
+        private void txtNome_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtNome.Text == "Usuário")
+            {
+                txtNome.Text = "";
+            }
+        }
+
+        private void txtNome_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtNome.Text == "")
+            {
+                txtNome.Text = "Usuário";
+                txtNome.Background = new SolidColorBrush(Colors.LavenderBlush);
             }
         }
     }
