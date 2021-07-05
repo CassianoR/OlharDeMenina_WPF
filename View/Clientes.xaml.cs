@@ -97,14 +97,14 @@ namespace LojaOlharDeMenina_WPF.View
         }
     }
 
-    public class TestClass
+    public class TestClassCli
     {
         public string MyProperty { get; set; }
         public string MyProperty2 { get; set; }
         public string MyProperty3 { get; set; }
     }
 
-    public static class DataGridTextSearch
+    public static class DataGridTextSearchCli
     {
         public static readonly DependencyProperty SearchValueProperty =
             DependencyProperty.RegisterAttached("SearchValue", typeof(string), typeof(DataGridTextSearch),
@@ -134,7 +134,7 @@ namespace LojaOlharDeMenina_WPF.View
         }
     }
 
-    public class SearchValueConverter : IMultiValueConverter
+    public class SearchValueConverterCli : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

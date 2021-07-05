@@ -82,6 +82,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void UpdateProduto(object obj) //Update cliente
         {
+            SelectedProduto = obj as Produtos;
+            produtosEntities.Produtos.Attach(Produtos);
             produtosEntities.SaveChanges();
             SelectedProduto = new Produtos();
         }
