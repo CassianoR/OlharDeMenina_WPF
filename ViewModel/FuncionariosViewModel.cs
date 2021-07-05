@@ -67,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private void AddFuncionario(object obj)
         {
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
-            Funcionarios.Cargo = "Funcionario";
+            Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = 1234;
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             funcionariosEntities.SaveChanges();
