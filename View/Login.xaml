@@ -34,26 +34,7 @@
                 <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18" />
                 <StackPanel Margin="15,75,15,20" Height="145">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBox Name="txtNome" Margin="0,10" FontSize="20" BorderThickness="0" Width="230">
-                            <TextBox.Style>
-                                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                    <Style.Resources>
-                                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                            <VisualBrush.Visual>
-                                                <Label Content="Usuário" Foreground="PaleVioletRed" />
-                                            </VisualBrush.Visual>
-                                        </VisualBrush>
-                                    </Style.Resources>
-                                    <Style.Triggers>
-                                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                        </Trigger>
-                                        <Trigger Property="Text" Value="{x:Null}">
-                                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBox.Style>
+                        <TextBox Text="Usuário" GotFocus="txtNome_GotFocus" LostFocus="txtNome_LostFocus" Name="txtNome" Margin="0,10" BorderThickness="0" Width="230"  Foreground="PaleVioletRed" FontSize="20" Background="#FFF0F5">
                         </TextBox>
                         <iconPacks:PackIconMaterial Kind="Account"
                                                     VerticalAlignment="Center"
