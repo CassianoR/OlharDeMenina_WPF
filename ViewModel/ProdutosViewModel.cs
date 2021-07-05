@@ -9,7 +9,6 @@ using System.Windows.Input;
 namespace LojaOlharDeMenina_WPF.ViewModel
 
 {
-
     public class ProdutosViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -20,7 +19,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         private ObservableCollection<Produtos> _lstProdutos;
-
 
         public ObservableCollection<Produtos> lstProdutos
         {
@@ -33,7 +31,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         private Produtos _selectedProdutos;
-
 
         public Produtos SelectedProduto
         {
@@ -57,11 +54,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-
-
-
-
         private OlhardeMeninaBDEntities produtosEntities;
+
         public ProdutosViewModel()
         {
             produtosEntities = new OlhardeMeninaBDEntities();
@@ -71,6 +65,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             UpdateProdutoCommand = new CommandP((s) => true, UpdateProduto);
             AddProdutoCommand = new CommandP((s) => true, AddProduto);
         }
+
         private void AddProduto(object obj)
         {
             Produtos.Codigo = produtosEntities.Clientes.Count();
@@ -112,6 +107,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand UpdateProdutoCommand { get; set; }
         public ICommand AddProdutoCommand { get; set; }
     }
+
     internal class CommandP : ICommand
     {
         public CommandP(Func<object, bool> methodCanExecute, Action<object> methodExecute)
@@ -139,8 +135,4 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             remove { CommandManager.RequerySuggested -= value; }
         }
     }
-
-
-
-
 }

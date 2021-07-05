@@ -68,7 +68,7 @@
 
         <Grid Grid.Column="4" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top">
             <StackPanel>
-                <Button Background="LawnGreen" Name="btnAdicionar" Content="ADICIONAR" Height="45" />
+                <Button Background="LawnGreen" Name="btnAdicionar" Content="ADICIONAR" Height="45" Click="btnAdicionar_Click" />
                 <Button Background="LightGreen" Name="btnEditar" Content="EDITAR" Height="45" />
                 <Button Background="Red" Name="btnExcluir" Content="EXCLUIR" Height="45" />
                 <Button Background="LightBlue" Name="btnLimpar" Content="LIMPAR" Height="45" />

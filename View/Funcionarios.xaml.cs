@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using System.Windows.Controls;
 
 namespace LojaOlharDeMenina_WPF.View
 {
@@ -10,6 +11,12 @@ namespace LojaOlharDeMenina_WPF.View
         public Funcionarios()
         {
             InitializeComponent();
+        }
+
+        private void btnAdicionar_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            AdicionarFuncionariosDialog acd = new AdicionarFuncionariosDialog();
+            acd.ShowDialog();
         }
     }
 }
