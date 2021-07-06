@@ -94,7 +94,7 @@
                             <DataTemplate>
                                 <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
                                 Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}">
+                                CommandParameter="{Binding}" Padding="10">
                                     <iconPacks:PackIconMaterial Kind="AccountEdit"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
@@ -111,7 +111,7 @@
                                 <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
                                 Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 CommandParameter="{Binding}"
-                                        Background="Red">
+                                        Background="Red" Padding="10">
                                     <iconPacks:PackIconMaterial Kind="Delete"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
