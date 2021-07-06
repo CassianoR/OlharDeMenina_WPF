@@ -36,7 +36,7 @@
                 <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novo Cliente" FontSize="22" HorizontalAlignment="Center"
                        VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="112,-44,112,44"></Label>
 
-                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Bottom"/>
+                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Bottom" />
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
                      VerticalAlignment="Bottom">
                     <TextBox.Background>
