@@ -1,4 +1,5 @@
-﻿using LojaOlharDeMenina_WPF.Model;
+﻿using LojaOlharDeMenina_WPF.Core;
+using LojaOlharDeMenina_WPF.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -107,33 +108,5 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand UpdateCommand { get; set; }
         public ICommand UpdateClienteCommand { get; set; }
         public ICommand AddClienteCommand { get; set; }
-    }
-
-    internal class Command : ICommand
-    {
-        public Command(Func<object, bool> methodCanExecute, Action<object> methodExecute)
-        {
-            MethodCanExecute = methodCanExecute;
-            MethodExecute = methodExecute;
-        }
-
-        private Action<object> MethodExecute;
-        private Func<object, bool> MethodCanExecute;
-
-        public bool CanExecute(object parameter)
-        {
-            return MethodExecute != null && MethodCanExecute.Invoke(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            MethodExecute(parameter);
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
     }
 }

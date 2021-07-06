@@ -1,4 +1,5 @@
-﻿using LojaOlharDeMenina_WPF.Model;
+﻿using LojaOlharDeMenina_WPF.Core;
+using LojaOlharDeMenina_WPF.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -60,10 +61,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             produtosEntities = new OlhardeMeninaBDEntities();
             LoadProdutos();
-            DeleteCommand = new CommandP((s) => true, Delete);
-            UpdateCommand = new CommandP((s) => true, Update);
-            UpdateProdutoCommand = new CommandP((s) => true, UpdateProduto);
-            AddProdutoCommand = new CommandP((s) => true, AddProduto);
+            DeleteCommand = new Command((s) => true, Delete);
+            UpdateCommand = new Command((s) => true, Update);
+            UpdateProdutoCommand = new Command((s) => true, UpdateProduto);
+            AddProdutoCommand = new Command((s) => true, AddProduto);
         }
 
         private void AddProduto(object obj)
@@ -106,33 +107,5 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand UpdateCommand { get; set; }
         public ICommand UpdateProdutoCommand { get; set; }
         public ICommand AddProdutoCommand { get; set; }
-    }
-
-    internal class CommandP : ICommand
-    {
-        public CommandP(Func<object, bool> methodCanExecute, Action<object> methodExecute)
-        {
-            MethodCanExecute = methodCanExecute;
-            MethodExecute = methodExecute;
-        }
-
-        private Action<object> MethodExecute;
-        private Func<object, bool> MethodCanExecute;
-
-        public bool CanExecute(object parameter)
-        {
-            return MethodExecute != null && MethodCanExecute.Invoke(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            MethodExecute(parameter);
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
     }
 }

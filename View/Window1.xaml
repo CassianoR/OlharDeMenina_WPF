@@ -69,7 +69,6 @@
                        Foreground="White"
                        FontSize="22"
                        Margin="20" FontFamily="Candara Light" FontWeight="Medium" FontStyle="Oblique" />
-
                 <RadioButton x:Name="rbMenu" Content="Menu"
                              Height="50"
                              Foreground="White"
@@ -107,7 +106,14 @@
                              Style="{StaticResource MenuButtonTheme}"
                              Click="rbProd_Click" />
             </StackPanel>
-
+            <TextBlock x:Name="tblockCargo" TextWrapping="WrapWithOverflow"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       Foreground="#904673"
+                       FontSize="22"
+                       Margin="20"/>
             <TextBox Width="250"
                      Height="40"
                      VerticalAlignment="Center"

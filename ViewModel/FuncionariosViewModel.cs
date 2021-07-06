@@ -1,4 +1,5 @@
-﻿using LojaOlharDeMenina_WPF.Model;
+﻿using LojaOlharDeMenina_WPF.Core;
+using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
