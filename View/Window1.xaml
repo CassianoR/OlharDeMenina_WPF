@@ -82,29 +82,30 @@
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
                              Click="rbVendas_Click" />
-                <RadioButton x:Name="rbFunc" Content="Funcionários"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbFunc_Click" />
                 <RadioButton Content="Histórico"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton x:Name="rbProd" Content="Produtos"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbProd_Click" />
                 <RadioButton x:Name="rbCli" Content="Clientes"
                              Height="50"
                              Foreground="White"
                              FontSize="22"
                              Style="{StaticResource MenuButtonTheme}"
                              Click="rbCli_Click" />
+                <RadioButton x:Name="rbFunc" Content="Funcionários"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="22"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="rbFunc_Click" />
+
+                <RadioButton x:Name="rbProd" Content="Produtos"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="22"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="rbProd_Click" />
             </StackPanel>
 
             <TextBox Width="250"
