@@ -74,21 +74,21 @@
                         </Style.Triggers>
                     </Style>
                 </DataGrid.Resources>
-                <DataGrid.ItemContainerStyle>
+                <!--<DataGrid.ItemContainerStyle>
                     <Style TargetType="DataGridRow">
                         <Style.Setters>
                             <EventSetter Event="MouseEnter" Handler="OnMouseEnter" />
                             <EventSetter Event="MouseLeave" Handler="OnMouseLeave" />
                         </Style.Setters>
                     </Style>
-                </DataGrid.ItemContainerStyle>
+                </DataGrid.ItemContainerStyle>-->
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding DataNasc,StringFormat=d,UpdateSourceTrigger=PropertyChanged}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d,UpdateSourceTrigger=PropertyChanged}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

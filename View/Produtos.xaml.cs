@@ -26,35 +26,35 @@ namespace LojaOlharDeMenina_WPF.View
             }
         }
 
-        private void OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            DataGridRow row = sender as DataGridRow;
-            DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
-            for (int i = 0; i < datagrid_produto.Columns.Count; ++i)
-            {
-                DataGridCell cell = presenter.ItemContainerGenerator.ContainerFromIndex(i) as DataGridCell;
-                if (cell != null)
-                    cell.IsEditing = true;
-            }
-        }
+        //private void OnMouseEnter(object sender, MouseEventArgs e)
+        //{
+        //    DataGridRow row = sender as DataGridRow;
+        //    DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+        //    for (int i = 0; i < datagrid_produto.Columns.Count; ++i)
+        //    {
+        //        DataGridCell cell = presenter.ItemContainerGenerator.ContainerFromIndex(i) as DataGridCell;
+        //        if (cell != null)
+        //            cell.IsEditing = true;
+        //    }
+        //}
 
-        private void OnMouseLeave(object sender, MouseEventArgs e)
-        {
-            DataGridRow row = sender as DataGridRow;
-            DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
-            for (int i = 0; i < datagrid_produto.Columns.Count; ++i)
-            {
-                DataGridCell cell = presenter.ItemContainerGenerator.ContainerFromIndex(i) as DataGridCell;
-                if (cell != null)
-                {
-                    if (cell.IsEditing)
-                    {
-                        //dGrid.CommitEdit(DataGridEditingUnit.Cell, true);
-                        cell.IsEditing = false;
-                    }
-                }
-            }
-        }
+        //private void OnMouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    DataGridRow row = sender as DataGridRow;
+        //    DataGridCellsPresenter presenter = FindVisualChild<DataGridCellsPresenter>(row);
+        //    for (int i = 0; i < datagrid_produto.Columns.Count; ++i)
+        //    {
+        //        DataGridCell cell = presenter.ItemContainerGenerator.ContainerFromIndex(i) as DataGridCell;
+        //        if (cell != null)
+        //        {
+        //            if (cell.IsEditing)
+        //            {
+        //                //dGrid.CommitEdit(DataGridEditingUnit.Cell, true);
+        //                cell.IsEditing = false;
+        //            }
+        //        }
+        //    }
+        //}
 
         private static T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
         {

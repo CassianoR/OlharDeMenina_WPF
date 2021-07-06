@@ -13,6 +13,11 @@ namespace LojaOlharDeMenina_WPF.View
         {
             InitializeComponent();
             this.DataContext = new MainViewModel();
+            if (Adm == false) 
+            {
+                rbFunc.Visibility = Visibility.Hidden;
+                rbProd.Visibility = Visibility.Hidden;
+            }
         }
 
         public string username { get; set; }
