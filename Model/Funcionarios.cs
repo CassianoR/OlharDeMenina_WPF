@@ -18,6 +18,7 @@ namespace LojaOlharDeMenina_WPF.Model
     {
         private int id;
         private string cargo;
+        private string _loginfuncionario;
         private string nome;
         private string cpf;
         private int senha;
@@ -44,6 +45,14 @@ namespace LojaOlharDeMenina_WPF.Model
             {
                 cargo = value;
                 OnPropertyChanged(nameof(Cargo));
+            }
+        }
+        public string loginfuncionario
+        {
+            get => _loginfuncionario; set
+            {
+                _loginfuncionario = value;
+                OnPropertyChanged(nameof(loginfuncionario));
             }
         }
         public string Nome

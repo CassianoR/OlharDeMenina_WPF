@@ -53,11 +53,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlhardeMeninaBDEntities funcionariosEntities;
+        private OlharMeninaBDEntities funcionariosEntities;
 
         public FuncionariosViewModel()
         {
-            funcionariosEntities = new OlhardeMeninaBDEntities();
+            funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
@@ -70,6 +70,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = 1234;
+            Funcionarios.loginfuncionario = "Leonardodopneu@gmail.com";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             funcionariosEntities.SaveChanges();
             lstFuncionarios.Add(Funcionarios);
