@@ -12,22 +12,18 @@ namespace LojaOlharDeMenina_WPF.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Clientes
+    public partial class Categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clientes()
+        public Categoria()
         {
-            this.Venda = new HashSet<Venda>();
+            this.Produtos = new HashSet<Produtos>();
         }
     
-        public int ID { get; set; }
-        public string Nome { get; set; }
-        public string CPF { get; set; }
-        public string Endereco { get; set; }
-        public string Telefone { get; set; }
-        public System.DateTime DataNasc { get; set; }
+        public int CodigoCategoria { get; set; }
+        public string NomeCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venda> Venda { get; set; }
+        public virtual ICollection<Produtos> Produtos { get; set; }
     }
 }
