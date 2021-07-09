@@ -3,7 +3,7 @@
     [Cargo]    VARCHAR (50) NOT NULL,
     [Nome]     VARCHAR (50) NOT NULL,
     [CPF]      CHAR (14)    NOT NULL,
-    [Senha]    INT          NOT NULL,
+    [Senha]    NVARCHAR(64) NOT NULL,
     [Endereco] VARCHAR (80) NOT NULL,
     [Telefone] VARCHAR (20) NOT NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC),
