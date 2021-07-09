@@ -20,7 +20,7 @@ namespace LojaOlharDeMenina_WPF.Model
         private string cargo;
         private string nome;
         private string cpf;
-        private int senha;
+        private string senha;
         private string endereco;
         private string telefone;
 
@@ -62,7 +62,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(CPF));
             }
         }
-        public int Senha
+        public string Senha
         {
             get => senha; set
             {
