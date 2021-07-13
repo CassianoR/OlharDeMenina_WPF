@@ -57,6 +57,7 @@ namespace LojaOlharDeMenina_WPF.Model
         {
             databaseConnection.Close();
             databaseConnection.Dispose();
+            databaseConnection = null;
         }
     }
 }

@@ -56,19 +56,87 @@ namespace LojaOlharDeMenina_WPF.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = new HomeViewModel();
-            if (Adm == false)
+            //if (Adm == false)
+            //{
+            //    rbFunc.Visibility = Visibility.Hidden;
+            //    rbProd.Visibility = Visibility.Hidden;
+            //}
+            //else
+            //{
+            //    rbFunc.Visibility = Visibility.Visible;
+            //    rbProd.Visibility = Visibility.Visible;
+            //}
+
+            ////No futuro aqui vai ser um dropdown menu pra poder fazer logoff
+            //tblockCargo.Text = "Boas-vindas, " + username;
+        }
+
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Set tooltip visibility
+
+            if (Tg_Btn.IsChecked == true)
             {
-                rbFunc.Visibility = Visibility.Hidden;
-                rbProd.Visibility = Visibility.Hidden;
+                tt_home.Visibility = Visibility.Collapsed;
+                tt_contacts.Visibility = Visibility.Collapsed;
+                tt_messages.Visibility = Visibility.Collapsed;
+                tt_maps.Visibility = Visibility.Collapsed;
+                tt_settings.Visibility = Visibility.Collapsed;
+                tt_signout.Visibility = Visibility.Collapsed;
             }
             else
             {
-                rbFunc.Visibility = Visibility.Visible;
-                rbProd.Visibility = Visibility.Visible;
+                tt_home.Visibility = Visibility.Visible;
+                tt_contacts.Visibility = Visibility.Visible;
+                tt_messages.Visibility = Visibility.Visible;
+                tt_maps.Visibility = Visibility.Visible;
+                tt_settings.Visibility = Visibility.Visible;
+                tt_signout.Visibility = Visibility.Visible;
             }
+        }
 
-            //No futuro aqui vai ser um dropdown menu pra poder fazer logoff
-            tblockCargo.Text = "Boas-vindas, " + username;
+        private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            img_bg.Opacity = 1;
+            contentControl.Opacity = 1;
+            nav_pnl.Background.Opacity = 0.394;
+        }
+
+        private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
+        {
+            img_bg.Opacity = 0.3;
+            contentControl.Opacity = 0.3;
+            nav_pnl.Background.Opacity = 0.7;
+        }
+
+        private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Tg_Btn.IsChecked = false;
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnClientes_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new ClientesViewModel();
+        }
+
+        private void btnHome_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new HomeViewModel();
+        }
+
+        private void btnFuncionarios_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new FuncionariosViewModel();
+        }
+
+        private void btnProdutos_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new ProdutosViewModel();
         }
     }
 }
