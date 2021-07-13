@@ -32,57 +32,54 @@
             <view:Produtos DataContext="{Binding}" />
         </DataTemplate>
 
-
         <!--// Toggle Button Style Template //-->
 
         <ImageBrush x:Key="tb_mouse_over"
-                    ImageSource="/LojaOlharDeMenina_WPF;component/Images/tgBtn_MouseOver.png"/>
+                    ImageSource="/LojaOlharDeMenina_WPF;component/Images/tgBtn_MouseOver.png" />
 
         <!--// Text font style //-->
 
         <Style x:Key="font_style" TargetType="TextBlock">
 
             <Setter Property="FontFamily"
-                    Value="Fonts/Roboto-Light.ttf #Roboto"/>
+                    Value="Fonts/Roboto-Light.ttf #Roboto" />
 
             <Setter Property="VerticalAlignment"
-                    Value="Center"/>
+                    Value="Center" />
 
             <Setter Property="HorizontalAlignment"
-                    Value="Left"/>
+                    Value="Left" />
 
             <Setter Property="Foreground"
-                    Value="White"/>
+                    Value="White" />
 
             <Setter Property="FontSize"
-                    Value="20"/>
-
+                    Value="20" />
         </Style>
 
         <!--// Tooltip Style Template //-->
 
         <Style TargetType="ToolTip" x:Key="tt_style">
 
-            <Setter Property="Placement" Value="Right"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Margin" Value="20,0,0,0"/>
-            <Setter Property="Background" Value="#FFFF849C"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="PlacementRectangle" Value="60,0,0,0"/>
-            <Setter Property="HorizontalOffset" Value="15"/>
-            <Setter Property="VerticalOffset" Value="6"/>
-            <Setter Property="HasDropShadow" Value="True"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-
+            <Setter Property="Placement" Value="Right" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="Background" Value="#FFFF849C" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="PlacementRectangle" Value="60,0,0,0" />
+            <Setter Property="HorizontalOffset" Value="15" />
+            <Setter Property="VerticalOffset" Value="6" />
+            <Setter Property="HasDropShadow" Value="True" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
 
         <!--// App Close Button Style Template //-->
 
-        <ImageBrush x:Key="CloseBtn_MouseOver" ImageSource="/LojaOlharDeMenina_WPF;component/Images/closeBtn_MouseOver.png"/>
+        <ImageBrush x:Key="CloseBtn_MouseOver" ImageSource="/LojaOlharDeMenina_WPF;component/Images/closeBtn_MouseOver.png" />
 
         <Style x:Key="Close_btn" TargetType="{x:Type Button}">
 
@@ -96,7 +93,6 @@
                                 BorderThickness="0"
                                 Background="{TemplateBinding Background}"
                                 SnapsToDevicePixels="True">
-
                         </Border>
 
                         <ControlTemplate.Triggers>
@@ -106,22 +102,13 @@
 
                                 <Setter Property="Background"
                                         TargetName="button"
-                                        Value="{StaticResource CloseBtn_MouseOver}"/>
-
+                                        Value="{StaticResource CloseBtn_MouseOver}" />
                             </Trigger>
-
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
-
                 </Setter.Value>
-
             </Setter>
-
         </Style>
-
-
-
 
         <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
 
@@ -135,7 +122,6 @@
                                  BorderThickness="{TemplateBinding BorderThickness}"
                                  Background="{TemplateBinding Background}"
                                  SnapsToDevicePixels="True">
-
                         </Border>
 
                         <ControlTemplate.Triggers>
@@ -144,36 +130,28 @@
 
                                 <Setter Property="Background"
                                         TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
+                                        Value="{StaticResource tb_mouse_over}" />
 
                                 <Setter Property="BorderBrush"
                                         TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
-
+                                        Value="{StaticResource tb_mouse_over}" />
                             </Trigger>
 
                             <Trigger Property="IsChecked" Value="true">
 
                                 <Setter Property="Background"
                                         TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
+                                        Value="{StaticResource tb_mouse_over}" />
 
                                 <Setter Property="BorderBrush"
                                         TargetName="border"
-                                        Value="{StaticResource tb_mouse_over}"/>
-
+                                        Value="{StaticResource tb_mouse_over}" />
                             </Trigger>
-
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
-
                 </Setter.Value>
-
             </Setter>
-
         </Style>
-
     </Window.Resources>
 
     <Grid>
@@ -190,8 +168,7 @@
 
                     <ImageBrush x:Name="img_bg"
                                 ImageSource="/LojaOlharDeMenina_WPF;component/Images/fundo_login.jpg"
-                                Stretch="Fill"/>
-
+                                Stretch="Fill" />
                 </Grid.Background>
 
                 <ContentControl x:Name="contentControl" Grid.Row="1"
@@ -199,7 +176,6 @@
                             Grid.ColumnSpan="6"
                             Margin="80, 10, 10, 10"
                             Content="{Binding}" />
-
             </Grid>
 
             <!--// App Close Button //-->
@@ -207,19 +183,17 @@
             <Grid>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="30" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
             </Grid>
-
 
             <!--// Navigation Panel //-->
 
@@ -227,7 +201,7 @@
                     HorizontalAlignment="Left"
                     Width="65">
                 <Grid.Background>
-                    <SolidColorBrush Color="#FFFF6EEB" Opacity="0.394"/>
+                    <SolidColorBrush Color="#FFFF6EEB" Opacity="0.394" />
                 </Grid.Background>
 
                 <StackPanel x:Name="st_pnl">
@@ -248,7 +222,7 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
                                     Style="{StaticResource font_style}">
-                            
+
                             <!--// Shadow Effect //-->
 
                             <TextBlock.Effect>
@@ -256,10 +230,8 @@
                                 <DropShadowEffect  BlurRadius="10"
                                                    ShadowDepth="1"
                                                    Direction="-90"
-                                                   Color="White"/>
-
+                                                   Color="White" />
                             </TextBlock.Effect>
-
                         </TextBlock>
 
                         <!--// Toggle Button //-->
@@ -276,17 +248,17 @@
                             <ToggleButton.Template>
                                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                                     <Border CornerRadius="3" Background="{TemplateBinding Background}">
-                                        <ContentPresenter Margin="3" 
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center"/>
+                                        <ContentPresenter Margin="3"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" />
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsChecked" Value="True">
                                             <Setter Property="Background">
                                                 <Setter.Value>
                                                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                                        <GradientStop Color="#FFF3F3F3" Offset="1"/>
-                                                        <GradientStop Color="LawnGreen" Offset="0.307"/>
+                                                        <GradientStop Color="#FFF3F3F3" Offset="1" />
+                                                        <GradientStop Color="LawnGreen" Offset="0.307" />
                                                     </LinearGradientBrush>
                                                 </Setter.Value>
                                             </Setter>
@@ -295,8 +267,8 @@
                                             <Setter Property="Background">
                                                 <Setter.Value>
                                                     <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                                        <GradientStop Color="#FFF3F3F3" Offset="1"/>
-                                                        <GradientStop Color="Red" Offset="0.307"/>
+                                                        <GradientStop Color="#FFF3F3F3" Offset="1" />
+                                                        <GradientStop Color="Red" Offset="0.307" />
                                                     </LinearGradientBrush>
                                                 </Setter.Value>
                                             </Setter>
@@ -308,8 +280,7 @@
 
                             <ToggleButton.Background>
                                 <ImageBrush ImageSource="/LojaOlharDeMenina_WPF;component/Images/tgBtn_default.png"
-                                            Stretch="None"/>
-
+                                            Stretch="None" />
                             </ToggleButton.Background>
                             <!--// Toggle Button - Checked, Unchecked events //-->
 
@@ -321,20 +292,16 @@
 
                                         <Storyboard x:Name="HideStackPanel">
 
-                                            <DoubleAnimation    
-                                                
+                                            <DoubleAnimation
+
                                                 Storyboard.TargetName="nav_pnl"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
                                                 From="230" To="65"
                                                 Duration="0:0:0.2">
-
                                             </DoubleAnimation>
-
                                         </Storyboard>
-
                                     </BeginStoryboard>
-
                                 </EventTrigger>
 
                                 <EventTrigger RoutedEvent="ToggleButton.Checked">
@@ -344,26 +311,18 @@
                                         <Storyboard x:Name="ShowStackPanel">
 
                                             <DoubleAnimation
-                                                
+
                                                 Storyboard.TargetName="nav_pnl"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
                                                 From="65" To="230"
                                                 Duration="0:0:0.3">
-
                                             </DoubleAnimation>
-
                                         </Storyboard>
-
                                     </BeginStoryboard>
-
                                 </EventTrigger>
-
                             </ToggleButton.Triggers>
-
-
                         </ToggleButton>
-
                     </Grid>
 
                     <!--// ListView with menu list items //-->
@@ -376,20 +335,18 @@
                         <!--// Home //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
                             <StackPanel Orientation="Horizontal" x:Name="btnHome"
                                         Width="230" PreviewMouseDown="btnHome_PreviewMouseDown"  Cursor="Hand">
 
                                 <Image Source="/LojaOlharDeMenina_WPF;component/Images/img_home.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" />
 
                                 <TextBlock Text="Home"
                                            Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
+                                           Style="{StaticResource font_style}" />
                             </StackPanel>
 
                             <!--// Tooltip //-->
@@ -398,29 +355,25 @@
 
                                 <ToolTip x:Name="tt_home"
                                          Content="Home"
-                                         Style="{StaticResource tt_style}"/>
-
+                                         Style="{StaticResource tt_style}" />
                             </ListViewItem.ToolTip>
-
                         </ListViewItem>
 
                         <!--// Contacts //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
                             <StackPanel Orientation="Horizontal"
                                         Width="230" PreviewMouseDown="btnClientes_PreviewMouseDown"  Cursor="Hand">
 
                                 <Image Source="/LojaOlharDeMenina_WPF;component/Images/img_contact.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" />
 
                                 <TextBlock Text="Clientes" x:Name="btnClientes"
                                            Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
+                                           Style="{StaticResource font_style}" />
                             </StackPanel>
 
                             <!--// Tooltip //-->
@@ -429,24 +382,21 @@
 
                                 <ToolTip x:Name="tt_contacts"
                                          Content="Clientes"
-                                         Style="{StaticResource tt_style}"/>
-
+                                         Style="{StaticResource tt_style}" />
                             </ListViewItem.ToolTip>
-
                         </ListViewItem>
 
                         <!--// Messages //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
                             <StackPanel Orientation="Horizontal" x:Name="btnFuncionarios" PreviewMouseDown="btnFuncionarios_PreviewMouseDown"
                                         Width="230"  Cursor="Hand">
 
                                 <!--<Image Source="/LojaOlharDeMenina_WPF;component/Images/img_message.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>-->
+                                       Margin="12,0,0,0" />-->
                                 <iconPacks:PackIconMaterial Kind="AccountSupervisor"
                                                 Margin="12,0,0,0"
                                                             Width="30"
@@ -455,8 +405,7 @@
 
                                 <TextBlock Text="Funcionários"
                                            Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
+                                           Style="{StaticResource font_style}" />
                             </StackPanel>
 
                             <!--// Tooltip //-->
@@ -465,24 +414,21 @@
 
                                 <ToolTip x:Name="tt_messages"
                                          Content="Funcionários"
-                                         Style="{StaticResource tt_style}"/>
-
+                                         Style="{StaticResource tt_style}" />
                             </ListViewItem.ToolTip>
-
                         </ListViewItem>
 
                         <!--// Maps //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
                             <StackPanel Orientation="Horizontal" x:Name="btnProdutos" PreviewMouseDown="btnProdutos_PreviewMouseDown"
                                         Width="230" Cursor="Hand">
 
                                 <!--<Image Source="/LojaOlharDeMenina_WPF;component/Images/img_map.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>-->
+                                       Margin="12,0,0,0" />-->
                                 <iconPacks:PackIconMaterial Kind="Shopping"
                                                 Margin="12,0,0,0"
                                                             Width="30"
@@ -491,8 +437,7 @@
 
                                 <TextBlock Text="Produtos"
                                            Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
+                                           Style="{StaticResource font_style}" />
                             </StackPanel>
 
                             <!--// Tooltip //-->
@@ -501,29 +446,25 @@
 
                                 <ToolTip x:Name="tt_maps"
                                          Content="Produtos"
-                                         Style="{StaticResource tt_style}"/>
-
+                                         Style="{StaticResource tt_style}" />
                             </ListViewItem.ToolTip>
-
                         </ListViewItem>
 
                         <!--// Settings //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
                             <StackPanel Orientation="Horizontal"
                                         Width="230" Cursor="Hand">
 
                                 <Image Source="/LojaOlharDeMenina_WPF;component/Images/img_setting.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" />
 
                                 <TextBlock Text="Configurações"
                                            Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
+                                           Style="{StaticResource font_style}" />
                             </StackPanel>
 
                             <!--// Tooltip //-->
@@ -532,29 +473,25 @@
 
                                 <ToolTip x:Name="tt_settings"
                                          Content="Configurações"
-                                         Style="{StaticResource tt_style}"/>
-
+                                         Style="{StaticResource tt_style}" />
                             </ListViewItem.ToolTip>
-
                         </ListViewItem>
 
                         <!--// Sign Out //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
-                                      >
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
 
                             <StackPanel Orientation="Horizontal"
                                         Width="230" Cursor="Hand">
 
                                 <Image Source="/LojaOlharDeMenina_WPF;component/Images/img_signout.png"
                                        Stretch="None"
-                                       Margin="12,0,0,0"/>
+                                       Margin="12,0,0,0" />
 
                                 <TextBlock Text="Sair"
                                            Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-
+                                           Style="{StaticResource font_style}" />
                             </StackPanel>
 
                             <!--// Tooltip //-->
@@ -563,10 +500,8 @@
 
                                 <ToolTip x:Name="tt_signout"
                                          Content="Sair"
-                                         Style="{StaticResource tt_style}"/>
-
+                                         Style="{StaticResource tt_style}" />
                             </ListViewItem.ToolTip>
-
                         </ListViewItem>
 
                         <!--// Listview items style template //-->
@@ -591,8 +526,7 @@
 
                                                 <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                             </Border>
 
                                             <ControlTemplate.Triggers>
@@ -601,41 +535,27 @@
 
                                                     <MultiTrigger.Conditions>
 
-                                                        <Condition Property="IsMouseOver" Value="True"/>
-
+                                                        <Condition Property="IsMouseOver" Value="True" />
                                                     </MultiTrigger.Conditions>
 
                                                     <Setter Property="Background"
                                                             TargetName="Bd"
-                                                            Value="PaleVioletRed"/>
+                                                            Value="PaleVioletRed" />
 
                                                     <Setter Property="BorderBrush"
                                                             TargetName="Bd"
-                                                            Value="Transparent"/>
-
+                                                            Value="Transparent" />
                                                 </MultiTrigger>
-
                                             </ControlTemplate.Triggers>
-
                                         </ControlTemplate>
-
                                     </Setter.Value>
-
                                 </Setter>
-
                             </Style>
-
                         </ListView.ItemContainerStyle>
-
                     </ListView>
-
                 </StackPanel>
-
-
             </Grid>
-
         </Grid>
-
     </Grid>
 
     <!--<Border>
@@ -719,7 +639,7 @@
                        Grid.Row="1"
                        Foreground="#904673"
                        FontSize="22"
-                       Margin="20"/>
+                       Margin="20" />
             <TextBox Width="250"
                      Height="40"
                      VerticalAlignment="Center"

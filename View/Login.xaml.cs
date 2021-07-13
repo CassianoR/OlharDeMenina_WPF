@@ -31,7 +31,7 @@ namespace LojaOlharDeMenina_WPF
         private Window1 f = new Window1();
         private string cargo;
 
-        static string Encrypt(string value)
+        private static string Encrypt(string value)
         {
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {

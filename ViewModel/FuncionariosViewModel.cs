@@ -68,7 +68,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
         }
 
-        static string Encrypt(string value)
+        private static string Encrypt(string value)
         {
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
@@ -77,6 +77,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 return Convert.ToBase64String(data);
             }
         }
+
         private void AddFuncionario(object obj)
         {
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
