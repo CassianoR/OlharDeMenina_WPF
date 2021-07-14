@@ -13,3 +13,17 @@
     CONSTRAINT [FK_Venda3] FOREIGN KEY ([FK_CodigoProduto]) REFERENCES [dbo].[Produtos] ([Codigo])
 );
 
+
+GO
+CREATE TRIGGER tgr_baixa_estoque
+ON Venda
+FOR INSERT
+AS
+BEGIN
+	DECLARE @CodigoProduto int,
+			@QuantidadeVendida int
+	select  @CodigoProduto = FK_CodigoProduto,  @QuantidadeVendida = QuantidadeVendida from inserted
+	update Estoque
+	set QuantidadeEstoque = QuantidadeEstoque - @QuantidadeVendida
+	where FK_CodigoProduto = @CodigoProduto;
+end
