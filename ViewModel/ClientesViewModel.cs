@@ -55,11 +55,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         //Mudei o entities aqui, agora está belezinha com o banco novo bb's
 
-        private OlhardeMeninaBDEntities clientesEntities;
+        private OlharMeninaBDEntities clientesEntities;
 
         public ClientesViewModel()
         {
-            clientesEntities = new OlhardeMeninaBDEntities();
+            clientesEntities = new OlharMeninaBDEntities();
             LoadCliente();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
