@@ -9,7 +9,8 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Transparent">
+
+        <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -30,7 +31,7 @@
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
         </Button>
@@ -40,7 +41,7 @@
             <iconPacks:PackIconMaterial Kind="Refresh"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
         </Button>
