@@ -57,11 +57,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlhardeMeninaBDEntities funcionariosEntities;
+        private OlharMeninaBDEntities funcionariosEntities;
 
         public FuncionariosViewModel()
         {
-            funcionariosEntities = new OlhardeMeninaBDEntities();
+            funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);

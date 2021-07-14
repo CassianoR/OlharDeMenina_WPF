@@ -7,7 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace LojaOlharDeMenina_WPF.Model
 {
     using System;
@@ -15,14 +14,14 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    public partial class Clientes : INotifyPropertyChanged
+    public partial class Clientes:INotifyPropertyChanged
     {
-        private int id;
-        private string nome;
-        private string cpf;
-        private string telefone;
-        private string endereco;
-        private DateTime datanasc;
+        private int _iD;
+        private string _nome;
+        private string _cPF;
+        private string _endereco;
+        private string _telefone;
+        private DateTime _dataNasc;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clientes()
@@ -32,50 +31,43 @@ namespace LojaOlharDeMenina_WPF.Model
 
         public int ID
         {
-            get => id; set
-            {
-                id = value;
+            get => _iD; set
+            { _iD = value;
                 OnPropertyChanged(nameof(ID));
             }
         }
-
         public string Nome
         {
-            get => nome; set
-            {
-                nome = value;
+            get => _nome; set
+            { _nome = value;
                 OnPropertyChanged(nameof(Nome));
             }
         }
         public string CPF
         {
-            get => cpf; set
-            {
-                cpf = value;
+            get => _cPF; set
+            { _cPF = value;
                 OnPropertyChanged(nameof(CPF));
-            }
-        }
-        public string Telefone
-        {
-            get => telefone; set
-            {
-                telefone = value;
-                OnPropertyChanged(nameof(Telefone));
             }
         }
         public string Endereco
         {
-            get => endereco; set
-            {
-                endereco = value;
+            get => _endereco; set
+            { _endereco = value;
                 OnPropertyChanged(nameof(Endereco));
+            }
+        }
+        public string Telefone
+        {
+            get => _telefone; set
+            { _telefone = value;
+                OnPropertyChanged(nameof(Telefone));
             }
         }
         public System.DateTime DataNasc
         {
-            get => datanasc; set
-            {
-                datanasc = value;
+            get => _dataNasc; set
+            { _dataNasc = value;
                 OnPropertyChanged(nameof(DataNasc));
             }
         }
@@ -84,6 +76,7 @@ namespace LojaOlharDeMenina_WPF.Model
         public virtual ICollection<Venda> Venda { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {

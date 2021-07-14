@@ -54,11 +54,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlhardeMeninaBDEntities produtosEntities;
+        private OlharMeninaBDEntities produtosEntities;
 
         public ProdutosViewModel()
         {
-            produtosEntities = new OlhardeMeninaBDEntities();
+            produtosEntities = new OlharMeninaBDEntities();
             LoadProdutos();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
