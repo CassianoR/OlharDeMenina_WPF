@@ -12,8 +12,10 @@ namespace LojaOlharDeMenina_WPF.Model
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
-    
+    using System.Threading.Tasks;
+
     public partial class Funcionarios
     {
         private int id;
@@ -23,6 +25,7 @@ namespace LojaOlharDeMenina_WPF.Model
         private string senha;
         private string endereco;
         private string telefone;
+        private object _validationErrors;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
@@ -46,6 +49,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Cargo));
             }
         }
+        [Required]
         public string Nome
         {
             get => nome; set
@@ -54,6 +58,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Nome));
             }
         }
+        [StringLength(1)]
         public string CPF
         {
             get => cpf; set
@@ -62,6 +67,8 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(CPF));
             }
         }
+
+
         public string Senha
         {
             get => senha; set

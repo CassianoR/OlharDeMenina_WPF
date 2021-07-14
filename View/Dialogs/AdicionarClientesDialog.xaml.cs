@@ -33,5 +33,10 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
         {
             this.Close();
         }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
