@@ -15,10 +15,10 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class OlhardeMeninaBDEntities : DbContext
+    public partial class OlharMeninaBDEntities : DbContext
     {
-        public OlhardeMeninaBDEntities()
-            : base("name=OlhardeMeninaBDEntities")
+        public OlharMeninaBDEntities()
+            : base("name=OlharMeninaBDEntities")
         {
         }
     
@@ -27,11 +27,13 @@ namespace LojaOlharDeMenina_WPF.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Estoque> Estoque { get; set; }
         public virtual DbSet<Funcionarios> Funcionarios { get; set; }
         public virtual DbSet<Produtos> Produtos { get; set; }
         public virtual DbSet<Venda> Venda { get; set; }
+        public virtual DbSet<Produtos_add_Quantidade> Produtos_add_Quantidade { get; set; }
     
         public virtual int sp_insercaoestoque(Nullable<int> numLote, Nullable<int> totalProdutosLote, Nullable<decimal> frete, string fornecedor, Nullable<System.DateTime> dataCompra, Nullable<decimal> precoLote, Nullable<int> quantidade, Nullable<System.DateTime> validade, Nullable<int> fK_CodigoProduto)
         {
@@ -74,7 +76,16 @@ namespace LojaOlharDeMenina_WPF.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insercaoestoque", numLoteParameter, totalProdutosLoteParameter, freteParameter, fornecedorParameter, dataCompraParameter, precoLoteParameter, quantidadeParameter, validadeParameter, fK_CodigoProdutoParameter);
         }
     
-        public virtual int sp_novavenda(Nullable<int> fK_IDFuncionario, Nullable<int> fK_IDCliente, Nullable<int> fK_CodigoProduto, Nullable<decimal> valor, string metodoPagamento, Nullable<System.DateTime> datahora, Nullable<int> quantidadeVendida)
+        public virtual int sp_insersaocategoria(string nomeCategoria)
+        {
+            var nomeCategoriaParameter = nomeCategoria != null ?
+                new ObjectParameter("NomeCategoria", nomeCategoria) :
+                new ObjectParameter("NomeCategoria", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insersaocategoria", nomeCategoriaParameter);
+        }
+    
+        public virtual int sp_novavenda(Nullable<int> fK_IDFuncionario, Nullable<int> fK_IDCliente, Nullable<int> fK_CodigoProduto, Nullable<decimal> valor, string metodoPagamento, Nullable<System.DateTime> data, Nullable<int> quantidadeVendida)
         {
             var fK_IDFuncionarioParameter = fK_IDFuncionario.HasValue ?
                 new ObjectParameter("FK_IDFuncionario", fK_IDFuncionario) :
@@ -96,15 +107,15 @@ namespace LojaOlharDeMenina_WPF.Model
                 new ObjectParameter("MetodoPagamento", metodoPagamento) :
                 new ObjectParameter("MetodoPagamento", typeof(string));
     
-            var datahoraParameter = datahora.HasValue ?
-                new ObjectParameter("Datahora", datahora) :
-                new ObjectParameter("Datahora", typeof(System.DateTime));
+            var dataParameter = data.HasValue ?
+                new ObjectParameter("Data", data) :
+                new ObjectParameter("Data", typeof(System.DateTime));
     
             var quantidadeVendidaParameter = quantidadeVendida.HasValue ?
                 new ObjectParameter("QuantidadeVendida", quantidadeVendida) :
                 new ObjectParameter("QuantidadeVendida", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novavenda", fK_IDFuncionarioParameter, fK_IDClienteParameter, fK_CodigoProdutoParameter, valorParameter, metodoPagamentoParameter, datahoraParameter, quantidadeVendidaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novavenda", fK_IDFuncionarioParameter, fK_IDClienteParameter, fK_CodigoProdutoParameter, valorParameter, metodoPagamentoParameter, dataParameter, quantidadeVendidaParameter);
         }
     
         public virtual int sp_novoclien(string nome, string cPF, string endereco, string telefone, Nullable<System.DateTime> dataNasc)
@@ -132,11 +143,15 @@ namespace LojaOlharDeMenina_WPF.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novoclien", nomeParameter, cPFParameter, enderecoParameter, telefoneParameter, dataNascParameter);
         }
     
-        public virtual int sp_novofunc(string cargo, string nome, string cPF, string endereco, string telefone, string senha)
+        public virtual int sp_novofunc(string cargo, string loginfuncionario, string nome, string cPF, string endereco, string telefone, string senha)
         {
             var cargoParameter = cargo != null ?
                 new ObjectParameter("Cargo", cargo) :
                 new ObjectParameter("Cargo", typeof(string));
+    
+            var loginfuncionarioParameter = loginfuncionario != null ?
+                new ObjectParameter("loginfuncionario", loginfuncionario) :
+                new ObjectParameter("loginfuncionario", typeof(string));
     
             var nomeParameter = nome != null ?
                 new ObjectParameter("Nome", nome) :
@@ -158,14 +173,18 @@ namespace LojaOlharDeMenina_WPF.Model
                 new ObjectParameter("Senha", senha) :
                 new ObjectParameter("Senha", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novofunc", cargoParameter, nomeParameter, cPFParameter, enderecoParameter, telefoneParameter, senhaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novofunc", cargoParameter, loginfuncionarioParameter, nomeParameter, cPFParameter, enderecoParameter, telefoneParameter, senhaParameter);
         }
     
-        public virtual int sp_novoproduto(string nome, string marca, string categoria, string descricao, Nullable<decimal> valor)
+        public virtual int sp_novoproduto(string nome, string unidadeMedida, string marca, string categoria, string descricao, Nullable<decimal> valor)
         {
             var nomeParameter = nome != null ?
                 new ObjectParameter("Nome", nome) :
                 new ObjectParameter("Nome", typeof(string));
+    
+            var unidadeMedidaParameter = unidadeMedida != null ?
+                new ObjectParameter("UnidadeMedida", unidadeMedida) :
+                new ObjectParameter("UnidadeMedida", typeof(string));
     
             var marcaParameter = marca != null ?
                 new ObjectParameter("Marca", marca) :
@@ -183,7 +202,20 @@ namespace LojaOlharDeMenina_WPF.Model
                 new ObjectParameter("Valor", valor) :
                 new ObjectParameter("Valor", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novoproduto", nomeParameter, marcaParameter, categoriaParameter, descricaoParameter, valorParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novoproduto", nomeParameter, unidadeMedidaParameter, marcaParameter, categoriaParameter, descricaoParameter, valorParameter);
+        }
+    
+        public virtual int sp_user_login(string loginfuncionario, string senha)
+        {
+            var loginfuncionarioParameter = loginfuncionario != null ?
+                new ObjectParameter("loginfuncionario", loginfuncionario) :
+                new ObjectParameter("loginfuncionario", typeof(string));
+    
+            var senhaParameter = senha != null ?
+                new ObjectParameter("senha", senha) :
+                new ObjectParameter("senha", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_user_login", loginfuncionarioParameter, senhaParameter);
         }
     }
 }

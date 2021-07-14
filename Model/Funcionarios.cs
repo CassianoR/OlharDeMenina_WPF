@@ -13,76 +13,79 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
-    
-    public partial class Funcionarios
+
+    public partial class Funcionarios:INotifyPropertyChanged
     {
-        private int id;
-        private string cargo;
-        private string nome;
-        private string cpf;
-        private string senha;
-        private string endereco;
-        private string telefone;
+        private int _iD;
+        private string _loginFuncionario;
+        private string _cargo;
+        private string _nome;
+        private string _cPF;
+        private string _senha;
+        private string _endereco;
+        private string _telefone;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
         {
             this.Venda = new HashSet<Venda>();
         }
-    
-        public int ID 
-        { 
-            get => id; set
-            {
-                id = value;
+
+        public int ID
+        {
+            get => _iD; set
+            { _iD = value;
                 OnPropertyChanged(nameof(ID));
+            }
+        }
+        public string LoginFuncionario
+        {
+            get => _loginFuncionario; set
+            { _loginFuncionario = value;
+                OnPropertyChanged(nameof(LoginFuncionario));
             }
         }
         public string Cargo
         {
-            get => cargo; set
+            get => _cargo; set
             {
-                cargo = value;
+                _cargo = value;
                 OnPropertyChanged(nameof(Cargo));
             }
+
         }
         public string Nome
         {
-            get => nome; set
-            {
-                nome = value;
+            get => _nome; set
+            { _nome = value;
                 OnPropertyChanged(nameof(Nome));
             }
         }
         public string CPF
         {
-            get => cpf; set
-            {
-                cpf = value;
+            get => _cPF; set
+            { _cPF = value;
                 OnPropertyChanged(nameof(CPF));
             }
         }
         public string Senha
         {
-            get => senha; set
-            {
-                senha = value;
+            get => _senha; set
+            { _senha = value;
                 OnPropertyChanged(nameof(Senha));
             }
         }
         public string Endereco
         {
-            get => endereco; set
-            {
-                endereco = value;
+            get => _endereco; set
+            { _endereco = value;
                 OnPropertyChanged(nameof(Endereco));
             }
         }
         public string Telefone
         {
-            get => telefone; set
-            {
-                telefone = value;
+            get => _telefone; set
+            { _telefone = value;
                 OnPropertyChanged(nameof(Telefone));
             }
         }
@@ -91,6 +94,8 @@ namespace LojaOlharDeMenina_WPF.Model
         public virtual ICollection<Venda> Venda { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
