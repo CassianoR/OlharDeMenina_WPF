@@ -22,15 +22,18 @@ namespace LojaOlharDeMenina_WPF.Model
         }
     
         public int Codigo { get; set; }
+        public decimal UnidadeMedida { get; set; }
         public string NomeProduto { get; set; }
         public string Marca { get; set; }
         public string Categoria { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
+        public Nullable<int> FK_CodigoCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque> Estoque { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
+        public virtual Categoria Categoria1 { get; set; }
     }
 }
