@@ -3,6 +3,7 @@ using LojaOlharDeMenina_WPF.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
@@ -84,8 +85,22 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = Encrypt("1234");
             funcionariosEntities.Funcionarios.Add(Funcionarios);
-            funcionariosEntities.SaveChanges();
-            lstFuncionarios.Add(Funcionarios);
+            try
+            {
+                funcionariosEntities.SaveChanges();
+                lstFuncionarios.Add(Funcionarios);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach(var validationError in error.ValidationErrors)
+                    {
+                        System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
+                    }
+                }
+                
+            }
             Funcionarios = new Funcionarios();
         }
 
