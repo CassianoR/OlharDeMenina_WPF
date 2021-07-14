@@ -1,9 +1,12 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
@@ -65,11 +68,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
         }
 
+        private static string Encrypt(string value)
+        {
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
+                return Convert.ToBase64String(data);
+            }
+        }
+
         private void AddFuncionario(object obj)
         {
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
-            Funcionarios.Senha = 1234;
+            Funcionarios.Senha = Encrypt("1234");
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             funcionariosEntities.SaveChanges();
             lstFuncionarios.Add(Funcionarios);

@@ -319,6 +319,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Resource Include="Fonts\Roboto-Light.ttf" />
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -366,6 +367,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\closeBtn_default.png" />
+    <Resource Include="Images\closeBtn_MouseOver.png" />
+    <Resource Include="Images\img_background.png" />
+    <Resource Include="Images\img_contact.png" />
+    <Resource Include="Images\img_home.png" />
+    <Resource Include="Images\img_map.png" />
+    <Resource Include="Images\img_message.png" />
+    <Resource Include="Images\img_setting.png" />
+    <Resource Include="Images\img_signout.png" />
+    <Resource Include="Images\tgBtn_default.png" />
+    <Resource Include="Images\tgBtn_MouseOver.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
