@@ -22,7 +22,6 @@ namespace LojaOlharDeMenina_WPF.View
             {
                 TestData.Add(new TestClass { MyProperty = GetRandomText(), MyProperty2 = GetRandomText(), MyProperty3 = GetRandomText() });
             }
-
         }
 
         //private void OnMouseEnter(object sender, MouseEventArgs e)

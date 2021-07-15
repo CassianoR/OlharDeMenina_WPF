@@ -102,8 +102,7 @@
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
                                             Background="white"
-                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand"/>
-
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
             </Button>
         </Grid>
     </Border>
