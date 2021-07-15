@@ -335,10 +335,10 @@
                         <!--// Home //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"  PreviewMouseDown="btnHome_PreviewMouseDown"  Cursor="Hand">
 
                             <StackPanel Orientation="Horizontal" x:Name="btnHome"
-                                        Width="230" PreviewMouseDown="btnHome_PreviewMouseDown"  Cursor="Hand">
+                                        Width="230">
 
                                 <Image Source="/LojaOlharDeMenina_WPF;component/Images/img_home.png"
                                        Stretch="None"
@@ -362,10 +362,10 @@
                         <!--// Contacts //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" PreviewMouseDown="btnClientes_PreviewMouseDown"  Cursor="Hand">
 
                             <StackPanel Orientation="Horizontal"
-                                        Width="230" PreviewMouseDown="btnClientes_PreviewMouseDown"  Cursor="Hand">
+                                        Width="230">
 
                                 <Image Source="/LojaOlharDeMenina_WPF;component/Images/img_contact.png"
                                        Stretch="None"
@@ -389,10 +389,10 @@
                         <!--// Messages //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Cursor="Hand" PreviewMouseDown="btnFuncionarios_PreviewMouseDown">
 
-                            <StackPanel Orientation="Horizontal" x:Name="btnFuncionarios" PreviewMouseDown="btnFuncionarios_PreviewMouseDown"
-                                        Width="230"  Cursor="Hand">
+                            <StackPanel Orientation="Horizontal" x:Name="btnFuncionarios"
+                                        Width="230">
 
                                 <!--<Image Source="/LojaOlharDeMenina_WPF;component/Images/img_message.png"
                                        Stretch="None"
@@ -421,10 +421,10 @@
                         <!--// Maps //-->
 
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" PreviewMouseDown="btnProdutos_PreviewMouseDown" Cursor="Hand">
 
-                            <StackPanel Orientation="Horizontal" x:Name="btnProdutos" PreviewMouseDown="btnProdutos_PreviewMouseDown"
-                                        Width="230" Cursor="Hand">
+                            <StackPanel Orientation="Horizontal" x:Name="btnProdutos"
+                                        Width="230">
 
                                 <!--<Image Source="/LojaOlharDeMenina_WPF;component/Images/img_map.png"
                                        Stretch="None"
