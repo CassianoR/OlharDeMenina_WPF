@@ -95,12 +95,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 foreach (var error in ex.EntityValidationErrors)
                 {
-                    foreach(var validationError in error.ValidationErrors)
+                    foreach (var validationError in error.ValidationErrors)
                     {
                         System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
                     }
                 }
-                
             }
             Funcionarios = new Funcionarios();
         }
@@ -109,7 +108,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             SelectedFuncionario = obj as Funcionarios;
             funcionariosEntities.Funcionarios.Attach(Funcionarios);
-            funcionariosEntities.SaveChanges();
+            try
+            {
+                funcionariosEntities.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in error.ValidationErrors)
+                    {
+                        System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
+                    }
+                }
+            }
             SelectedFuncionario = new Funcionarios();
         }
 
@@ -123,7 +135,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             var fu = obj as Funcionarios;
             funcionariosEntities.Funcionarios.Remove(fu);
-            funcionariosEntities.SaveChanges();
+            try
+            {
+                funcionariosEntities.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in error.ValidationErrors)
+                    {
+                        System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
+                    }
+                }
+            }
             lstFuncionarios.Remove(fu);
         }
 

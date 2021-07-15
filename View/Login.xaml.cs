@@ -129,6 +129,7 @@ namespace LojaOlharDeMenina_WPF
         {
             Application.Current.Shutdown();
         }
+
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

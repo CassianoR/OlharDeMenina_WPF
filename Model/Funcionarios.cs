@@ -35,14 +35,16 @@ namespace LojaOlharDeMenina_WPF.Model
         public int ID
         {
             get => _iD; set
-            { _iD = value;
+            { 
+                _iD = value;
                 OnPropertyChanged(nameof(ID));
             }
         }
         public string LoginFuncionario
         {
             get => _loginFuncionario; set
-            { _loginFuncionario = value;
+            { 
+                _loginFuncionario = value;
                 OnPropertyChanged(nameof(LoginFuncionario));
             }
         }
@@ -63,7 +65,9 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Nome));
             }
         }
-        [StringLength(1)]
+
+        [Required]
+        [RegularExpression (@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", ErrorMessage = "O CPF precisa estar no formato correto. (000.000.000-00)")]
         public string CPF
         {
             get => _cPF; set
@@ -80,6 +84,8 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Senha));
             }
         }
+
+        [Required]
         public string Endereco
         {
             get => _endereco; set
@@ -87,6 +93,9 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Endereco));
             }
         }
+
+        [Required]
+        [RegularExpression (@"(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})", ErrorMessage = "O Telefone precisa estar no formato correto. (00 00000-0000)")]
         public string Telefone
         {
             get => _telefone; set
