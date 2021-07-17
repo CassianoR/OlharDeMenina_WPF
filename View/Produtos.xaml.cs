@@ -20,12 +20,14 @@ namespace LojaOlharDeMenina_WPF.View
         {
             InitializeComponent();
             DataContext = new ProdutosViewModel();
+
             for (int i = 0; i < 20; i++)
             {
                 TestData.Add(new TestClass { MyProperty = GetRandomText(), MyProperty2 = GetRandomText(), MyProperty3 = GetRandomText() });
             }
         }
 
+        
         //private void OnMouseEnter(object sender, MouseEventArgs e)
         //{
         //    DataGridRow row = sender as DataGridRow;
@@ -95,8 +97,21 @@ namespace LojaOlharDeMenina_WPF.View
             AdicionarProdutosDialog acd = new AdicionarProdutosDialog();
             acd.ShowDialog();
         }
-    }
 
+        private void AbrirEditarDialog(object sender, RoutedEventArgs e)
+        {
+            EditaProdutosDialog epd = new EditaProdutosDialog();
+            ProdutosViewModel pvm = new ProdutosViewModel();
+            pvm.Produtos = (Model.Produtos)datagrid_produto.SelectedItem;
+            epd.Codigo = pvm.Produtos.Codigo;
+            epd.NomeProduto = pvm.Produtos.NomeProduto;
+            epd.Marca = pvm.Produtos.Marca;
+            epd.Categoria = pvm.Produtos.Categoria;
+            epd.Descricao = pvm.Produtos.Descricao;
+            epd.Valor = pvm.Produtos.Valor;
+            epd.ShowDialog();
+        }
+    }
     public class TestClass
     {
         public string MyProperty { get; set; }

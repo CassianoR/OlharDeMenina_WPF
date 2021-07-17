@@ -14,9 +14,9 @@ namespace LojaOlharDeMenina_WPF.View
     /// <summary>
     /// Interação lógica para Cliente.xam
     /// </summary>
-    public partial class Cliente : UserControl
+    public partial class Clientes : UserControl
     {
-        public Cliente()
+        public Clientes()
         {
             InitializeComponent();
             DataContext = new ClientesViewModel();

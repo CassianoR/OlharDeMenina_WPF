@@ -63,7 +63,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             LoadProdutos();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
-            UpdateProdutoCommand = new Command((s) => true, UpdateProduto);
+            UpdateProdutoCommand = new Command((s) => true, UpdateProduto); 
             AddProdutoCommand = new Command((s) => true, AddProduto);
         }
 
@@ -78,8 +78,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void UpdateProduto(object obj) //Update cliente
         {
-            SelectedProduto = obj as Produtos;
-            produtosEntities.Produtos.Attach(Produtos);
+            int num = 1;
+            var uRow = produtosEntities.Produtos.Where(w => w.Codigo == num).FirstOrDefault();
+            uRow.NomeProduto = Produtos.NomeProduto;
+            uRow.Marca = Produtos.Marca;
+            uRow.Categoria = Produtos.Categoria;
+            uRow.Descricao = Produtos.Descricao;
+            uRow.Valor = Produtos.Valor;
             produtosEntities.SaveChanges();
             SelectedProduto = new Produtos();
         }

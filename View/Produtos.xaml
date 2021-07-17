@@ -50,7 +50,7 @@
             <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Nome"
                   SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" FontSize="18" />
             <DataGrid AutoGenerateColumns="False" x:Name="datagrid_produto" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding lstProdutos}">
+                  ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}" >
                 <DataGrid.Resources>
 
                     <Style x:Key="editStyle" TargetType="TextBox">
@@ -83,17 +83,17 @@
                     </Style>
                 </DataGrid.ItemContainerStyle>-->
                 <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" Header="Codigo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Marca,UpdateSourceTrigger=PropertyChanged}" Header="Marca" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Categoria,UpdateSourceTrigger=PropertyChanged}" Header="Categoria" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Descricao,UpdateSourceTrigger=PropertyChanged}" Header="Descricao" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProduto" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Marca,UpdateSourceTrigger=PropertyChanged}" x:Name="Marca" Header="Marca" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Categoria,UpdateSourceTrigger=PropertyChanged}" x:Name="Categoria" Header="Categoria" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Descricao,UpdateSourceTrigger=PropertyChanged}" x:Name="Descricao" Header="Descricao" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" x:Name="Valor" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
-                                Command="{Binding DataContext.UpdateProdutoCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                Click="AbrirEditarDialog" Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 CommandParameter="{Binding}" Padding="10">
                                     <iconPacks:PackIconMaterial Kind="Send"
                                                 VerticalAlignment="Center"
