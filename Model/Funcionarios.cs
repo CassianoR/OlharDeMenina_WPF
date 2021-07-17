@@ -15,7 +15,7 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
-    public partial class Funcionarios:INotifyPropertyChanged
+    public partial class Funcionarios : INotifyPropertyChanged
     {
         private int _iD;
         private string _loginFuncionario;
@@ -25,7 +25,7 @@ namespace LojaOlharDeMenina_WPF.Model
         private string _senha;
         private string _endereco;
         private string _telefone;
-        
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
         {
@@ -35,7 +35,7 @@ namespace LojaOlharDeMenina_WPF.Model
         public int ID
         {
             get => _iD; set
-            { 
+            {
                 _iD = value;
                 OnPropertyChanged(nameof(ID));
             }
@@ -43,7 +43,7 @@ namespace LojaOlharDeMenina_WPF.Model
         public string LoginFuncionario
         {
             get => _loginFuncionario; set
-            { 
+            {
                 _loginFuncionario = value;
                 OnPropertyChanged(nameof(LoginFuncionario));
             }
@@ -57,21 +57,23 @@ namespace LojaOlharDeMenina_WPF.Model
             }
 
         }
-        [Required]
+        [Required(ErrorMessage = " O campo Nome é obrigatório.")]
         public string Nome
         {
             get => _nome; set
-            { _nome = value;
+            {
+                _nome = value;
                 OnPropertyChanged(nameof(Nome));
             }
         }
 
-        [Required]
-        [RegularExpression (@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", ErrorMessage = "O CPF precisa estar no formato correto. (000.000.000-00)")]
+        [Required(ErrorMessage = " O campo CPF é obrigatório.")]
+        [RegularExpression(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", ErrorMessage = "O CPF precisa estar no formato correto. (000.000.000-00)")]
         public string CPF
         {
             get => _cPF; set
-            { _cPF = value;
+            {
+                _cPF = value;
                 OnPropertyChanged(nameof(CPF));
             }
         }
@@ -80,26 +82,29 @@ namespace LojaOlharDeMenina_WPF.Model
         public string Senha
         {
             get => _senha; set
-            { _senha = value;
+            {
+                _senha = value;
                 OnPropertyChanged(nameof(Senha));
             }
         }
 
-        [Required]
+        [Required(ErrorMessage = " O campo Endereço é obrigatório.")]
         public string Endereco
         {
             get => _endereco; set
-            { _endereco = value;
+            {
+                _endereco = value;
                 OnPropertyChanged(nameof(Endereco));
             }
         }
 
-        [Required]
-        [RegularExpression (@"(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})", ErrorMessage = "O Telefone precisa estar no formato correto. (00 00000-0000)")]
+        [Required(ErrorMessage = " O campo Telefone é obrigatório.")]
+        [RegularExpression(@"(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})", ErrorMessage = "O Telefone precisa estar no formato correto. (00 00000-0000)")]
         public string Telefone
         {
             get => _telefone; set
-            { _telefone = value;
+            {
+                _telefone = value;
                 OnPropertyChanged(nameof(Telefone));
             }
         }
