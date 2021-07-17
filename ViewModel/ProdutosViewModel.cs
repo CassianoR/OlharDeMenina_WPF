@@ -1,6 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -55,11 +54,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlhardeMeninaBDEntities produtosEntities;
+        private OlharMeninaBDEntities produtosEntities;
 
         public ProdutosViewModel()
         {
-            produtosEntities = new OlhardeMeninaBDEntities();
+            produtosEntities = new OlharMeninaBDEntities();
             LoadProdutos();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);

@@ -9,7 +9,8 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Transparent">
+
+        <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -30,7 +31,7 @@
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
         </Button>
@@ -40,15 +41,15 @@
             <iconPacks:PackIconMaterial Kind="Refresh"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
                                                 Foreground="PaleVioletRed" />
         </Button>
-
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
             <!--<TextBox Name="SearchBox" />-->
-            <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstFuncionarios}" DisplayMemberPath="Nome"
-                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" FontSize="18" />
+            <TextBox Name="SearchBox" TextChanged="SearchBox_TextChanged"
+                  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18">
+            </TextBox>
             <DataGrid AutoGenerateColumns="False" x:Name="datagrid_funcionario" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding lstFuncionarios}">
                 <DataGrid.Resources>

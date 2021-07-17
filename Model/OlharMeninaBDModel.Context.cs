@@ -143,15 +143,15 @@ namespace LojaOlharDeMenina_WPF.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novoclien", nomeParameter, cPFParameter, enderecoParameter, telefoneParameter, dataNascParameter);
         }
     
-        public virtual int sp_novofunc(string cargo, string loginfuncionario, string nome, string cPF, string endereco, string telefone, string senha)
+        public virtual int sp_novofunc(string cargo, string loginFuncionario, string nome, string cPF, Nullable<int> senha, string endereco, string telefone)
         {
             var cargoParameter = cargo != null ?
                 new ObjectParameter("Cargo", cargo) :
                 new ObjectParameter("Cargo", typeof(string));
     
-            var loginfuncionarioParameter = loginfuncionario != null ?
-                new ObjectParameter("loginfuncionario", loginfuncionario) :
-                new ObjectParameter("loginfuncionario", typeof(string));
+            var loginFuncionarioParameter = loginFuncionario != null ?
+                new ObjectParameter("loginFuncionario", loginFuncionario) :
+                new ObjectParameter("loginFuncionario", typeof(string));
     
             var nomeParameter = nome != null ?
                 new ObjectParameter("Nome", nome) :
@@ -161,6 +161,10 @@ namespace LojaOlharDeMenina_WPF.Model
                 new ObjectParameter("CPF", cPF) :
                 new ObjectParameter("CPF", typeof(string));
     
+            var senhaParameter = senha.HasValue ?
+                new ObjectParameter("Senha", senha) :
+                new ObjectParameter("Senha", typeof(int));
+    
             var enderecoParameter = endereco != null ?
                 new ObjectParameter("Endereco", endereco) :
                 new ObjectParameter("Endereco", typeof(string));
@@ -169,15 +173,15 @@ namespace LojaOlharDeMenina_WPF.Model
                 new ObjectParameter("Telefone", telefone) :
                 new ObjectParameter("Telefone", typeof(string));
     
-            var senhaParameter = senha != null ?
-                new ObjectParameter("Senha", senha) :
-                new ObjectParameter("Senha", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novofunc", cargoParameter, loginfuncionarioParameter, nomeParameter, cPFParameter, enderecoParameter, telefoneParameter, senhaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novofunc", cargoParameter, loginFuncionarioParameter, nomeParameter, cPFParameter, senhaParameter, enderecoParameter, telefoneParameter);
         }
     
-        public virtual int sp_novoproduto(string nome, string unidadeMedida, string marca, string categoria, string descricao, Nullable<decimal> valor)
+        public virtual int sp_novoproduto(Nullable<int> fK_CodigoCategoria, string nome, string unidadeMedida, string marca, string categoria, string descricao, Nullable<decimal> valor)
         {
+            var fK_CodigoCategoriaParameter = fK_CodigoCategoria.HasValue ?
+                new ObjectParameter("FK_CodigoCategoria", fK_CodigoCategoria) :
+                new ObjectParameter("FK_CodigoCategoria", typeof(int));
+    
             var nomeParameter = nome != null ?
                 new ObjectParameter("Nome", nome) :
                 new ObjectParameter("Nome", typeof(string));
@@ -202,20 +206,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 new ObjectParameter("Valor", valor) :
                 new ObjectParameter("Valor", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novoproduto", nomeParameter, unidadeMedidaParameter, marcaParameter, categoriaParameter, descricaoParameter, valorParameter);
-        }
-    
-        public virtual int sp_user_login(string loginfuncionario, string senha)
-        {
-            var loginfuncionarioParameter = loginfuncionario != null ?
-                new ObjectParameter("loginfuncionario", loginfuncionario) :
-                new ObjectParameter("loginfuncionario", typeof(string));
-    
-            var senhaParameter = senha != null ?
-                new ObjectParameter("senha", senha) :
-                new ObjectParameter("senha", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_user_login", loginfuncionarioParameter, senhaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_novoproduto", fK_CodigoCategoriaParameter, nomeParameter, unidadeMedidaParameter, marcaParameter, categoriaParameter, descricaoParameter, valorParameter);
         }
     }
 }

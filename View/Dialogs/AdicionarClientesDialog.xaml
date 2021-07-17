@@ -102,6 +102,14 @@
                 <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
                                                     Foreground="White" />
             </Grid>
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
+                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="white"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+            </Button>
         </Grid>
     </Border>
 </Window>

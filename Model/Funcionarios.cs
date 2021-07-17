@@ -12,77 +12,99 @@ namespace LojaOlharDeMenina_WPF.Model
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
-    
-    public partial class Funcionarios
+
+    public partial class Funcionarios : INotifyPropertyChanged
     {
-        private int id;
-        private string cargo;
-        private string nome;
-        private string cpf;
-        private int senha;
-        private string endereco;
-        private string telefone;
+        private int _iD;
+        private string _loginFuncionario;
+        private string _cargo;
+        private string _nome;
+        private string _cPF;
+        private string _senha;
+        private string _endereco;
+        private string _telefone;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
         {
             this.Venda = new HashSet<Venda>();
         }
-    
-        public int ID 
-        { 
-            get => id; set
+
+        public int ID
+        {
+            get => _iD; set
             {
-                id = value;
+                _iD = value;
                 OnPropertyChanged(nameof(ID));
+            }
+        }
+        public string LoginFuncionario
+        {
+            get => _loginFuncionario; set
+            {
+                _loginFuncionario = value;
+                OnPropertyChanged(nameof(LoginFuncionario));
             }
         }
         public string Cargo
         {
-            get => cargo; set
+            get => _cargo; set
             {
-                cargo = value;
+                _cargo = value;
                 OnPropertyChanged(nameof(Cargo));
             }
+
         }
+        [Required(ErrorMessage = " O campo Nome é obrigatório.")]
         public string Nome
         {
-            get => nome; set
+            get => _nome; set
             {
-                nome = value;
+                _nome = value;
                 OnPropertyChanged(nameof(Nome));
             }
         }
+
+        [Required(ErrorMessage = " O campo CPF é obrigatório.")]
+        [RegularExpression(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", ErrorMessage = "O CPF precisa estar no formato correto. (000.000.000-00)")]
         public string CPF
         {
-            get => cpf; set
+            get => _cPF; set
             {
-                cpf = value;
+                _cPF = value;
                 OnPropertyChanged(nameof(CPF));
             }
         }
-        public int Senha
+
+
+        public string Senha
         {
-            get => senha; set
+            get => _senha; set
             {
-                senha = value;
+                _senha = value;
                 OnPropertyChanged(nameof(Senha));
             }
         }
+
+        [Required(ErrorMessage = " O campo Endereço é obrigatório.")]
         public string Endereco
         {
-            get => endereco; set
+            get => _endereco; set
             {
-                endereco = value;
+                _endereco = value;
                 OnPropertyChanged(nameof(Endereco));
             }
         }
+
+        [Required(ErrorMessage = " O campo Telefone é obrigatório.")]
+        [RegularExpression(@"(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})", ErrorMessage = "O Telefone precisa estar no formato correto. (00 00000-0000)")]
         public string Telefone
         {
-            get => telefone; set
+            get => _telefone; set
             {
-                telefone = value;
+                _telefone = value;
                 OnPropertyChanged(nameof(Telefone));
             }
         }
@@ -91,6 +113,8 @@ namespace LojaOlharDeMenina_WPF.Model
         public virtual ICollection<Venda> Venda { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

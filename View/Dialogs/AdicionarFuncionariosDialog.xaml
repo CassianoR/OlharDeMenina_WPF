@@ -1,12 +1,12 @@
 ﻿<Window x:Class="LojaOlharDeMenina_WPF.View.Dialogs.AdicionarFuncionariosDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
-             mc:Ignorable="d"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
+        mc:Ignorable="d"
              AllowsTransparency="True"
              WindowStyle="None"
              Title="Cadastrar Funcionário" Height="274" Width="427" Background="Transparent" ResizeMode="NoResize">
@@ -96,6 +96,13 @@
                 <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="97"
                                                     Foreground="White" />
             </Grid>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
+                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="white"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+            </Button>
         </Grid>
     </Border>
 </Window>

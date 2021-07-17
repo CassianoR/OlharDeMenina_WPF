@@ -2,6 +2,7 @@
 using LojaOlharDeMenina_WPF.ViewModel;
 using System;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -148,6 +149,23 @@ namespace LojaOlharDeMenina_WPF.View
             public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
             {
                 return null;
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchBox.Text.Length > 2)
+            {
+                //using (var contexto = new DbContext())
+                //{
+                //    var resultado = contexto.Funcionarios
+                //                             .Where(m => EF.Functions.Like(m, "%sender%"))
+                //                             .ToList();
+                //    foreach (var func in resultado)
+                //    {
+                //        datagrid_funcionario.ItemsSource = func;
+                //    }
+                //}
             }
         }
     }

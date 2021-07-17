@@ -34,7 +34,6 @@ namespace LojaOlharDeMenina_WPF.Model
             this.Venda = new HashSet<Venda>();
         }
 
-
         public int Codigo
         {
             get => _codigo;
@@ -113,9 +112,12 @@ namespace LojaOlharDeMenina_WPF.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
+        public Nullable<int> FK_CodigoCategoria { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque> Estoque { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
+        public virtual Categoria Categoria1 { get; set; }
     }
 }

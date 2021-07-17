@@ -32,5 +32,9 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
         }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

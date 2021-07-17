@@ -96,6 +96,14 @@
             </Grid>
             <Label Grid.Row="0" Content="Novo Produto" FontSize="22" HorizontalAlignment="Center"
                        VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="125,8,125,227" />
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
+                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="white"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+            </Button>
         </Grid>
     </Border>
 </Window>
