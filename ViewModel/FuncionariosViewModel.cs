@@ -1,6 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Entity.Validation;
@@ -81,6 +82,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void AddFuncionario(object obj)
         {
+            funcionariosEntities = new OlharMeninaBDEntities();
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = Encrypt("1234");
@@ -93,19 +95,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                foreach (var error in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in error.ValidationErrors)
-                    {
-                        System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
-                    }
-                }
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                var fullErrorMessage = string.Join("\n", errorMessages);
+                var exceptionMessage = string.Concat(fullErrorMessage);
+                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                funcionariosEntities.Dispose();
             }
             Funcionarios = new Funcionarios();
         }
 
         private void UpdateFuncionario(object obj) //Update funcionario
         {
+            funcionariosEntities = new OlharMeninaBDEntities();
             SelectedFuncionario = obj as Funcionarios;
             funcionariosEntities.Funcionarios.Attach(Funcionarios);
             try
@@ -114,13 +117,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                foreach (var error in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in error.ValidationErrors)
-                    {
-                        System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
-                    }
-                }
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                var fullErrorMessage = string.Join("\n", errorMessages);
+                var exceptionMessage = string.Concat(fullErrorMessage);
+                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                funcionariosEntities.Dispose();
             }
             SelectedFuncionario = new Funcionarios();
         }
@@ -133,6 +136,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void Delete(object obj) //Delete
         {
+            funcionariosEntities = new OlharMeninaBDEntities();
             var fu = obj as Funcionarios;
             funcionariosEntities.Funcionarios.Remove(fu);
             try
@@ -141,13 +145,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                foreach (var error in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in error.ValidationErrors)
-                    {
-                        System.Windows.MessageBox.Show("Erro: " + validationError.ErrorMessage);
-                    }
-                }
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                var fullErrorMessage = string.Join("\n", errorMessages);
+                var exceptionMessage = string.Concat(fullErrorMessage);
+                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                funcionariosEntities.Dispose();
             }
             lstFuncionarios.Remove(fu);
         }
