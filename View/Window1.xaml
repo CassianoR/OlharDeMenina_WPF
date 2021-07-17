@@ -26,7 +26,7 @@
             <view:Funcionarios DataContext="{Binding}" />
         </DataTemplate>
         <DataTemplate x:Name="cliViewTemplate" DataType="{x:Type viewModel:ClientesViewModel}">
-            <view:Cliente DataContext="{Binding}" />
+            <view:Clientes DataContext="{Binding}" />
         </DataTemplate>
         <DataTemplate x:Name="prodViewTemplate" DataType="{x:Type viewModel:ProdutosViewModel}">
             <view:Produtos DataContext="{Binding}" />

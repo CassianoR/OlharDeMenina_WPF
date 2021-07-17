@@ -225,6 +225,9 @@
     <Compile Include="View\Dialogs\AdicionarFuncionariosDialog.xaml.cs">
       <DependentUpon>AdicionarFuncionariosDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Dialogs\EditaProdutosDialog.xaml.cs">
+      <DependentUpon>EditaProdutosDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Funcionarios.xaml.cs">
       <DependentUpon>Funcionarios.xaml</DependentUpon>
     </Compile>
@@ -253,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dialogs\AdicionarFuncionariosDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialogs\EditaProdutosDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
