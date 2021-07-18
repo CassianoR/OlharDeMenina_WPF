@@ -231,8 +231,8 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ProdutosViewModel.cs" />
     <Compile Include="ViewModel\VendasViewModel.cs" />
-    <Compile Include="View\Clientes.xaml.cs">
-      <DependentUpon>Clientes.xaml</DependentUpon>
+    <Compile Include="View\ClientesView.xaml.cs">
+      <DependentUpon>ClientesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dialogs\AdicionarProdutosDialog.xaml.cs">
       <DependentUpon>AdicionarProdutosDialog.xaml</DependentUpon>
@@ -246,22 +246,22 @@
     <Compile Include="View\Dialogs\EditaProdutosDialog.xaml.cs">
       <DependentUpon>EditaProdutosDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Funcionarios.xaml.cs">
-      <DependentUpon>Funcionarios.xaml</DependentUpon>
+    <Compile Include="View\FuncionariosView.xaml.cs">
+      <DependentUpon>FuncionariosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Produtos.xaml.cs">
-      <DependentUpon>Produtos.xaml</DependentUpon>
+    <Compile Include="View\ProdutosView.xaml.cs">
+      <DependentUpon>ProdutosView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Vendas.xaml.cs">
-      <DependentUpon>Vendas.xaml</DependentUpon>
+    <Compile Include="View\VendaView.xaml.cs">
+      <DependentUpon>VendaView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Clientes.xaml">
+    <Page Include="View\ClientesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -281,7 +281,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Funcionarios.xaml">
+    <Page Include="View\FuncionariosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,7 +297,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Login.xaml">
+    <Page Include="View\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -305,19 +305,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Produtos.xaml">
+    <Page Include="View\ProdutosView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Vendas.xaml">
+    <Page Include="View\VendaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window1.xaml">
+    <Page Include="View\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
