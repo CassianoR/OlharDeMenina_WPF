@@ -192,6 +192,7 @@
     <Compile Include="Model\Clientes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ClientesDTO.cs" />
     <Compile Include="Model\Estoque.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
