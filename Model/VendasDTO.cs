@@ -37,7 +37,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => fk_idfuncionario; set
             {
                 fk_idfuncionario = value;
-                OnPropertyChanged(nameof(fk_idfuncionario));
+                OnPropertyChanged(nameof(FK_IDFuncionario));
             }
         }
         public int FK_IDCliente
@@ -45,7 +45,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => fk_idcliente; set
             {
                 fk_idcliente = value;
-                OnPropertyChanged(nameof(fk_idcliente));
+                OnPropertyChanged(nameof(FK_IDCliente));
             }
 
         }
@@ -64,7 +64,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => valor ; set
             {
                 valor = value;
-                OnPropertyChanged(nameof(valor));
+                OnPropertyChanged(nameof(Valor));
             }
         }
 
@@ -74,7 +74,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => metodopagamento; set
             {
                 metodopagamento = value;
-                OnPropertyChanged(nameof(metodopagamento));
+                OnPropertyChanged(nameof(MetodoPagamento));
             }
         }
 
@@ -83,7 +83,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => datahora; set
             {
                 datahora = value;
-                OnPropertyChanged(nameof(datahora));
+                OnPropertyChanged(nameof(DataHora));
             }
         }
 
@@ -92,7 +92,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => quantidadevendida; set
             {
                 quantidadevendida = value;
-                OnPropertyChanged(nameof(quantidadevendida));
+                OnPropertyChanged(nameof(QuantidadeVendida));
             }
         }
 
