@@ -22,7 +22,6 @@ namespace LojaOlharDeMenina_WPF.Model
         private string nomeproduto;
         private string unidademedida;
         private string marca;
-        private string categoria;
         private string descricao;
         private decimal valor;
 
@@ -41,7 +40,7 @@ namespace LojaOlharDeMenina_WPF.Model
             set
             {
                 fk_nomecategoria = value;
-                OnPropertyChanged(nameof(fk_nomecategoria));
+                OnPropertyChanged(nameof(FK_NomeCategoria));
             }
         }
 
@@ -76,16 +75,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Marca));
             }
         }
-        public string Categoria
-        {
-            get => categoria;
-            set
-            {
-                categoria = value;
-                OnPropertyChanged(nameof(Categoria));
-            }
-        }
-        [Required]
+
         public string Descricao
         {
             get => descricao;
@@ -107,5 +97,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Valor));
             }
         }
+
+        public virtual Categoria Categoria { get; set; }
     }
 }

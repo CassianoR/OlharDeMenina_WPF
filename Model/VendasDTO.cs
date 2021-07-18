@@ -55,7 +55,7 @@ namespace LojaOlharDeMenina_WPF.Model
             get => fk_codigoproduto; set
             {
                 fk_codigoproduto = value;
-                OnPropertyChanged(nameof(fk_codigoproduto));
+                OnPropertyChanged(nameof(FK_CodigoProduto));
             }
         }
 

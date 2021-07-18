@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Model/VendasDTO.cs
 /Model/EstoqueDTO.cs
+/Model/QuantidadeDTO.cs
