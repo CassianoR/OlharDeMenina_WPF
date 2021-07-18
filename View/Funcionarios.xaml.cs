@@ -2,7 +2,6 @@
 using LojaOlharDeMenina_WPF.ViewModel;
 using System;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;

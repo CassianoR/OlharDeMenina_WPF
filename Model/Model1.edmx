@@ -9,8 +9,8 @@
           <Key>
             <PropertyRef Name="CodigoCategoria" />
           </Key>
+          <Property Name="NomeCategoria" Type="varchar" MaxLength="100" />
           <Property Name="CodigoCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NomeCategoria" Type="varchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
@@ -47,7 +47,7 @@
           <Property Name="Cargo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CPF" Type="char" MaxLength="14" Nullable="false" />
-          <Property Name="Senha" Type="varchar" MaxLength="64" />
+          <Property Name="Senha" Type="nchar" MaxLength="64" />
           <Property Name="Endereco" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Telefone" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
@@ -56,10 +56,9 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UnidadeMedida" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="UnidadeMedida" Type="varchar" MaxLength="15" />
           <Property Name="NomeProduto" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Marca" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Categoria" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="FK_CodigoCategoria" Type="int" />
@@ -76,24 +75,6 @@
           <Property Name="MetodoPagamento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DataHora" Type="datetime" Nullable="false" />
           <Property Name="QuantidadeVendida" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Produtos_add_Quantidade">
-          <Key>
-            <PropertyRef Name="NomeProduto" />
-            <PropertyRef Name="Descricao" />
-            <PropertyRef Name="Marca" />
-            <PropertyRef Name="Categoria" />
-            <PropertyRef Name="Valor" />
-            <PropertyRef Name="QuantidadeEstoque" />
-          </Key>
-          <Property Name="NomeProduto" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Marca" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Categoria" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="QuantidadeEstoque" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Estoque">
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
@@ -155,57 +136,6 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_insercaoestoque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NumLote" Type="int" Mode="In" />
-          <Parameter Name="TotalProdutosLote" Type="int" Mode="In" />
-          <Parameter Name="Frete" Type="decimal" Mode="In" />
-          <Parameter Name="Fornecedor" Type="varchar" Mode="In" />
-          <Parameter Name="DataCompra" Type="date" Mode="In" />
-          <Parameter Name="PrecoLote" Type="decimal" Mode="In" />
-          <Parameter Name="Quantidade" Type="int" Mode="In" />
-          <Parameter Name="Validade" Type="date" Mode="In" />
-          <Parameter Name="FK_CodigoProduto" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_insersaocategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NomeCategoria" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_novavenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="FK_IDFuncionario" Type="int" Mode="In" />
-          <Parameter Name="FK_IDCliente" Type="int" Mode="In" />
-          <Parameter Name="FK_CodigoProduto" Type="int" Mode="In" />
-          <Parameter Name="Valor" Type="decimal" Mode="In" />
-          <Parameter Name="MetodoPagamento" Type="varchar" Mode="In" />
-          <Parameter Name="Data" Type="date" Mode="In" />
-          <Parameter Name="QuantidadeVendida" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_novoclien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nome" Type="varchar" Mode="In" />
-          <Parameter Name="CPF" Type="char" Mode="In" />
-          <Parameter Name="Endereco" Type="varchar" Mode="In" />
-          <Parameter Name="Telefone" Type="varchar" Mode="In" />
-          <Parameter Name="DataNasc" Type="date" Mode="In" />
-        </Function>
-        <Function Name="sp_novofunc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Cargo" Type="varchar" Mode="In" />
-          <Parameter Name="loginfuncionario" Type="varchar" Mode="In" />
-          <Parameter Name="Nome" Type="varchar" Mode="In" />
-          <Parameter Name="CPF" Type="char" Mode="In" />
-          <Parameter Name="Endereco" Type="varchar" Mode="In" />
-          <Parameter Name="Telefone" Type="varchar" Mode="In" />
-          <Parameter Name="Senha" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_novoproduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nome" Type="varchar" Mode="In" />
-          <Parameter Name="UnidadeMedida" Type="varchar" Mode="In" />
-          <Parameter Name="Marca" Type="varchar" Mode="In" />
-          <Parameter Name="Categoria" Type="char" Mode="In" />
-          <Parameter Name="Descricao" Type="varchar" Mode="In" />
-          <Parameter Name="Valor" Type="decimal" Mode="In" />
-        </Function>
-        <Function Name="sp_user_login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="loginfuncionario" Type="varchar" Mode="In" />
-          <Parameter Name="senha" Type="varchar" Mode="In" />
-        </Function>
         <EntityContainer Name="OlharMeninaBDModelStoreContainer">
           <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
@@ -213,16 +143,6 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produtos" EntityType="Self.Produtos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Venda" EntityType="Self.Venda" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Produtos_add_Quantidade" EntityType="Self.Produtos_add_Quantidade" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Produtos_add_Quantidade].[NomeProduto] AS [NomeProduto], 
-    [Produtos_add_Quantidade].[Descricao] AS [Descricao], 
-    [Produtos_add_Quantidade].[Marca] AS [Marca], 
-    [Produtos_add_Quantidade].[Categoria] AS [Categoria], 
-    [Produtos_add_Quantidade].[Valor] AS [Valor], 
-    [Produtos_add_Quantidade].[QuantidadeEstoque] AS [QuantidadeEstoque]
-    FROM [dbo].[Produtos_add_Quantidade] AS [Produtos_add_Quantidade]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Estoque" Association="Self.FK_Estoque">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Estoque" EntitySet="Estoque" />
@@ -253,7 +173,7 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
             <PropertyRef Name="CodigoCategoria" />
           </Key>
           <Property Name="CodigoCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomeCategoria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="NomeCategoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Produtos" Relationship="OlharMeninaBDModel.FK_Produto" FromRole="Categoria" ToRole="Produtos" />
         </EntityType>
         <EntityType Name="Clientes">
@@ -293,7 +213,7 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
           <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Senha" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" MaxLength="64" FixedLength="true" Unicode="true" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda" FromRole="Funcionarios" ToRole="Venda" />
@@ -303,10 +223,9 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UnidadeMedida" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="UnidadeMedida" Type="String" Unicode="false" FixedLength="false" MaxLength="15" />
           <Property Name="NomeProduto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Categoria" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <NavigationProperty Name="Estoque" Relationship="Self.FK_Estoque" FromRole="Produtos" ToRole="Estoque" />
@@ -329,22 +248,6 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
           <NavigationProperty Name="Clientes" Relationship="Self.FK_Venda2" FromRole="Venda" ToRole="Clientes" />
           <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Venda" FromRole="Venda" ToRole="Funcionarios" />
           <NavigationProperty Name="Produtos" Relationship="Self.FK_Venda3" FromRole="Venda" ToRole="Produtos" />
-        </EntityType>
-        <EntityType Name="Produtos_add_Quantidade">
-          <Key>
-            <PropertyRef Name="NomeProduto" />
-            <PropertyRef Name="Descricao" />
-            <PropertyRef Name="Marca" />
-            <PropertyRef Name="Categoria" />
-            <PropertyRef Name="Valor" />
-            <PropertyRef Name="QuantidadeEstoque" />
-          </Key>
-          <Property Name="NomeProduto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Categoria" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="QuantidadeEstoque" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Venda2">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
@@ -401,7 +304,6 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" />
           <EntitySet Name="Produtos" EntityType="Self.Produtos" />
           <EntitySet Name="Venda" EntityType="Self.Venda" />
-          <EntitySet Name="Produtos_add_Quantidade" EntityType="Self.Produtos_add_Quantidade" />
           <AssociationSet Name="FK_Venda2" Association="Self.FK_Venda2">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Venda" EntitySet="Venda" />
@@ -550,7 +452,6 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
                 <ScalarProperty Name="UnidadeMedida" ColumnName="UnidadeMedida" />
                 <ScalarProperty Name="NomeProduto" ColumnName="NomeProduto" />
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
               </MappingFragment>
@@ -570,26 +471,7 @@ warning 6002: The table/view 'OlharMeninaBD.dbo.Produtos_add_Quantidade' does no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Produtos_add_Quantidade">
-            <EntityTypeMapping TypeName="OlharMeninaBDModel.Produtos_add_Quantidade">
-              <MappingFragment StoreEntitySet="Produtos_add_Quantidade">
-                <ScalarProperty Name="NomeProduto" ColumnName="NomeProduto" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="QuantidadeEstoque" ColumnName="QuantidadeEstoque" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_insercaoestoque" FunctionName="OlharMeninaBDModel.Store.sp_insercaoestoque" />
-          <FunctionImportMapping FunctionImportName="sp_insersaocategoria" FunctionName="OlharMeninaBDModel.Store.sp_insersaocategoria" />
-          <FunctionImportMapping FunctionImportName="sp_novavenda" FunctionName="OlharMeninaBDModel.Store.sp_novavenda" />
-          <FunctionImportMapping FunctionImportName="sp_novoclien" FunctionName="OlharMeninaBDModel.Store.sp_novoclien" />
-          <FunctionImportMapping FunctionImportName="sp_novofunc" FunctionName="OlharMeninaBDModel.Store.sp_novofunc" />
-          <FunctionImportMapping FunctionImportName="sp_novoproduto" FunctionName="OlharMeninaBDModel.Store.sp_novoproduto" />
-          <FunctionImportMapping FunctionImportName="sp_user_login" FunctionName="OlharMeninaBDModel.Store.sp_user_login" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

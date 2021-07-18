@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
              AllowsTransparency="True"
              WindowStyle="None"
@@ -41,12 +42,12 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="2" HorizontalAlignment="Right" Content="CPF:" />
-                <TextBox Text="{Binding Funcionarios.CPF}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
+                <xctk:MaskedTextBox Mask="000,000,000-00" Text="{Binding Funcionarios.CPF}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
                          Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
                 <Label Height="24" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Endereço:" />
                 <TextBox Text="{Binding Funcionarios.Endereco}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
                          Margin="0,5,0,0">
@@ -55,12 +56,12 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" />
-                <TextBox Text="{Binding Funcionarios.Telefone}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top"
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" Text="{Binding Funcionarios.Telefone}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top"
                          Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
 
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
                 Command="{Binding AddFuncionarioCommand}"

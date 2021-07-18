@@ -12,6 +12,7 @@ namespace LojaOlharDeMenina_WPF.Model
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
     public partial class Produtos
@@ -52,6 +53,8 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(FK_CodigoCategoria));
             }
         }
+
+        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
         public string NomeProduto
         {
             get => _nomeProduto;
@@ -61,6 +64,8 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(NomeProduto));
             }
         }
+
+        [Required(ErrorMessage = "O campo Unidade de medida é obrigatório.")]
         public string UnidadeMedida
         {
             get => _unidadeMedida;
@@ -70,6 +75,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(UnidadeMedida));
             }
         }
+        [Required]
         public string Marca
         {
             get => _marca;
@@ -88,6 +94,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Categoria));
             }
         }
+        [Required]
         public string Descricao
         {
             get => _descricao;
@@ -97,6 +104,9 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Descricao));
             }
         }
+
+        [Required]
+        [RegularExpression(@"/^\d*\.?\d*$/", ErrorMessage = "O campo Valor precisa estar no formato correto. (00.0)")]
         public decimal Valor
         {
             get => _valor;
@@ -112,7 +122,6 @@ namespace LojaOlharDeMenina_WPF.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public Nullable<int> FK_CodigoCategoria { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque> Estoque { get; set; }

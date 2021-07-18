@@ -1,7 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Entity.Validation;
@@ -86,7 +85,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = Encrypt("1234");
-            Funcionarios.LoginFuncionario = "teste@gmail.com";
+            Funcionarios.LoginFuncionario = "teste2@gmail.com";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             try
             {

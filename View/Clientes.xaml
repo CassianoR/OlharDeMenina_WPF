@@ -6,6 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View"
              xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -25,6 +26,8 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Clientes" Foreground="White" FontSize="30" Margin="15" />
+
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrar_Click" Cursor="Hand" Focusable="False">
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
