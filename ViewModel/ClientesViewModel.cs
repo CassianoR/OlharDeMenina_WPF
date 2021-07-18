@@ -2,6 +2,7 @@
 using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -69,10 +70,24 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void AddCliente(object obj)
         {
+            clientesEntities = new OlharMeninaBDEntities();
             Clientes.ID = clientesEntities.Clientes.Count();
             clientesEntities.Clientes.Add(Clientes);
-            clientesEntities.SaveChanges();
-            lstClientes.Add(Clientes);
+            try
+            {
+                clientesEntities.SaveChanges();
+                lstClientes.Add(Clientes);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                var fullErrorMessage = string.Join("\n", errorMessages);
+                var exceptionMessage = string.Concat(fullErrorMessage);
+                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                clientesEntities.Dispose();
+            }
             Clientes = new Clientes();
         }
 
@@ -80,7 +95,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             SelectedCliente = obj as Clientes;
             clientesEntities.Clientes.Attach(Clientes);
-            clientesEntities.SaveChanges();
+            try
+            {
+                clientesEntities.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                var fullErrorMessage = string.Join("\n", errorMessages);
+                var exceptionMessage = string.Concat(fullErrorMessage);
+                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                clientesEntities.Dispose();
+            }
             SelectedCliente = new Clientes();
         }
 
@@ -94,8 +122,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             var cl = obj as Clientes;
             clientesEntities.Clientes.Remove(cl);
-            clientesEntities.SaveChanges();
-            lstClientes.Remove(cl);
+            try
+            {
+                clientesEntities.SaveChanges();
+                lstClientes.Remove(cl);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+                var fullErrorMessage = string.Join("\n", errorMessages);
+                var exceptionMessage = string.Concat(fullErrorMessage);
+                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                clientesEntities.Dispose();
+            }
         }
 
         private void LoadCliente() //Read

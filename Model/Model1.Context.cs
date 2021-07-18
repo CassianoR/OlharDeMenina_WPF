@@ -33,7 +33,6 @@ namespace LojaOlharDeMenina_WPF.Model
         public virtual DbSet<Funcionarios> Funcionarios { get; set; }
         public virtual DbSet<Produtos> Produtos { get; set; }
         public virtual DbSet<Venda> Venda { get; set; }
-        public virtual DbSet<Produtos_add_Quantidade> Produtos_add_Quantidade { get; set; }
     
         public virtual int sp_insercaoestoque(Nullable<int> numLote, Nullable<int> totalProdutosLote, Nullable<decimal> frete, string fornecedor, Nullable<System.DateTime> dataCompra, Nullable<decimal> precoLote, Nullable<int> quantidade, Nullable<System.DateTime> validade, Nullable<int> fK_CodigoProduto)
         {

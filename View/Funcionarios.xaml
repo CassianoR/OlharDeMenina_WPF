@@ -26,6 +26,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Funcionários" Foreground="White" FontSize="30" Margin="15" />
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrar_Click" Cursor="Hand" Focusable="False">
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
@@ -50,7 +51,7 @@
             <TextBox Name="SearchBox" TextChanged="SearchBox_TextChanged"
                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18">
             </TextBox>
-            <DataGrid AutoGenerateColumns="False" x:Name="datagrid_funcionario" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
+            <DataGrid SelectedItem="{Binding SelectedFuncionario}" AutoGenerateColumns="False" x:Name="datagrid_funcionario" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
                   ItemsSource="{Binding lstFuncionarios}">
                 <DataGrid.Resources>
 

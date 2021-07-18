@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="OlharMeninaBDModel.Funcionarios" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OlharMeninaBDModel.Produtos" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="OlharMeninaBDModel.Venda" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OlharMeninaBDModel.Produtos_add_Quantidade" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="OlharMeninaBDModel.FK_Venda2" ManuallyRouted="false" />
         <AssociationConnector Association="OlharMeninaBDModel.FK_Estoque" ManuallyRouted="false" />
         <AssociationConnector Association="OlharMeninaBDModel.FK_Venda" ManuallyRouted="false" />

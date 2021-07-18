@@ -25,7 +25,6 @@ namespace LojaOlharDeMenina_WPF.View
             }
         }
 
-        
         //private void OnMouseEnter(object sender, MouseEventArgs e)
         //{
         //    DataGridRow row = sender as DataGridRow;
@@ -104,12 +103,12 @@ namespace LojaOlharDeMenina_WPF.View
             epd.Codigo = pvm.Produtos.Codigo;
             epd.NomeProduto = pvm.Produtos.NomeProduto;
             epd.Marca = pvm.Produtos.Marca;
-            epd.Categoria = pvm.Produtos.Categoria;
             epd.Descricao = pvm.Produtos.Descricao;
             epd.Valor = pvm.Produtos.Valor;
             epd.ShowDialog();
         }
     }
+
     public class TestClass
     {
         public string MyProperty { get; set; }

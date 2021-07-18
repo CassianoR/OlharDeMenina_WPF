@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
         mc:Ignorable="d"
@@ -37,18 +38,18 @@
                        VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="112,-44,112,44"></Label>
 
                 <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Bottom" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
+                <xctk:MaskedTextBox Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
                      VerticalAlignment="Bottom">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
                 <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:" />
-                <TextBox Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <xctk:MaskedTextBox Mask="000,000,000-00" IncludeLiteralsInValue="True" Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Endereço:" />
                 <TextBox Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
@@ -56,17 +57,17 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" />
-                <TextBox Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top">
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data de nasc.:" />
-                <DatePicker Text="{Binding Clientes.DataNasc,StringFormat=d}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top">
-                    <DatePicker.Background>
+                <xctk:MaskedTextBox Mask="00/00/0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.DataNasc,StringFormat=d}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top">
+                    <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </DatePicker.Background>
-                </DatePicker>
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
 
                 <Button Grid.Row="6" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
                 Command="{Binding AddClienteCommand}"

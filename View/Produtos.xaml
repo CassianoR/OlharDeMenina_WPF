@@ -25,6 +25,8 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Produtos" Foreground="White" FontSize="30" Margin="15" />
+
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrarProd" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrarProd_Click" Cursor="Hand" Focusable="False">
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
@@ -50,7 +52,7 @@
             <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Nome"
                   SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" FontSize="18" />
             <DataGrid AutoGenerateColumns="False" x:Name="datagrid_produto" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}" >
+                  ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}">
                 <DataGrid.Resources>
 
                     <Style x:Key="editStyle" TargetType="TextBox">

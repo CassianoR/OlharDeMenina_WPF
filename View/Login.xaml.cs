@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace LojaOlharDeMenina_WPF
 {
@@ -86,42 +85,7 @@ namespace LojaOlharDeMenina_WPF
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Erro de conexão: " + ex);
-            }
-        }
-
-        private void pb_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (pb.Password == "Password")
-            {
-                pb.Password = "";
-            }
-        }
-
-        private void pb_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (pb.Password == "")
-            {
-                pb.Password = "Password";
-            }
-        }
-
-        //
-
-        private void txtNome_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (txtNome.Text == "Usuário")
-            {
-                txtNome.Text = "";
-            }
-        }
-
-        private void txtNome_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (txtNome.Text == "")
-            {
-                txtNome.Text = "Usuário";
-                txtNome.Background = new SolidColorBrush(Colors.LavenderBlush);
+                System.Windows.MessageBox.Show("Erro de conexão: " + ex);
             }
         }
 
@@ -177,7 +141,7 @@ namespace LojaOlharDeMenina_WPF
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show("Erro de conexão: " + ex);
+                    System.Windows.MessageBox.Show("Erro de conexão: " + ex);
                 }
             }
         }
