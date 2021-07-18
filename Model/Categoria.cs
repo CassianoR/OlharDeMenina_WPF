@@ -20,7 +20,6 @@ namespace LojaOlharDeMenina_WPF.Model
             this.Produtos = new HashSet<Produtos>();
         }
     
-        public int CodigoCategoria { get; set; }
         public string NomeCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

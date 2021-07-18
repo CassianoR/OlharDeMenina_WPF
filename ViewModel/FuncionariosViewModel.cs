@@ -59,6 +59,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private OlharMeninaBDEntities funcionariosEntities;
 
+        private string message;
+        public string Message
+        {
+            get { return message; }
+            set { message = value; OnPropertyChanged("Message"); }
+        }
         public FuncionariosViewModel()
         {
             funcionariosEntities = new OlharMeninaBDEntities();
@@ -99,7 +105,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                         .Select(x => x.ErrorMessage);
                 var fullErrorMessage = string.Join("\n", errorMessages);
                 var exceptionMessage = string.Concat(fullErrorMessage);
-                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                //System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                Message = exceptionMessage;
                 funcionariosEntities.Dispose();
             }
             Funcionarios = new Funcionarios();
