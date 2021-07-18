@@ -18,7 +18,7 @@ namespace LojaOlharDeMenina_WPF.Model
         }
 
         private int codigo;
-        private int fk_nomecategoria;
+        private string fk_nomecategoria;
         private string nomeproduto;
         private string unidademedida;
         private string marca;
@@ -35,7 +35,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Codigo));
             }
         }
-        public int FK_NomeCategoria
+        public string FK_NomeCategoria
         {
             get => fk_nomecategoria;
             set
