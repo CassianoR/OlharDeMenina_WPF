@@ -192,12 +192,15 @@
     <Compile Include="Model\Clientes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ClientesDTO.cs" />
     <Compile Include="Model\Estoque.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\EstoqueDTO.cs" />
     <Compile Include="Model\Funcionarios.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FuncionariosDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,9 +219,12 @@
     <Compile Include="Model\Produtos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProdutosDTO.cs" />
+    <Compile Include="Model\QuantidadeDTO.cs" />
     <Compile Include="Model\Venda.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\VendasDTO.cs" />
     <Compile Include="ViewModel\ClientesViewModel.cs" />
     <Compile Include="ViewModel\FuncionariosViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
