@@ -9,8 +9,6 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
     /// </summary>
     public partial class AdicionarProdutosDialog : Window
     {
-        private int cont;
-
         public AdicionarProdutosDialog()
         {
             InitializeComponent();
@@ -44,58 +42,41 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
 
         private void tboxNome_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (tboxNome.Text.Length > 2)
-            {
-                cont = 1;
-                LiberaButton(cont);
-            }
+            LiberaButton();
         }
 
         private void tboxMarca_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (tboxMarca.Text.Length > 3)
-            {
-                cont = 2;
-                LiberaButton(cont);
-            }
+            LiberaButton();
         }
 
         private void tboxDesc_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (tboxDesc.Text.Length > 5)
-            {
-                cont = 3;
-                LiberaButton(cont);
-            }
+            LiberaButton();
         }
 
         private void tboxValor_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (tboxValor.Text != "00.00")
-            {
-                cont = 4;
-                LiberaButton(cont);
-            }
+            LiberaButton();
         }
 
         private void tboxUnidadeMed_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            if (tboxUnidadeMed.Text != null)
-            {
-                cont = 5;
-                LiberaButton(cont);
-            }
+            LiberaButton();
         }
 
-        private void LiberaButton(int value)
+        private void LiberaButton()
         {
-            if (value == 5)
+            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null)
+            {
+                btnCadastrar.IsEnabled = false;
+                btnCadastrar.Opacity = 0.5;
+            }
+            else
             {
                 btnCadastrar.IsEnabled = true;
                 btnCadastrar.Opacity = 1;
             }
         }
-
-        
     }
 }

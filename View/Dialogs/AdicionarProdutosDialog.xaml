@@ -63,7 +63,7 @@
                     </TextBox.Background>
                 </TextBox>
 
-                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="False"
                 Command="{Binding AddProdutoCommand}"
                 Content="Cadastrar"
                 Foreground="White"
