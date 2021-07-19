@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
-        Title="Cadastrar produto" Height="274" Width="427" Background="Transparent" ResizeMode="NoResize">
+        Title="Cadastrar produto" Height="328.8" Width="427" Background="Transparent" ResizeMode="NoResize">
     <Border CornerRadius="15">
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,7 +18,7 @@
             </LinearGradientBrush>
         </Border.Background>
         <Grid>
-            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,40" Background="Transparent" Height="169">
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -32,32 +32,32 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label HorizontalAlignment="Right" Content="Nome:" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Produtos.NomeProduto}"
-                     VerticalAlignment="Center">
+                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Produtos.NomeProduto}"
+                     VerticalAlignment="Center" TextChanged="tboxNome_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="1" HorizontalAlignment="Right" Content="Marca:" />
-                <TextBox Text="{Binding Produtos.Marca}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <TextBox x:Name="tboxMarca" Text="{Binding Produtos.Marca}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxMarca_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" />
-                <ComboBox IsEditable="True" ItemsSource="{Binding Produtos.Categoria}" x:Name="cboxCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <ComboBox IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" x:Name="cboxCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
                 </ComboBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" />
-                <TextBox Text="{Binding Produtos.Descricao}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                <TextBox x:Name="tboxDesc" Text="{Binding Produtos.Descricao}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxDesc_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <TextBox Text="{Binding Produtos.Valor,StringFormat=\{0:00.00\}}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+                <TextBox x:Name="tboxValor" Text="{Binding Produtos.Valor,StringFormat=\{0:00.00\}}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
@@ -67,7 +67,7 @@
                 Command="{Binding AddProdutoCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0,3,0,-8"
+                        Margin="0,28,0,-33"
                         Click="btnCadastrar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
@@ -95,6 +95,12 @@
                 </Button>
                 <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
                                                     Foreground="White" />
+                <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Unidade de Medida:" />
+                <TextBox x:Name="tboxUnidadeMed" Text="{Binding Produtos.UnidadeMedida}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxUnidadeMed_TextChanged" Margin="0,5">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
             </Grid>
             <Label Grid.Row="0" Content="Novo Produto" FontSize="22" HorizontalAlignment="Center"
                        VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="125,8,125,227" />
@@ -106,6 +112,7 @@
                                             Background="white"
                                             Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
             </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
         </Grid>
     </Border>
 </Window>

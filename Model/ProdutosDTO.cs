@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LojaOlharDeMenina_WPF.Model
 {
-    class ProdutosDTO : INotifyPropertyChanged
+    public class ProdutosDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -34,6 +30,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Codigo));
             }
         }
+
         public string FK_NomeCategoria
         {
             get => fk_nomecategoria;
@@ -65,6 +62,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(UnidadeMedida));
             }
         }
+
         [Required]
         public string Marca
         {

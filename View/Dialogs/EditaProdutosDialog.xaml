@@ -30,7 +30,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Label Content="{Binding Produtos.Codigo}" x:Name="ProdCodigo"></Label>
+                <TextBlock Text="{Binding Produtos.Codigo}" x:Name="ProdCodigo"></TextBlock>
                 <Label HorizontalAlignment="Right" Content="Nome:" />
                 <TextBox Grid.Row="0" Grid.Column="1" x:Name="ProdNome" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Center">
@@ -45,11 +45,11 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" />
-                <TextBox x:Name="ProdCategoria" Text="{Binding Produtos.Categoria, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-                    <TextBox.Background>
+                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}">
+                    <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
+                    </ComboBox.Background>
+                </ComboBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" />
                 <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
@@ -97,6 +97,14 @@
             </Grid>
             <Label Grid.Row="0" Content="Editar Produto" FontSize="22" HorizontalAlignment="Center"
                        VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="140,-6,141,241" />
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
+                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="white"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="27,247,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Top" />
         </Grid>
     </Border>
 </Window>
