@@ -60,11 +60,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private OlharMeninaBDEntities funcionariosEntities;
 
         private string message;
+
         public string Message
         {
             get { return message; }
             set { message = value; OnPropertyChanged("Message"); }
         }
+
         public FuncionariosViewModel()
         {
             funcionariosEntities = new OlharMeninaBDEntities();

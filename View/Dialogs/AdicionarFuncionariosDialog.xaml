@@ -104,7 +104,7 @@
                                             Background="white"
                                             Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
             </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="10,234,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Bottom" Width="199" Height="91"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,234,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Bottom" Width="199" Height="91" />
         </Grid>
     </Border>
 </Window>

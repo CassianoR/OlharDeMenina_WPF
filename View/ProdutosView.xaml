@@ -88,9 +88,10 @@
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProduto" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Marca,UpdateSourceTrigger=PropertyChanged}" x:Name="Marca" Header="Marca" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Categoria,UpdateSourceTrigger=PropertyChanged}" x:Name="Categoria" Header="Categoria" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="Categoria" Header="Categoria" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Descricao,UpdateSourceTrigger=PropertyChanged}" x:Name="Descricao" Header="Descricao" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" x:Name="Valor" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding UnidadeMedida,UpdateSourceTrigger=PropertyChanged}" x:Name="UnidadeMedida" Header="Unidade de Medida" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

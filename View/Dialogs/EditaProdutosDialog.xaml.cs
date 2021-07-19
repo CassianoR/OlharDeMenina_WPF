@@ -24,17 +24,17 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ProdCodigo.Content = Codigo;
+            ProdCodigo.Text = Codigo.ToString();
             ProdNome.Text = NomeProduto;
             ProdMarca.Text = Marca;
-            ProdCategoria.Text = Categoria;
+            ProdCategoria.SelectedItem = Categoria;
             ProdDescricao.Text = Descricao;
             ProdValor.Text = Valor.ToString();
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -48,6 +48,11 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
         {
             if (e.Key == Key.Escape)
                 this.Close();
+        }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

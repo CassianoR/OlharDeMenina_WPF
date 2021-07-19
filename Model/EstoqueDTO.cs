@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LojaOlharDeMenina_WPF.Model
 {
-    class EstoqueDTO : INotifyPropertyChanged
+    internal class EstoqueDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -35,6 +32,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(ID));
             }
         }
+
         public int NumLote
         {
             get => numlote; set
@@ -43,6 +41,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(NumLote));
             }
         }
+
         public int TotalProdutosLote
         {
             get => totalprodutoslote; set
@@ -50,7 +49,6 @@ namespace LojaOlharDeMenina_WPF.Model
                 totalprodutoslote = value;
                 OnPropertyChanged(nameof(TotalProdutosLote));
             }
-
         }
 
         public decimal Frete
@@ -98,7 +96,6 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-
         public Nullable<System.DateTime> Validade
         {
             get => validade; set
@@ -117,8 +114,6 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-
         public virtual Produtos Produtos { get; set; }
-
     }
 }

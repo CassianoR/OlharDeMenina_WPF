@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LojaOlharDeMenina_WPF.Model
 {
-    class VendasDTO : INotifyPropertyChanged
+    internal class VendasDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         private int codigo;
         private int fk_idfuncionario;
         private int fk_idcliente;
@@ -32,6 +30,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(CodigoVendas));
             }
         }
+
         public int FK_IDFuncionario
         {
             get => fk_idfuncionario; set
@@ -40,6 +39,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(FK_IDFuncionario));
             }
         }
+
         public int FK_IDCliente
         {
             get => fk_idcliente; set
@@ -47,7 +47,6 @@ namespace LojaOlharDeMenina_WPF.Model
                 fk_idcliente = value;
                 OnPropertyChanged(nameof(FK_IDCliente));
             }
-
         }
 
         public int FK_CodigoProduto
@@ -61,13 +60,12 @@ namespace LojaOlharDeMenina_WPF.Model
 
         public decimal Valor
         {
-            get => valor ; set
+            get => valor; set
             {
                 valor = value;
                 OnPropertyChanged(nameof(Valor));
             }
         }
-
 
         public string MetodoPagamento
         {
@@ -95,9 +93,6 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(QuantidadeVendida));
             }
         }
-
-
-
 
         public virtual Clientes Clientes { get; set; }
         public virtual Funcionarios Funcionarios { get; set; }
