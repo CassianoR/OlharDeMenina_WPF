@@ -48,7 +48,7 @@
         </Button>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
             <!--<TextBox Name="SearchBox" />-->
-            <TextBox Name="SearchBox" TextChanged="SearchBox_TextChanged"
+            <TextBox Name="SearchBox" Text="" 
                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18">
             </TextBox>
             <DataGrid SelectedItem="{Binding SelectedFuncionario}" AutoGenerateColumns="False" x:Name="datagrid_funcionario" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"

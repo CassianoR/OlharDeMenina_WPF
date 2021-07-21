@@ -66,11 +66,19 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             get { return message; }
             set { message = value; OnPropertyChanged("Message"); }
         }
-
+        FuncionariosService ObjEmployeeService;
+        private FuncionariosDTO currentEmployee;
+        public FuncionariosDTO CurrentEmployee
+        {
+            get { return currentEmployee; }
+            set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
+        }
         public FuncionariosViewModel()
         {
+            ObjEmployeeService = new FuncionariosService();
             funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
+            CurrentEmployee = new FuncionariosDTO();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
             UpdateFuncionarioCommand = new Command((s) => true, UpdateFuncionario);
@@ -93,7 +101,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = Encrypt("1234");
-            Funcionarios.LoginFuncionario = "teste2@gmail.com";
+            Funcionarios.LoginFuncionario = "teste3@gmail.com";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             try
             {
@@ -144,7 +152,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void Delete(object obj) //Delete
         {
-            funcionariosEntities = new OlharMeninaBDEntities();
+            System.Windows.MessageBoxResult deletarConfirma = System.Windows.MessageBox.Show("Você tem certeza que quer deletar esse funcionário?", "Deletar?", System.Windows.MessageBoxButton.OKCancel);
+            if (deletarConfirma == System.Windows.MessageBoxResult.Cancel)
+            {
+                return;
+            }
             var fu = obj as Funcionarios;
             funcionariosEntities.Funcionarios.Remove(fu);
             try
@@ -160,6 +172,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 var exceptionMessage = string.Concat(fullErrorMessage);
                 System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
                 funcionariosEntities.Dispose();
+                funcionariosEntities = new OlharMeninaBDEntities();
             }
             lstFuncionarios.Remove(fu);
         }

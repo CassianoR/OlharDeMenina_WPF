@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace LojaOlharDeMenina_WPF.Model
 {
-    internal class FuncionariosDTO : INotifyPropertyChanged
+    public class FuncionariosDTO : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

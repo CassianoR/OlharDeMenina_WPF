@@ -3,31 +3,44 @@ using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.Core
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
-        private Action<object> _execute;
-        private Func<object, bool> _canExecute;
-
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        private Action<object> methodToExecute;
+        private Func<bool> canExecuteEvaluator;
+
+        public RelayCommand(Action<object> methodToExecute, Func<bool> canExecuteEvaluator)
         {
-            _execute = execute;
-            _canExecute = canExecute;
+            this.methodToExecute = methodToExecute;
+            this.canExecuteEvaluator = canExecuteEvaluator;
         }
+
+        //public RelayCommand(Action methodToExecute)
+        //    : this(methodToExecute, null)
+        //{
+        //}
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null || _canExecute(parameter);
+            if (this.canExecuteEvaluator == null)
+            {
+                return true;
+            }
+            else
+            {
+                bool result = this.canExecuteEvaluator.Invoke();
+                return result;
+            }
         }
 
         public void Execute(object parameter)
         {
-            _execute(parameter);
+            this.methodToExecute.Invoke(parameter);
         }
     }
 }
