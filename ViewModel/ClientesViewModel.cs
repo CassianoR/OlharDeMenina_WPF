@@ -11,11 +11,25 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class ClientesViewModel : INotifyPropertyChanged
     {
+        private Exceptions exc = new Exceptions();
+
+        #region INotifyPropertyChanged Methods
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        #endregion INotifyPropertyChanged Methods
+
+        private string message;
+
+        public string Message
+        {
+            get { return message; }
+            set { message = value; OnPropertyChanged("Message"); }
         }
 
         private ObservableCollection<Clientes> _lstClientes;
@@ -80,12 +94,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
                 clientesEntities.Dispose();
             }
             Clientes = new Clientes();
@@ -101,12 +111,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
                 clientesEntities.Dispose();
             }
             SelectedCliente = new Clientes();
@@ -120,6 +126,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void Delete(object obj) //Delete
         {
+            System.Windows.MessageBoxResult deletarConfirma = System.Windows.MessageBox.Show("Você tem certeza que quer deletar esse cliente?", "Deletar?", System.Windows.MessageBoxButton.OKCancel);
+            if (deletarConfirma == System.Windows.MessageBoxResult.Cancel)
+            {
+                return;
+            }
             var cl = obj as Clientes;
             clientesEntities.Clientes.Remove(cl);
             try
@@ -129,12 +140,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
                 clientesEntities.Dispose();
             }
         }

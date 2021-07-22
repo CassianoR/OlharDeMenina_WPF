@@ -94,7 +94,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public virtual Clientes Clientes { get; set; }
+        public virtual Funcionarios Clientes { get; set; }
         public virtual Funcionarios Funcionarios { get; set; }
         public virtual Produtos Produtos { get; set; }
     }

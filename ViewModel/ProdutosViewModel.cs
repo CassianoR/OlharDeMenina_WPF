@@ -1,6 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.Entity.Validation;
@@ -13,12 +12,16 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class ProdutosViewModel : INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged Methods
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        #endregion INotifyPropertyChanged Methods
 
         private ObservableCollection<Produtos> _lstProdutos;
 
@@ -65,6 +68,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         private OlharMeninaBDEntities produtosEntities;
+        private Exceptions exc = new Exceptions();
 
         public ProdutosViewModel()
         {
@@ -80,19 +84,14 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             Produtos.Codigo = produtosEntities.Clientes.Count();
             produtosEntities.Produtos.Add(Produtos);
-            try 
-            { 
+            try
+            {
                 produtosEntities.SaveChanges();
                 lstProdutos.Add(Produtos);
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                //System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
                 Message = exceptionMessage;
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
@@ -106,8 +105,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             //var ObjEmployee = produtosEntities.Produtos.Find(Produtos.Codigo);
             //SelectedProduto = obj as Produtos;
             //System.Windows.MessageBox.Show(SelectedProduto.Codigo.ToString());
-            
-            try 
+
+            try
             {
                 int num = 1;
                 var uRow = produtosEntities.Produtos.Where(w => w.Codigo == num).FirstOrDefault();
@@ -119,12 +118,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                //System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
                 Message = exceptionMessage;
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
@@ -141,26 +135,26 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void Delete(object obj) //Delete
         {
-            var cl = obj as Produtos;
-            produtosEntities.Produtos.Remove(cl);
+            System.Windows.MessageBoxResult deletarConfirma = System.Windows.MessageBox.Show("Você tem certeza que quer deletar esse produto?", "Deletar?", System.Windows.MessageBoxButton.OKCancel);
+            if (deletarConfirma == System.Windows.MessageBoxResult.Cancel)
+            {
+                return;
+            }
+
             try
             {
+                var cl = obj as Produtos;
+                produtosEntities.Produtos.Remove(cl);
                 produtosEntities.SaveChanges();
                 lstProdutos.Remove(cl);
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                //System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
                 Message = exceptionMessage;
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
             }
-
         }
 
         private void LoadProdutos() //Read

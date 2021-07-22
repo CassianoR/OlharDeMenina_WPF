@@ -56,19 +56,6 @@ namespace LojaOlharDeMenina_WPF.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = new HomeViewModel();
-            //if (Adm == false)
-            //{
-            //    rbFunc.Visibility = Visibility.Hidden;
-            //    rbProd.Visibility = Visibility.Hidden;
-            //}
-            //else
-            //{
-            //    rbFunc.Visibility = Visibility.Visible;
-            //    rbProd.Visibility = Visibility.Visible;
-            //}
-
-            ////No futuro aqui vai ser um dropdown menu pra poder fazer logoff
-            //tblockCargo.Text = "Boas-vindas, " + username;
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)

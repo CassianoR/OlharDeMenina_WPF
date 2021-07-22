@@ -4,9 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View"
              xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -51,30 +49,12 @@
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
             <!--<TextBox Name="SearchBox" />-->
             <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
-                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionChanged="ComboBox_SelectionChanged" FontSize="18" />
-            <DataGrid AutoGenerateColumns="False" x:Name="datagrid_cliente" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding lstClientes}">
+                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" />
+            <DataGrid AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
                 <DataGrid.Resources>
 
                     <Style x:Key="editStyle" TargetType="TextBox">
                         <Setter Property="Background" Value="Silver" />
-                    </Style>
-
-                    <local:SearchValueConverter x:Key="SearchValueConverter" />
-                    <Style TargetType="{x:Type DataGridCell}">
-                        <Setter Property="local:DataGridTextSearch.IsTextMatch">
-                            <Setter.Value>
-                                <MultiBinding Converter="{StaticResource SearchValueConverter}">
-                                    <Binding RelativeSource="{RelativeSource Self}" Path="Content.Text" />
-                                    <Binding RelativeSource="{RelativeSource Self}" Path="(local:DataGridTextSearch.SearchValue)" />
-                                </MultiBinding>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="local:DataGridTextSearch.IsTextMatch" Value="True">
-                                <Setter Property="Background" Value="LightBlue" />
-                            </Trigger>
-                        </Style.Triggers>
                     </Style>
                 </DataGrid.Resources>
                 <!--<DataGrid.ItemContainerStyle>

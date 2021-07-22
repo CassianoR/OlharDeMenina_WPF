@@ -45,7 +45,7 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" />
-                <ComboBox IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" x:Name="cboxCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <ComboBox IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" x:Name="cboxCategoria" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
