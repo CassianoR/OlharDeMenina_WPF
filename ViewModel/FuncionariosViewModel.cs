@@ -73,7 +73,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set { message = value; OnPropertyChanged("Message"); }
         }
 
-        private FuncionariosService ObjEmployeeService;
         private FuncionariosDTO currentEmployee;
 
         public FuncionariosDTO CurrentEmployee
@@ -84,7 +83,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public FuncionariosViewModel()
         {
-            ObjEmployeeService = new FuncionariosService();
             funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             CurrentEmployee = new FuncionariosDTO();

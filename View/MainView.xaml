@@ -8,6 +8,7 @@
         xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
+        WindowState="Maximized"
         ResizeMode="CanResize"
         Background="Transparent"
         AllowsTransparency="False"
@@ -606,115 +607,4 @@
             </Grid>
         </Grid>
     </Grid>
-
-    <!--<Border>
-        <Border.Background>
-            <ImageBrush ImageSource="/LojaOlharDeMenina_WPF;component/Images/fundo_login.jpg" />
-        </Border.Background>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-            <Grid Background="Transparent"
-              Grid.ColumnSpan="6"
-              MouseDown="Grid_MouseDown">
-            </Grid>
-
-            <StackPanel Grid.Row="0" Grid.RowSpan="2">
-                <StackPanel.Background>
-                    <LinearGradientBrush Opacity="0.2">
-                        <GradientStop Color="#FFF69AFF" Offset="0.0" />
-                        <GradientStop Color="#FFD41DB3" Offset="1" />
-                    </LinearGradientBrush>
-                </StackPanel.Background>
-                <TextBlock Text="Olhar de Menina"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                       Foreground="White"
-                       FontSize="22"
-                       Margin="20" FontFamily="Candara Light" FontWeight="Medium" FontStyle="Oblique" />
-                <RadioButton x:Name="rbMenu" Content="Menu"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbMenu_Click" />
-                <RadioButton x:Name="rbVendas" Content="Vendas"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbVendas_Click" />
-                <RadioButton Content="Histórico"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}" />
-                <RadioButton x:Name="rbCli" Content="Clientes"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbCli_Click" />
-                <RadioButton x:Name="rbFunc" Content="Funcionários"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbFunc_Click" />
-
-                <RadioButton x:Name="rbProd" Content="Produtos"
-                             Height="50"
-                             Foreground="White"
-                             FontSize="22"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Click="rbProd_Click" />
-            </StackPanel>
-            <TextBlock x:Name="tblockCargo" TextWrapping="WrapWithOverflow"
-                   VerticalAlignment="Bottom"
-                   HorizontalAlignment="Center"
-                       Grid.Column="0"
-                       Grid.Row="1"
-                       Foreground="#904673"
-                       FontSize="22"
-                       Margin="20" />
-            <TextBox Width="250"
-                     Height="40"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="5"
-                     Grid.Column="1"
-                     Grid.ColumnSpan="2"
-                     Style="{StaticResource ModernTextbox}" />
-            <TextBlock Text="{Binding Source={x:Static system:DateTime.Now}, ConverterCulture='pt-BR', StringFormat=⠀{0:D}}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Right"
-                       FontSize="18"
-                       TextWrapping="Wrap"
-                           Margin="10"
-                       FontFamily="Candara Light" FontWeight="Bold" FontStyle="Oblique"
-                       Grid.Column="4"
-                     Grid.ColumnSpan="2">
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="#904673" Opacity="1" />
-                </TextBlock.Foreground>
-            </TextBlock>
-            <ContentControl x:Name="contentControl" Grid.Row="1"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="6"
-                            Margin="10"
-                            Content="{Binding}" />
-        </Grid>
-    </Border>-->
 </Window>
