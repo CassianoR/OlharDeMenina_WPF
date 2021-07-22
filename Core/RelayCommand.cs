@@ -5,42 +5,29 @@ namespace LojaOlharDeMenina_WPF.Core
 {
     public class RelayCommand : ICommand
     {
+        private Action<object> execute;
+        private Func<object, bool> canExecute;
+
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        private Action<object> methodToExecute;
-        private Func<bool> canExecuteEvaluator;
-
-        public RelayCommand(Action<object> methodToExecute, Func<bool> canExecuteEvaluator)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
-            this.methodToExecute = methodToExecute;
-            this.canExecuteEvaluator = canExecuteEvaluator;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
-
-        //public RelayCommand(Action methodToExecute)
-        //    : this(methodToExecute, null)
-        //{
-        //}
 
         public bool CanExecute(object parameter)
         {
-            if (this.canExecuteEvaluator == null)
-            {
-                return true;
-            }
-            else
-            {
-                bool result = this.canExecuteEvaluator.Invoke();
-                return result;
-            }
+            return this.canExecute == null || this.canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.methodToExecute.Invoke(parameter);
+            this.execute(parameter);
         }
     }
 }

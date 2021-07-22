@@ -9,13 +9,13 @@ namespace LojaOlharDeMenina_WPF.View
     /// </summary>
     public partial class Login : Window
     {
-        private readonly LoginViewModel _loginViewModel;
+        private LoginViewModel _loginViewModel = new LoginViewModel();
 
         public Login()
         {
             InitializeComponent();
             //DataContext = LoginViewModel();
-            _loginViewModel = DataContext as LoginViewModel;
+            this.DataContext = _loginViewModel;
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 

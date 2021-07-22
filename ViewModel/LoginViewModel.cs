@@ -67,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set
             {
                 _username = value;
-                OnPropertyChanged("Username");
+                OnPropertyChanged(nameof(Username));
             }
         }
 
@@ -79,7 +79,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set
             {
                 _password = value;
-                OnPropertyChanged("Password");
+                OnPropertyChanged(nameof(Password));
             }
         }
 
@@ -90,11 +90,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
-            LoginCommand = new RelayCommand(DoLogin, CanLogin);
+            LoginCommand = new RelayCommand(DoLogin, CanLogin => true);
         }
 
         private void DoLogin(object obj)
         {
+            Message = "Tentando fazer login...";
             try
             {
                 if (!String.IsNullOrEmpty(Username) && !String.IsNullOrEmpty(Password))
@@ -130,7 +131,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public bool CanLogin()
         {
             if (Username == null || Password == null)
+            {
+                Message = "Campos de textos não podem ser vazios.";
                 return false;
+            }
 
             return true;
         }
@@ -140,6 +144,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstFunc = new ObservableCollection<Funcionarios>(funcionariosEntities.Funcionarios);
         }
 
-        public RelayCommand LoginCommand { get; private set; }
+        public RelayCommand LoginCommand { get; set; }
     }
 }
