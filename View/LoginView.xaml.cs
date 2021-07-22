@@ -1,10 +1,4 @@
-﻿using LojaOlharDeMenina_WPF.View;
-using LojaOlharDeMenina_WPF.ViewModel;
-using System;
-using System.Data.SqlClient;
-using System.Security.Cryptography;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.View

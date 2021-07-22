@@ -4,13 +4,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View"
              xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
-        <Grid Background="Transparent">
+    <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -48,42 +47,16 @@
         </Button>
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
             <!--<TextBox Name="SearchBox" />-->
-            <TextBox Name="SearchBox" Text="" 
+            <TextBox Name="SearchBox" Text=""
                   Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18">
             </TextBox>
-            <DataGrid SelectedItem="{Binding SelectedFuncionario}" AutoGenerateColumns="False" x:Name="datagrid_funcionario" local:DataGridTextSearch.SearchValue="{Binding ElementName=SearchBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding lstFuncionarios}">
+            <DataGrid SelectedItem="{Binding SelectedFuncionario}" AutoGenerateColumns="False" x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}">
                 <DataGrid.Resources>
 
                     <Style x:Key="editStyle" TargetType="TextBox">
                         <Setter Property="Background" Value="Silver" />
                     </Style>
-
-                    <local:SearchValueConverter x:Key="SearchValueConverter" />
-                    <Style TargetType="{x:Type DataGridCell}">
-                        <Setter Property="local:DataGridTextSearch.IsTextMatch">
-                            <Setter.Value>
-                                <MultiBinding Converter="{StaticResource SearchValueConverter}">
-                                    <Binding RelativeSource="{RelativeSource Self}" Path="Content.Text" />
-                                    <Binding RelativeSource="{RelativeSource Self}" Path="(local:DataGridTextSearch.SearchValue)" />
-                                </MultiBinding>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="local:DataGridTextSearch.IsTextMatch" Value="True">
-                                <Setter Property="Background" Value="LightBlue" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
                 </DataGrid.Resources>
-                <!--<DataGrid.ItemContainerStyle>
-                    <Style TargetType="DataGridRow">
-                        <Style.Setters>
-                            <EventSetter Event="MouseEnter" Handler="OnMouseEnter" />
-                            <EventSetter Event="MouseLeave" Handler="OnMouseLeave" />
-                        </Style.Setters>
-                    </Style>
-                </DataGrid.ItemContainerStyle>-->
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Cargo,UpdateSourceTrigger=PropertyChanged}" Header="Cargo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
