@@ -14,12 +14,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class FuncionariosViewModel : INotifyPropertyChanged
     {
+        private Exceptions exc = new Exceptions();
+
+        #region INotifyPropertyChanged Methods
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        #endregion INotifyPropertyChanged Methods
 
         private ObservableCollection<Funcionarios> _lstFuncionarios;
 
@@ -66,13 +72,16 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             get { return message; }
             set { message = value; OnPropertyChanged("Message"); }
         }
-        FuncionariosService ObjEmployeeService;
+
+        private FuncionariosService ObjEmployeeService;
         private FuncionariosDTO currentEmployee;
+
         public FuncionariosDTO CurrentEmployee
         {
             get { return currentEmployee; }
             set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
         }
+
         public FuncionariosViewModel()
         {
             ObjEmployeeService = new FuncionariosService();
@@ -110,12 +119,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                //System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
                 Message = exceptionMessage;
                 funcionariosEntities.Dispose();
             }
@@ -133,12 +138,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
                 funcionariosEntities.Dispose();
             }
             SelectedFuncionario = new Funcionarios();
@@ -165,12 +166,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-                var fullErrorMessage = string.Join("\n", errorMessages);
-                var exceptionMessage = string.Concat(fullErrorMessage);
-                System.Windows.MessageBox.Show(exceptionMessage, ex.EntityValidationErrors.ToString());
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
                 funcionariosEntities.Dispose();
                 funcionariosEntities = new OlharMeninaBDEntities();
             }

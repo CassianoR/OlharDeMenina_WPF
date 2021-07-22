@@ -12,7 +12,7 @@
         WindowStyle="None"
         FontFamily="Segoe UI Emoji" Icon="/Images/icon.ico"
         AllowsTransparency="True"
-        Background="Transparent" PreviewKeyDown="Window_PreviewKeyDown">
+        Background="Transparent">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
@@ -44,7 +44,7 @@
                 <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18" />
                 <StackPanel Margin="15,75,15,20" Height="145">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <xctk:WatermarkTextBox Text="{Binding Funcionarios.Nome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Usuário" Name="txtNome" Margin="0,10" BorderThickness="0" Width="230"  Foreground="PaleVioletRed" FontSize="18" Background="#FFF0F5">
+                        <xctk:WatermarkTextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Usuário" Name="txtNome" Margin="0,10" BorderThickness="0" Width="230"  Foreground="PaleVioletRed" FontSize="18" Background="#FFF0F5">
                             <xctk:WatermarkTextBox.WatermarkTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="0">
@@ -63,7 +63,7 @@
                         Background="PaleVioletRed"
                         Opacity="0.5" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <xctk:WatermarkPasswordBox Text="{Binding Funcionarios.Senha, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Senha" Width="230" BorderThickness="0" Name="pb" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="18" Background="#FFF0F5">
+                        <xctk:WatermarkPasswordBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Senha" Width="230" BorderThickness="0" Name="pb" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="18" Background="#FFF0F5">
                             <xctk:WatermarkPasswordBox.WatermarkTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="0">
@@ -81,10 +81,10 @@
                         Height="2"
                         Background="PaleVioletRed"
                         Opacity="0.5" />
-                    <TextBlock x:Name="lblErro" TextAlignment="Center" Text="{Binding Message}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="1.14,0.26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="43" FontSize="14" FontWeight="Bold" />
+                    <TextBlock x:Name="lblErro" TextAlignment="Center" Text="{Binding Message}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="1.14,0.26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="43" FontSize="14" FontWeight="Light"  Margin="0, 10,0,0" />
                 </StackPanel>
             </Grid>
-            <Button Command="{Binding LoginCommand}" Visibility="{Binding Path=podeLogin, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="125,0,125,62" Content="LOGIN" Click="Button_Click" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+            <Button Command="{Binding LoginCommand}" IsEnabled="{Binding Path=podeLogin}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="125,0,125,62" Content="LOGIN" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
