@@ -84,7 +84,7 @@
                     <TextBlock x:Name="lblErro" TextAlignment="Center" Text="{Binding Message}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="1.14,0.26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="43" FontSize="14" FontWeight="Light"  Margin="0, 10,0,0" />
                 </StackPanel>
             </Grid>
-            <Button Command="{Binding LoginCommand}" IsEnabled="{Binding Path=podeLogin}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="125,0,125,62" Content="LOGIN" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+            <Button Command="{Binding LoginCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="125,0,125,62" Content="LOGIN" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />

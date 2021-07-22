@@ -1,5 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -34,6 +35,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(_lstFunc));
             }
         }
+
+        private readonly IPasswordHasher _passwordHasher;
 
         private string message;
 
@@ -86,6 +89,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public LoginViewModel()
         {
+            _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             LoginCommand = new RelayCommand(DoLogin, CanLogin);
@@ -97,17 +101,17 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 if (!String.IsNullOrEmpty(Username) && !String.IsNullOrEmpty(Password))
                 {
+                    string hashedPassword = _passwordHasher.HashPassword(Password);
                     var count1 = funcionariosEntities.Funcionarios
                                 .Where(o => o.Nome == Username.ToString())
                                 .Count();
                     var count2 = funcionariosEntities.Funcionarios
-                                .Where(o => o.Senha == Encrypt(Password.ToString()))
+                                .Where(o => o.Senha == hashedPassword)
                                 .Count();
                     if (count1 != 1 && count2 != 1)
                     {
                         Message = "Usuário ou senha incorretos";
                         estaAutenticado = false;
-                        podeLogin = false;
                         return;
                     }
                     else
@@ -115,7 +119,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                         //Fazer lógica de abrir a MainWindow aqui, talvez seja preciso fazer um sistema de navegação
                         Message = "Login efetuado com sucesso!";
                         estaAutenticado = true;
-                        podeLogin = true;
                         return;
                     }
                 }
@@ -123,22 +126,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             catch (Exception)
             {
                 throw;
-            }
-        }
-
-        private bool _podeLogin;
-
-        public bool podeLogin
-        {
-            get
-            {
-                return this._podeLogin;
-            }
-
-            set
-            {
-                this._podeLogin = value;
-                OnPropertyChanged(nameof(podeLogin));
             }
         }
 
@@ -153,16 +140,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private void LoadFuncionario()
         {
             lstFunc = new ObservableCollection<Funcionarios>(funcionariosEntities.Funcionarios);
-        }
-
-        private static string Encrypt(string value)
-        {
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
-                return Convert.ToBase64String(data);
-            }
         }
 
         public RelayCommand LoginCommand { get; private set; }
