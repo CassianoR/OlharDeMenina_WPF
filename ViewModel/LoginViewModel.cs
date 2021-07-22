@@ -6,8 +6,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {

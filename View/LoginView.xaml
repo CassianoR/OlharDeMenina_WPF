@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:LoginViewModel}"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:view="clr-namespace:LojaOlharDeMenina_WPF.View" d:DataContext="{d:DesignInstance Type=viewmodel:LoginViewModel}"
         mc:Ignorable="d"
         Title="Login" Height="500" Width="350"
         ResizeMode="NoResize"
@@ -13,8 +13,14 @@
         FontFamily="Segoe UI Emoji" Icon="/Images/icon.ico"
         AllowsTransparency="True"
         Background="Transparent">
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <DataTemplate x:Name="loginViewTemplate" DataType="{x:Type viewModel:LoginViewModel}">
+            <view:Login DataContext="{Binding}" />
+        </DataTemplate>
     </Window.Resources>
     <Border CornerRadius="15">
         <Border.Background>

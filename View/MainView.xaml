@@ -32,9 +32,6 @@
         <DataTemplate x:Name="prodViewTemplate" DataType="{x:Type viewModel:ProdutosViewModel}">
             <view:Produtos DataContext="{Binding}" />
         </DataTemplate>
-        <DataTemplate x:Name="loginViewTemplate" DataType="{x:Type viewModel:LoginViewModel}">
-            <view:Login DataContext="{Binding}" />
-        </DataTemplate>
 
         <!--// Toggle Button Style Template //-->
 

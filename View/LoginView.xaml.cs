@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using LojaOlharDeMenina_WPF.ViewModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.View
@@ -8,10 +9,13 @@ namespace LojaOlharDeMenina_WPF.View
     /// </summary>
     public partial class Login : Window
     {
+        private readonly LoginViewModel _loginViewModel;
+
         public Login()
         {
             InitializeComponent();
             //DataContext = LoginViewModel();
+            _loginViewModel = DataContext as LoginViewModel;
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
