@@ -1,6 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Input;
+using Xceed.Wpf.Toolkit;
 
 namespace LojaOlharDeMenina_WPF.View
 {

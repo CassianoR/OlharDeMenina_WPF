@@ -4,23 +4,15 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : ObservableObject
     {
-        #region INotifyPropertyChanged Methods
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        #endregion INotifyPropertyChanged Methods
+        #region Properties
 
         private ObservableCollection<Funcionarios> _lstFunc;
 
@@ -44,18 +36,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set { message = value; OnPropertyChanged("Message"); }
         }
 
-        private bool _estaAutenticado;
+        private bool _buttonIsEnabled;
 
-        public bool estaAutenticado
+        public bool buttonIsEnabled
         {
-            get { return _estaAutenticado; }
+            get { return _buttonIsEnabled; }
             set
             {
-                if (value != _estaAutenticado)
-                {
-                    _estaAutenticado = value;
-                    OnPropertyChanged("estaAutenticado");
-                }
+                _buttonIsEnabled = value;
+                OnPropertyChanged(nameof(buttonIsEnabled));
             }
         }
 
@@ -66,6 +55,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             get { return _username; }
             set
             {
+                if (value == null || value == string.Empty)
+                    buttonIsEnabled = false;
+                else
+                    contador++;
                 _username = value;
                 OnPropertyChanged(nameof(Username));
             }
@@ -78,10 +71,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             get { return _password; }
             set
             {
+                if (value == null || value == string.Empty)
+                    buttonIsEnabled = false;
+                else
+                {
+                    if (contador >= 1)
+                        buttonIsEnabled = true;
+                }
                 _password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
+
+        private int contador;
+
+        #endregion Properties
 
         private OlharMeninaBDEntities funcionariosEntities;
 
@@ -93,39 +97,48 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             LoginCommand = new RelayCommand(DoLogin, CanLogin => true);
         }
 
+        private Hash _hash;
+
+        #region Methods
+
         private void DoLogin(object obj)
         {
+            _hash = new Hash();
             Message = "Tentando fazer login...";
             try
             {
                 if (!String.IsNullOrEmpty(Username) && !String.IsNullOrEmpty(Password))
                 {
-                    string hashedPassword = _passwordHasher.HashPassword(Password);
-                    var count1 = funcionariosEntities.Funcionarios
+                    //string hashedPassword = _passwordHasher.HashPassword(Password);
+                    //PasswordVerificationResult passwordResult = _passwordHasher.VerifyHashedPassword(hashedPassword, funcionariosEntities.Funcionarios.Find(Password).Senha);
+                    //if (passwordResult != PasswordVerificationResult.Success)
+                    //{
+                    //    System.Windows.MessageBox.Show("Test");
+                    //}
+                    //string senha = _hash.Encrypt(Password.ToString());
+                    var senha = _hash.Encrypt(Password.ToString());
+                    var count = funcionariosEntities.Funcionarios
                                 .Where(o => o.Nome == Username.ToString())
+                                .Where(o => o.Senha == senha)
                                 .Count();
-                    var count2 = funcionariosEntities.Funcionarios
-                                .Where(o => o.Senha == hashedPassword)
-                                .Count();
-                    if (count1 != 1 && count2 != 1)
+                    if (count != 1)
                     {
                         Message = "Usuário ou senha incorretos";
-                        estaAutenticado = false;
-                        return;
+                        Username = string.Empty;
+                        Password = string.Empty;
                     }
                     else
                     {
                         //Fazer lógica de abrir a MainWindow aqui, talvez seja preciso fazer um sistema de navegação
                         Message = "Login efetuado com sucesso!";
-                        estaAutenticado = true;
-                        return;
                     }
                 }
             }
-            catch (Exception)
+            catch (DbEntityValidationException ex)
             {
-                throw;
+                Message = ex.ToString();
             }
+            contador = 0;
         }
 
         public bool CanLogin()
@@ -143,6 +156,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             lstFunc = new ObservableCollection<Funcionarios>(funcionariosEntities.Funcionarios);
         }
+
+        #endregion Methods
 
         public RelayCommand LoginCommand { get; set; }
     }
