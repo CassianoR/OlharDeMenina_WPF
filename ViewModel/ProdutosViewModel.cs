@@ -10,18 +10,9 @@ using System.Windows.Input;
 namespace LojaOlharDeMenina_WPF.ViewModel
 
 {
-    public class ProdutosViewModel : INotifyPropertyChanged
+    public class ProdutosViewModel : ObservableObject
     {
-        #region INotifyPropertyChanged Methods
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        #endregion INotifyPropertyChanged Methods
+        #region Properties
 
         private ObservableCollection<Produtos> _lstProdutos;
 
@@ -67,6 +58,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        #endregion Properties
+
         private OlharMeninaBDEntities produtosEntities;
         private Exceptions exc = new Exceptions();
 
@@ -79,6 +72,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             UpdateProdutoCommand = new Command((s) => true, UpdateProduto);
             AddProdutoCommand = new Command((s) => true, AddProduto);
         }
+
+        #region Methods
 
         private void AddProduto(object obj)
         {
@@ -162,9 +157,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstProdutos = new ObservableCollection<Produtos>(produtosEntities.Produtos);
         }
 
+        #endregion Methods
+
+        #region Commands
+
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand UpdateProdutoCommand { get; set; }
         public ICommand AddProdutoCommand { get; set; }
+
+        #endregion Commands
     }
 }

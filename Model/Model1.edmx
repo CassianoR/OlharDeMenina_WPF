@@ -212,7 +212,7 @@
           <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Senha" Type="String" MaxLength="64" FixedLength="true" Unicode="true" />
+          <Property Name="Senha" Type="String" MaxLength="68" FixedLength="true" Unicode="true" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda" FromRole="Funcionarios" ToRole="Venda" />

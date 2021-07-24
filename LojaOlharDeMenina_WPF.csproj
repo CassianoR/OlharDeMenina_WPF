@@ -188,6 +188,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\Command.cs" />
     <Compile Include="Core\Exceptions.cs" />
+    <Compile Include="Core\Hash.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
     <Compile Include="Model\Categoria.cs">

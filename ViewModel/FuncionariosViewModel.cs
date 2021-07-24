@@ -1,5 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,20 +13,11 @@ using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    public class FuncionariosViewModel : INotifyPropertyChanged
+    public class FuncionariosViewModel : ObservableObject
     {
         private Exceptions exc = new Exceptions();
 
-        #region INotifyPropertyChanged Methods
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        #endregion INotifyPropertyChanged Methods
+        #region Properties
 
         private ObservableCollection<Funcionarios> _lstFuncionarios;
 
@@ -81,8 +73,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
         }
 
+        #endregion Properties
+
+        private readonly IPasswordHasher _passwordHasher;
+
         public FuncionariosViewModel()
         {
+            _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             CurrentEmployee = new FuncionariosDTO();
@@ -92,22 +89,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
         }
 
-        private static string Encrypt(string value)
-        {
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
-            {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
-                return Convert.ToBase64String(data);
-            }
-        }
+        private readonly Hash _hash;
+
+        #region Methods
 
         private void AddFuncionario(object obj)
         {
-            funcionariosEntities = new OlharMeninaBDEntities();
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
-            Funcionarios.Senha = Encrypt("1234");
+            Funcionarios.Senha = _hash.Encrypt("1234");
             Funcionarios.LoginFuncionario = "teste3@gmail.com";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             try
@@ -119,8 +109,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 string exceptionMessage = exc.concatenaExceptions(ex);
                 Message = exceptionMessage;
-                Message = exceptionMessage;
                 funcionariosEntities.Dispose();
+                funcionariosEntities = new OlharMeninaBDEntities();
             }
             Funcionarios = new Funcionarios();
         }
@@ -176,6 +166,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             lstFuncionarios = new ObservableCollection<Funcionarios>(funcionariosEntities.Funcionarios);
         }
+
+        #endregion Methods
 
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }

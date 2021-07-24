@@ -9,20 +9,11 @@ using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    public class ClientesViewModel : INotifyPropertyChanged
+    public class ClientesViewModel : ObservableObject
     {
         private Exceptions exc = new Exceptions();
 
-        #region INotifyPropertyChanged Methods
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        #endregion INotifyPropertyChanged Methods
+        #region Properties
 
         private string message;
 
@@ -68,7 +59,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        //Mudei o entities aqui, agora está belezinha com o banco novo bb's
+        #endregion Properties
 
         private OlharMeninaBDEntities clientesEntities;
 
@@ -81,6 +72,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             UpdateClienteCommand = new Command((s) => true, UpdateCliente);
             AddClienteCommand = new Command((s) => true, AddCliente);
         }
+
+        #region Methods
 
         private void AddCliente(object obj)
         {
@@ -151,9 +144,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstClientes = new ObservableCollection<Clientes>(clientesEntities.Clientes);
         }
 
+        #endregion Methods
+
+        #region Commands
+
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand UpdateClienteCommand { get; set; }
         public ICommand AddClienteCommand { get; set; }
+
+        #endregion Commands
     }
 }
