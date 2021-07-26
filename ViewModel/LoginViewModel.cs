@@ -3,10 +3,8 @@ using LojaOlharDeMenina_WPF.Model;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {

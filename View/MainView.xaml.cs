@@ -85,13 +85,11 @@ namespace LojaOlharDeMenina_WPF.View
         private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
         {
             contentControl.Opacity = 1;
-            nav_pnl.Background.Opacity = 0.394;
         }
 
         private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
         {
             contentControl.Opacity = 0.3;
-            nav_pnl.Background.Opacity = 0.7;
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
