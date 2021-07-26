@@ -164,12 +164,12 @@
             <!--// Background Image //-->
 
             <Grid Grid.Column="2" x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
-
+                   <!-- fundo degradê!!!-->
                 <Grid.Background>
-
-                    <ImageBrush x:Name="img_bg"
-                                ImageSource="/LojaOlharDeMenina_WPF;component/Images/fundo_login.jpg"
-                                Stretch="Fill" />
+                    <LinearGradientBrush StartPoint=".0,0" EndPoint=".1,1">
+                        <GradientStop Color="Beige" Offset="0"/>
+                        <GradientStop Color="LightPink" Offset="1"/>
+                    </LinearGradientBrush>
                 </Grid.Background>
 
                 <ContentControl x:Name="contentControl" Grid.Row="1"
