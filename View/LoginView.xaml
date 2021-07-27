@@ -66,15 +66,15 @@
                         Background="PaleVioletRed"
                         Opacity="0.5" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <xctk:WatermarkPasswordBox Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Senha" Width="230" BorderThickness="0" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="18" Background="#FFF0F5">
-                            <xctk:WatermarkPasswordBox.WatermarkTemplate>
+                        <xctk:WatermarkTextBox Watermark="Senha"  Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="230" BorderThickness="0" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="18" Background="#FFF0F5">
+                            <xctk:WatermarkTextBox.WatermarkTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness="0">
                                         <ContentControl Content="{Binding}" Foreground="PaleVioletRed" Focusable="False" />
                                     </Border>
                                 </DataTemplate>
-                            </xctk:WatermarkPasswordBox.WatermarkTemplate>
-                        </xctk:WatermarkPasswordBox>
+                            </xctk:WatermarkTextBox.WatermarkTemplate>
+                        </xctk:WatermarkTextBox>
                         <iconPacks:PackIconMaterial Kind="Lock"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
