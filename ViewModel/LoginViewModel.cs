@@ -46,19 +46,19 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private string _username;
+        private string _user;
 
-        public string Username
+        public string User
         {
-            get { return _username; }
+            get { return _user; }
             set
             {
                 if (value == null || value == string.Empty)
                     buttonIsEnabled = false;
                 else
                     contador++;
-                _username = value;
-                OnPropertyChanged(nameof(Username));
+                _user = value;
+                OnPropertyChanged(nameof(User));
             }
         }
 
@@ -105,7 +105,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             Message = "Tentando fazer login...";
             try
             {
-                if (!String.IsNullOrEmpty(Username) && !String.IsNullOrEmpty(Password))
+                if (!String.IsNullOrEmpty(User) && !String.IsNullOrEmpty(Password))
                 {
                     //string hashedPassword = _passwordHasher.HashPassword(Password);
                     //PasswordVerificationResult passwordResult = _passwordHasher.VerifyHashedPassword(hashedPassword, funcionariosEntities.Funcionarios.Find(Password).Senha);
@@ -116,13 +116,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     //string senha = _hash.Encrypt(Password.ToString());
                     var senha = _hash.Encrypt(Password.ToString());
                     var count = funcionariosEntities.Funcionarios
-                                .Where(o => o.Nome == Username.ToString())
+                                .Where(o => o.LoginFuncionario == User.ToString())
                                 .Where(o => o.Senha == senha)
                                 .Count();
                     if (count != 1)
                     {
                         Message = "Usuário ou senha incorretos";
-                        Username = string.Empty;
+                        User = string.Empty;
                         Password = string.Empty;
                     }
                     else
@@ -141,7 +141,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public bool CanLogin()
         {
-            if (Username == null || Password == null)
+            if (User == null || Password == null)
             {
                 Message = "Campos de textos não podem ser vazios.";
                 return false;
