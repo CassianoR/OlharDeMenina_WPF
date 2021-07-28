@@ -5,6 +5,8 @@ using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
@@ -99,9 +101,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
+
+        private WindowService windowService;
+
         private void DoLogin(object obj)
         {
             _hash = new Hash();
+            windowService = new WindowService();
             Message = "Tentando fazer login...";
             try
             {
@@ -129,6 +135,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     {
                         //Fazer lógica de abrir a MainWindow aqui, talvez seja preciso fazer um sistema de navegação
                         Message = "Login efetuado com sucesso!";
+                        windowService.showWindow();
                     }
                 }
             }
@@ -139,16 +146,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             contador = 0;
         }
 
-        public bool CanLogin()
-        {
-            if (User == null || Password == null)
-            {
-                Message = "Campos de textos não podem ser vazios.";
-                return false;
-            }
+        //Talvez seja usado no futuro
 
-            return true;
-        }
+        //public bool CanLogin()
+        //{
+        //    if (User == null || Password == null)
+        //    {
+        //        Message = "Campos de textos não podem ser vazios.";
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
 
         private void LoadFuncionario()
         {
@@ -159,4 +168,5 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public RelayCommand LoginCommand { get; set; }
     }
+
 }
