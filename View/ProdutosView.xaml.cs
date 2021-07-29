@@ -20,6 +20,7 @@ namespace LojaOlharDeMenina_WPF.View
         {
             AdicionarProdutosDialog acd = new AdicionarProdutosDialog();
             acd.ShowDialog();
+            //MainGrid.Children.Add(new ModalAdicionarProduto());
         }
 
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)

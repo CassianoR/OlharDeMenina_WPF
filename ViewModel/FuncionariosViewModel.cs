@@ -89,12 +89,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
         }
 
-        private readonly Hash _hash;
+        private Hash _hash;
 
         #region Methods
 
         private void AddFuncionario(object obj)
         {
+            _hash = new Hash();
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = _hash.Encrypt("1234");
