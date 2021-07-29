@@ -1,14 +1,9 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel

@@ -50,7 +50,7 @@
             <!--<TextBox Name="SearchBox" />-->
             <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
                   SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" />
-            <DataGrid AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
+            <DataGrid BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
                 <DataGrid.Resources>
 
                     <Style x:Key="editStyle" TargetType="TextBox">
@@ -77,13 +77,14 @@
                             <DataTemplate>
                                 <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
                                 Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}" Padding="10">
+                                CommandParameter="{Binding}" Style="{StaticResource RoundCorner}">
                                     <iconPacks:PackIconMaterial Kind="AccountEdit"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
                                                 Width="auto"
                                                 Height="auto"
-                                                Foreground="Black" />
+                                                Foreground="Black"
+                                                                Padding="10" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -93,14 +94,14 @@
                             <DataTemplate>
                                 <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
                                 Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}"
-                                        Background="Red" Padding="10">
+                                CommandParameter="{Binding}" Style="{StaticResource RoundCorner}"
+                                        Background="Red">
                                     <iconPacks:PackIconMaterial Kind="Delete"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
                                                 Width="auto"
                                                 Height="auto"
-                                                Foreground="Black" />
+                                                Foreground="Black" Padding="10" />
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

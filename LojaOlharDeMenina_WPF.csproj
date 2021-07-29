@@ -193,6 +193,7 @@
     <Compile Include="Core\Hash.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Core\WindowService.cs" />
     <Compile Include="Model\Categoria.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -272,6 +273,10 @@
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Theme\RoundButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ClientesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -411,7 +416,6 @@
   <ItemGroup>
     <Resource Include="Images\closeBtn_default.png" />
     <Resource Include="Images\closeBtn_MouseOver.png" />
-    <Resource Include="Images\img_background.png" />
     <Resource Include="Images\img_contact.png" />
     <Resource Include="Images\img_home.png" />
     <Resource Include="Images\img_map.png" />
@@ -423,6 +427,7 @@
     <Resource Include="Images\Maxbtn.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\tgBtn_default_black.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
