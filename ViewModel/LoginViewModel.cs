@@ -120,6 +120,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     //    System.Windows.MessageBox.Show("Test");
                     //}
                     //string senha = _hash.Encrypt(Password.ToString());
+                    
                     var senha = _hash.Encrypt(Password.ToString());
                     var count = funcionariosEntities.Funcionarios
                                 .Where(o => o.LoginFuncionario == User.ToString())
