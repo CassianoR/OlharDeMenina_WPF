@@ -2,6 +2,7 @@
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Effects;
 
 namespace LojaOlharDeMenina_WPF.View
 {
@@ -18,9 +19,14 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void btnCadastrarProd_Click(object sender, RoutedEventArgs e)
         {
-            AdicionarProdutosDialog acd = new AdicionarProdutosDialog();
-            acd.ShowDialog();
-            //MainGrid.Children.Add(new ModalAdicionarProduto());
+            //AdicionarProdutosDialog acd = new AdicionarProdutosDialog();
+            //acd.ShowDialog();
+            stkPanel.Effect = new BlurEffect();
+            tboxTitulo.Effect = new BlurEffect();
+            btnCadastrarProd.Effect = new BlurEffect();
+            btnRecarregar.Effect = new BlurEffect();
+
+            MainGrid.Children.Add(new ModalAdicionarProduto());
         }
 
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)
@@ -34,6 +40,14 @@ namespace LojaOlharDeMenina_WPF.View
             epd.Descricao = pvm.Produtos.Descricao;
             epd.Valor = pvm.Produtos.Valor;
             epd.ShowDialog();
+        }
+
+        private void MainGrid_GotFocus(object sender, RoutedEventArgs e)
+        {
+            stkPanel.Effect = null;
+            tboxTitulo.Effect = null;
+            btnCadastrarProd.Effect = null;
+            btnRecarregar.Effect = null;
         }
     }
 }
