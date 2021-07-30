@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+        xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:components="clr-namespace:LojaOlharDeMenina_WPF.Components"
         d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
         mc:Ignorable="d"
         Title="Login" Height="500" Width="350"
@@ -68,15 +68,7 @@
                         Background="PaleVioletRed"
                         Opacity="0.5" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <xctk:WatermarkTextBox Watermark="Senha"  Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="230" BorderThickness="0" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="18" Background="#FFF0F5">
-                            <xctk:WatermarkTextBox.WatermarkTemplate>
-                                <DataTemplate>
-                                    <Border BorderThickness="0">
-                                        <ContentControl Content="{Binding}" Foreground="PaleVioletRed" Focusable="False" />
-                                    </Border>
-                                </DataTemplate>
-                            </xctk:WatermarkTextBox.WatermarkTemplate>
-                        </xctk:WatermarkTextBox>
+                        <components:BindablePasswordBox x:Name="PasswordBox" Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" BorderThickness="0" Width="230" />
                         <iconPacks:PackIconMaterial Kind="Lock"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
