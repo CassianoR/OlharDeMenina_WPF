@@ -29,5 +29,11 @@ namespace LojaOlharDeMenina_WPF.View
         {
             Application.Current.Shutdown();
         }
+
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBox.Password == "Senha")
+                PasswordBox.Password = null;
+        }
     }
 }
