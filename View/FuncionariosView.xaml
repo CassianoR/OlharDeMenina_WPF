@@ -9,7 +9,8 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="Transparent">
+    <Grid Background="Transparent" x:Name="MainGrid">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />

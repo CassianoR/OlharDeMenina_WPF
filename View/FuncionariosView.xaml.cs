@@ -1,4 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using LojaOlharDeMenina_WPF.View.Modal;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows.Controls;
 
@@ -9,6 +10,7 @@ namespace LojaOlharDeMenina_WPF.View
     /// </summary>
     public partial class Funcionarios : UserControl
     {
+        private ModalAdicionarFuncionario maf = new ModalAdicionarFuncionario();
         public Funcionarios()
         {
             InitializeComponent();
@@ -17,8 +19,15 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void btnCadastrar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            AdicionarFuncionariosDialog acd = new AdicionarFuncionariosDialog();
-            acd.ShowDialog();
+            if (MainGrid.Children.Contains(maf) == true)
+            {
+                maf.Visibility = System.Windows.Visibility.Visible;
+            }
+            //erro do caralho
+            else
+            {
+                MainGrid.Children.Add(maf);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using LojaOlharDeMenina_WPF.View.Modal;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,8 @@ namespace LojaOlharDeMenina_WPF.View
     /// </summary>
     public partial class Produtos : UserControl
     {
+        private ModalAdicionarProduto map = new ModalAdicionarProduto();
+        private ModalEditarProdutos mep = new ModalEditarProdutos();
         public Produtos()
         {
             InitializeComponent();
@@ -18,22 +21,27 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void btnCadastrarProd_Click(object sender, RoutedEventArgs e)
         {
-            AdicionarProdutosDialog acd = new AdicionarProdutosDialog();
-            acd.ShowDialog();
-            //MainGrid.Children.Add(new ModalAdicionarProduto());
+
+            if (MainGrid.Children.Contains(map) == true)
+            {
+                map.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(map);
+            }
         }
 
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)
         {
-            EditaProdutosDialog epd = new EditaProdutosDialog();
-            ProdutosViewModel pvm = new ProdutosViewModel();
-            pvm.Produtos = (Model.Produtos)datagrid_produto.SelectedItem;
-            epd.Codigo = pvm.Produtos.Codigo;
-            epd.NomeProduto = pvm.Produtos.NomeProduto;
-            epd.Marca = pvm.Produtos.Marca;
-            epd.Descricao = pvm.Produtos.Descricao;
-            epd.Valor = pvm.Produtos.Valor;
-            epd.ShowDialog();
+            if (MainGrid.Children.Contains(mep) == true)
+            {
+                map.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(mep);
+            }
         }
     }
 }
