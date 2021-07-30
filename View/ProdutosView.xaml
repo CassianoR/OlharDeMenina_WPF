@@ -8,7 +8,9 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Transparent" x:Name="MainGrid">
+
+    <Grid x:Name="MainGrid" GotFocus="MainGrid_GotFocus">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -24,7 +26,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Produtos" Foreground="White" FontSize="30" Margin="15" />
+        <TextBlock x:Name="tboxTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Produtos" Foreground="White" FontSize="30" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrarProd" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrarProd_Click" Cursor="Hand" Focusable="False">
@@ -46,7 +48,7 @@
                                                 Foreground="PaleVioletRed" />
         </Button>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" x:Name="stkPanel">
             <!--<TextBox Name="SearchBox" />-->
             <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Nome"
                   SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" />
