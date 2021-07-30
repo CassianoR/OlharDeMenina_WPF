@@ -25,33 +25,49 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <Rectangle Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform Angle="94.086" CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFFBF1C0"/>
+                    <GradientStop Color="#FFFB6060" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Produtos" Foreground="White" FontSize="30" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrarProd" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
-                Click="btnCadastrarProd_Click" Cursor="Hand" Focusable="False">
+                Click="btnCadastrarProd_Click" Cursor="Hand" Focusable="False" Width="55" Height="50">
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
-                                                Foreground="PaleVioletRed" />
+                                                Foreground="White" />
         </Button>
         <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding Path=UpdateCommand}"
-                CommandParameter="{Binding}" Cursor="Hand" Focusable="False">
+                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" Width="55" Height="50" HorizontalAlignment="Right">
             <iconPacks:PackIconMaterial Kind="Refresh"
-                                                VerticalAlignment="Center"
+                                               VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
-                                                Foreground="PaleVioletRed" />
+                                                Foreground="White" />
         </Button>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
             <!--<TextBox Name="SearchBox" />-->
             <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Nome"
-                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" />
-            <DataGrid BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_produto" ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}">
+                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" Margin="10 0 10 0" VerticalContentAlignment="Center" Foreground="Gray" Height="35"/>
+            <DataGrid Margin="0 10 0 0" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_produto" ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="50">
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" />
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProduto" Header="Nome" Width="auto" FontSize="18" />
