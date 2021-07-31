@@ -67,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void LiberaButton()
         {
-            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null)
+            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null || tboxUnidadeMed.Text == null)
             {
                 btnCadastrar.IsEnabled = false;
                 btnCadastrar.Opacity = 0.5;

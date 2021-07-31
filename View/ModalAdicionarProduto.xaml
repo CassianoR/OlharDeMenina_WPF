@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
@@ -52,11 +52,11 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <TextBox x:Name="tboxValor" Text="{Binding Produtos.Valor,StringFormat=\{0:00.00\}}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
 
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="False"
                 Command="{Binding AddProdutoCommand}"

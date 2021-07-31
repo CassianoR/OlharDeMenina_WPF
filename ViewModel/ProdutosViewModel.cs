@@ -1,8 +1,11 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
@@ -56,6 +59,33 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private string _search;
+
+        public string Search
+        {
+            get
+            {
+                return _search;
+            }
+            set
+            {
+                _search = value;
+                OnPropertyChanged(nameof(Search));
+
+                GetResults(_search);
+            }
+        }
+
+        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
+
+        public ObservableCollection<string> Results
+        {
+            get
+            {
+                return _results;
+            }
+        }
+
         #endregion Properties
 
         private OlharMeninaBDEntities produtosEntities;
@@ -72,6 +102,23 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         #region Methods
+
+        private void GetResults(string search)
+        {
+            if (_search == "*")
+            {
+                LoadProdutos();
+                return;
+            }
+            lstProdutos.Clear();
+            _results.Clear();
+            var ObjQuery = produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(_search)).ToList();
+            foreach (var employee in ObjQuery)
+            {
+                _results.Add(employee.NomeProduto);
+                lstProdutos.Add(employee);
+            }
+        }
 
         private void AddProduto(object obj)
         {
@@ -116,7 +163,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
             }
-
             SelectedProduto = new Produtos();
         }
 
