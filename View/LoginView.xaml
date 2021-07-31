@@ -92,10 +92,10 @@
                                 <Setter Property="Background" Value="#FFFF849C" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="0.6" />
+                                <Setter Property="Background" Value="LightPink" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="True">
-                                <Setter Property="Opacity" Value="1" />
+                                <Setter Property="Background" Value="PaleVioletRed" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
