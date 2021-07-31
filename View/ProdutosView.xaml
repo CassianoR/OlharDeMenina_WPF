@@ -4,10 +4,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
     <Grid x:Name="MainGrid" GotFocus="MainGrid_GotFocus">
 
@@ -49,9 +49,22 @@
         </Button>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" x:Name="stkPanel">
-            <!--<TextBox Name="SearchBox" />-->
-            <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Nome"
-                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" />
+            <Border CornerRadius="10"
+                            Background="#FFE6B4D6" Margin="0, 10, 0, 10">
+                <xctk:WatermarkTextBox Watermark="Pesquisar" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Name="SearchBox" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" BorderThickness="0"
+                                     VerticalContentAlignment="Center"
+                                     Padding="5"
+                         Background="Transparent"
+                                     Foreground="#904673" TextChanged="SearchBox_TextChanged">
+                    <xctk:WatermarkTextBox.WatermarkTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0">
+                                <ContentControl Content="{Binding}" Foreground="#904673" Focusable="False" />
+                            </Border>
+                        </DataTemplate>
+                    </xctk:WatermarkTextBox.WatermarkTemplate>
+                </xctk:WatermarkTextBox>
+            </Border>
             <DataGrid BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_produto" ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}">
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" />

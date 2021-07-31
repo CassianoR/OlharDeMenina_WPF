@@ -103,7 +103,7 @@ namespace LojaOlharDeMenina_WPF.Model
         }
 
         [Required]
-        [RegularExpression(@"/^\d*\.?\d*$/", ErrorMessage = "O campo Valor precisa estar no formato correto. (00.0)")]
+        [RegularExpression(@"/^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$/", ErrorMessage = "O campo Valor precisa estar no formato correto. (00.0)")]
         public decimal Valor
         {
             get => valor;

@@ -33,7 +33,7 @@ namespace LojaOlharDeMenina_WPF.View
         {
             EditaProdutosDialog epd = new EditaProdutosDialog();
             ProdutosViewModel pvm = new ProdutosViewModel();
-            pvm.Produtos = (Model.Produtos)datagrid_produto.SelectedItem;
+            //pvm.Produtos = (Model.Produtos)datagrid_produto.SelectedItem;
             epd.Codigo = pvm.Produtos.Codigo;
             epd.NomeProduto = pvm.Produtos.NomeProduto;
             epd.Marca = pvm.Produtos.Marca;
@@ -48,6 +48,24 @@ namespace LojaOlharDeMenina_WPF.View
             tboxTitulo.Effect = null;
             btnCadastrarProd.Effect = null;
             btnRecarregar.Effect = null;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            datagrid_produto.Visibility = Visibility.Hidden;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (datagrid_produto.Items.Count > 0)
+                datagrid_produto.Visibility = Visibility.Visible;
+            else
+                datagrid_produto.Visibility = Visibility.Hidden;
+
+            if (SearchBox.Text.Length == 0)
+                datagrid_produto.Visibility = Visibility.Hidden;
+            else
+                datagrid_produto.Visibility = Visibility.Visible;
         }
     }
 }
