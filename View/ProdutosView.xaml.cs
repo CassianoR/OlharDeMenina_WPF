@@ -62,8 +62,13 @@ namespace LojaOlharDeMenina_WPF.View
             else
                 datagrid_produto.Visibility = Visibility.Hidden;
 
-            if (SearchBox.Text.Length == 0)
-                datagrid_produto.Visibility = Visibility.Hidden;
+            if (SearchBox.Text.Length <= 2)
+            {
+                if (SearchBox.Text != "*")
+                    datagrid_produto.Visibility = Visibility.Hidden;
+                else
+                    datagrid_produto.Visibility = Visibility.Visible;
+            }
             else
                 datagrid_produto.Visibility = Visibility.Visible;
         }

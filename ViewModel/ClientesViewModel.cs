@@ -57,6 +57,37 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private string _search;
+
+        public string Search
+        {
+            get
+            {
+                return _search;
+            }
+            set
+            {
+                _search = value;
+                OnPropertyChanged(nameof(Search));
+                if (value.Length > 2 || value == "*")
+                    GetResults(_search);
+
+                if (value == null || value == string.Empty)
+                    if (lstClientes != null)
+                        lstClientes.Clear();
+            }
+        }
+
+        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
+
+        public ObservableCollection<string> Results
+        {
+            get
+            {
+                return _results;
+            }
+        }
+
         #endregion Properties
 
         private OlharMeninaBDEntities clientesEntities;
@@ -64,7 +95,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ClientesViewModel()
         {
             clientesEntities = new OlharMeninaBDEntities();
-            LoadCliente();
+            //LoadCliente();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
             UpdateClienteCommand = new Command((s) => true, UpdateCliente);
@@ -72,6 +103,26 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         #region Methods
+
+        private void GetResults(string search)
+        {
+            if (_search == "*")
+            {
+                LoadCliente();
+                return;
+            }
+            if (lstClientes != null)
+                lstClientes.Clear();
+
+            lstClientes = new ObservableCollection<Clientes>();
+            _results.Clear();
+            var ObjQuery = clientesEntities.Clientes.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToList();
+            foreach (var cliente in ObjQuery)
+            {
+                _results.Add(cliente.Nome);
+                lstClientes.Add(cliente);
+            }
+        }
 
         private void AddCliente(object obj)
         {

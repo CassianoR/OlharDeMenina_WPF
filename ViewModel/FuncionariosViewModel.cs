@@ -68,6 +68,37 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
         }
 
+        private string _search;
+
+        public string Search
+        {
+            get
+            {
+                return _search;
+            }
+            set
+            {
+                _search = value;
+                OnPropertyChanged(nameof(Search));
+                if (value.Length > 2 || value == "*")
+                    GetResults(_search);
+
+                if (value == null || value == string.Empty)
+                    if (lstFuncionarios != null)
+                        lstFuncionarios.Clear();
+            }
+        }
+
+        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
+
+        public ObservableCollection<string> Results
+        {
+            get
+            {
+                return _results;
+            }
+        }
+
         #endregion Properties
 
         private readonly IPasswordHasher _passwordHasher;
@@ -76,7 +107,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
-            LoadFuncionario();
+            //LoadFuncionario();
             CurrentEmployee = new FuncionariosDTO();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
@@ -87,6 +118,26 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private Hash _hash;
 
         #region Methods
+
+        private void GetResults(string search)
+        {
+            if (_search == "*")
+            {
+                LoadFuncionario();
+                return;
+            }
+            if (lstFuncionarios != null)
+                lstFuncionarios.Clear();
+
+            lstFuncionarios = new ObservableCollection<Funcionarios>();
+            _results.Clear();
+            var ObjQuery = funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToList();
+            foreach (var funcionario in ObjQuery)
+            {
+                _results.Add(funcionario.Nome);
+                lstFuncionarios.Add(funcionario);
+            }
+        }
 
         private void AddFuncionario(object obj)
         {
