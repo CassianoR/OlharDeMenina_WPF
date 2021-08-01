@@ -52,25 +52,25 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            datagrid_produto.Visibility = Visibility.Hidden;
+            //datagrid_produto.Visibility = Visibility.Hidden;
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (datagrid_produto.Items.Count > 0)
-                datagrid_produto.Visibility = Visibility.Visible;
-            else
-                datagrid_produto.Visibility = Visibility.Hidden;
+            //if (datagrid_produto.Items.Count > 0)
+            //    datagrid_produto.Visibility = Visibility.Visible;
+            //else
+            //    datagrid_produto.Visibility = Visibility.Hidden;
 
-            if (SearchBox.Text.Length <= 2)
-            {
-                if (SearchBox.Text != "*")
-                    datagrid_produto.Visibility = Visibility.Hidden;
-                else
-                    datagrid_produto.Visibility = Visibility.Visible;
-            }
-            else
-                datagrid_produto.Visibility = Visibility.Visible;
+            //if (SearchBox.Text.Length <= 2)
+            //{
+            //    if (SearchBox.Text != "*")
+            //        datagrid_produto.Visibility = Visibility.Hidden;
+            //    else
+            //        datagrid_produto.Visibility = Visibility.Visible;
+            //}
+            //else
+            //    datagrid_produto.Visibility = Visibility.Visible;
         }
     }
 }
