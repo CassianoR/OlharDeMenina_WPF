@@ -4,10 +4,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DataContext="{d:DesignInstance Type=viewmodel:ClientesViewModel}"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserControl_Loaded"
+             xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz">
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -48,8 +50,22 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
             <!--<TextBox Name="SearchBox" />-->
-            <ComboBox Name="SearchBox" IsEditable="True" ItemsSource="{Binding Path=lstClientes}" DisplayMemberPath="Nome"
-                  SelectedValuePath="Nome" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" />
+            <Border CornerRadius="10"
+                            Background="#FFE6B4D6" Margin="0, 10, 0, 10">
+                <xctk:WatermarkTextBox tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" Watermark="Pesquisar" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Name="SearchBox" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" BorderThickness="0"
+                                     VerticalContentAlignment="Center"
+                                     Padding="5"
+                         Background="Transparent"
+                                     Foreground="#904673" TextChanged="SearchBox_TextChanged">
+                    <xctk:WatermarkTextBox.WatermarkTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0">
+                                <ContentControl Content="{Binding}" Foreground="#904673" Focusable="False" />
+                            </Border>
+                        </DataTemplate>
+                    </xctk:WatermarkTextBox.WatermarkTemplate>
+                </xctk:WatermarkTextBox>
+            </Border>
             <DataGrid BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
                 <DataGrid.Resources>
 
