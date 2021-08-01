@@ -117,10 +117,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstProdutos = new ObservableCollection<Produtos>();
             _results.Clear();
             var ObjQuery = produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(_search) || x.Marca.Contains(_search) || x.FK_NomeCategoria.Contains(_search)).ToList();
-            foreach (var employee in ObjQuery)
+            foreach (var produto in ObjQuery)
             {
-                _results.Add(employee.NomeProduto);
-                lstProdutos.Add(employee);
+                _results.Add(produto.NomeProduto);
+                lstProdutos.Add(produto);
             }
         }
 
