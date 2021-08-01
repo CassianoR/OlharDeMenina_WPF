@@ -26,37 +26,50 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <Border.Effect>
+                <DropShadowEffect Opacity="0.15" />
+            </Border.Effect>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFBF1C0" />
+                    <GradientStop Color="#FFFB6060" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Clientes" Foreground="White" FontSize="30" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
-                Click="btnCadastrar_Click" Cursor="Hand" Focusable="False">
+                Click="btnCadastrar_Click" Cursor="Hand" Focusable="False" HorizontalAlignment="Left" Margin="20, 0,0,0">
             <iconPacks:PackIconMaterial Kind="PlusBoxMultiple"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
-                                                Foreground="PaleVioletRed" />
+            Foreground="White" />
         </Button>
         <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding Path=UpdateCommand}"
-                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" ToolTip="Recarregar">
+                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" ToolTip="Recarregar"  HorizontalAlignment="Right">
             <iconPacks:PackIconMaterial Kind="Refresh"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
-                                                Width="auto"
+                                                Width="40"
                                                 Height="auto"
-                                                Foreground="PaleVioletRed" />
+                                                Foreground="White" />
         </Button>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7">
             <!--<TextBox Name="SearchBox" />-->
-            <Border CornerRadius="10"
-                            Background="#FFE6B4D6" Margin="0, 10, 0, 10">
+            <Border CornerRadius="10" Margin="10, 10, 0, 10" Width="200" HorizontalAlignment="Left">
+                <Border.Background>
+                    <SolidColorBrush Color="White" Opacity="0.59" />
+                </Border.Background>
                 <xctk:WatermarkTextBox tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" Watermark="Pesquisar" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" Name="SearchBox" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="18" BorderThickness="0"
-                                     VerticalContentAlignment="Center"
-                                     Padding="5"
+
+                                     Padding="5" Margin="10 0 10 0" VerticalContentAlignment="Center" Height="35"
                          Background="Transparent"
-                                     Foreground="#904673" TextChanged="SearchBox_TextChanged">
+                                     Foreground="Gray" TextChanged="SearchBox_TextChanged">
                     <xctk:WatermarkTextBox.WatermarkTemplate>
                         <DataTemplate>
                             <Border BorderThickness="0">
@@ -66,14 +79,16 @@
                     </xctk:WatermarkTextBox.WatermarkTemplate>
                 </xctk:WatermarkTextBox>
             </Border>
-            <DataGrid BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
-                <DataGrid.Resources>
+            <Border Background="White" Grid.RowSpan="4">
 
-                    <Style x:Key="editStyle" TargetType="TextBox">
-                        <Setter Property="Background" Value="Silver" />
-                    </Style>
-                </DataGrid.Resources>
-                <!--<DataGrid.ItemContainerStyle>
+                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
+                    <DataGrid.Resources>
+
+                        <Style x:Key="editStyle" TargetType="TextBox">
+                            <Setter Property="Background" Value="Silver" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <!--<DataGrid.ItemContainerStyle>
                     <Style TargetType="DataGridRow">
                         <Style.Setters>
                             <EventSetter Event="MouseEnter" Handler="OnMouseEnter" />
@@ -81,49 +96,50 @@
                         </Style.Setters>
                     </Style>
                 </DataGrid.ItemContainerStyle>-->
-                <DataGrid.Columns>
-                    <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d,UpdateSourceTrigger=PropertyChanged}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTextColumn Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn Binding="{Binding DataNasc,StringFormat=d,UpdateSourceTrigger=PropertyChanged}" Header="Data Nasc." Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
                                 Command="{Binding DataContext.UpdateClienteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 CommandParameter="{Binding}" Style="{StaticResource RoundCorner}">
-                                    <iconPacks:PackIconMaterial Kind="AccountEdit"
+                                        <iconPacks:PackIconMaterial Kind="AccountEdit"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="Black"
                                                                 Padding="10" />
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Grid.Column="4" Grid.Row="3" x:Name="btnDeletar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="White"
                                 Command="{Binding DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                 CommandParameter="{Binding}" Style="{StaticResource RoundCorner}"
                                         Background="Red">
-                                    <iconPacks:PackIconMaterial Kind="Delete"
+                                        <iconPacks:PackIconMaterial Kind="Delete"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
                                                 Width="auto"
                                                 Height="auto"
                                                 Foreground="Black" Padding="10" />
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>
