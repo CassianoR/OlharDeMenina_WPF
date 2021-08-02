@@ -8,9 +8,9 @@ namespace LojaOlharDeMenina_WPF.View.Modals
     /// <summary>
     /// Interação lógica para ModalEditaProdutos.xam
     /// </summary>
-    public partial class ModalEditaProdutos : UserControl
+    public partial class ModalEditarProdutos : UserControl
     {
-        public ModalEditaProdutos()
+        public ModalEditarProdutos()
         {
             InitializeComponent();
             DataContext = new ProdutosViewModel();

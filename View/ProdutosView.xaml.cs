@@ -38,7 +38,7 @@ namespace LojaOlharDeMenina_WPF.View
             }
         }
 
-        private ModalEditaProdutos mep = new ModalEditaProdutos();
+        private ModalEditarProdutos mep = new ModalEditarProdutos();
 
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)
         {
