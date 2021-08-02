@@ -279,6 +279,12 @@
     <Compile Include="View\Modals\ModalEditaProdutos.xaml.cs">
       <DependentUpon>ModalEditaProdutos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Modals\ModalEditarClientes.xaml.cs">
+      <DependentUpon>ModalEditarClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ModalEditarFuncionarios.xaml.cs">
+      <DependentUpon>ModalEditarFuncionarios.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProdutosView.xaml.cs">
       <DependentUpon>ProdutosView.xaml</DependentUpon>
     </Compile>
@@ -357,6 +363,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Modals\ModalEditaProdutos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalEditarClientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalEditarFuncionarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

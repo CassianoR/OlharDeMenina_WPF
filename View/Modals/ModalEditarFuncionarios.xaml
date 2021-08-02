@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Modals.ModalEditarFuncionarios"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View.Modals" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             Grid.Column="1"
+             Grid.Row="2"
+             Grid.RowSpan="3"
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+    <Border CornerRadius="15" Background="#FFFFF6FA">
+        <Grid>
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Center" Grid.Row="1"/>
+                <TextBox x:Name="tboxNome" Grid.Row="1" Grid.Column="1" Text="{Binding Funcionarios.Nome}" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="2" HorizontalAlignment="Right" Content="Endereço:" VerticalAlignment="Center"/>
+                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="3" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" />
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+                <Button Grid.Row="4" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight" IsEnabled="False"
+                Command="{Binding UpdateFuncionarioCommand}"
+                Content="Editar"
+                Foreground="White"
+                        Margin="0,28,0,-33"
+                        Click="btnEditar_Click"
+                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                            <Setter Property="Background" Value="PaleVioletRed" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
+                                                    Foreground="PaleVioletRed" />
+            </Grid>
+            <Label Grid.Row="0" Content="Editar Funcionário" FontSize="22" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="125,8,125,227" />
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="Transparent"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
+        </Grid>
+    </Border>
+</UserControl>
