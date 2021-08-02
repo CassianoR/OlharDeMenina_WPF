@@ -142,12 +142,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private void AddFuncionario(object obj)
         {
             _hash = new Hash();
-            funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
             Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = _hash.Encrypt("1234");
-            Funcionarios.LoginFuncionario = "teste3@gmail.com";
+            Funcionarios.LoginFuncionario = "teste4@gmail.com";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             try
             {
@@ -213,6 +212,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void LoadFuncionario() //Read
         {
+            funcionariosEntities = new OlharMeninaBDEntities();
             lstFuncionarios = new ObservableCollection<Funcionarios>(funcionariosEntities.Funcionarios);
         }
 
