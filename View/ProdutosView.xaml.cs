@@ -1,5 +1,4 @@
-﻿using LojaOlharDeMenina_WPF.View.Dialogs;
-using LojaOlharDeMenina_WPF.View.Modals;
+﻿using LojaOlharDeMenina_WPF.View.Modals;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,7 +38,7 @@ namespace LojaOlharDeMenina_WPF.View
             }
         }
 
-        private ModalEditaProdutos mep = new ModalEditaProdutos();
+        private ModalEditarProdutos mep = new ModalEditarProdutos();
 
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)
         {

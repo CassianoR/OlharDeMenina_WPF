@@ -20,7 +20,7 @@
           <Property Name="CPF" Type="char" MaxLength="14" Nullable="false" />
           <Property Name="Endereco" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Telefone" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="DataNasc" Type="date" Nullable="false" />
+          <Property Name="DataNasc" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Estoque">
           <Key>
@@ -184,7 +184,7 @@
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataNasc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataNasc" Type="String" MaxLength="10" Nullable="false" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda2" FromRole="Clientes" ToRole="Venda" />
         </EntityType>
         <EntityType Name="Estoque">
