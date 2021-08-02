@@ -56,6 +56,37 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private string _search;
+
+        public string Search
+        {
+            get
+            {
+                return _search;
+            }
+            set
+            {
+                _search = value;
+                OnPropertyChanged(nameof(Search));
+                if (value.Length > 2 || value == "*")
+                    GetResults(_search);
+
+                if (value == null || value == string.Empty)
+                    if (lstProdutos != null)
+                        lstProdutos.Clear();
+            }
+        }
+
+        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
+
+        public ObservableCollection<string> Results
+        {
+            get
+            {
+                return _results;
+            }
+        }
+
         #endregion Properties
 
         private OlharMeninaBDEntities produtosEntities;
@@ -64,7 +95,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ProdutosViewModel()
         {
             produtosEntities = new OlharMeninaBDEntities();
-            LoadProdutos();
+            //LoadProdutos();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
             UpdateProdutoCommand = new Command((s) => true, UpdateProduto);
@@ -72,6 +103,26 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         #region Methods
+
+        private void GetResults(string search)
+        {
+            if (_search == "*")
+            {
+                LoadProdutos();
+                return;
+            }
+            if (lstProdutos != null)
+                lstProdutos.Clear();
+
+            lstProdutos = new ObservableCollection<Produtos>();
+            _results.Clear();
+            var ObjQuery = produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(_search) || x.Marca.Contains(_search) || x.FK_NomeCategoria.Contains(_search)).ToList();
+            foreach (var produto in ObjQuery)
+            {
+                _results.Add(produto.NomeProduto);
+                lstProdutos.Add(produto);
+            }
+        }
 
         private void AddProduto(object obj)
         {
@@ -116,7 +167,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
             }
-
             SelectedProduto = new Produtos();
         }
 

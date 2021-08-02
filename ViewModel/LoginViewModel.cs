@@ -5,8 +5,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Windows;
-using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
@@ -101,7 +99,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
-
         private WindowService windowService;
 
         private void DoLogin(object obj)
@@ -120,7 +117,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     //    System.Windows.MessageBox.Show("Test");
                     //}
                     //string senha = _hash.Encrypt(Password.ToString());
-                    
+
                     var senha = _hash.Encrypt(Password.ToString());
                     var count = funcionariosEntities.Funcionarios
                                 .Where(o => o.LoginFuncionario == User.ToString())
@@ -137,6 +134,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                         //Fazer lógica de abrir a MainWindow aqui, talvez seja preciso fazer um sistema de navegação
                         Message = "Login efetuado com sucesso!";
                         windowService.showWindow();
+                        App.Current.MainWindow.Close();
                     }
                 }
             }
@@ -169,5 +167,4 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public RelayCommand LoginCommand { get; set; }
     }
-
 }

@@ -1,18 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LojaOlharDeMenina_WPF.View
 {
@@ -42,7 +31,6 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
@@ -79,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void LiberaButton()
         {
-            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null)
+            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null || tboxUnidadeMed.Text == null)
             {
                 btnCadastrar.IsEnabled = false;
                 btnCadastrar.Opacity = 0.5;

@@ -21,5 +21,28 @@ namespace LojaOlharDeMenina_WPF.View
             AdicionarClientesDialog acd = new AdicionarClientesDialog();
             acd.ShowDialog();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            //datagrid_cliente.Visibility = Visibility.Hidden;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //if (datagrid_cliente.Items.Count > 0)
+            //    datagrid_cliente.Visibility = Visibility.Visible;
+            //else
+            //    datagrid_cliente.Visibility = Visibility.Hidden;
+
+            //if (SearchBox.Text.Length <= 2)
+            //{
+            //    if (SearchBox.Text != "*")
+            //        datagrid_cliente.Visibility = Visibility.Hidden;
+            //    else
+            //        datagrid_cliente.Visibility = Visibility.Visible;
+            //}
+            //else
+            //    datagrid_cliente.Visibility = Visibility.Visible;
+        }
     }
 }
