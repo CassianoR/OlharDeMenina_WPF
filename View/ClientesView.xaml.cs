@@ -1,4 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using LojaOlharDeMenina_WPF.View.Modals;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,10 +17,20 @@ namespace LojaOlharDeMenina_WPF.View
             DataContext = new ClientesViewModel();
         }
 
+        private ModalAdicionarClientes mac = new ModalAdicionarClientes();
+
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            AdicionarClientesDialog acd = new AdicionarClientesDialog();
-            acd.ShowDialog();
+            //AdicionarClientesDialog acd = new AdicionarClientesDialog();
+            //acd.ShowDialog();
+            if (MainGrid.Children.Contains(mac) == true)
+            {
+                mac.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(mac);
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

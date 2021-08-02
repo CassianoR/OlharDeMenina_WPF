@@ -1,4 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using LojaOlharDeMenina_WPF.View.Modals;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +18,8 @@ namespace LojaOlharDeMenina_WPF.View
             DataContext = new ProdutosViewModel();
         }
 
+        private ModalAdicionarProduto map = new ModalAdicionarProduto();
+
         private void btnCadastrarProd_Click(object sender, RoutedEventArgs e)
         {
             //AdicionarProdutosDialog acd = new AdicionarProdutosDialog();
@@ -26,20 +29,36 @@ namespace LojaOlharDeMenina_WPF.View
             btnCadastrarProd.Effect = new BlurEffect();
             btnRecarregar.Effect = new BlurEffect();
 
-            MainGrid.Children.Add(new ModalAdicionarProduto());
+            if (MainGrid.Children.Contains(map) == true)
+            {
+                map.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(map);
+            }
         }
+
+        private ModalEditaProdutos mep = new ModalEditaProdutos();
 
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)
         {
-            EditaProdutosDialog epd = new EditaProdutosDialog();
+            //EditaProdutosDialog epd = new EditaProdutosDialog();
             ProdutosViewModel pvm = new ProdutosViewModel();
             //pvm.Produtos = (Model.Produtos)datagrid_produto.SelectedItem;
-            epd.Codigo = pvm.Produtos.Codigo;
-            epd.NomeProduto = pvm.Produtos.NomeProduto;
-            epd.Marca = pvm.Produtos.Marca;
-            epd.Descricao = pvm.Produtos.Descricao;
-            epd.Valor = pvm.Produtos.Valor;
-            epd.ShowDialog();
+            mep.Codigo = pvm.Produtos.Codigo;
+            mep.NomeProduto = pvm.Produtos.NomeProduto;
+            mep.Marca = pvm.Produtos.Marca;
+            mep.Descricao = pvm.Produtos.Descricao;
+            mep.Valor = pvm.Produtos.Valor;
+            if (MainGrid.Children.Contains(mep))
+            {
+                mep.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(mep);
+            }
         }
 
         private void MainGrid_GotFocus(object sender, RoutedEventArgs e)

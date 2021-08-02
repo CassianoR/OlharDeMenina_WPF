@@ -1,4 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.View.Dialogs;
+using LojaOlharDeMenina_WPF.View.Modals;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,10 +17,20 @@ namespace LojaOlharDeMenina_WPF.View
             DataContext = new FuncionariosViewModel();
         }
 
+        private ModalAdicionarFuncionarios maf = new ModalAdicionarFuncionarios();
+
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            AdicionarFuncionariosDialog acd = new AdicionarFuncionariosDialog();
-            acd.ShowDialog();
+            //AdicionarFuncionariosDialog acd = new AdicionarFuncionariosDialog();
+            //acd.ShowDialog();
+            if (MainGrid.Children.Contains(maf) == true)
+            {
+                maf.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(maf);
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

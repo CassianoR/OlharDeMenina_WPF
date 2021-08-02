@@ -267,8 +267,17 @@
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ModalAdicionarProduto.xaml.cs">
+    <Compile Include="View\Modals\ModalAdicionarClientes.xaml.cs">
+      <DependentUpon>ModalAdicionarClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ModalAdicionarFuncionarios.xaml.cs">
+      <DependentUpon>ModalAdicionarFuncionarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ModalAdicionarProduto.xaml.cs">
       <DependentUpon>ModalAdicionarProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ModalEditaProdutos.xaml.cs">
+      <DependentUpon>ModalEditaProdutos.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ProdutosView.xaml.cs">
       <DependentUpon>ProdutosView.xaml</DependentUpon>
@@ -335,7 +344,19 @@
       <DependentUpon>LoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ModalAdicionarProduto.xaml">
+    <Page Include="View\Modals\ModalAdicionarClientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalAdicionarFuncionarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalAdicionarProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalEditaProdutos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
