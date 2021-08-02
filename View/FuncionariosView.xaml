@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded"
              xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz">
 
-    <Grid Background="Transparent">
+    <Grid Background="Transparent" x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
