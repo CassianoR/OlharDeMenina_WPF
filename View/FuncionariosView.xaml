@@ -1,17 +1,16 @@
 ﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Funcionarios"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded"
+             xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz">
 
-    <Grid Background="Transparent" x:Name="MainGrid">
+    <Grid Background="Transparent" x:Name="MainGrid" GotFocus="MainGridFuncionarios_GotFocus">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -27,7 +26,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="2" tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}">
+        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.15" />
             </Border.Effect>
@@ -38,7 +37,7 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Funcionários" Foreground="White" FontSize="40" Margin="15" />
+        <TextBlock x:Name="tboxFuncionarioTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Funcionários" Foreground="White" FontSize="30" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrar_Click" Cursor="Hand" Focusable="False" HorizontalAlignment="Left" Margin="20, 0,0,0">
@@ -59,8 +58,8 @@
                                                 Height="auto"
                                                 Foreground="White" />
         </Button>
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6">
-            <Border CornerRadius="10" Margin="10, 10, 0, 20" Width="270" Height="55" HorizontalAlignment="Left">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" x:Name="stkPanelFuncionarios">
+            <Border CornerRadius="10" Margin="10, 10, 0, 10" Width="200" HorizontalAlignment="Left">
                 <Border.Background>
                     <SolidColorBrush Color="White" Opacity="0.59" />
                 </Border.Background>
@@ -80,7 +79,7 @@
             </Border>
             <Border Background="White" Grid.RowSpan="4">
 
-                <DataGrid tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}">
+                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}">
                     <DataGrid.Resources>
 
                         <Style x:Key="editStyle" TargetType="TextBox">
