@@ -27,7 +27,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3" tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}">
+        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="2" tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.15" />
             </Border.Effect>
