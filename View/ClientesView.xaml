@@ -38,7 +38,7 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Clientes" Foreground="White" FontSize="30" Margin="15" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Clientes" Foreground="White" FontSize="40" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrar_Click" Cursor="Hand" Focusable="False" HorizontalAlignment="Left" Margin="20, 0,0,0">
@@ -62,7 +62,7 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7">
             <!--<TextBox Name="SearchBox" />-->
-            <Border CornerRadius="10" Margin="10, 10, 0, 10" Width="200" HorizontalAlignment="Left">
+            <Border CornerRadius="10" Margin="10, 10, 0, 20" Width="270" Height="55" HorizontalAlignment="Left">
                 <Border.Background>
                     <SolidColorBrush Color="White" Opacity="0.59" />
                 </Border.Background>
@@ -82,7 +82,7 @@
             </Border>
             <Border Background="White" Grid.RowSpan="4">
 
-                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
+                <DataGrid tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_cliente" ItemsSource="{Binding lstClientes}">
                     <DataGrid.Resources>
 
                         <Style x:Key="editStyle" TargetType="TextBox">
