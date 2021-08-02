@@ -18,7 +18,7 @@ namespace LojaOlharDeMenina_WPF.Model
         private string cpf;
         private string endereco;
         private string telefone;
-        private DateTime datanasc;
+        private string datanasc;
 
         public int ID
         {
@@ -65,7 +65,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public System.DateTime DataNasc
+        public string DataNasc
         {
             get => datanasc; set
             {

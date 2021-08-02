@@ -25,7 +25,7 @@ namespace LojaOlharDeMenina_WPF.Model
         public string CPF { get; set; }
         public string Endereco { get; set; }
         public string Telefone { get; set; }
-        public System.DateTime DataNasc { get; set; }
+        public string DataNasc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
