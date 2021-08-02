@@ -27,7 +27,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3">
+        <Border tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.15" />
             </Border.Effect>
@@ -38,7 +38,7 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <TextBlock x:Name="tboxTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Produtos" Foreground="White" FontSize="30" Margin="15" />
+        <TextBlock x:Name="tboxTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Produtos" Foreground="White" FontSize="40" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrarProd_Click" Cursor="Hand" Focusable="False" HorizontalAlignment="Left" Margin="20, 0,0,0" x:Name="btnCadastrarProd">
@@ -51,7 +51,7 @@
         </Button>
         <Button Grid.Column="2" Grid.Row="0" x:Name="btnRecarregar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Command="{Binding Path=UpdateCommand}"
-                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" ToolTip="Recarregar"  HorizontalAlignment="Right" Click="btnRecarregar_Click">
+                CommandParameter="{Binding}" Cursor="Hand" Focusable="False" ToolTip="Recarregar"  HorizontalAlignment="Right">
             <iconPacks:PackIconMaterial Kind="Refresh"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
@@ -61,7 +61,7 @@
         </Button>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="6" x:Name="stkPanel">
-            <Border CornerRadius="10" Margin="10, 10, 0, 10" Width="200" HorizontalAlignment="Left">
+            <Border CornerRadius="10" Margin="10, 10, 0, 20" Width="270" Height="55" HorizontalAlignment="Left">
                 <Border.Background>
                     <SolidColorBrush Color="White" Opacity="0.59" />
                 </Border.Background>
@@ -80,7 +80,7 @@
                 </xctk:WatermarkTextBox>
             </Border>
             <Border Background="White" Grid.RowSpan="4">
-                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_produto" ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}">
+                <DataGrid tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_produto" ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}">
                     <DataGrid.Columns>
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProduto" Header="Nome" Width="auto" FontSize="18" />
