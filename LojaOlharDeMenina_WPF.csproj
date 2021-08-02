@@ -65,6 +65,9 @@
     <Reference Include="MahApps.Metro.IconPacks.Material, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0c0d510f9915137a, processorArchitecture=MSIL">
       <HintPath>packages\MahApps.Metro.IconPacks.Material.4.8.0\lib\net47\MahApps.Metro.IconPacks.Material.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -113,9 +116,8 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=8.0.25.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\OlharDeMenina\OlharDeMenina\Conexao\MySql.Data.dll</HintPath>
+    <Reference Include="SciChart.Wpf.UI.Transitionz, Version=3.1.251.0, Culture=neutral, PublicKeyToken=8eea68d53aa73a83, processorArchitecture=MSIL">
+      <HintPath>packages\SciChart.Wpf.UI.Transitionz.3.1.251\lib\net452\SciChart.Wpf.UI.Transitionz.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -134,6 +136,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -154,6 +157,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -166,24 +170,51 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Components\BindablePasswordBox.xaml.cs">
+      <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Command.cs" />
+    <Compile Include="Core\Exceptions.cs" />
+    <Compile Include="Core\Hash.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Core\WindowService.cs" />
+    <Compile Include="Model\Categoria.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Clientes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ClientesDTO.cs" />
     <Compile Include="Model\Estoque.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\EstoqueDTO.cs" />
     <Compile Include="Model\Funcionarios.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FuncionariosDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,17 +233,21 @@
     <Compile Include="Model\Produtos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProdutosDTO.cs" />
+    <Compile Include="Model\QuantidadeDTO.cs" />
     <Compile Include="Model\Venda.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\VendasDTO.cs" />
     <Compile Include="ViewModel\ClientesViewModel.cs" />
     <Compile Include="ViewModel\FuncionariosViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ProdutosViewModel.cs" />
     <Compile Include="ViewModel\VendasViewModel.cs" />
-    <Compile Include="View\Clientes.xaml.cs">
-      <DependentUpon>Clientes.xaml</DependentUpon>
+    <Compile Include="View\ClientesView.xaml.cs">
+      <DependentUpon>ClientesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dialogs\AdicionarProdutosDialog.xaml.cs">
       <DependentUpon>AdicionarProdutosDialog.xaml</DependentUpon>
@@ -223,22 +258,45 @@
     <Compile Include="View\Dialogs\AdicionarFuncionariosDialog.xaml.cs">
       <DependentUpon>AdicionarFuncionariosDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Funcionarios.xaml.cs">
-      <DependentUpon>Funcionarios.xaml</DependentUpon>
+    <Compile Include="View\Dialogs\EditaProdutosDialog.xaml.cs">
+      <DependentUpon>EditaProdutosDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FuncionariosView.xaml.cs">
+      <DependentUpon>FuncionariosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Produtos.xaml.cs">
-      <DependentUpon>Produtos.xaml</DependentUpon>
+    <Compile Include="View\Modals\ModalAdicionarClientes.xaml.cs">
+      <DependentUpon>ModalAdicionarClientes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Vendas.xaml.cs">
-      <DependentUpon>Vendas.xaml</DependentUpon>
+    <Compile Include="View\Modals\ModalAdicionarFuncionarios.xaml.cs">
+      <DependentUpon>ModalAdicionarFuncionarios.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="View\Modals\ModalAdicionarProduto.xaml.cs">
+      <DependentUpon>ModalAdicionarProduto.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Clientes.xaml">
+    <Compile Include="View\Modals\ModalEditaProdutos.xaml.cs">
+      <DependentUpon>ModalEditaProdutos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProdutosView.xaml.cs">
+      <DependentUpon>ProdutosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VendaView.xaml.cs">
+      <DependentUpon>VendaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Components\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\RoundButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClientesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -254,7 +312,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Funcionarios.xaml">
+    <Page Include="View\Dialogs\EditaProdutosDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FuncionariosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -270,7 +332,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Login.xaml">
+    <Page Include="View\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -278,19 +340,35 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Produtos.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Vendas.xaml">
+    <Page Include="View\Modals\ModalAdicionarClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Window1.xaml">
+    <Page Include="View\Modals\ModalAdicionarFuncionarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalAdicionarProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalEditaProdutos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProdutosView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\VendaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,11 +393,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="Fonts\Dosis-VariableFont_wght.ttf" />
+    <Resource Include="Fonts\Roboto-Light.ttf" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Resource Include="Fonts\Roboto-Light.ttf" />
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
@@ -369,7 +447,6 @@
   <ItemGroup>
     <Resource Include="Images\closeBtn_default.png" />
     <Resource Include="Images\closeBtn_MouseOver.png" />
-    <Resource Include="Images\img_background.png" />
     <Resource Include="Images\img_contact.png" />
     <Resource Include="Images\img_home.png" />
     <Resource Include="Images\img_map.png" />
@@ -378,6 +455,10 @@
     <Resource Include="Images\img_signout.png" />
     <Resource Include="Images\tgBtn_default.png" />
     <Resource Include="Images\tgBtn_MouseOver.png" />
+    <Resource Include="Images\Maxbtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tgBtn_default_black.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -388,7 +469,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\Maxbtn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

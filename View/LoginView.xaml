@@ -1,9 +1,12 @@
-﻿<Window x:Class="LojaOlharDeMenina_WPF.Login"
+﻿<Window x:Class="LojaOlharDeMenina_WPF.View.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:components="clr-namespace:LojaOlharDeMenina_WPF.Components"
+        d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
         mc:Ignorable="d"
         Title="Login" Height="500" Width="350"
         ResizeMode="NoResize"
@@ -12,7 +15,19 @@
         FontFamily="Segoe UI Emoji" Icon="/Images/icon.ico"
         AllowsTransparency="True"
         Background="Transparent">
-    <Border CornerRadius="15" Background="White">
+    <Window.DataContext>
+        <viewModel:LoginViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <Border CornerRadius="15">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDCF9FF" Offset="1" />
+                <GradientStop Color="White" Offset="0.838" />
+            </LinearGradientBrush>
+        </Border.Background>
         <Grid>
 
             <Rectangle Height="280" VerticalAlignment="Top">
@@ -34,8 +49,15 @@
                 <Label Content="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18" />
                 <StackPanel Margin="15,75,15,20" Height="145">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBox Text="Usuário" GotFocus="txtNome_GotFocus" LostFocus="txtNome_LostFocus" Name="txtNome" Margin="0,10" BorderThickness="0" Width="230"  Foreground="PaleVioletRed" FontSize="20" Background="#FFF0F5">
-                        </TextBox>
+                        <xctk:WatermarkTextBox Text="{Binding Path=User, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Usuário" Name="txtNome" Margin="0,10" BorderThickness="0" Width="230"  Foreground="PaleVioletRed" FontSize="18" Background="#FFF0F5">
+                            <xctk:WatermarkTextBox.WatermarkTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="0">
+                                        <ContentControl Content="{Binding}" Foreground="PaleVioletRed" Focusable="False" />
+                                    </Border>
+                                </DataTemplate>
+                            </xctk:WatermarkTextBox.WatermarkTemplate>
+                        </xctk:WatermarkTextBox>
                         <iconPacks:PackIconMaterial Kind="Account"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Right"
@@ -46,9 +68,8 @@
                         Background="PaleVioletRed"
                         Opacity="0.5" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <PasswordBox Width="230" BorderThickness="0" Name="pb" Password="Password" Foreground="PaleVioletRed" Margin="0,10"  FontFamily="Champagne &amp; Limousines" FontSize="20" Background="#FFF0F5" GotFocus="pb_GotFocus" LostFocus="pb_LostFocus">
-                        </PasswordBox>
-                        <iconPacks:PackIconMaterial Kind="FormTextboxPassword"
+                        <components:BindablePasswordBox x:Name="PasswordBox" Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" BorderThickness="0" Width="230" />
+                        <iconPacks:PackIconMaterial Kind="Lock"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Right"
                                                 Foreground="PaleVioletRed" />
@@ -57,10 +78,10 @@
                         Height="2"
                         Background="PaleVioletRed"
                         Opacity="0.5" />
-                    <Label x:Name="lblErro" Content="" RenderTransformOrigin="1.14,0.26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="43" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                    <TextBlock x:Name="lblErro" TextAlignment="Center" Text="{Binding Path=Message}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="1.14,0.26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="43" FontSize="14" FontWeight="Light"  Margin="0, 10,0,0" />
                 </StackPanel>
             </Grid>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="125,0,125,62" Content="LOGIN" Click="Button_Click" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+            <Button IsEnabled="{Binding buttonIsEnabled}" Command="{Binding Path=LoginCommand}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="125,0,125,62" Content="LOGIN" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -69,6 +90,12 @@
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#FFFF849C" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="LightPink" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter Property="Background" Value="PaleVioletRed" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -86,6 +113,27 @@
             </Button>
             <TextBlock Text="ESQUECEU SUA SENHA?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30" Foreground="Gray" Cursor="Hand" />
             <Image Width="200" Height="130" VerticalAlignment="Top" Margin="30" Source="/Images/loja.png" />
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="Transparent"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Border>
 </Window>

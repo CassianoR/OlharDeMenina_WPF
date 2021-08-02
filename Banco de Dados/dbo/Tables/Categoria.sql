@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [dbo].[Categoria] (
-    [CodigoCategoria] INT          IDENTITY (1, 1) NOT NULL,
-    [NomeCategoria]   VARCHAR (40) NULL,
-    PRIMARY KEY CLUSTERED ([CodigoCategoria] ASC)
+    [NomeCategoria]   VARCHAR (40) NOT NULL,
+    PRIMARY KEY CLUSTERED ([NomeCategoria] ASC)
 );
 

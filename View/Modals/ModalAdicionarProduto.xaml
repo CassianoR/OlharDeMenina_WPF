@@ -1,22 +1,17 @@
-﻿<Window x:Class="LojaOlharDeMenina_WPF.View.Dialogs.AdicionarProdutosDialog"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-        d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
-        mc:Ignorable="d"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Title="Cadastrar produto" Height="328.8" Width="427" Background="Transparent" ResizeMode="NoResize">
-    <Border CornerRadius="15">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFFFDFF8" Offset="0" />
-                <GradientStop Color="#FFFFD0DA" Offset="1" />
-            </LinearGradientBrush>
-        </Border.Background>
+﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.ModalAdicionarProduto"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
+             mc:Ignorable="d"
+             Grid.Column="1"
+             Grid.Row="2"
+             Grid.RowSpan="3"
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+    <Border CornerRadius="15" Background="#FFFFF6FA">
         <Grid>
             <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
@@ -57,11 +52,11 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <TextBox x:Name="tboxValor" Text="{Binding Produtos.Valor,StringFormat=\{0:00.0\}}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
 
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="False"
                 Command="{Binding AddProdutoCommand}"
@@ -94,7 +89,7 @@
                     </Button.Template>
                 </Button>
                 <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
-                                                    Foreground="White" />
+                                                    Foreground="PaleVioletRed" />
                 <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Unidade de Medida:" />
                 <TextBox x:Name="tboxUnidadeMed" Text="{Binding Produtos.UnidadeMedida}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxUnidadeMed_TextChanged" Margin="0,5">
                     <TextBox.Background>
@@ -105,14 +100,28 @@
             <Label Grid.Row="0" Content="Novo Produto" FontSize="22" HorizontalAlignment="Center"
                        VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="125,8,125,227" />
 
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
-                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
-                                            Background="white"
+                                            Background="Transparent"
                                             Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
             <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
         </Grid>
     </Border>
-</Window>
+</UserControl>

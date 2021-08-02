@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Model/VendasDTO.cs
+/Model/EstoqueDTO.cs
+/Model/QuantidadeDTO.cs
+/Services/CloseModalNavigationService.cs
+/Services/ModalNavigationService.cs
+/Stores/ModalNavigationStore.cs

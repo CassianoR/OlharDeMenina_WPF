@@ -1,34 +1,32 @@
 ﻿using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace LojaOlharDeMenina_WPF.View.Dialogs
+namespace LojaOlharDeMenina_WPF.View
 {
     /// <summary>
-    /// Lógica interna para AdicionarClientesDialog.xaml
+    /// Interação lógica para ModalAdicionarProduto.xam
     /// </summary>
-    public partial class AdicionarProdutosDialog : Window
+    public partial class ModalAdicionarProduto : UserControl
     {
-        public AdicionarProdutosDialog()
+        public ModalAdicionarProduto()
         {
             InitializeComponent();
             DataContext = new ProdutosViewModel();
-            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
-            btnCadastrar.IsEnabled = false;
-            btnCadastrar.Opacity = 0.5;
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
 
-            this.DragMove();
+            //this.DragMove();
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                this.Visibility = Visibility.Collapsed;
         }
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
@@ -37,7 +35,9 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //Window.GetWindow(this).Close();
+            //this.Visibility = Visibility.Collapsed;
+            this.Visibility = Visibility.Collapsed;
         }
 
         private void tboxNome_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -67,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.View.Dialogs
 
         private void LiberaButton()
         {
-            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null)
+            if (tboxNome.Text == null || tboxMarca.Text == null || tboxDesc.Text == null || tboxUnidadeMed.Text == null || tboxValor.Text == "00.00" || cboxCategoria.Text == null || tboxUnidadeMed.Text == null)
             {
                 btnCadastrar.IsEnabled = false;
                 btnCadastrar.Opacity = 0.5;

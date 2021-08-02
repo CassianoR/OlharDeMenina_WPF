@@ -8,5 +8,5 @@
 	@Valor decimal (15,2)
 AS
 BEGIN
-	INSERT INTO Produtos VALUES(@FK_CodigoCategoria, @Nome, @UnidadeMedida, @Marca, @Categoria, @Descricao, @Valor)
+	INSERT INTO Produtos VALUES(@FK_CodigoCategoria, @Nome, @UnidadeMedida, @Marca, @Descricao, @Valor)
 END

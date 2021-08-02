@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:view="clr-namespace:LojaOlharDeMenina_WPF.View"
              xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             StartupUri="View/Login.xaml">
+             StartupUri="View/LoginView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
                 <ResourceDictionary Source="Theme/TextboxTheme.xaml" />
+                <ResourceDictionary Source="Theme/RoundButtonTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">

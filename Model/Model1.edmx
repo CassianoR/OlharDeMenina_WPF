@@ -4,7 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OlhardeMeninaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="OlharMeninaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="NomeCategoria" />
+          </Key>
+          <Property Name="NomeCategoria" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="ID" />
@@ -36,10 +42,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginFuncionario" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Cargo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CPF" Type="char" MaxLength="14" Nullable="false" />
-          <Property Name="Senha" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Senha" Type="nchar" MaxLength="64" />
           <Property Name="Endereco" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Telefone" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
@@ -48,9 +55,10 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_NomeCategoria" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="NomeProduto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnidadeMedida" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Marca" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Categoria" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
         </EntityType>
@@ -64,7 +72,7 @@
           <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
           <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DataHora" Type="datetime" Nullable="false" />
+          <Property Name="Data" Type="date" Nullable="false" />
           <Property Name="QuantidadeVendida" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Estoque">
@@ -76,6 +84,18 @@
             </Principal>
             <Dependent Role="Estoque">
               <PropertyRef Name="FK_CodigoProduto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_produtos">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="NomeCategoria" />
+            </Principal>
+            <Dependent Role="Produtos">
+              <PropertyRef Name="FK_NomeCategoria" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -115,49 +135,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_insercaoestoque" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="NumLote" Type="int" Mode="In" />
-          <Parameter Name="TotalProdutosLote" Type="int" Mode="In" />
-          <Parameter Name="Frete" Type="decimal" Mode="In" />
-          <Parameter Name="Fornecedor" Type="varchar" Mode="In" />
-          <Parameter Name="DataCompra" Type="date" Mode="In" />
-          <Parameter Name="PrecoLote" Type="decimal" Mode="In" />
-          <Parameter Name="Quantidade" Type="int" Mode="In" />
-          <Parameter Name="Validade" Type="date" Mode="In" />
-          <Parameter Name="FK_CodigoProduto" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_novavenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="FK_IDFuncionario" Type="int" Mode="In" />
-          <Parameter Name="FK_IDCliente" Type="int" Mode="In" />
-          <Parameter Name="FK_CodigoProduto" Type="int" Mode="In" />
-          <Parameter Name="Valor" Type="decimal" Mode="In" />
-          <Parameter Name="MetodoPagamento" Type="varchar" Mode="In" />
-          <Parameter Name="Datahora" Type="datetime" Mode="In" />
-          <Parameter Name="QuantidadeVendida" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_novoclien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nome" Type="varchar" Mode="In" />
-          <Parameter Name="CPF" Type="char" Mode="In" />
-          <Parameter Name="Endereco" Type="varchar" Mode="In" />
-          <Parameter Name="Telefone" Type="varchar" Mode="In" />
-          <Parameter Name="DataNasc" Type="date" Mode="In" />
-        </Function>
-        <Function Name="sp_novofunc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Cargo" Type="varchar" Mode="In" />
-          <Parameter Name="Nome" Type="varchar" Mode="In" />
-          <Parameter Name="CPF" Type="char" Mode="In" />
-          <Parameter Name="Endereco" Type="varchar" Mode="In" />
-          <Parameter Name="Telefone" Type="varchar" Mode="In" />
-          <Parameter Name="Senha" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_novoproduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nome" Type="varchar" Mode="In" />
-          <Parameter Name="Marca" Type="varchar" Mode="In" />
-          <Parameter Name="Categoria" Type="char" Mode="In" />
-          <Parameter Name="Descricao" Type="varchar" Mode="In" />
-          <Parameter Name="Valor" Type="decimal" Mode="In" />
-        </Function>
-        <EntityContainer Name="OlhardeMeninaBDModelStoreContainer">
+        <EntityContainer Name="OlharMeninaBDModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estoque" EntityType="Self.Estoque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" Schema="dbo" store:Type="Tables" />
@@ -166,6 +145,10 @@
           <AssociationSet Name="FK_Estoque" Association="Self.FK_Estoque">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Estoque" EntitySet="Estoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_produtos" Association="Self.fk_produtos">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Produtos" EntitySet="Produtos" />
           </AssociationSet>
           <AssociationSet Name="FK_Venda" Association="Self.FK_Venda">
             <End Role="Funcionarios" EntitySet="Funcionarios" />
@@ -184,7 +167,14 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OlhardeMeninaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="OlharMeninaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="NomeCategoria" />
+          </Key>
+          <Property Name="NomeCategoria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Produtos" Relationship="Self.fk_produtos" FromRole="Categoria" ToRole="Produtos" />
+        </EntityType>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="ID" />
@@ -218,10 +208,11 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginFuncionario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Senha" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false"  />
+          <Property Name="Senha" Type="String" MaxLength="68" FixedLength="true" Unicode="true" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda" FromRole="Funcionarios" ToRole="Venda" />
@@ -231,11 +222,13 @@
             <PropertyRef Name="Codigo" />
           </Key>
           <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_NomeCategoria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NomeProduto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnidadeMedida" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Categoria" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.fk_produtos" FromRole="Produtos" ToRole="Categoria" />
           <NavigationProperty Name="Estoque" Relationship="Self.FK_Estoque" FromRole="Produtos" ToRole="Estoque" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda3" FromRole="Produtos" ToRole="Venda" />
         </EntityType>
@@ -249,12 +242,24 @@
           <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="QuantidadeVendida" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clientes" Relationship="Self.FK_Venda2" FromRole="Venda" ToRole="Clientes" />
           <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Venda" FromRole="Venda" ToRole="Funcionarios" />
           <NavigationProperty Name="Produtos" Relationship="Self.FK_Venda3" FromRole="Venda" ToRole="Produtos" />
         </EntityType>
+        <Association Name="fk_produtos">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="NomeCategoria" />
+            </Principal>
+            <Dependent Role="Produtos">
+              <PropertyRef Name="FK_NomeCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Venda2">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
           <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
@@ -303,12 +308,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OlhardeMeninaBDEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OlharMeninaBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
           <EntitySet Name="Estoque" EntityType="Self.Estoque" />
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" />
           <EntitySet Name="Produtos" EntityType="Self.Produtos" />
           <EntitySet Name="Venda" EntityType="Self.Venda" />
+          <AssociationSet Name="fk_produtos" Association="Self.fk_produtos">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Venda2" Association="Self.FK_Venda2">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Venda" EntitySet="Venda" />
@@ -325,57 +335,22 @@
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Venda" EntitySet="Venda" />
           </AssociationSet>
-          <FunctionImport Name="sp_insercaoestoque">
-            <Parameter Name="NumLote" Mode="In" Type="Int32" />
-            <Parameter Name="TotalProdutosLote" Mode="In" Type="Int32" />
-            <Parameter Name="Frete" Mode="In" Type="Decimal" />
-            <Parameter Name="Fornecedor" Mode="In" Type="String" />
-            <Parameter Name="DataCompra" Mode="In" Type="DateTime" />
-            <Parameter Name="PrecoLote" Mode="In" Type="Decimal" />
-            <Parameter Name="Quantidade" Mode="In" Type="Int32" />
-            <Parameter Name="Validade" Mode="In" Type="DateTime" />
-            <Parameter Name="FK_CodigoProduto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_novavenda">
-            <Parameter Name="FK_IDFuncionario" Mode="In" Type="Int32" />
-            <Parameter Name="FK_IDCliente" Mode="In" Type="Int32" />
-            <Parameter Name="FK_CodigoProduto" Mode="In" Type="Int32" />
-            <Parameter Name="Valor" Mode="In" Type="Decimal" />
-            <Parameter Name="MetodoPagamento" Mode="In" Type="String" />
-            <Parameter Name="Datahora" Mode="In" Type="DateTime" />
-            <Parameter Name="QuantidadeVendida" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_novoclien">
-            <Parameter Name="Nome" Mode="In" Type="String" />
-            <Parameter Name="CPF" Mode="In" Type="String" />
-            <Parameter Name="Endereco" Mode="In" Type="String" />
-            <Parameter Name="Telefone" Mode="In" Type="String" />
-            <Parameter Name="DataNasc" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="sp_novofunc">
-            <Parameter Name="Cargo" Mode="In" Type="String" />
-            <Parameter Name="Nome" Mode="In" Type="String" />
-            <Parameter Name="CPF" Mode="In" Type="String" />
-            <Parameter Name="Endereco" Mode="In" Type="String" />
-            <Parameter Name="Telefone" Mode="In" Type="String" />
-            <Parameter Name="Senha" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_novoproduto">
-            <Parameter Name="Nome" Mode="In" Type="String" />
-            <Parameter Name="Marca" Mode="In" Type="String" />
-            <Parameter Name="Categoria" Mode="In" Type="String" />
-            <Parameter Name="Descricao" Mode="In" Type="String" />
-            <Parameter Name="Valor" Mode="In" Type="Decimal" />
-          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OlhardeMeninaBDModelStoreContainer" CdmEntityContainer="OlhardeMeninaBDEntities">
+        <EntityContainerMapping StorageEntityContainer="OlharMeninaBDModelStoreContainer" CdmEntityContainer="OlharMeninaBDEntities">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="NomeCategoria" ColumnName="NomeCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="OlhardeMeninaBDModel.Clientes">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -387,7 +362,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estoque">
-            <EntityTypeMapping TypeName="OlhardeMeninaBDModel.Estoque">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.Estoque">
               <MappingFragment StoreEntitySet="Estoque">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NumLote" ColumnName="NumLote" />
@@ -403,9 +378,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Funcionarios">
-            <EntityTypeMapping TypeName="OlhardeMeninaBDModel.Funcionarios">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.Funcionarios">
               <MappingFragment StoreEntitySet="Funcionarios">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginFuncionario" ColumnName="LoginFuncionario" />
                 <ScalarProperty Name="Cargo" ColumnName="Cargo" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="CPF" ColumnName="CPF" />
@@ -416,19 +392,20 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Produtos">
-            <EntityTypeMapping TypeName="OlhardeMeninaBDModel.Produtos">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.Produtos">
               <MappingFragment StoreEntitySet="Produtos">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="FK_NomeCategoria" ColumnName="FK_NomeCategoria" />
                 <ScalarProperty Name="NomeProduto" ColumnName="NomeProduto" />
+                <ScalarProperty Name="UnidadeMedida" ColumnName="UnidadeMedida" />
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Venda">
-            <EntityTypeMapping TypeName="OlhardeMeninaBDModel.Venda">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.Venda">
               <MappingFragment StoreEntitySet="Venda">
                 <ScalarProperty Name="CodigoVendas" ColumnName="CodigoVendas" />
                 <ScalarProperty Name="FK_IDFuncionario" ColumnName="FK_IDFuncionario" />
@@ -436,16 +413,11 @@
                 <ScalarProperty Name="FK_CodigoProduto" ColumnName="FK_CodigoProduto" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="MetodoPagamento" ColumnName="MetodoPagamento" />
-                <ScalarProperty Name="DataHora" ColumnName="DataHora" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="QuantidadeVendida" ColumnName="QuantidadeVendida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_insercaoestoque" FunctionName="OlhardeMeninaBDModel.Store.sp_insercaoestoque" />
-          <FunctionImportMapping FunctionImportName="sp_novavenda" FunctionName="OlhardeMeninaBDModel.Store.sp_novavenda" />
-          <FunctionImportMapping FunctionImportName="sp_novoclien" FunctionName="OlhardeMeninaBDModel.Store.sp_novoclien" />
-          <FunctionImportMapping FunctionImportName="sp_novofunc" FunctionName="OlhardeMeninaBDModel.Store.sp_novofunc" />
-          <FunctionImportMapping FunctionImportName="sp_novoproduto" FunctionName="OlhardeMeninaBDModel.Store.sp_novoproduto" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
