@@ -17,6 +17,12 @@ namespace LojaOlharDeMenina_WPF.Model
 
     public partial class Funcionarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Funcionarios()
+        {
+            this.Venda = new HashSet<Venda>();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -24,11 +30,7 @@ namespace LojaOlharDeMenina_WPF.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Funcionarios()
-        {
-            this.Venda = new HashSet<Venda>();
-        }
+
 
         private int id;
         private string loginfuncionario;
