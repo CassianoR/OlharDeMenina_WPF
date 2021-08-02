@@ -9,17 +9,15 @@
              Grid.Row="2"
              Grid.RowSpan="3"
              Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
-    <Border CornerRadius="15">
-        <Border.Background>
+    <Border CornerRadius="15" Background="#FFFFF6FA" >
+        <!--<Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FFFFDFF8" Offset="0" />
                 <GradientStop Color="#FFFFD0DA" Offset="1" />
             </LinearGradientBrush>
-        </Border.Background>
-
+        </Border.Background>-->
         <Grid>
-
-            <Grid Name="grid1" VerticalAlignment="Center" Margin="10" Background="Transparent">
+            <Grid Name="grid1" VerticalAlignment="Center" Margin="10, 0, 10, 25" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -33,47 +31,46 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novo Cliente" FontSize="22" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="112,-44,112,44"></Label>
-
-                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Bottom" />
-                <xctk:MaskedTextBox Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
-                     VerticalAlignment="Bottom">
+                       VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="114,-54,110,44" Height="38" />
+                <Label HorizontalAlignment="Right" Content="Nome:" />
+                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
+                     VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="CPF:" />
+                <xctk:MaskedTextBox Mask="000,000,000-00" x:Name="tboxCPF" Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
-                <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:" />
-                <xctk:MaskedTextBox Mask="000,000,000-00" IncludeLiteralsInValue="True" Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                    <TextBox.Background>
-                        <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </xctk:MaskedTextBox>
-                <Label Height="24" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Endereço:" />
-                <TextBox Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Endereço:" />
+                <TextBox x:Name="tboxEnde" Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" />
-                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top">
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" x:Name="tboxTelefone" Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data de nasc.:" />
-                <xctk:MaskedTextBox Mask="00/00/0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.DataNasc,StringFormat=d}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top">
+                <xctk:MaskedTextBox Mask="00/00/0000" x:Name="tboxData" Text="{Binding Clientes.DataNasc}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
 
-                <Button Grid.Row="6" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
                 Command="{Binding AddClienteCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0, 10, 0,0"
+                        Margin="0,10,0,-13"
                         Click="btnCadastrar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                BorderThickness="0" FontSize="14" FontWeight="Medium">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -97,18 +94,32 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
-                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
-                                                    Foreground="White" />
+                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="0,-16,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="97"
+                                                    Foreground="PaleVioletRed" />
             </Grid>
 
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
-                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="0,5,10,0">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
-                                            Background="white"
-                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                                            Background="Transparent"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" RenderTransformOrigin="-0.107,0.393" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
         </Grid>
     </Border>
 </UserControl>
