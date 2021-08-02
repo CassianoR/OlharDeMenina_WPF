@@ -9,15 +9,9 @@
              Grid.Row="2"
              Grid.RowSpan="3"
              Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
-    <Border CornerRadius="15">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFFFDFF8" Offset="0" />
-                <GradientStop Color="#FFFFD0DA" Offset="1" />
-            </LinearGradientBrush>
-        </Border.Background>
+    <Border CornerRadius="15" Background="#FFFFF6FA" >
         <Grid>
-            <Grid Name="grid1" VerticalAlignment="Center" Margin="10,63" Background="Transparent" Height="209">
+            <Grid Name="grid1" VerticalAlignment="Center" Margin="10, 0, 10, 25" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -30,8 +24,8 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novo Funcionário" FontSize="22" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="114,-56,115.5,56"></Label>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novo Funcionario" FontSize="22" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="114,-54,110,44" Height="38" />
                 <Label Grid.Row="1" HorizontalAlignment="Right" Content="Nome:" />
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Funcionarios.Nome}"
                      VerticalAlignment="Top" Margin="0,5,0,0">
@@ -65,9 +59,9 @@
                 Command="{Binding AddFuncionarioCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="203,1.5,0.5,-0.5"
+                        Margin="203,10,0,-17"
                         Click="btnCadastrar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33" Grid.ColumnSpan="2">
+                BorderThickness="0" FontSize="14" FontWeight="Medium" Grid.ColumnSpan="2">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -93,10 +87,10 @@
                 </Button>
 
                 <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="97"
-                                                    Foreground="White" />
+                                                    Foreground="PaleVioletRed" />
             </Grid>
             <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
-                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
                                             Background="white"

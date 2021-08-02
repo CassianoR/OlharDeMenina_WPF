@@ -45,7 +45,7 @@ namespace LojaOlharDeMenina_WPF.View
             //datagrid_cliente.Visibility = Visibility.Hidden;
         }
 
-        private void MainGridClientes_GotFocus(object sender, RoutedEventArgs e)
+        private void MainClientesGrid_GotFocus(object sender, RoutedEventArgs e)
         {
             stkClientesPanel.Effect = null;
             tboxClienteTitulo.Effect = null;
