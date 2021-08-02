@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Modals.ModalAdicionarClientes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View.Modals" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             Grid.Column="1"
+             Grid.Row="2"
+             Grid.RowSpan="3"
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+    <Border CornerRadius="15">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFFDFF8" Offset="0" />
+                <GradientStop Color="#FFFFD0DA" Offset="1" />
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+
+            <Grid Name="grid1" VerticalAlignment="Center" Margin="10" Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novo Cliente" FontSize="22" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="112,-44,112,44"></Label>
+
+                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Bottom" />
+                <xctk:MaskedTextBox Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
+                     VerticalAlignment="Bottom">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+                <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:" />
+                <xctk:MaskedTextBox Mask="000,000,000-00" IncludeLiteralsInValue="True" Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+                <Label Height="24" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Endereço:" />
+                <TextBox Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" />
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data de nasc.:" />
+                <xctk:MaskedTextBox Mask="00/00/0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.DataNasc,StringFormat=d}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+
+                <Button Grid.Row="6" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                Command="{Binding AddClienteCommand}"
+                Content="Cadastrar"
+                Foreground="White"
+                        Margin="0, 10, 0,0"
+                        Click="btnCadastrar_Click"
+                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                            <Setter Property="Background" Value="PaleVioletRed" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
+                                                    Foreground="White" />
+            </Grid>
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
+                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="white"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>
