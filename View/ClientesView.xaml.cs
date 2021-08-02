@@ -2,6 +2,7 @@
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Effects;
 
 namespace LojaOlharDeMenina_WPF.View
 {
@@ -22,6 +23,12 @@ namespace LojaOlharDeMenina_WPF.View
         {
             //AdicionarClientesDialog acd = new AdicionarClientesDialog();
             //acd.ShowDialog();
+
+            stkClientesPanel.Effect = new BlurEffect();
+            tboxClienteTitulo.Effect = new BlurEffect();
+            btnCadastrar.Effect = new BlurEffect();
+            btnRecarregar.Effect = new BlurEffect();
+
             if (MainGrid.Children.Contains(mac) == true)
             {
                 mac.Visibility = Visibility.Visible;
@@ -35,6 +42,14 @@ namespace LojaOlharDeMenina_WPF.View
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             //datagrid_cliente.Visibility = Visibility.Hidden;
+        }
+
+        private void MainClientesGrid_GotFocus(object sender, RoutedEventArgs e)
+        {
+            stkClientesPanel.Effect = null;
+            tboxClienteTitulo.Effect = null;
+            btnCadastrar.Effect = null;
+            btnRecarregar.Effect = null;
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
