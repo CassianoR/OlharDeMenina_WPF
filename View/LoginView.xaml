@@ -1,11 +1,13 @@
 ﻿<Window x:Class="LojaOlharDeMenina_WPF.View.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:components="clr-namespace:LojaOlharDeMenina_WPF.Components"
+        xmlns:components="clr-namespace:LojaOlharDeMenina_WPF.Components"
+        xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
         d:DataContext="{d:DesignInstance Type=viewModel:LoginViewModel}"
         mc:Ignorable="d"
         Title="Login" Height="500" Width="350"
@@ -14,7 +16,8 @@
         WindowStyle="None"
         FontFamily="Segoe UI Emoji" Icon="/Images/icon.ico"
         AllowsTransparency="True"
-        Background="Transparent">
+        Background="Transparent"
+         tz:Transitionz.Opacity="{tz:OpacityParams Duration=500, From=0, To=1, TransitionOn=Visibility}">
     <Window.DataContext>
         <viewModel:LoginViewModel />
     </Window.DataContext>

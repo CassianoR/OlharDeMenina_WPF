@@ -1,5 +1,4 @@
-﻿using LojaOlharDeMenina_WPF.View.Dialogs;
-using LojaOlharDeMenina_WPF.View.Modals;
+﻿using LojaOlharDeMenina_WPF.View.Modals;
 using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
