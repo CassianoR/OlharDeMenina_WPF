@@ -126,6 +126,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void AddProduto(object obj)
         {
+            if (lstProdutos == null)
+            {
+                LoadProdutos();
+            }
             Produtos.Codigo = produtosEntities.Clientes.Count();
             produtosEntities.Produtos.Add(Produtos);
             try
