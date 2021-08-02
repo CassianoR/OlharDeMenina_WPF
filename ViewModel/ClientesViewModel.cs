@@ -95,7 +95,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ClientesViewModel()
         {
             clientesEntities = new OlharMeninaBDEntities();
-            //LoadCliente();
+            LoadCliente();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
             UpdateClienteCommand = new Command((s) => true, UpdateCliente);

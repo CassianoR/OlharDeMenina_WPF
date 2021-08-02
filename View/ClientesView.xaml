@@ -11,7 +11,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="UserControl_Loaded">
-    <Grid Background="Transparent" x:Name="MainGrid">
+    <Grid Background="Transparent" x:Name="MainGrid" GotFocus="MainClientesGrid_GotFocus">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -38,7 +38,7 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Clientes" Foreground="White" FontSize="40" Margin="15" />
+        <TextBlock x:Name="tboxClienteTitulo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Clientes" Foreground="White" FontSize="40" Margin="15" />
 
         <Button Grid.Column="3" Grid.Row="0" x:Name="btnCadastrar" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe UI Semilight" Foreground="White"
                 Click="btnCadastrar_Click" Cursor="Hand" Focusable="False" HorizontalAlignment="Left" Margin="20, 0,0,0">
@@ -60,7 +60,7 @@
                                                 Foreground="White" />
         </Button>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="7" x:Name="stkClientesPanel">
             <!--<TextBox Name="SearchBox" />-->
             <Border CornerRadius="10" Margin="10, 10, 0, 20" Width="270" Height="55" HorizontalAlignment="Left">
                 <Border.Background>
