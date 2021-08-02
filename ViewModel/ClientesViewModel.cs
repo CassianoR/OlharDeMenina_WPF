@@ -127,6 +127,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private void AddCliente(object obj)
         {
             clientesEntities = new OlharMeninaBDEntities();
+            LoadCliente();
             Clientes.ID = clientesEntities.Clientes.Count();
             clientesEntities.Clientes.Add(Clientes);
             try
