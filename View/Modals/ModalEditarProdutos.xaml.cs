@@ -22,6 +22,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public string Categoria { get; set; }
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
+        public string UnidadeMedida { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

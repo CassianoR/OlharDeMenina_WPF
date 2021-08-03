@@ -1,15 +1,18 @@
 ﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Modals.ModalAdicionarFuncionarios"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View.Modals" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
              Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
-    <Border CornerRadius="15" Background="#FFFFF6FA" >
+    <Border CornerRadius="15" Background="#FFFFF6FA">
         <Grid>
             <Grid Name="grid1" VerticalAlignment="Center" Margin="10, 0, 10, 25" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
@@ -41,7 +44,7 @@
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label Grid.Row="2" HorizontalAlignment="Right" Content="Email:" />
-                <TextBox Text="{Binding Funcionarios.loginfuncionario}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
+                <TextBox Text="{Binding Funcionarios.LoginFuncionario}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
                          Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
@@ -49,7 +52,7 @@
                 </TextBox>
 
                 <Label Grid.Row="3" HorizontalAlignment="Right" Content="Cargo:" />
-                <TextBox Text="{Binding Funcionarios.cargo}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
+                <TextBox Text="{Binding Funcionarios.Cargo}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
                          Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
