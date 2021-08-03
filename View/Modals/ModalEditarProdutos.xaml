@@ -20,9 +20,9 @@
             <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,40" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="185*" />
-                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="19*" />
                     <ColumnDefinition Width="42*" />
-                    <ColumnDefinition Width="161*"/>
+                    <ColumnDefinition Width="161*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />

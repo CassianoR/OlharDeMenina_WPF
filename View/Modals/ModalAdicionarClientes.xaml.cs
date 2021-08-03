@@ -32,7 +32,6 @@ namespace LojaOlharDeMenina_WPF.View.Modals
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void btn_close_Click(object sender, RoutedEventArgs e)

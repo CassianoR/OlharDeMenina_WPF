@@ -4,7 +4,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
@@ -40,11 +41,11 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" />
-                <ComboBox IsEditable="True" ItemsSource="{Binding Path=lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" x:Name="cboxCategoria" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-                    <ComboBox.Background>
+                <TextBox x:Name="cboxCategoria" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </ComboBox.Background>
-                </ComboBox>
+                    </TextBox.Background>
+                </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" />
                 <TextBox x:Name="tboxDesc" Text="{Binding Produtos.Descricao}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxDesc_TextChanged">
                     <TextBox.Background>
@@ -52,13 +53,13 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
+                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxValor" Text="{Binding Produtos.Valor}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
 
-                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="False"
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
                 Command="{Binding AddProdutoCommand}"
                 Content="Cadastrar"
                 Foreground="White"
@@ -121,7 +122,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,281,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="38" Width="373" />
         </Grid>
     </Border>
 </UserControl>

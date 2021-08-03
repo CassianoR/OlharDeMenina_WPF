@@ -26,7 +26,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3">
+        <Border CornerRadius="15" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="2">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.15" />
             </Border.Effect>
@@ -79,7 +79,7 @@
             </Border>
             <Border Background="White" Grid.RowSpan="4">
 
-                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}">
+                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}" SelectedItem="{Binding FuncionarioSelecionado}">
                     <DataGrid.Resources>
 
                         <Style x:Key="editStyle" TargetType="TextBox">

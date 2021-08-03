@@ -50,6 +50,7 @@ namespace LojaOlharDeMenina_WPF.View
             mep.Marca = pvm.Produtos.Marca;
             mep.Descricao = pvm.Produtos.Descricao;
             mep.Valor = pvm.Produtos.Valor;
+            mep.UnidadeMedida = pvm.Produtos.UnidadeMedida;
             if (MainGrid.Children.Contains(mep))
             {
                 mep.Visibility = Visibility.Visible;

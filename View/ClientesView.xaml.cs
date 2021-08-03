@@ -1,6 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.View.Modals;
 using LojaOlharDeMenina_WPF.ViewModel;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Effects;
@@ -40,6 +39,7 @@ namespace LojaOlharDeMenina_WPF.View
                 MainGrid.Children.Add(mac);
             }
         }
+
         private void LimpaCampos()
         {
             if (mec.id != -1 || mec.Nome != string.Empty || mec.Endereco != string.Empty || mec.Telefone != string.Empty)
@@ -50,6 +50,7 @@ namespace LojaOlharDeMenina_WPF.View
                 mec.Telefone = string.Empty;
             }
         }
+
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             LimpaCampos();

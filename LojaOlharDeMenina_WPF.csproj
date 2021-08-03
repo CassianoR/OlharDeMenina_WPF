@@ -194,8 +194,10 @@
     <Compile Include="Components\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\BaseCommand.cs" />
     <Compile Include="Core\Command.cs" />
     <Compile Include="Core\Exceptions.cs" />
+    <Compile Include="Core\Funcionarios\EditarCommand.cs" />
     <Compile Include="Core\Hash.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />

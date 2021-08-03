@@ -9,13 +9,14 @@
 
 namespace LojaOlharDeMenina_WPF.Model
 {
+    using LojaOlharDeMenina_WPF.Core;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
-    public partial class Funcionarios
+    public partial class Funcionarios : ObservableObject, ICloneable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
@@ -23,14 +24,17 @@ namespace LojaOlharDeMenina_WPF.Model
             this.Venda = new HashSet<Venda>();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        public object Clone()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            return this.MemberwiseClone();
         }
-
-
 
         private int id;
         private string loginfuncionario;
@@ -121,5 +125,6 @@ namespace LojaOlharDeMenina_WPF.Model
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
+
     }
 }
