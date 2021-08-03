@@ -8,16 +8,11 @@
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
-             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
-    <Border CornerRadius="15">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFFFDFF8" Offset="0" />
-                <GradientStop Color="#FFFFD0DA" Offset="1" />
-            </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,40" Background="Transparent" Height="169">
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104" Height="312.65">
+    <Border CornerRadius="15" Background="#FFFFF6FA">
+        <Grid Height="308">
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,65" Background="Transparent" Height="169">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="185*" />
                     <ColumnDefinition Width="19*" />
@@ -101,18 +96,33 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
-                                                    Foreground="White" />
+                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,6,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
+                                                    Foreground="PaleVioletRed" />
             </Grid>
             <Label Grid.Row="0" Content="Editar Produto" FontSize="22" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="140,-6,141,241" />
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
-                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="141,13,140,256" />
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
-                                            Background="white"
+                                            Background="Transparent"
                                             Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,268,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="40" Width="410" />
             <TextBlock HorizontalAlignment="Left" Margin="27,247,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Top" />
         </Grid>
     </Border>

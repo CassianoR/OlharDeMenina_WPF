@@ -1,11 +1,4 @@
 ﻿using LojaOlharDeMenina_WPF.ViewModel;
-using LojaOlharDeMenina_WPF.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LojaOlharDeMenina_WPF.View.Modals;
 
 namespace LojaOlharDeMenina_WPF.Core.Funcionarios
 {
