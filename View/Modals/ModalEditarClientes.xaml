@@ -37,6 +37,7 @@
                 </TextBox>
                 <Label Grid.Row="3" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" />
                 <xctk:MaskedTextBox x:Name="mtboxTele" Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Clientes.Telefone, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>

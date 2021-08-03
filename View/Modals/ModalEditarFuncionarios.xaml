@@ -45,7 +45,7 @@
                 Command="{Binding UpdateFuncionarioCommand}"
                 Content="Editar"
                 Foreground="White"
-                        Margin="0,28,0,-33"
+                        Margin="0,38,0,-43"
                         Click="btnEditar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
