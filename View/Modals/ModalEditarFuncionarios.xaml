@@ -7,7 +7,7 @@
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
-             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104" Loaded="UserControl_Loaded">
     <Border CornerRadius="15" Background="#FFFFF6FA">
         <Grid>
             <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">
@@ -24,24 +24,24 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Center" Grid.Row="1"/>
-                <TextBox x:Name="tboxNome" Grid.Row="1" Grid.Column="1" Text="{Binding Funcionarios.Nome}" VerticalAlignment="Center">
+                <TextBox x:Name="tboxNome" Grid.Row="1" Grid.Column="1" Text="{Binding Funcionarios.Nome,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="2" HorizontalAlignment="Right" Content="Endereço:" VerticalAlignment="Center"/>
-                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco,UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" />
-                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                <xctk:MaskedTextBox x:Name="mtboxTele" Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone,UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
-                <Button Grid.Row="4" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight" IsEnabled="False"
+                <Button Grid.Row="4" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
                 Command="{Binding UpdateFuncionarioCommand}"
                 Content="Editar"
                 Foreground="White"
