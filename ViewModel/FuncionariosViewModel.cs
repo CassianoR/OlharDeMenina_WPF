@@ -1,4 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
+using LojaOlharDeMenina_WPF.Core.Funcionarios;
 using LojaOlharDeMenina_WPF.Model;
 using Microsoft.AspNet.Identity;
 using System.Collections.ObjectModel;
@@ -99,20 +100,36 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private Model.Funcionarios _funcionarioSelecionado;
+
+        public Model.Funcionarios FuncionarioSelecionado
+        {
+            get { return _funcionarioSelecionado; }
+            set
+            {
+                _funcionarioSelecionado = value;
+                Editar.RaiseCanExecuteChanged();
+                OnPropertyChanged(nameof(FuncionarioSelecionado));
+            }
+        }
+
         #endregion Properties
 
         private readonly IPasswordHasher _passwordHasher;
+        public System.Collections.ObjectModel.ObservableCollection<Model.Funcionarios> Funcionarios_ { get; private set; }
 
         public FuncionariosViewModel()
         {
+            Funcionarios_ = new System.Collections.ObjectModel.ObservableCollection<Model.Funcionarios>();
             _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
             //LoadFuncionario();
             CurrentEmployee = new FuncionariosDTO();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
-            UpdateFuncionarioCommand = new Command((s) => true, UpdateFuncionario);
+            //UpdateFuncionarioCommand = new Command((s) => true, UpdateFuncionario);
             AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
+            FuncionarioSelecionado = Funcionarios_.FirstOrDefault();
         }
 
         private Hash _hash;
@@ -144,9 +161,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             _hash = new Hash();
             LoadFuncionario();
             Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
-            Funcionarios.Cargo = "Funcionário";
+            //Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = _hash.Encrypt("1234");
-            Funcionarios.LoginFuncionario = "teste4@gmail.com";
+            //Funcionarios.LoginFuncionario = "teste4@gmail.com";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             try
             {
@@ -163,11 +180,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             Funcionarios = new Funcionarios();
         }
 
-        private void UpdateFuncionario(object obj) //Update funcionario
+        private Funcionarios Get(int id)
         {
+            return funcionariosEntities.Funcionarios.Find(id);
+        }
+
+        private void UpdateFuncionario(int id) //Update funcionario
+        {
+            var model = Get(id);
+            Funcionarios.Nome = model.Nome;
+            Funcionarios.Endereco = model.Endereco;
+            Funcionarios.Telefone = model.Telefone;
             funcionariosEntities = new OlharMeninaBDEntities();
-            SelectedFuncionario = obj as Funcionarios;
-            funcionariosEntities.Funcionarios.Attach(Funcionarios);
+            //SelectedFuncionario = obj as Funcionarios;
+            //funcionariosEntities.Funcionarios.Attach(Funcionarios);
             try
             {
                 funcionariosEntities.SaveChanges();
@@ -222,5 +248,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand UpdateCommand { get; set; }
         public ICommand UpdateFuncionarioCommand { get; set; }
         public ICommand AddFuncionarioCommand { get; set; }
+
+        private ICommand _editCommand;
+
+        public ICommand EditCommand
+        {
+            get
+            {
+                if (_editCommand == null)
+                    _editCommand = new RelayCommand(param => UpdateFuncionario((int)param), null);
+
+                return _editCommand;
+            }
+        }
+
+        public EditarCommand Editar { get; private set; } = new EditarCommand();
     }
 }

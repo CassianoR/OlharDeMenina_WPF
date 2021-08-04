@@ -1,14 +1,15 @@
 ﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Funcionarios"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded"
-             xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
 
     <Grid Background="Transparent" x:Name="MainGrid" GotFocus="MainGridFuncionarios_GotFocus">
         <Grid.ColumnDefinitions>
@@ -26,7 +27,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Border CornerRadius="15" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="3">
+        <Border CornerRadius="15" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="2">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.15" />
             </Border.Effect>
@@ -79,7 +80,7 @@
             </Border>
             <Border Background="White" Grid.RowSpan="4">
 
-                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}">
+                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_funcionario" ItemsSource="{Binding lstFuncionarios}" SelectedItem="{Binding FuncionarioSelecionado}">
                     <DataGrid.Resources>
 
                         <Style x:Key="editStyle" TargetType="TextBox">
@@ -89,16 +90,15 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding Cargo,UpdateSourceTrigger=PropertyChanged}" Header="Cargo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Endereco,UpdateSourceTrigger=PropertyChanged}" Header="Endereço" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Grid.Column="3" Grid.Row="1" x:Name="btnEditar" FontSize="22" FontFamily="Segoe UI Semilight" Foreground="Black"
-                                Command="{Binding DataContext.UpdateFuncionarioCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}" Style="{StaticResource RoundCorner}">
+                                    Click="btnEditar_Click" Cursor="Hand" CommandParameter="{Binding}" Style="{StaticResource RoundCorner}">
                                         <iconPacks:PackIconMaterial Kind="AccountEdit"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"

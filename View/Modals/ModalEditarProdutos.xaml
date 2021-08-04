@@ -1,28 +1,22 @@
 ﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Modals.ModalEditarProdutos"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:LojaOlharDeMenina_WPF.View.Modals" xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
-             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
-    <Border CornerRadius="15">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFFFDFF8" Offset="0" />
-                <GradientStop Color="#FFFFD0DA" Offset="1" />
-            </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,40" Background="Transparent" Height="169">
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104" Height="320.666">
+    <Border CornerRadius="15" Background="#FFFFF6FA">
+        <Grid Height="320">
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="185*" />
-                    <ColumnDefinition Width="19*"/>
-                    <ColumnDefinition Width="42*" />
-                    <ColumnDefinition Width="161*"/>
+                    <ColumnDefinition Width="28*" />
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="162*" />
+                    <ColumnDefinition Width="205*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -34,50 +28,50 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="{Binding Produtos.Codigo}" x:Name="ProdCodigo" Grid.ColumnSpan="2"></TextBlock>
-                <Label HorizontalAlignment="Right" Content="Nome:" Margin="0,-10,0,10" Grid.ColumnSpan="2" />
-                <TextBox Grid.Row="0" Grid.Column="2" x:Name="ProdNome" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
-                     VerticalAlignment="Center" Margin="0,-4,0,15" Grid.ColumnSpan="2">
+                <Label HorizontalAlignment="Right" Content="Nome:" Margin="0,-4,5,4" Grid.Column="2" />
+                <TextBox Grid.Row="0" Grid.Column="3" x:Name="ProdNome" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalAlignment="Center" Margin="0,-4,-1,15">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label HorizontalAlignment="Right" Content="Marca:" Margin="0,19,0,10" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-                <TextBox x:Name="ProdMarca" Text="{Binding Produtos.Marca, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" VerticalAlignment="Center" Margin="0,24,0,15" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                <Label HorizontalAlignment="Right" Content="Marca:" Margin="0,19,5,10" Grid.RowSpan="2" Grid.Column="2" />
+                <TextBox x:Name="ProdMarca" Text="{Binding Produtos.Marca, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,24,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,18,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}" Margin="0,21,0,13" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
+                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
                 </ComboBox>
-                <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" Margin="0,18,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-                <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="0,23,0,15" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" Margin="0,20,5,0" Grid.RowSpan="2" Grid.Column="2" />
+                <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" Margin="0,18,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2" />
-                <TextBox x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:00.00\}}" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Margin="0,23,0,15" Grid.ColumnSpan="2" Grid.RowSpan="2">
+                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" Margin="0,17,5,0" Grid.RowSpan="2" Grid.Column="2" />
+                <TextBox x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:00.00\}}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label HorizontalAlignment="Right" Content="Unidade de Medida:" Margin="0,15,0,13" Grid.RowSpan="2" Grid.Row="4" Grid.ColumnSpan="2" />
-                <TextBox x:Name="UnidMed" Text="{Binding Produtos.UnidadeMedida, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" VerticalAlignment="Center" Margin="0,21,0,17" Grid.ColumnSpan="2" Grid.Row="4" Grid.RowSpan="2">
+                <Label HorizontalAlignment="Right" Content="Unidade de Medida:" Margin="0,15,10,13" Grid.RowSpan="2" Grid.Row="4" Grid.Column="2" />
+                <TextBox x:Name="UnidMed" Text="{Binding Produtos.UnidadeMedida, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,21,-1,17" Grid.Row="4" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Button Grid.Row="5" Grid.Column="2" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
+                <Button Grid.Row="5" Grid.Column="3" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
                 Command="{Binding UpdateProdutoCommand}" CommandParameter="{Binding}"
                 Content="Editar"
                 Foreground="White"
-                        Margin="0,20,0,-25"
+                        Margin="0,20,-1,-25"
                         Click="btnEditar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33" Grid.ColumnSpan="2">
+                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -101,18 +95,34 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
-                                                    Foreground="White" />
+                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
+                                                    Foreground="PaleVioletRed" Grid.ColumnSpan="3" />
             </Grid>
             <Label Grid.Row="0" Content="Editar Produto" FontSize="22" HorizontalAlignment="Center"
                        VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="140,-6,141,241" />
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
-                <iconPacks:PackIconMaterial Kind="CloseBoxOutline"
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
-                                            Background="white"
+                                            Background="Transparent"
                                             Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,272,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="47" Width="410" />
+
             <TextBlock HorizontalAlignment="Left" Margin="27,247,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Top" />
         </Grid>
     </Border>

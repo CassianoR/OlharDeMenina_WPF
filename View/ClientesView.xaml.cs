@@ -18,6 +18,7 @@ namespace LojaOlharDeMenina_WPF.View
         }
 
         private ModalAdicionarClientes mac = new ModalAdicionarClientes();
+        private ModalEditarClientes mec = new ModalEditarClientes();
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
@@ -39,9 +40,43 @@ namespace LojaOlharDeMenina_WPF.View
             }
         }
 
+        private void LimpaCampos()
+        {
+            if (mec.id != -1 || mec.Nome != string.Empty || mec.Endereco != string.Empty || mec.Telefone != string.Empty)
+            {
+                mec.id = -1;
+                mec.Nome = string.Empty;
+                mec.Endereco = string.Empty;
+                mec.Telefone = string.Empty;
+            }
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            LimpaCampos();
+            dynamic row = datagrid_cliente.SelectedItem;
+            mec.id = row.ID;
+            mec.Nome = row.Nome;
+            mec.Telefone = row.Telefone;
+            mec.Endereco = row.Endereco;
+            stkClientesPanel.Effect = new BlurEffect();
+            tboxClienteTitulo.Effect = new BlurEffect();
+            btnCadastrar.Effect = new BlurEffect();
+            btnRecarregar.Effect = new BlurEffect();
+            if (MainGrid.Children.Contains(mec) == true)
+            {
+                mec.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MainGrid.Children.Add(mec);
+            }
+            (this.MainGrid).Children.Remove(this);
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //datagrid_cliente.Visibility = Visibility.Hidden;
+            //datagrid_funcionario.Visibility = Visibility.Hidden;
         }
 
         private void MainClientesGrid_GotFocus(object sender, RoutedEventArgs e)

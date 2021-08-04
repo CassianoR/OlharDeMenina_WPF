@@ -95,7 +95,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ClientesViewModel()
         {
             clientesEntities = new OlharMeninaBDEntities();
-            LoadCliente();
+            //LoadCliente();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
             UpdateClienteCommand = new Command((s) => true, UpdateCliente);
@@ -146,11 +146,14 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void UpdateCliente(object obj) //Update cliente
         {
-            SelectedCliente = obj as Clientes;
+            clientesEntities = new OlharMeninaBDEntities();
+            LoadCliente();
+            Clientes.ID = clientesEntities.Clientes.Count();
             clientesEntities.Clientes.Attach(Clientes);
             try
             {
                 clientesEntities.SaveChanges();
+                lstClientes.Add(Clientes);
             }
             catch (DbEntityValidationException ex)
             {
