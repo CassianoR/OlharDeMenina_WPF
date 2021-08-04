@@ -1,11 +1,9 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
-using LojaOlharDeMenina_WPF.Core.Funcionarios;
 using LojaOlharDeMenina_WPF.Model;
 using Microsoft.AspNet.Identity;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
@@ -54,6 +52,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private OlharMeninaBDEntities funcionariosEntities;
 
+        /// <summary>
+        /// TO-DO: Colocar a propriedade Message e as demais que se remetem na BaseViewModel
+        /// </summary>
         private string message;
 
         public string Message
@@ -91,37 +92,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
-
-        public ObservableCollection<string> Results
-        {
-            get
-            {
-                return _results;
-            }
-        }
-
-        private Model.Funcionarios _funcionarioSelecionado;
-
-        public Model.Funcionarios FuncionarioSelecionado
-        {
-            get { return _funcionarioSelecionado; }
-            set
-            {
-                _funcionarioSelecionado = value;
-                Editar.RaiseCanExecuteChanged();
-                OnPropertyChanged(nameof(FuncionarioSelecionado));
-            }
-        }
-
         #endregion Properties
 
         private readonly IPasswordHasher _passwordHasher;
-        public System.Collections.ObjectModel.ObservableCollection<Model.Funcionarios> Funcionarios_ { get; private set; }
 
         public FuncionariosViewModel()
         {
-            Funcionarios_ = new System.Collections.ObjectModel.ObservableCollection<Model.Funcionarios>();
             _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
             //LoadFuncionario();
@@ -130,7 +106,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             UpdateCommand = new Command((s) => true, Update);
             //UpdateFuncionarioCommand = new Command((s) => true, UpdateFuncionario);
             AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
-            FuncionarioSelecionado = Funcionarios_.FirstOrDefault();
         }
 
         private Hash _hash;
@@ -148,11 +123,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstFuncionarios.Clear();
 
             lstFuncionarios = new ObservableCollection<Funcionarios>();
-            _results.Clear();
             var ObjQuery = funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToList();
             foreach (var funcionario in ObjQuery)
             {
-                _results.Add(funcionario.Nome);
                 lstFuncionarios.Add(funcionario);
             }
         }
@@ -173,21 +146,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 funcionariosEntities.Funcionarios.Add(Funcionarios);
                 try
                 {
-                     funcionariosEntities.SaveChanges();
-                     lstFuncionarios.Add(Funcionarios);
+                    funcionariosEntities.SaveChanges();
+                    lstFuncionarios.Add(Funcionarios);
                 }
                 catch (DbEntityValidationException ex)
                 {
-                        string exceptionMessage = exc.concatenaExceptions(ex);
-                        Message = exceptionMessage;
-                        funcionariosEntities.Dispose();
-                        funcionariosEntities = new OlharMeninaBDEntities();
+                    string exceptionMessage = exc.concatenaExceptions(ex);
+                    Message = exceptionMessage;
+                    funcionariosEntities.Dispose();
+                    funcionariosEntities = new OlharMeninaBDEntities();
                 }
                 Funcionarios = new Funcionarios();
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("CPF Inválido");
+                Message = "CPF Inválido";
             }
         }
 
@@ -255,6 +228,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #endregion Methods
 
+        #region Commands
+
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
         public ICommand UpdateFuncionarioCommand { get; set; }
@@ -273,6 +248,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        public EditarCommand Editar { get; private set; } = new EditarCommand();
+        #endregion Commands
     }
 }

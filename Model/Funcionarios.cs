@@ -17,8 +17,6 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.Runtime.CompilerServices;
 
     public partial class Funcionarios : ObservableObject, ICloneable
-
-    public partial class Funcionarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
@@ -126,7 +124,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
         
-        public int Atividade
+        public string Atividade
         {
             get => atividade; set
             {
