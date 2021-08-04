@@ -72,6 +72,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     string exceptionMessage = exc.concatenaExceptions(ex);
                     Message = exceptionMessage;
                     clientesEntities.Dispose();
+                    clientesEntities = new OlharMeninaBDEntities();
                 }
             }
             else

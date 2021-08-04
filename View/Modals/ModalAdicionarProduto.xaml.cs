@@ -13,7 +13,7 @@ namespace LojaOlharDeMenina_WPF.View
         public ModalAdicionarProduto()
         {
             InitializeComponent();
-            DataContext = new ProdutosViewModel();
+            DataContext = new AdicionarProdutosViewModel();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
