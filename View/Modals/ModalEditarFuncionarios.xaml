@@ -23,43 +23,51 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,17,0,16" Grid.RowSpan="2"/>
-                <TextBox x:Name="tboxNome" Grid.Column="1" Text="{Binding Funcionarios.Nome}" VerticalAlignment="Center" Margin="0,24,0,16" Grid.RowSpan="2">
+                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,3,1,5"/>
+                <TextBox x:Name="tboxNome" Text="{Binding Funcionarios.Nome}" VerticalAlignment="Center" Margin="0,10,0,5" Grid.Column="1">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label HorizontalAlignment="Right" Content="Email:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,18,0,15" Grid.RowSpan="2" Grid.Row="1"/>
-                <TextBox x:Name="tboxLogin" Grid.Column="1" Text="{Binding Funcionarios.LoginFuncionario}" VerticalAlignment="Center" Margin="0,23,0,15" Grid.RowSpan="2" Grid.Row="1">
+                <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:" Margin="0,0,1,0" />
+                <xctk:MaskedTextBox Mask="000,000,000-00" Text="{Binding Funcionarios.CPF}" Grid.Row="1" VerticalAlignment="Top"
+                         Margin="0,5,0,0" Grid.Column="1">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+
+                <Label HorizontalAlignment="Right" Content="Email:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,0,0,5" Grid.Row="2"/>
+                <TextBox x:Name="tboxLogin" Grid.Column="1" Text="{Binding Funcionarios.LoginFuncionario}" VerticalAlignment="Center" Margin="0,5" Grid.Row="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label HorizontalAlignment="Right" Content="Cargo:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,17,1,16" Grid.RowSpan="2" Grid.Row="3"/>
+                <Label HorizontalAlignment="Right" Content="Cargo:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,0,2,5" Grid.Row="4"/>
                 <!--combobox necessária-->
-                <TextBox x:Name="tboxCargo" Text="{Binding Funcionarios.Cargo}" VerticalAlignment="Center" Margin="0,23,0,17" Grid.RowSpan="2" Grid.Row="3" Grid.Column="1">
+                <TextBox x:Name="tboxCargo" Text="{Binding Funcionarios.Cargo}" VerticalAlignment="Center" Margin="0,6,0,5" Grid.Row="4" Grid.Column="1">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label HorizontalAlignment="Right" Content="Senha:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,18,1,15" Grid.RowSpan="2" Grid.Row="2"/>
-                <TextBox x:Name="tboxSenha" Grid.Column="1" Text="{Binding Funcionarios.Senha}" VerticalAlignment="Center" Margin="0,23,0,16" Grid.RowSpan="2" Grid.Row="2">
+                <Label HorizontalAlignment="Right" Content="Senha:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,0,1,5" Grid.Row="3"/>
+                <TextBox x:Name="tboxSenha" Grid.Column="1" Text="{Binding Funcionarios.Senha}" VerticalAlignment="Center" Margin="0,5,0,6" Grid.Row="3">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label Grid.Row="4" HorizontalAlignment="Right" Content="Endereço:" VerticalAlignment="Center" RenderTransformOrigin="0.457,3.013" Margin="0,12,0,18" Grid.RowSpan="2"/>
-                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="0,16,0,22" Grid.RowSpan="2">
+                <Label Grid.Row="4" HorizontalAlignment="Right" Content="Endereço:" VerticalAlignment="Center" RenderTransformOrigin="0.457,3.013" Margin="0,27,0,3" Grid.RowSpan="2"/>
+                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,3,0,7">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Grid.Row="5" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" Margin="0,6,0,-4" />
-                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,10,0,0">
+                <Label Grid.Row="5" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" Margin="0,25,0,-23" />
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,29,0,-19">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
@@ -68,7 +76,7 @@
                 Command="{Binding UpdateFuncionarioCommand}"
                 Content="Editar"
                 Foreground="White"
-                        Margin="0,38,0,-43"
+                        Margin="0,53,0,-58"
                         Click="btnEditar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
