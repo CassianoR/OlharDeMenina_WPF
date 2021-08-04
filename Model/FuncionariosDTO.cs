@@ -109,6 +109,5 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Atividade));
             }
         }
-
     }
 }

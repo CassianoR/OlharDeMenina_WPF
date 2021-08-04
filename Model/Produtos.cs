@@ -19,6 +19,8 @@ namespace LojaOlharDeMenina_WPF.Model
     public partial class Produtos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Produtos()
+        {
             this.Estoque = new HashSet<Estoque>();
             this.Venda = new HashSet<Venda>();
         }

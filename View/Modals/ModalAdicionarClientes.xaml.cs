@@ -13,7 +13,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public ModalAdicionarClientes()
         {
             InitializeComponent();
-            DataContext = new ClientesViewModel();
+            DataContext = new AdicionarClientesViewModel();
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 

@@ -4,12 +4,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AdicionarClientesViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
-             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+             Grid.ColumnSpan="2" VerticalAlignment="Center"
+             HorizontalAlignment="Center"
+             HorizontalContentAlignment="Center"
+             VerticalContentAlignment="Center"
+             BorderBrush="#FF2B0104">
     <Border CornerRadius="15" Background="#FFFFF6FA">
         <!--<Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -120,7 +124,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,252,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="67" Width="356" />
         </Grid>
     </Border>
 </UserControl>
