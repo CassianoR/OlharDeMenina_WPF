@@ -3,6 +3,7 @@ using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
@@ -128,20 +129,29 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             clientesEntities = new OlharMeninaBDEntities();
             LoadCliente();
-            Clientes.ID = clientesEntities.Clientes.Count();
-            clientesEntities.Clientes.Add(Clientes);
-            try
+            ValidaCPF.IsCpf(Clientes.CPF);
+            string CPF = Clientes.CPF;
+            if (ValidaCPF.IsCpf(CPF))
             {
-                clientesEntities.SaveChanges();
-                lstClientes.Add(Clientes);
+                Clientes.ID = clientesEntities.Clientes.Count();
+                clientesEntities.Clientes.Add(Clientes);
+                try
+                {
+                    clientesEntities.SaveChanges();
+                    lstClientes.Add(Clientes);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    string exceptionMessage = exc.concatenaExceptions(ex);
+                    Message = exceptionMessage;
+                    clientesEntities.Dispose();
+                }
+                Clientes = new Clientes();
             }
-            catch (DbEntityValidationException ex)
+            else
             {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                clientesEntities.Dispose();
+                MessageBoxResult result = MessageBox.Show("CPF Inválido");
             }
-            Clientes = new Clientes();
         }
 
         private void UpdateCliente(object obj) //Update cliente

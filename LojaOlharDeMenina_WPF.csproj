@@ -201,6 +201,7 @@
     <Compile Include="Core\Hash.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="Core\RelayCommand.cs" />
+    <Compile Include="Core\ValidaCPF.cs" />
     <Compile Include="Core\WindowService.cs" />
     <Compile Include="Model\Categoria.cs">
       <DependentUpon>Model1.tt</DependentUpon>
