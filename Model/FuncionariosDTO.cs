@@ -21,6 +21,7 @@ namespace LojaOlharDeMenina_WPF.Model
         private string senha;
         private string endereco;
         private string telefone;
+        private string atvidade;
 
         public int ID
         {
@@ -99,5 +100,15 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Telefone));
             }
         }
+
+        public string Atividade
+        {
+            get => atvidade; set
+            {
+                atvidade = value;
+                OnPropertyChanged(nameof(Atividade));
+            }
+        }
+
     }
 }

@@ -164,6 +164,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             //Funcionarios.Cargo = "Funcionário";
             Funcionarios.Senha = _hash.Encrypt("1234");
             //Funcionarios.LoginFuncionario = "teste4@gmail.com";
+            Funcionarios.Atividade = "Ativo";
             funcionariosEntities.Funcionarios.Add(Funcionarios);
             try
             {

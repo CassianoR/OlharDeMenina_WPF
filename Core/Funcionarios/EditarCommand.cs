@@ -13,12 +13,12 @@ namespace LojaOlharDeMenina_WPF.Core.Funcionarios
 
         public override void Execute(object parameter)
         {
-            var viewModel = (FuncionariosViewModel)parameter;
-            var cloneFuncionario = (Model.Funcionarios)viewModel.FuncionarioSelecionado.Clone();
+            //var viewModel = (FuncionariosViewModel)parameter;
+            //var cloneFuncionario = (Model.Funcionarios)viewModel.FuncionarioSelecionado.Clone();
 
-            viewModel.FuncionarioSelecionado.Nome = cloneFuncionario.Nome;
-            viewModel.FuncionarioSelecionado.Endereco = cloneFuncionario.Endereco;
-            viewModel.FuncionarioSelecionado.Telefone = cloneFuncionario.Telefone;
+            //viewModel.FuncionarioSelecionado.Nome = cloneFuncionario.Nome;
+            //viewModel.FuncionarioSelecionado.Endereco = cloneFuncionario.Endereco;
+            //viewModel.FuncionarioSelecionado.Telefone = cloneFuncionario.Telefone;
         }
     }
 }
