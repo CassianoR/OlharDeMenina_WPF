@@ -15,11 +15,10 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
+
     public partial class Produtos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Produtos()
-        {
             this.Estoque = new HashSet<Estoque>();
             this.Venda = new HashSet<Venda>();
         }
@@ -59,7 +58,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        [Required(ErrorMessage = "O campo Nome é obrigatório.")]
+        [Required(ErrorMessage = "O campo Nome Ã© obrigatÃ³rio.")]
         public string NomeProduto
         {
             get => nomeproduto;
@@ -70,7 +69,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        [Required(ErrorMessage = "O campo Unidade de medida é obrigatório.")]
+        [Required(ErrorMessage = "O campo Unidade de medida Ã© obrigatÃ³rio.")]
         public string UnidadeMedida
         {
             get => unidademedida;
@@ -113,7 +112,7 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Valor));
             }
         }
-
+    
         public virtual Categoria Categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque> Estoque { get; set; }

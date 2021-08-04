@@ -49,6 +49,7 @@
           <Property Name="Senha" Type="nchar" MaxLength="64" />
           <Property Name="Endereco" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Telefone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Atividade" Type="varchar" MaxLength="20" Nullable="false"/>
         </EntityType>
         <EntityType Name="Produtos">
           <Key>
@@ -215,6 +216,7 @@
           <Property Name="Senha" Type="String" MaxLength="68" FixedLength="true" Unicode="true" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Atividade" Type="String" MaxLength="20" Nullable="false" FixedLength="false" Unicode="false"/>
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda" FromRole="Funcionarios" ToRole="Venda" />
         </EntityType>
         <EntityType Name="Produtos">
@@ -388,6 +390,7 @@
                 <ScalarProperty Name="Senha" ColumnName="Senha" />
                 <ScalarProperty Name="Endereco" ColumnName="Endereco" />
                 <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Atividade" ColumnName="Atividade"/>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

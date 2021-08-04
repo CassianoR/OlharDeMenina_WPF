@@ -6,8 +6,8 @@ namespace LojaOlharDeMenina_WPF.Core.Funcionarios
     {
         public override bool CanExecute(object parameter)
         {
-            //var viewModel = parameter as FuncionariosViewModel;
-            //return viewModel != null && viewModel.FuncionarioSelecionado != null;
+            var viewModel = parameter as FuncionariosViewModel;
+            return viewModel != null && viewModel.FuncionarioSelecionado != null;
             return true;
         }
 
