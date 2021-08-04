@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
@@ -160,24 +161,33 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             _hash = new Hash();
             LoadFuncionario();
-            Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
-            //Funcionarios.Cargo = "Funcionário";
-            Funcionarios.Senha = _hash.Encrypt("1234");
-            //Funcionarios.LoginFuncionario = "teste4@gmail.com";
-            funcionariosEntities.Funcionarios.Add(Funcionarios);
-            try
+            ValidaCPF.IsCpf(Funcionarios.CPF);
+            string CPF = Funcionarios.CPF;
+            if (ValidaCPF.IsCpf(CPF))
             {
-                funcionariosEntities.SaveChanges();
-                lstFuncionarios.Add(Funcionarios);
+                Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
+                //Funcionarios.Cargo = "Funcionário";
+                Funcionarios.Senha = _hash.Encrypt("1234");
+                //Funcionarios.LoginFuncionario = "teste4@gmail.com";
+                funcionariosEntities.Funcionarios.Add(Funcionarios);
+                try
+                {
+                     funcionariosEntities.SaveChanges();
+                     lstFuncionarios.Add(Funcionarios);
+                }
+                catch (DbEntityValidationException ex)
+                {
+                        string exceptionMessage = exc.concatenaExceptions(ex);
+                        Message = exceptionMessage;
+                        funcionariosEntities.Dispose();
+                        funcionariosEntities = new OlharMeninaBDEntities();
+                }
+                Funcionarios = new Funcionarios();
             }
-            catch (DbEntityValidationException ex)
+            else
             {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                funcionariosEntities.Dispose();
-                funcionariosEntities = new OlharMeninaBDEntities();
+                MessageBoxResult result = MessageBox.Show("CPF Inválido");
             }
-            Funcionarios = new Funcionarios();
         }
 
         private Funcionarios Get(int id)
