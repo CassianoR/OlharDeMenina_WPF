@@ -17,7 +17,7 @@
             </LinearGradientBrush>
         </Border.Background>-->
         <Grid>
-            <Grid Name="grid1" VerticalAlignment="Center" Margin="10,74,10,76" Background="Transparent" Height="169">
+            <Grid Name="grid1" VerticalAlignment="Center" Margin="10, 0, 10, 25" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -94,7 +94,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,13,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
+                <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="0,-16,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="97"
                                                     Foreground="PaleVioletRed" />
             </Grid>
 
@@ -119,7 +119,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="10,266,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="53" Width="356" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="96" Width="190" />
         </Grid>
     </Border>
 </UserControl>

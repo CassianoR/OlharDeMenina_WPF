@@ -11,14 +11,10 @@
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
-             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104" Height="328.988">
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
     <Border CornerRadius="15" Background="#FFFFF6FA">
-        <Grid Height="326">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="293*" />
-                <RowDefinition Height="33*" />
-            </Grid.RowDefinitions>
-            <Grid Name="grid1" VerticalAlignment="Center" Margin="10,66,10,47" Background="Transparent" Height="180">
+        <Grid>
+            <Grid Name="grid1" VerticalAlignment="Center" Margin="10, 0, 10, 25" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -31,6 +27,8 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novo Funcionário" FontSize="22" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="114,-56,115.5,56"></Label>
                 <Label Grid.Row="0" HorizontalAlignment="Right" Content="Nome:" />
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Funcionarios.Nome}"
                      VerticalAlignment="Top" Margin="0,5,0,0">
@@ -111,31 +109,14 @@
                 <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="97"
                                                     Foreground="PaleVioletRed" />
             </Grid>
-            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="0,5,10,0">
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent">
                 <iconPacks:PackIconMaterial Kind="CloseCircle"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"
-                                            Background="Transparent"
-                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" RenderTransformOrigin="-0.107,0.393" />
-                <Button.Style>
-
-                    <Style TargetType="Button">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="Cursor" Value="Hand" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FFFF849C" />
-                                <Setter Property="Cursor" Value="Hand" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                                            Background="white"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
             </Button>
-
-            <TextBlock HorizontalAlignment="Left" Margin="10,284,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Top" Width="388" Height="32" Grid.RowSpan="2" />
-            <Label Grid.Row="0" Content="Novo Funcionário" FontSize="22" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="113,23,117,232" Height="38" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,234,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Bottom" Width="199" Height="91" />
         </Grid>
     </Border>
 </UserControl>

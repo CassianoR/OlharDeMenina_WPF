@@ -89,7 +89,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,6,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
+                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="10,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
                                                     Foreground="PaleVioletRed" />
                 <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Unidade de Medida:" />
                 <TextBox x:Name="tboxUnidadeMed" Text="{Binding Produtos.UnidadeMedida}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxUnidadeMed_TextChanged" Margin="0,5">
