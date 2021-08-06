@@ -13,7 +13,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public ModalEditarClientes()
         {
             InitializeComponent();
-            DataContext = new ClientesViewModel();
+            DataContext = new EditarClientesViewModel(id);
         }
 
         public int id { get; set; }
@@ -44,6 +44,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            DataContext = new EditarClientesViewModel(id);
             LimparCampos();
             tboxNome.Text = Nome;
             tboxEnde.Text = Endereco;
