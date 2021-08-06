@@ -1,4 +1,6 @@
-﻿namespace LojaOlharDeMenina_WPF.Core
+﻿using System.Linq;
+
+namespace LojaOlharDeMenina_WPF.Core
 {
     public static class ValidaCPF
     {
@@ -17,6 +19,11 @@
 
             cpf = cpf.Trim();
             cpf = cpf.Replace(".", "").Replace("-", "");
+
+            if (cpf.Distinct().Count() == 1)
+            {
+                return false;
+            }
 
             if (cpf.Length != 11)
             {
