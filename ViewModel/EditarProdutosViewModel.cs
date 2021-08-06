@@ -1,6 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
-using System;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -74,10 +73,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             try
             {
                 var uRow = produtosEntities.Produtos.Where(w => w.Codigo == _codigo).FirstOrDefault();
-                Produtos.NomeProduto = uRow.NomeProduto;
-                Produtos.Marca = uRow.Marca;
-                Produtos.Descricao = uRow.Descricao;
-                Produtos.Valor = uRow.Valor;
+                uRow.NomeProduto = Produtos.NomeProduto;
+                uRow.Marca = Produtos.Marca;
+                uRow.Descricao = Produtos.Descricao;
+                uRow.Valor = Produtos.Valor;
                 produtosEntities.SaveChanges();
             }
             catch (DbEntityValidationException ex)

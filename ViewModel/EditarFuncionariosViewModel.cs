@@ -73,9 +73,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             try
             {
                 var uRow = funcionariosEntities.Funcionarios.Where(w => w.ID == _codigo).FirstOrDefault();
-                Funcionarios.Nome = uRow.Nome;
-                Funcionarios.Telefone = uRow.Telefone;
-                Funcionarios.Endereco = uRow.Endereco;
+                uRow.Nome = Funcionarios.Nome;
+                uRow.Telefone = Funcionarios.Telefone;
+                uRow.Endereco = Funcionarios.Endereco;
                 funcionariosEntities.SaveChanges();
             }
             catch (DbEntityValidationException ex)
