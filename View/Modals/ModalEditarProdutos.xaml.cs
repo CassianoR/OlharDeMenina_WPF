@@ -13,7 +13,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public ModalEditarProdutos()
         {
             InitializeComponent();
-            DataContext = new ProdutosViewModel();
+            DataContext = new EditarProdutosViewModel(Codigo);
         }
 
         public int Codigo { get; set; }
@@ -29,9 +29,10 @@ namespace LojaOlharDeMenina_WPF.View.Modals
             ProdCodigo.Text = Codigo.ToString();
             ProdNome.Text = NomeProduto;
             ProdMarca.Text = Marca;
-            ProdCategoria.SelectedItem = Categoria;
+            ProdCategoria.Text = Categoria;
             ProdDescricao.Text = Descricao;
             ProdValor.Text = Valor.ToString();
+            DataContext = new EditarProdutosViewModel(Codigo);
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)

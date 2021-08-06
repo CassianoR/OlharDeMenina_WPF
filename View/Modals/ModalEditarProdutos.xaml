@@ -3,8 +3,9 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" d:DataContext="{d:DesignInstance Type=viewmodel:EditarProdutosViewModel}"
              mc:Ignorable="d"
+             Loaded="Window_Loaded"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
@@ -27,7 +28,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="{Binding Produtos.Codigo}" x:Name="ProdCodigo" Grid.ColumnSpan="2"></TextBlock>
+                <TextBlock Text="{Binding Produtos.Codigo, UpdateSourceTrigger=PropertyChanged}" x:Name="ProdCodigo" Grid.ColumnSpan="2"></TextBlock>
                 <Label HorizontalAlignment="Right" Content="Nome:" Margin="0,-4,5,4" Grid.Column="2" />
                 <TextBox Grid.Row="0" Grid.Column="3" x:Name="ProdNome" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Center" Margin="0,-4,-1,15">
@@ -42,11 +43,11 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" DisplayMemberPath="Categoria.NomeCategoria" Text="{Binding Produtos.Categoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
-                    <ComboBox.Background>
+                <TextBox x:Name="ProdCategoria" Text="{Binding Produtos.FK_NomeCategoria, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="0,21,-1,13" Grid.RowSpan="2">
+                    <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </ComboBox.Background>
-                </ComboBox>
+                    </TextBox.Background>
+                </TextBox>
                 <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" Margin="0,20,5,0" Grid.RowSpan="2" Grid.Column="2" />
                 <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
@@ -54,11 +55,11 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" Margin="0,17,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <TextBox x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged,StringFormat=\{0:00.00\}}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </TextBox>
+                </xctk:MaskedTextBox>
                 <Label HorizontalAlignment="Right" Content="Unidade de Medida:" Margin="0,15,10,13" Grid.RowSpan="2" Grid.Row="4" Grid.Column="2" />
                 <TextBox x:Name="UnidMed" Text="{Binding Produtos.UnidadeMedida, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,21,-1,17" Grid.Row="4" Grid.RowSpan="2">
                     <TextBox.Background>
@@ -66,7 +67,7 @@
                     </TextBox.Background>
                 </TextBox>
                 <Button Grid.Row="5" Grid.Column="3" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
-                Command="{Binding UpdateProdutoCommand}" CommandParameter="{Binding}"
+                Command="{Binding EditProdutoCommand}"
                 Content="Editar"
                 Foreground="White"
                         Margin="0,20,-1,-25"
@@ -122,8 +123,6 @@
                 </Button.Style>
             </Button>
             <TextBlock HorizontalAlignment="Left" Margin="10,272,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="47" Width="410" />
-
-            <TextBlock HorizontalAlignment="Left" Margin="27,247,0,0" TextWrapping="Wrap" Text="{Binding Path=Message}" VerticalAlignment="Top" />
         </Grid>
     </Border>
 </UserControl>
