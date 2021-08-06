@@ -13,7 +13,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public ModalAdicionarFuncionarios()
         {
             InitializeComponent();
-            DataContext = new FuncionariosViewModel();
+            DataContext = new AdicionarFuncionariosViewModel();
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 

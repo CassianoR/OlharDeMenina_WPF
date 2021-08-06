@@ -242,6 +242,7 @@
     </Compile>
     <Compile Include="Model\VendasDTO.cs" />
     <Compile Include="ViewModel\AdicionarClientesViewModel.cs" />
+    <Compile Include="ViewModel\AdicionarFuncionariosViewModel.cs" />
     <Compile Include="ViewModel\AdicionarProdutosViewModel.cs" />
     <Compile Include="ViewModel\ClientesViewModel.cs" />
     <Compile Include="ViewModel\FuncionariosViewModel.cs" />
