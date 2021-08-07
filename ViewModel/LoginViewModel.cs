@@ -12,7 +12,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     {
         #region Properties
 
+        private OlharMeninaBDEntities funcionariosEntities;
         private ObservableCollection<Funcionarios> _lstFunc;
+        private Hash _hash;
+        private WindowService windowService;
 
         public ObservableCollection<Funcionarios> lstFunc
         {
@@ -85,8 +88,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #endregion Properties
 
-        private OlharMeninaBDEntities funcionariosEntities;
-
         public LoginViewModel()
         {
             _passwordHasher = new PasswordHasher();
@@ -95,11 +96,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             LoginCommand = new RelayCommand(DoLogin, CanLogin => true);
         }
 
-        private Hash _hash;
-
         #region Methods
-
-        private WindowService windowService;
 
         private void DoLogin(object obj)
         {
@@ -110,14 +107,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 if (!String.IsNullOrEmpty(User) && !String.IsNullOrEmpty(Password))
                 {
-                    //string hashedPassword = _passwordHasher.HashPassword(Password);
-                    //PasswordVerificationResult passwordResult = _passwordHasher.VerifyHashedPassword(hashedPassword, funcionariosEntities.Funcionarios.Find(Password).Senha);
-                    //if (passwordResult != PasswordVerificationResult.Success)
-                    //{
-                    //    System.Windows.MessageBox.Show("Test");
-                    //}
-                    //string senha = _hash.Encrypt(Password.ToString());
-
                     var senha = _hash.Encrypt(Password.ToString());
                     var count = funcionariosEntities.Funcionarios
                                 .Where(o => o.LoginFuncionario == User.ToString())
@@ -144,19 +133,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             contador = 0;
         }
-
-        //Talvez seja usado no futuro
-
-        //public bool CanLogin()
-        //{
-        //    if (User == null || Password == null)
-        //    {
-        //        Message = "Campos de textos não podem ser vazios.";
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
 
         private void LoadFuncionario()
         {

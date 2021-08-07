@@ -3,15 +3,12 @@ using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class ClientesViewModel : ObservableObject
     {
-        private Exceptions exc = new Exceptions();
-
         #region Properties
 
         private string message;
@@ -89,9 +86,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        #endregion Properties
+        private Exceptions exc = new Exceptions();
 
         private OlharMeninaBDEntities clientesEntities;
+
+        #endregion Properties
+
+        #region Constructor
 
         public ClientesViewModel()
         {
@@ -99,9 +100,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             //LoadCliente();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
-            UpdateClienteCommand = new Command((s) => true, UpdateCliente);
-            AddClienteCommand = new Command((s) => true, AddCliente);
         }
+
+        #endregion Constructor
 
         #region Methods
 
@@ -123,55 +124,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 _results.Add(cliente.Nome);
                 lstClientes.Add(cliente);
             }
-        }
-
-        private void AddCliente(object obj)
-        {
-            clientesEntities = new OlharMeninaBDEntities();
-            LoadCliente();
-            ValidaCPF.IsCpf(Clientes.CPF);
-            string CPF = Clientes.CPF;
-            if (ValidaCPF.IsCpf(CPF))
-            {
-                Clientes.ID = clientesEntities.Clientes.Count();
-                clientesEntities.Clientes.Add(Clientes);
-                try
-                {
-                    clientesEntities.SaveChanges();
-                    lstClientes.Add(Clientes);
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    string exceptionMessage = exc.concatenaExceptions(ex);
-                    Message = exceptionMessage;
-                    clientesEntities.Dispose();
-                }
-                Clientes = new Clientes();
-            }
-            else
-            {
-                MessageBoxResult result = MessageBox.Show("CPF Inválido");
-            }
-        }
-
-        private void UpdateCliente(object obj) //Update cliente
-        {
-            clientesEntities = new OlharMeninaBDEntities();
-            LoadCliente();
-            Clientes.ID = clientesEntities.Clientes.Count();
-            clientesEntities.Clientes.Attach(Clientes);
-            try
-            {
-                clientesEntities.SaveChanges();
-                lstClientes.Add(Clientes);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                clientesEntities.Dispose();
-            }
-            SelectedCliente = new Clientes();
         }
 
         private void Update(object obj) //Update, recarrega
@@ -213,8 +165,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
-        public ICommand UpdateClienteCommand { get; set; }
-        public ICommand AddClienteCommand { get; set; }
 
         #endregion Commands
     }
