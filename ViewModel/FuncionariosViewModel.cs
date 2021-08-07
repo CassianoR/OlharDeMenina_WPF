@@ -1,6 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
-using Microsoft.AspNet.Identity;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -10,9 +9,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class FuncionariosViewModel : ObservableObject
     {
-        private Exceptions exc = new Exceptions();
-
         #region Properties
+
+        private Exceptions exc = new Exceptions();
 
         private ObservableCollection<Funcionarios> _lstFuncionarios;
 
@@ -92,23 +91,22 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private Hash _hash;
+
         #endregion Properties
 
-        private readonly IPasswordHasher _passwordHasher;
+        #region Constructor
 
         public FuncionariosViewModel()
         {
-            _passwordHasher = new PasswordHasher();
             funcionariosEntities = new OlharMeninaBDEntities();
             //LoadFuncionario();
             CurrentEmployee = new FuncionariosDTO();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
-            //UpdateFuncionarioCommand = new Command((s) => true, UpdateFuncionario);
-            AddFuncionarioCommand = new Command((s) => true, AddFuncionario);
         }
 
-        private Hash _hash;
+        #endregion Constructor
 
         #region Methods
 
@@ -128,67 +126,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 lstFuncionarios.Add(funcionario);
             }
-        }
-
-        private void AddFuncionario(object obj)
-        {
-            _hash = new Hash();
-            LoadFuncionario();
-            ValidaCPF.IsCpf(Funcionarios.CPF);
-            string CPF = Funcionarios.CPF;
-            if (ValidaCPF.IsCpf(CPF))
-            {
-                Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
-                //Funcionarios.Cargo = "Funcionário";
-                Funcionarios.Senha = _hash.Encrypt("1234");
-                //Funcionarios.LoginFuncionario = "teste4@gmail.com";
-                Funcionarios.Atividade = "Ativo";
-                funcionariosEntities.Funcionarios.Add(Funcionarios);
-                try
-                {
-                    funcionariosEntities.SaveChanges();
-                    lstFuncionarios.Add(Funcionarios);
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    string exceptionMessage = exc.concatenaExceptions(ex);
-                    Message = exceptionMessage;
-                    funcionariosEntities.Dispose();
-                    funcionariosEntities = new OlharMeninaBDEntities();
-                }
-                Funcionarios = new Funcionarios();
-            }
-            else
-            {
-                Message = "CPF Inválido";
-            }
-        }
-
-        private Funcionarios Get(int id)
-        {
-            return funcionariosEntities.Funcionarios.Find(id);
-        }
-
-        private void UpdateFuncionario(int id) //Update funcionario
-        {
-            var model = Get(id);
-            Funcionarios.Nome = model.Nome;
-            Funcionarios.Endereco = model.Endereco;
-            Funcionarios.Telefone = model.Telefone;
-            funcionariosEntities = new OlharMeninaBDEntities();
-            //SelectedFuncionario = obj as Funcionarios;
-            //funcionariosEntities.Funcionarios.Attach(Funcionarios);
-            try
-            {
-                funcionariosEntities.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                funcionariosEntities.Dispose();
-            }
-            SelectedFuncionario = new Funcionarios();
         }
 
         private void Update(object obj) //Update, recarrega
@@ -232,21 +169,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public ICommand DeleteCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
-        public ICommand UpdateFuncionarioCommand { get; set; }
-        public ICommand AddFuncionarioCommand { get; set; }
-
-        private ICommand _editCommand;
-
-        public ICommand EditCommand
-        {
-            get
-            {
-                if (_editCommand == null)
-                    _editCommand = new RelayCommand(param => UpdateFuncionario((int)param), null);
-
-                return _editCommand;
-            }
-        }
 
         #endregion Commands
     }
