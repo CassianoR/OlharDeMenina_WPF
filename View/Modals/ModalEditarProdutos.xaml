@@ -3,7 +3,7 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
@@ -42,11 +42,13 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" Text="{Binding Produtos.Categoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
+                <!--VER SE ISSO AQUI TA FUNCIONANDO PQ AQUELE BUG NÃO DEIXOU RODAR DE NOVO
+                TALVEZ O BINDING PRECISE DE AJUSTES-->
+                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.FK_NomeCategoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Produtos.Categoria}" />
+                                <TextBlock Text="{Binding Produtos.FK_NomeCategoria}" />
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>

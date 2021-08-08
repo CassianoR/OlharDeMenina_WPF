@@ -41,11 +41,18 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" />
-                <TextBox x:Name="cboxCategoria" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-                    <TextBox.Background>
+                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.FK_NomeCategoria}" Margin="0,2,-1,4">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Produtos.FK_NomeCategoria}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
+                    </ComboBox.Background>
+                </ComboBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" />
                 <TextBox x:Name="tboxDesc" Text="{Binding Produtos.Descricao}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxDesc_TextChanged">
                     <TextBox.Background>
