@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
@@ -22,60 +22,79 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,3,1,5" />
-                <TextBox x:Name="tboxNome" Text="{Binding Funcionarios.Nome}" VerticalAlignment="Center" Margin="0,10,0,5" Grid.Column="1">
+                <Label HorizontalAlignment="Right" Content="Nome:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,-12,1,21" />
+                <TextBox x:Name="tboxNome" Text="{Binding Funcionarios.Nome}" VerticalAlignment="Center" Margin="0,-5,0,20" Grid.Column="1">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:" Margin="0,0,1,0" />
-                <xctk:MaskedTextBox Mask="000,000,000-00" Text="{Binding Funcionarios.CPF}" Grid.Row="1" VerticalAlignment="Top"
-                         Margin="0,5,0,0" Grid.Column="1">
+                <Label HorizontalAlignment="Right" Content="CPF:" Margin="0,14,1,15" Grid.RowSpan="2" />
+                <xctk:MaskedTextBox Mask="000,000,000-00" Text="{Binding Funcionarios.CPF}" VerticalAlignment="Top"
+                         Margin="0,19,0,0" Grid.Column="1" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
 
-                <Label HorizontalAlignment="Right" Content="Email:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,0,0,5" Grid.Row="2" />
-                <TextBox x:Name="tboxLogin" Grid.Column="1" Text="{Binding Funcionarios.LoginFuncionario}" VerticalAlignment="Center" Margin="0,5" Grid.Row="2">
+                <Label HorizontalAlignment="Right" Content="Email:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,13,0,20" Grid.Row="1" Grid.RowSpan="2" />
+                <TextBox x:Name="tboxLogin" Grid.Column="1" Text="{Binding Funcionarios.LoginFuncionario}" VerticalAlignment="Center" Margin="0,18,0,20" Grid.Row="1" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label HorizontalAlignment="Right" Content="Cargo:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,0,2,5" Grid.Row="4" />
-                <!--combobox necessária-->
-                <TextBox x:Name="tboxCargo" Text="{Binding Funcionarios.Cargo}" VerticalAlignment="Center" Margin="0,6,0,5" Grid.Row="4" Grid.Column="1">
+                <Label HorizontalAlignment="Right" Content="Cargo:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,13,2,20" Grid.Row="3" Grid.RowSpan="2" />
+                <ComboBox x:Name="FuncCargo" ItemsSource="{Binding lstFuncionarios}" Text="{Binding Funcionarios.Cargo}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="{Binding Funcionarios.Cargo}" Margin="0,16,-1,18" IsEditable="True" Grid.RowSpan="2">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Cargo}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </ComboBox.Background>
+                </ComboBox>
+
+                <Label HorizontalAlignment="Right" Content="Senha:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,13,1,20" Grid.Row="2" Grid.RowSpan="2" />
+                <TextBox x:Name="tboxSenha" Grid.Column="1" Text="{Binding Funcionarios.Senha}" VerticalAlignment="Center" Margin="0,18,0,20" Grid.Row="2" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
-                <Label HorizontalAlignment="Right" Content="Senha:" VerticalAlignment="Center" RenderTransformOrigin="0.495,-0.768" Margin="0,0,1,5" Grid.Row="3" />
-                <TextBox x:Name="tboxSenha" Grid.Column="1" Text="{Binding Funcionarios.Senha}" VerticalAlignment="Center" Margin="0,5,0,6" Grid.Row="3">
+                <Label Grid.Row="4" HorizontalAlignment="Right" Content="Endereço:" VerticalAlignment="Center" RenderTransformOrigin="0.457,3.013" Margin="0,12,0,18" Grid.RowSpan="2" />
+                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="0,16,0,22" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-
-                <Label Grid.Row="4" HorizontalAlignment="Right" Content="Endereço:" VerticalAlignment="Center" RenderTransformOrigin="0.457,3.013" Margin="0,27,0,3" Grid.RowSpan="2" />
-                <TextBox x:Name="tboxEnde" Text="{Binding Funcionarios.Endereco}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,3,0,7">
-                    <TextBox.Background>
-                        <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
-                <Label Grid.Row="5" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" Margin="0,25,0,-23" />
-                <xctk:MaskedTextBox x:Name="tboxTele"  Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,29,0,-19">
+                <Label Grid.Row="5" HorizontalAlignment="Right" Content="Telefone:" VerticalAlignment="Center" Margin="0,10,0,-8" />
+                <xctk:MaskedTextBox x:Name="tboxTele"  Mask="(00) 00000-0000" IncludeLiteralsInValue="False" Text="{Binding Funcionarios.Telefone}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,14,0,-4">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
+                <Label Grid.Row="5" HorizontalAlignment="Right" Content="Atividade:" Margin="0,36,1,-36" RenderTransformOrigin="0.53,0.119" />
+                <ComboBox x:Name="FuncAtividade" ItemsSource="{Binding lstFuncionarios}" Text="{Binding Funcionarios.Atividade}" Grid.Row="5" VerticalAlignment="Center" SelectedIndex="{Binding Funcionarios.Atividade}" Margin="0,40,-1,-34" IsEditable="True" Grid.Column="1">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Atividade}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </ComboBox.Background>
+                </ComboBox>
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight" IsEnabled="False"
                 Command="{Binding UpdateFuncionarioCommand}"
                 Content="Editar"
                 Foreground="White"
-                        Margin="0,53,0,-58"
+                        Margin="0,65,0,-71"
                         Click="btnEditar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>

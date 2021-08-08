@@ -46,6 +46,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Produtos.FK_NomeCategoria}" />
+                                <!--aqui não tá aparecendo nas sugestões da binding as variaveis como deveriam aparecer. não sei o que tá errado-->
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>

@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             d:DataContext="{d:DesignInstance Type=viewmodel:AdicionarFuncionariosViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodel:FuncionariosViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
@@ -58,12 +58,18 @@
                 </TextBox>
 
                 <Label Grid.Row="4" HorizontalAlignment="Right" Content="Cargo:" Margin="0,0,1,0" RenderTransformOrigin="0.53,0.119" />
-                <TextBox Text="{Binding Funcionarios.Cargo}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0">
-                    <TextBox.Background>
+                <ComboBox x:Name="FuncCargo" ItemsSource="{Binding lstFuncionarios}" Text="{Binding Funcionarios.Cargo}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="{Binding Funcionarios.Cargo}" Margin="0,3,-1,3" IsEditable="True">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Cargo}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
-                <!--transformar em combobox-->
+                    </ComboBox.Background>
+                </ComboBox>
 
                 <Label Height="24" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Endereço:" RenderTransformOrigin="0.486,2.839" />
                 <TextBox Text="{Binding Funcionarios.Endereco}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" RenderTransformOrigin="0.478,3.566" Margin="0,6,0,0">
@@ -83,7 +89,7 @@
                 Command="{Binding AddFuncionarioCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0,58,10,-56"
+                        Margin="0,88,10,-86"
                         Click="btnCadastrar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Grid.Column="1">
                     <Button.Style>
@@ -112,6 +118,19 @@
 
                 <iconPacks:PackIconMaterial Kind="Account" HorizontalAlignment="Left" Height="128" Margin="10,13,0,0" Grid.RowSpan="5" VerticalAlignment="Top" Width="97"
                                                     Foreground="PaleVioletRed" />
+                <Label Grid.Row="5" HorizontalAlignment="Right" Content="Atividade:" Margin="0,55,1,-55" RenderTransformOrigin="0.53,0.119" />
+                <ComboBox x:Name="FuncAtividade" ItemsSource="{Binding lstFuncionarios}" Text="{Binding Funcionarios.Atividade}" Grid.Row="5" VerticalAlignment="Center" SelectedIndex="{Binding Funcionarios.Atividade}" Margin="0,58,-1,-52" IsEditable="True" Grid.Column="1">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Atividade}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </ComboBox.Background>
+                </ComboBox>
             </Grid>
             <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Height="32" Width="32" Margin="0,10,14,0">
                 <iconPacks:PackIconMaterial Kind="CloseCircle"

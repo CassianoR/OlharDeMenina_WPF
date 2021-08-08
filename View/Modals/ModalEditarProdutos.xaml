@@ -42,8 +42,7 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <!--VER SE ISSO AQUI TA FUNCIONANDO PQ AQUELE BUG NÃO DEIXOU RODAR DE NOVO
-                TALVEZ O BINDING PRECISE DE AJUSTES-->
+                <!--VER SE ISSO AQUI TA FUNCIONANDO PQ AQUELE BUG NÃO DEIXOU RODAR DE NOVO-->
                 <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" Text="{Binding Produtos.FK_NomeCategoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.FK_NomeCategoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
