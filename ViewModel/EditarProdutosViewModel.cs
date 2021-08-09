@@ -6,7 +6,7 @@ using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    public class AdicionarProdutosViewModel : ObservableObject
+    public class EditarProdutosViewModel : ObservableObject
     {
         #region Properties
 
@@ -37,31 +37,46 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private Produtos _selectedProduto = new Produtos();
+
+        public Produtos SelectedProduto
+        {
+            get { return _selectedProduto; }
+            set
+            {
+                _selectedProduto = value;
+                OnPropertyChanged(nameof(SelectedProduto));
+            }
+        }
+
         private OlharMeninaBDEntities produtosEntities;
         private Exceptions exc = new Exceptions();
+        private int _codigo;
 
         #endregion Properties
 
         #region Constructor
 
-        public AdicionarProdutosViewModel()
+        public EditarProdutosViewModel(int codigo)
         {
+            _codigo = codigo;
             produtosEntities = new OlharMeninaBDEntities();
-            AddProdutoCommand = new Command((s) => true, AddProduto);
+            EditProdutoCommand = new Command((s) => true, EditProduto);
         }
 
         #endregion Constructor
 
         #region Methods
 
-        private void AddProduto(object obj)
+        private void EditProduto(object obj)
         {
-            if (produtosEntities == null)
-                produtosEntities = new OlharMeninaBDEntities();
-            Produtos.Codigo = produtosEntities.Clientes.Count();
-            produtosEntities.Produtos.Add(Produtos);
             try
             {
+                var uRow = produtosEntities.Produtos.Where(w => w.Codigo == _codigo).FirstOrDefault();
+                uRow.NomeProduto = Produtos.NomeProduto;
+                uRow.Marca = Produtos.Marca;
+                uRow.Descricao = Produtos.Descricao;
+                uRow.Valor = Produtos.Valor;
                 produtosEntities.SaveChanges();
             }
             catch (DbEntityValidationException ex)
@@ -77,7 +92,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Commands
 
-        public ICommand AddProdutoCommand { get; set; }
+        public ICommand EditProdutoCommand { get; set; }
 
         #endregion Commands
     }

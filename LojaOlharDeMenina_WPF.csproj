@@ -242,9 +242,13 @@
     </Compile>
     <Compile Include="Model\VendasDTO.cs" />
     <Compile Include="ViewModel\AdicionarClientesViewModel.cs" />
+    <Compile Include="ViewModel\AdicionarFuncionariosViewModel.cs" />
     <Compile Include="ViewModel\AdicionarProdutosViewModel.cs" />
     <Compile Include="ViewModel\AdicionarVendaViewModel.cs" />
     <Compile Include="ViewModel\ClientesViewModel.cs" />
+    <Compile Include="ViewModel\EditarClientesViewModel.cs" />
+    <Compile Include="ViewModel\EditarFuncionariosViewModel.cs" />
+    <Compile Include="ViewModel\EditarProdutosViewModel.cs" />
     <Compile Include="ViewModel\FuncionariosViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

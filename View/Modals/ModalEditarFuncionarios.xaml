@@ -3,10 +3,13 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
              Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+
     <Border CornerRadius="15" Background="#FFFFF6FA">
         <Grid>
             <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">
@@ -72,7 +75,7 @@
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight" IsEnabled="False"
-                Command="{Binding UpdateFuncionarioCommand}"
+                Command="{Binding EditFuncionarioCommand}"
                 Content="Editar"
                 Foreground="White"
                         Margin="0,53,0,-58"
