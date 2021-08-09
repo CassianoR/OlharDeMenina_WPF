@@ -243,6 +243,7 @@
     <Compile Include="Model\VendasDTO.cs" />
     <Compile Include="ViewModel\AdicionarClientesViewModel.cs" />
     <Compile Include="ViewModel\AdicionarProdutosViewModel.cs" />
+    <Compile Include="ViewModel\AdicionarVendaViewModel.cs" />
     <Compile Include="ViewModel\ClientesViewModel.cs" />
     <Compile Include="ViewModel\FuncionariosViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
@@ -279,6 +280,9 @@
     </Compile>
     <Compile Include="View\Modals\ModalAdicionarProduto.xaml.cs">
       <DependentUpon>ModalAdicionarProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modals\ModalAdicionarVenda.xaml.cs">
+      <DependentUpon>ModalAdicionarVenda.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Modals\ModalEditarProdutos.xaml.cs">
       <DependentUpon>ModalEditarProdutos.xaml</DependentUpon>
@@ -363,6 +367,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Modals\ModalAdicionarProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Modals\ModalAdicionarVenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

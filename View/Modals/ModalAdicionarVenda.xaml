@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="LojaOlharDeMenina_WPF.View.Modals.ModalAdicionarVenda"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             d:DataContext="{d:DesignInstance Type=viewmodel:AdicionarVendaViewModel}"
+             mc:Ignorable="d"
+             Grid.Column="1"
+             Grid.Row="2"
+             Grid.RowSpan="3"
+             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
+    <Border CornerRadius="15" Background="#FFFFF6FA" Width="500">
+        <Grid>
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="18,0,18,73" Background="Transparent" Height="169">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Right" Content="Nome Cliente:" />
+                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Venda.FK_IDCliente}"
+                     VerticalAlignment="Center" >
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Código Produto:" />
+                <TextBox x:Name="cboxCodigoProduto" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
+                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data:" />
+                <xctk:MaskedTextBox Mask="00/00/0000 00:00:00" x:Name="tboxData" Text="{Binding Clientes.DataNasc}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Formas de Pagamento" />
+                <ComboBox Grid.Row="4" Grid.Column="1" x:Name="cboxFormasPag" VerticalAlignment="Center">
+                    <ComboBoxItem x:Name="cboxitemPixTransferencia" Content="Pix/Transferência" TextOptions.TextHintingMode="Animated" />
+                    <ComboBoxItem x:Name="cboxitemCredito" Content="Cartão de Crédito" TextOptions.TextHintingMode="Animated" />
+                    <ComboBoxItem x:Name="cboxitemDebito" Content="Cartão de Débito" TextOptions.TextHintingMode="Animated" />
+                    <ComboBoxItem x:Name="cboxitemAvista" Content="À vista" TextOptions.TextHintingMode="Animated" />
+                </ComboBox>
+                <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Quantidade Produto" />
+                <xctk:MaskedTextBox Mask="000" x:Name="tboxQuantidade" Text="{Binding Venda.QuantidadeVendida}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </xctk:MaskedTextBox>
+
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
+                Command="{Binding AddVendaCommand}"
+                Content="Cadastrar"
+                Foreground="White"
+                        Margin="0,28,0,-33"
+                        Click="btnCadastrar_Click"
+                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                            <Setter Property="Background" Value="PaleVioletRed" />
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="-02,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
+                                                    Foreground="PaleVioletRed" />
+            </Grid>
+            <Label Grid.Row="0" Content="Cadastar Venda" FontSize="22" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="125,8,125,227" />
+
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
+                <iconPacks:PackIconMaterial Kind="CloseCircle"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"
+                                            Background="Transparent"
+                                            Foreground="PaleVioletRed" Width="28" Height="28" Cursor="Hand" />
+                <Button.Style>
+
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFFF849C" />
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="10,281,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="38" Width="373" />
+        </Grid>
+    </Border>
+</UserControl>

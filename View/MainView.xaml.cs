@@ -68,6 +68,7 @@ namespace LojaOlharDeMenina_WPF.View
                 tt_contacts.Visibility = Visibility.Collapsed;
                 tt_messages.Visibility = Visibility.Collapsed;
                 tt_maps.Visibility = Visibility.Collapsed;
+                tt_sell.Visibility = Visibility.Collapsed;
                 tt_settings.Visibility = Visibility.Collapsed;
                 tt_signout.Visibility = Visibility.Collapsed;
             }
@@ -77,6 +78,7 @@ namespace LojaOlharDeMenina_WPF.View
                 tt_contacts.Visibility = Visibility.Visible;
                 tt_messages.Visibility = Visibility.Visible;
                 tt_maps.Visibility = Visibility.Visible;
+                tt_sell.Visibility = Visibility.Visible;
                 tt_settings.Visibility = Visibility.Visible;
                 tt_signout.Visibility = Visibility.Visible;
             }
@@ -120,6 +122,11 @@ namespace LojaOlharDeMenina_WPF.View
         private void btnProdutos_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             DataContext = new ProdutosViewModel();
+        }
+
+        private void btnVendas_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new VendasViewModel();
         }
     }
 }
