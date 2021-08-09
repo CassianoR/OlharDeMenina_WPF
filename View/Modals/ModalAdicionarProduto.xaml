@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             d:DataContext="{d:DesignInstance Type=viewmodel:AdicionarProdutosViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodel:ProdutosViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
@@ -46,7 +46,6 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Produtos.FK_NomeCategoria}" />
-                                <!--aqui não tá aparecendo nas sugestões da binding as variaveis como deveriam aparecer. não sei o que tá errado-->
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
