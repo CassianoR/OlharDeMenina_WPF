@@ -39,7 +39,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         {
             tboxNome.Text = string.Empty;
             tboxEnde.Text = string.Empty;
-            mtboxTele.Text = string.Empty;
+            tboxTelefone.Text = string.Empty;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
             LimparCampos();
             tboxNome.Text = Nome;
             tboxEnde.Text = Endereco;
-            mtboxTele.Text = Telefone;
+            tboxTelefone.Text = Telefone;
         }
     }
 }
