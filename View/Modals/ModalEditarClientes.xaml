@@ -42,7 +42,7 @@
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
-                Command="{Binding UpdateClienteCommand}"
+                Command="{Binding EditClienteCommand}"
                 Content="Editar"
                 Foreground="White"
                         Margin="0,10,0,-13"
