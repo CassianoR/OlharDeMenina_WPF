@@ -45,11 +45,18 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <TextBox x:Name="ProdCategoria" Text="{Binding Produtos.FK_NomeCategoria, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="0,21,-1,13" Grid.RowSpan="2">
-                    <TextBox.Background>
+                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" Text="{Binding Produtos.Categoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Produtos.Categoria}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
+                    </ComboBox.Background>
+                </ComboBox>
                 <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" Margin="0,20,5,0" Grid.RowSpan="2" Grid.Column="2" />
                 <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
