@@ -43,14 +43,21 @@ namespace LojaOlharDeMenina_WPF.View
         private void AbrirEditarDialog(object sender, RoutedEventArgs e)
         {
             //EditaProdutosDialog epd = new EditaProdutosDialog();
-            ProdutosViewModel pvm = new ProdutosViewModel();
+            //ProdutosViewModel pvm = new ProdutosViewModel();
             //pvm.Produtos = (Model.Produtos)datagrid_produto.SelectedItem;
-            mep.Codigo = pvm.Produtos.Codigo;
-            mep.NomeProduto = pvm.Produtos.NomeProduto;
-            mep.Marca = pvm.Produtos.Marca;
-            mep.Descricao = pvm.Produtos.Descricao;
-            mep.Valor = pvm.Produtos.Valor;
-            mep.UnidadeMedida = pvm.Produtos.UnidadeMedida;
+            //mep.Codigo = pvm.Produtos.Codigo;
+            //mep.NomeProduto = pvm.Produtos.NomeProduto;
+            //mep.Marca = pvm.Produtos.Marca;
+            //mep.Descricao = pvm.Produtos.Descricao;
+            //mep.Valor = pvm.Produtos.Valor;
+            //mep.UnidadeMedida = pvm.Produtos.UnidadeMedida;
+            dynamic row = datagrid_produto.SelectedItem;
+            mep.Codigo = row.Codigo;
+            mep.NomeProduto = row.NomeProduto;
+            mep.Marca = row.Marca;
+            mep.Descricao = row.Descricao;
+            mep.Valor = row.Valor;
+            mep.UnidadeMedida = row.UnidadeMedida;
             if (MainGrid.Children.Contains(mep))
             {
                 mep.Visibility = Visibility.Visible;
