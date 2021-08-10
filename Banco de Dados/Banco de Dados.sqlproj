@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\View" />
     <Folder Include="dbo\Stored Procedure" />
+    <Folder Include="dbo\Database" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Categoria.sql" />
@@ -75,5 +76,8 @@
     <Build Include="dbo\Stored Procedure\sp_novofunc.sql" />
     <Build Include="dbo\Stored Procedure\sp_novoproduto.sql" />
     <Build Include="dbo\View\Produtos_add_Quantidade.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Database\OlharMeninaBD.sql" />
   </ItemGroup>
 </Project>

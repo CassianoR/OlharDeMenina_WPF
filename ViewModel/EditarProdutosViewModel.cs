@@ -1,5 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -9,6 +10,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     public class EditarProdutosViewModel : ObservableObject
     {
         #region Properties
+
+        private ObservableCollection<Produtos> _lstProdutos;
+
+        public ObservableCollection<Produtos> lstProdutos
+        {
+            get { return _lstProdutos; }
+            set
+            {
+                _lstProdutos = value;
+                OnPropertyChanged(nameof(lstProdutos));
+            }
+        }
 
         private Produtos _produtos = new Produtos();
 
@@ -62,6 +75,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             _codigo = codigo;
             produtosEntities = new OlharMeninaBDEntities();
             EditProdutoCommand = new Command((s) => true, EditProduto);
+            LoadProdutos();
         }
 
         #endregion Constructor
@@ -86,6 +100,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
             }
+        }
+
+        private void LoadProdutos() //Read
+        {
+            lstProdutos = new ObservableCollection<Produtos>(produtosEntities.Produtos);
         }
 
         #endregion Methods
