@@ -59,7 +59,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             if (produtosEntities == null)
                 produtosEntities = new OlharMeninaBDEntities();
             Produtos.Codigo = produtosEntities.Clientes.Count();
-
             var count = produtosEntities.Categoria
                                 .Where(o => o.NomeCategoria == Produtos.FK_NomeCategoria)
                                 .Count();

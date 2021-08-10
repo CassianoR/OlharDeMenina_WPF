@@ -10,7 +10,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     {
         #region Properties
 
-        private Funcionarios _funcionarios;
+        private Funcionarios _funcionarios = new Funcionarios();
 
         public Funcionarios Funcionarios
         {
@@ -65,10 +65,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             if (ValidaCPF.IsCpf(Funcionarios.CPF))
             {
                 Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
+                Hash _hash = new Hash();
+                var senha = _hash.Encrypt(Funcionarios.Senha);
+                Funcionarios.Senha = senha;
+                Funcionarios.Atividade = "Ativo";
                 funcionariosEntities.Funcionarios.Add(Funcionarios);
                 try
                 {
                     funcionariosEntities.SaveChanges();
+                    Limpar();
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -82,6 +87,17 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 Message = "CPF Inválido";
             }
+        }
+
+        public void Limpar()
+        {
+            Funcionarios.Cargo = string.Empty;
+            Funcionarios.CPF = string.Empty;
+            Funcionarios.Endereco = string.Empty;
+            Funcionarios.Senha = string.Empty;
+            Funcionarios.Telefone = string.Empty;
+            Funcionarios.Nome = string.Empty;
+            Funcionarios.Atividade = string.Empty;
         }
 
         #endregion Methods
