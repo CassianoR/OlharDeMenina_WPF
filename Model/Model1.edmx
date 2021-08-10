@@ -29,12 +29,12 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NumLote" Type="int" Nullable="false" />
           <Property Name="TotalProdutosLote" Type="int" Nullable="false" />
-          <Property Name="Frete" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Frete" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Fornecedor" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="DataCompra" Type="date" Nullable="false" />
-          <Property Name="PrecoLote" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="DataCompra" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="PrecoLote" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="QuantidadeEstoque" Type="int" Nullable="false" />
-          <Property Name="Validade" Type="date" />
+          <Property Name="Validade" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Funcionarios">
@@ -71,9 +71,9 @@
           <Property Name="FK_IDFuncionario" Type="int" Nullable="false" />
           <Property Name="FK_IDCliente" Type="int" Nullable="false" />
           <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
-          <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="MetodoPagamento" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="QuantidadeVendida" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Estoque">
@@ -195,12 +195,12 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumLote" Type="Int32" Nullable="false" />
           <Property Name="TotalProdutosLote" Type="Int32" Nullable="false" />
-          <Property Name="Frete" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Frete" Type="String" Nullable="false" FixedLength="false" Unicode="false" MaxLength="20" />
           <Property Name="Fornecedor" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataCompra" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PrecoLote" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="DataCompra" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
+          <Property Name="PrecoLote" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="20" />
           <Property Name="QuantidadeEstoque" Type="Int32" Nullable="false" />
-          <Property Name="Validade" Type="DateTime" Precision="0" />
+          <Property Name="Validade" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
           <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Produtos" Relationship="Self.FK_Estoque" FromRole="Estoque" ToRole="Produtos" />
         </EntityType>
@@ -242,9 +242,9 @@
           <Property Name="FK_IDFuncionario" Type="Int32" Nullable="false" />
           <Property Name="FK_IDCliente" Type="Int32" Nullable="false" />
           <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
-          <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Valor" Type="String" Nullable="false" FixedLength="false" Unicode="false" MaxLength="40" />
           <Property Name="MetodoPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
           <Property Name="QuantidadeVendida" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clientes" Relationship="Self.FK_Venda2" FromRole="Venda" ToRole="Clientes" />
           <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Venda" FromRole="Venda" ToRole="Funcionarios" />
