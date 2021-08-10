@@ -485,7 +485,6 @@
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
-
                         <!--// Settings //-->
 
                         <ListViewItem HorizontalAlignment="Left"

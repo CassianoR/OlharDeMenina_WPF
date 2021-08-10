@@ -1,16 +1,13 @@
-﻿
-
-using LojaOlharDeMenina_WPF.Core;
+﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    class AdicionarVendaViewModel : ObservableObject
+    internal class AdicionarVendaViewModel : ObservableObject
     {
         #region Properties
 
@@ -55,11 +52,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-
         private OlharMeninaBDEntities vendasEntities;
         private Exceptions exc = new Exceptions();
 
-        #endregion
+        #endregion Properties
 
         #region Constructor
 
@@ -67,9 +63,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             vendasEntities = new OlharMeninaBDEntities();
             AddVendaCommand = new Command((s) => true, AddVenda);
-            
         }
-        #endregion
+
+        #endregion Constructor
 
         #region Methods
 
@@ -92,15 +88,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-       
-
-
-        #endregion
+        #endregion Methods
 
         #region Commands
 
         public ICommand AddVendaCommand { get; set; }
 
-        #endregion
+        #endregion Commands
     }
 }

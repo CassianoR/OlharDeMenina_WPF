@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace LojaOlharDeMenina_WPF.Model
@@ -68,7 +67,6 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Valor));
             }
         }
-
 
         //[Required(ErrorMessage = " O campo Metodo de Pagamento é obrigatório.")]
         public string MetodoPagamento

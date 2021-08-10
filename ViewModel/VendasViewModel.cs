@@ -82,11 +82,10 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                         lstVendas.Clear();
             }
         }
-        #endregion
 
+        #endregion Properties
 
-
-        public  VendasViewModel()
+        public VendasViewModel()
         {
             vendaEntities = new OlharMeninaBDEntities();
             AddVendasCommand = new Command((s) => true, AddVendas);
@@ -106,7 +105,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstVendas.Clear();
 
             lstVendas = new ObservableCollection<Venda>();
-            var ObjQuery = vendaEntities.Venda.Where(x =>  x.MetodoPagamento.Contains(_search)).ToList();
+            var ObjQuery = vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search)).ToList();
             foreach (var funcionario in ObjQuery)
             {
                 lstVendas.Add(funcionario);
@@ -149,13 +148,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstVendas = new ObservableCollection<Venda>(vendaEntities.Venda);
         }
 
-        #endregion
+        #endregion Methods
 
         #region Commands
 
         public ICommand AddVendasCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
 
-        #endregion 
+        #endregion Commands
     }
 }

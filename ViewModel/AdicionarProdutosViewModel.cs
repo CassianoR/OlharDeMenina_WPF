@@ -59,21 +59,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             if (produtosEntities == null)
                 produtosEntities = new OlharMeninaBDEntities();
             Produtos.Codigo = produtosEntities.Clientes.Count();
-
-            var count = produtosEntities.Categoria
-                                .Where(o => o.NomeCategoria == Produtos.FK_NomeCategoria)
-                                .Count();
-            if (count != 1)
-            {
-                System.Windows.MessageBoxResult criarConfirma = System.Windows.MessageBox.Show("Não existe uma categoria com esse nome. Deseja criá-la?", "Criar nova categoria?", System.Windows.MessageBoxButton.OKCancel);
-                if (criarConfirma == System.Windows.MessageBoxResult.Cancel)
-                {
-                    return;
-                }
-                Categoria categoria = new Categoria();
-                categoria.NomeCategoria = Produtos.FK_NomeCategoria;
-                produtosEntities.Categoria.Add(categoria);
-            }
             produtosEntities.Produtos.Add(Produtos);
             try
             {

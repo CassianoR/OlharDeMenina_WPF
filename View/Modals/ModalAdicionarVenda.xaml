@@ -31,7 +31,7 @@
                 </Grid.RowDefinitions>
                 <Label HorizontalAlignment="Right" Content="ID Cliente:" />
                 <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Venda.FK_IDCliente}"
-                     VerticalAlignment="Center" >
+                     VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
