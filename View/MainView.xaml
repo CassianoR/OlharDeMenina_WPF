@@ -455,6 +455,37 @@
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" PreviewMouseDown="btnVendas_PreviewMouseDown" Cursor="Hand">
+
+                            <StackPanel Orientation="Horizontal" x:Name="btnVendas"
+                                        Width="230">
+
+                                <!--<Image Source="/LojaOlharDeMenina_WPF;component/Images/img_map.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0" />-->
+                                <iconPacks:PackIconMaterial Kind="Cart"
+                                                Margin="12,0,0,0"
+                                                            Width="30"
+                                                            Height="auto"
+                                                Foreground="#FF87CEFA" />
+
+                                <TextBlock Text="Produtos"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}" />
+                            </StackPanel>
+
+                            <!--// Tooltip //-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_sell"
+                                         Content="Venda"
+                                         Style="{StaticResource tt_style}" />
+                            </ListViewItem.ToolTip>
+                        </ListViewItem>
+
+
                         <!--// Settings //-->
 
                         <ListViewItem HorizontalAlignment="Left"
