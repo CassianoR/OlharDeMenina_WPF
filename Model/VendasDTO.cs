@@ -19,7 +19,7 @@ namespace LojaOlharDeMenina_WPF.Model
         private int fk_codigoproduto;
         private decimal valor;
         private string metodopagamento;
-        private DateTime datahora;
+        private string datahora;
         private int quantidadevendida;
 
         public int CodigoVendas
@@ -76,7 +76,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public System.DateTime DataHora
+        public string DataHora
         {
             get => datahora; set
             {

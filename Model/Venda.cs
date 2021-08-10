@@ -20,7 +20,7 @@ namespace LojaOlharDeMenina_WPF.Model
         public int FK_CodigoProduto { get; set; }
         public decimal Valor { get; set; }
         public string MetodoPagamento { get; set; }
-        public System.DateTime Data { get; set; }
+        public string Data { get; set; }
         public int QuantidadeVendida { get; set; }
     
         public virtual Clientes Clientes { get; set; }

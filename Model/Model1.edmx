@@ -73,7 +73,7 @@
           <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
           <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Data" Type="date" Nullable="false" />
+          <Property Name="Data" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="QuantidadeVendida" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Estoque">
@@ -244,7 +244,7 @@
           <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
           <Property Name="QuantidadeVendida" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clientes" Relationship="Self.FK_Venda2" FromRole="Venda" ToRole="Clientes" />
           <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Venda" FromRole="Venda" ToRole="Funcionarios" />
