@@ -89,9 +89,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public  VendasViewModel()
         {
             vendaEntities = new OlharMeninaBDEntities();
-            //LoadFuncionario();
-            //UpdateFuncionarioCommand = new Command((s) => true, UpdateFuncionario);
             AddVendasCommand = new Command((s) => true, AddVendas);
+            UpdateCommand = new Command((s) => true, Update);
         }
 
         #region Methods
@@ -122,7 +121,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 LoadVendas();
             }
             Venda.CodigoVendas = vendaEntities.Clientes.Count();
-            Venda.FK_IDFuncionario = 1;
             vendaEntities.Venda.Add(Venda);
             try
             {
@@ -131,12 +129,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             catch (DbEntityValidationException ex)
             {
-                    string exceptionMessage = exc.concatenaExceptions(ex);
-                    Message = exceptionMessage;
-                    vendaEntities.Dispose();
-                    vendaEntities = new OlharMeninaBDEntities();
+                string exceptionMessage = exc.concatenaExceptions(ex);
+                Message = exceptionMessage;
+                vendaEntities.Dispose();
+                vendaEntities = new OlharMeninaBDEntities();
             }
             Venda = new Venda();
+        }
+
+        private void Update(object obj) //Update, recarrega
+        {
+            SelectedVenda = obj as Venda;
+            LoadVendas();
         }
 
         private void LoadVendas() //Read
@@ -150,6 +154,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         #region Commands
 
         public ICommand AddVendasCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
 
         #endregion 
     }

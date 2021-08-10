@@ -27,41 +27,43 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label HorizontalAlignment="Right" Content="Nome Cliente:" />
+                <Label HorizontalAlignment="Right" Content="ID Cliente:" />
                 <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Venda.FK_IDCliente}"
                      VerticalAlignment="Center" >
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Código Produto:" />
-                <TextBox x:Name="cboxCodigoProduto" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="ID Funcionario:" />
+                <TextBox x:Name="cboxIDFuncionario" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Código Produto:" />
+                <TextBox x:Name="cboxCodigoProduto" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
+                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
+                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
-                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data:" />
-                <xctk:MaskedTextBox Mask="00/00/0000 00:00:00" x:Name="tboxData" Text="{Binding Clientes.DataNasc}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data:" />
+                <xctk:DateTimePicker Text="{Binding Venda.Data}" Format="Custom" x:Name="Timer" FormatString="dd-MM-yy hh:mm:ss tt" TimeFormat="Custom" TimeFormatString="hh:mm:ss tt" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Value="{Binding Path=Timer, Mode=TwoWay}" />
+                <Label Height="24" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="MetodoPagemnto:" />
+                <TextBox x:Name="cboxMetodoPagamento" Text="{Binding Venda.MetodoPagamento}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
-                </xctk:MaskedTextBox>
-                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Formas de Pagamento" />
-                <ComboBox Grid.Row="4" Grid.Column="1" x:Name="cboxFormasPag" VerticalAlignment="Center">
-                    <ComboBoxItem x:Name="cboxitemPixTransferencia" Content="Pix/Transferência" TextOptions.TextHintingMode="Animated" />
-                    <ComboBoxItem x:Name="cboxitemCredito" Content="Cartão de Crédito" TextOptions.TextHintingMode="Animated" />
-                    <ComboBoxItem x:Name="cboxitemDebito" Content="Cartão de Débito" TextOptions.TextHintingMode="Animated" />
-                    <ComboBoxItem x:Name="cboxitemAvista" Content="À vista" TextOptions.TextHintingMode="Animated" />
-                </ComboBox>
-                <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Quantidade Produto" />
-                <xctk:MaskedTextBox Mask="000" x:Name="tboxQuantidade" Text="{Binding Venda.QuantidadeVendida}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                </TextBox>
+                <Label Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Quantidade Produto" />
+                <xctk:MaskedTextBox Mask="000" x:Name="tboxQuantidade" Text="{Binding Venda.QuantidadeVendida}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
@@ -71,7 +73,7 @@
                 Command="{Binding AddVendaCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0,28,0,-33"
+                        Margin="0,62,0,-65"
                         Click="btnCadastrar_Click"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>

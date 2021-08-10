@@ -26,6 +26,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private DateTime _Timer = DateTime.Now;
+
+        public DateTime Time
+        {
+            get
+            {
+                return _Timer;
+            }
+            set
+            {
+                _Timer = value;
+            }
+        }
+
         private string message;
 
         public string Message
@@ -38,21 +52,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 message = value;
                 OnPropertyChanged(nameof(Message));
-            }
-        }
-
-        private string timer;
-
-        public string Timer
-        {
-            get
-            {
-                return timer;
-            }
-            set
-            {
-                timer = value;
-                OnPropertyChanged(nameof(Timer));
             }
         }
 
@@ -93,13 +92,14 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+       
+
 
         #endregion
 
         #region Commands
 
         public ICommand AddVendaCommand { get; set; }
-        public ICommand UpdateTimerCommand { get; set; }
 
         #endregion
     }
