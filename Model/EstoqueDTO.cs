@@ -16,12 +16,12 @@ namespace LojaOlharDeMenina_WPF.Model
         private int id;
         private int numlote;
         private int totalprodutoslote;
-        private decimal frete;
+        private string frete;
         private string fornecedor;
-        private DateTime datacompra;
-        private decimal precolote;
+        private string datacompra;
+        private string precolote;
         private int quantidadeestoque;
-        private DateTime? validade;
+        private string validade;
         private int fk_codigoproduto;
 
         public int ID
@@ -51,7 +51,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public decimal Frete
+        public string Frete
         {
             get => frete; set
             {
@@ -69,7 +69,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public System.DateTime DataCompra
+        public string DataCompra
         {
             get => datacompra; set
             {
@@ -78,7 +78,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public decimal PrecoLote
+        public string PrecoLote
         {
             get => precolote; set
             {
@@ -96,7 +96,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        public Nullable<System.DateTime> Validade
+        public string Validade
         {
             get => validade; set
             {

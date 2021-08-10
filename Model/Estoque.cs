@@ -17,12 +17,12 @@ namespace LojaOlharDeMenina_WPF.Model
         public int ID { get; set; }
         public int NumLote { get; set; }
         public int TotalProdutosLote { get; set; }
-        public decimal Frete { get; set; }
+        public string Frete { get; set; }
         public string Fornecedor { get; set; }
-        public System.DateTime DataCompra { get; set; }
-        public decimal PrecoLote { get; set; }
+        public string DataCompra { get; set; }
+        public string PrecoLote { get; set; }
         public int QuantidadeEstoque { get; set; }
-        public Nullable<System.DateTime> Validade { get; set; }
+        public string Validade { get; set; }
         public int FK_CodigoProduto { get; set; }
     
         public virtual Produtos Produtos { get; set; }
