@@ -77,16 +77,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
-
-        public ObservableCollection<string> Results
-        {
-            get
-            {
-                return _results;
-            }
-        }
-
         private OlharMeninaBDEntities produtosEntities;
         private Exceptions exc = new Exceptions();
 
@@ -108,20 +98,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private async void GetResults(string search)
         {
-            if (_search == "*")
+            if (search == "*")
             {
                 LoadProdutos();
                 return;
             }
-            if (lstProdutos != null)
-                lstProdutos.Clear();
-
             lstProdutos = new ObservableCollection<Produtos>();
-            _results.Clear();
-            var ObjQuery = await produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(_search) || x.Marca.Contains(_search) || x.FK_NomeCategoria.Contains(_search)).ToListAsync();
+            var ObjQuery = await produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(search) || x.Marca.Contains(search) || x.FK_NomeCategoria.Contains(search)).ToListAsync();
             foreach (var produto in ObjQuery)
             {
-                _results.Add(produto.NomeProduto);
                 lstProdutos.Add(produto);
             }
         }

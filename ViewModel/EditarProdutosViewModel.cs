@@ -1,6 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -11,15 +12,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     {
         #region Properties
 
-        private ObservableCollection<Produtos> _lstProdutos;
+        private ObservableCollection<Categoria> _lstCategoria;
 
-        public ObservableCollection<Produtos> lstProdutos
+        public ObservableCollection<Categoria> lstCategoria
         {
-            get { return _lstProdutos; }
+            get { return _lstCategoria; }
             set
             {
-                _lstProdutos = value;
-                OnPropertyChanged(nameof(lstProdutos));
+                _lstCategoria = value;
+                OnPropertyChanged(nameof(lstCategoria));
             }
         }
 
@@ -92,6 +93,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 uRow.Descricao = Produtos.Descricao;
                 uRow.Valor = Produtos.Valor;
                 produtosEntities.SaveChanges();
+                Produtos = new Produtos();
             }
             catch (DbEntityValidationException ex)
             {
@@ -102,9 +104,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private void LoadProdutos() //Read
+        private async void LoadProdutos() //Read
         {
-            lstProdutos = new ObservableCollection<Produtos>(produtosEntities.Produtos);
+            produtosEntities = new OlharMeninaBDEntities();
+            var lista = await produtosEntities.Categoria.ToListAsync();
+            lstCategoria = new ObservableCollection<Categoria>(lista);
         }
 
         #endregion Methods

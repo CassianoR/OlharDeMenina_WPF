@@ -9,6 +9,7 @@
 
 namespace LojaOlharDeMenina_WPF.Model
 {
+    using LojaOlharDeMenina_WPF.Core;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -16,20 +17,13 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.Runtime.CompilerServices;
 
 
-    public partial class Produtos
+    public partial class Produtos : ObservableObject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Produtos()
         {
             this.Estoque = new HashSet<Estoque>();
             this.Venda = new HashSet<Venda>();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private int codigo;

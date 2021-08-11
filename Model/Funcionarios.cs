@@ -16,24 +16,12 @@ namespace LojaOlharDeMenina_WPF.Model
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.CompilerServices;
 
-    public partial class Funcionarios : ObservableObject, ICloneable
+    public partial class Funcionarios : ObservableObject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Funcionarios()
         {
             this.Venda = new HashSet<Venda>();
-        }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
         }
 
         private int id;

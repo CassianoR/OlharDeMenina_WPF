@@ -57,6 +57,8 @@ namespace LojaOlharDeMenina_WPF.View
             mef.Nome = row.Nome;
             mef.Telefone = row.Telefone;
             mef.Endereco = row.Endereco;
+            mef.Email = row.LoginFuncionario;
+            mef.Atividade = row.Atividade;
             stkPanelFuncionarios.Effect = new BlurEffect();
             tboxFuncionarioTitulo.Effect = new BlurEffect();
             btnCadastrar.Effect = new BlurEffect();

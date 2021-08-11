@@ -113,16 +113,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private async void GetResults(string search)
         {
-            if (_search == "*")
+            if (search == "*")
             {
                 LoadFuncionario();
                 return;
             }
-            if (lstFuncionarios != null)
-                lstFuncionarios.Clear();
-
             lstFuncionarios = new ObservableCollection<Funcionarios>();
-            var ObjQuery = await funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToListAsync();
+            var ObjQuery = await funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(search) || x.CPF.Contains(search) || x.Telefone.Contains(search)).ToListAsync();
             foreach (var funcionario in ObjQuery)
             {
                 lstFuncionarios.Add(funcionario);

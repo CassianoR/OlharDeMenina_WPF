@@ -73,7 +73,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 try
                 {
                     funcionariosEntities.SaveChanges();
-                    Limpar();
+                    Funcionarios = new Funcionarios();
                 }
                 catch (DbEntityValidationException ex)
                 {
@@ -87,17 +87,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 Message = "CPF Inválido";
             }
-        }
-
-        public void Limpar()
-        {
-            Funcionarios.Cargo = string.Empty;
-            Funcionarios.CPF = string.Empty;
-            Funcionarios.Endereco = string.Empty;
-            Funcionarios.Senha = string.Empty;
-            Funcionarios.Telefone = string.Empty;
-            Funcionarios.Nome = string.Empty;
-            Funcionarios.Atividade = string.Empty;
         }
 
         #endregion Methods

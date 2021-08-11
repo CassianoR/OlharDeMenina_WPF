@@ -77,16 +77,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private readonly ObservableCollection<string> _results = new ObservableCollection<string>();
-
-        public ObservableCollection<string> Results
-        {
-            get
-            {
-                return _results;
-            }
-        }
-
         private Exceptions exc = new Exceptions();
 
         private OlharMeninaBDEntities clientesEntities;
@@ -98,7 +88,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ClientesViewModel()
         {
             clientesEntities = new OlharMeninaBDEntities();
-            //LoadCliente();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
         }
@@ -109,20 +98,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private async void GetResults(string search)
         {
-            if (_search == "*")
+            if (search == "*")
             {
                 LoadCliente();
                 return;
             }
-            if (lstClientes != null)
-                lstClientes.Clear();
-
             lstClientes = new ObservableCollection<Clientes>();
-            _results.Clear();
-            var ObjQuery = await clientesEntities.Clientes.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToListAsync();
+            var ObjQuery = await clientesEntities.Clientes.Where(x => x.Nome.Contains(search) || x.CPF.Contains(search) || x.Telefone.Contains(search)).ToListAsync();
             foreach (var cliente in ObjQuery)
             {
-                _results.Add(cliente.Nome);
                 lstClientes.Add(cliente);
             }
         }
