@@ -80,15 +80,25 @@
                 </xctk:WatermarkTextBox>
             </Border>
             <Border Background="White" Grid.RowSpan="4">
-                <DataGrid tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}" Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False" x:Name="datagrid_produto" ItemsSource="{Binding lstProdutos}" SelectedItem="{Binding SelectedProduto}">
+                <DataGrid tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}"
+                          Margin="10"
+                          AlternatingRowBackground="LightGray"
+                          Background="White" MinColumnWidth="90"
+                          BorderThickness="0"
+                          GridLinesVisibility="None"
+                          AutoGenerateColumns="False"
+                          x:Name="datagrid_produto"
+                          ItemsSource="{Binding lstProdutos}"
+                          SelectedItem="{Binding SelectedProduto}"
+                          IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProduto" Header="Nome" Width="auto" FontSize="18" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Marca,UpdateSourceTrigger=PropertyChanged}" x:Name="Marca" Header="Marca" Width="auto" FontSize="18" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="Categoria" Header="Categoria" Width="auto" FontSize="18" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Descricao,UpdateSourceTrigger=PropertyChanged}" x:Name="Descricao" Header="Descricao" Width="auto" FontSize="18" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" x:Name="Valor" Header="Valor" Width="auto" FontSize="18" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding UnidadeMedida,UpdateSourceTrigger=PropertyChanged}" x:Name="UnidadeMedida" Header="Unidade de Medida" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding Codigo,UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding NomeProduto,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProduto" Header="Nome" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding Marca,UpdateSourceTrigger=PropertyChanged}" x:Name="Marca" Header="Marca" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="Categoria" Header="Categoria" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding Descricao,UpdateSourceTrigger=PropertyChanged}" x:Name="Descricao" Header="Descricao" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged, StringFormat=R$ {0:#,00.00}}" x:Name="Valor" Header="Valor" Width="auto" FontSize="18" />
+                        <DataGridTextColumn Binding="{Binding UnidadeMedida,UpdateSourceTrigger=PropertyChanged}" x:Name="UnidadeMedida" Header="Unidade de Medida" Width="auto" FontSize="18" />
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

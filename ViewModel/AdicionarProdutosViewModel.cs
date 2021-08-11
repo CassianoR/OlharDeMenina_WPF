@@ -77,6 +77,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             try
             {
                 produtosEntities.SaveChanges();
+                Produtos = new Produtos();
             }
             catch (DbEntityValidationException ex)
             {

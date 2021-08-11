@@ -66,6 +66,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 try
                 {
                     clientesEntities.SaveChanges();
+                    Clientes = new Clientes();
                 }
                 catch (DbEntityValidationException ex)
                 {
