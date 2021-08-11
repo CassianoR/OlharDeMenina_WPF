@@ -4,8 +4,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewModel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" d:DataContext="{d:DesignInstance Type=viewModel:EditarProdutosViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewModel:EditarProdutosViewModel}"
              mc:Ignorable="d"
              Loaded="Window_Loaded"
              Grid.Column="1"
@@ -45,20 +46,17 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <ComboBox x:Name="ProdCategoria" IsEditable="True" ItemsSource="{Binding lstProdutos}" Text="{Binding Produtos.Categoria}" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" SelectedIndex="{Binding Produtos.Categoria}" Margin="0,21,-1,13" Grid.RowSpan="2">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Produtos.Categoria}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
+                <ComboBox x:Name="ProdCategoria" IsEditable="True"
+                    ItemsSource="{Binding lstCategoria}" DisplayMemberPath="NomeCategoria"
+                    Text="{Binding Produtos.FK_NomeCategoria}"
+                    SelectedItem="{Binding Produtos.FK_NomeCategoria}"
+                    Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="0,22,0,12" Grid.RowSpan="2">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
                 </ComboBox>
                 <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" Margin="0,20,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
+                <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,25,-1,13" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>

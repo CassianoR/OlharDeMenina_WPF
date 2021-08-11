@@ -1,5 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -9,6 +11,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     public class AdicionarProdutosViewModel : ObservableObject
     {
         #region Properties
+
+        private ObservableCollection<Categoria> _lstCategoria;
+
+        public ObservableCollection<Categoria> lstCategoria
+        {
+            get { return _lstCategoria; }
+            set
+            {
+                _lstCategoria = value;
+                OnPropertyChanged(nameof(lstCategoria));
+            }
+        }
 
         private Produtos _produtos = new Produtos();
 
@@ -48,6 +62,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             produtosEntities = new OlharMeninaBDEntities();
             AddProdutoCommand = new Command((s) => true, AddProduto);
+            LoadProdutos();
         }
 
         #endregion Constructor
@@ -59,6 +74,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             if (produtosEntities == null)
                 produtosEntities = new OlharMeninaBDEntities();
             Produtos.Codigo = produtosEntities.Clientes.Count();
+            System.Console.Write(Produtos.Valor);
             var count = produtosEntities.Categoria
                                 .Where(o => o.NomeCategoria == Produtos.FK_NomeCategoria)
                                 .Count();
@@ -86,6 +102,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 produtosEntities.Dispose();
                 produtosEntities = new OlharMeninaBDEntities();
             }
+        }
+
+        private async void LoadProdutos() //Read
+        {
+            produtosEntities = new OlharMeninaBDEntities();
+            var lista = await produtosEntities.Categoria.ToListAsync();
+            lstCategoria = new ObservableCollection<Categoria>(lista);
         }
 
         #endregion Methods
