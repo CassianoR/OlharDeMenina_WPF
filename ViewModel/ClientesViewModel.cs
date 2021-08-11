@@ -1,6 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -106,7 +107,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
-        private void GetResults(string search)
+        private async void GetResults(string search)
         {
             if (_search == "*")
             {
@@ -118,7 +119,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
             lstClientes = new ObservableCollection<Clientes>();
             _results.Clear();
-            var ObjQuery = clientesEntities.Clientes.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToList();
+            var ObjQuery = await clientesEntities.Clientes.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToListAsync();
             foreach (var cliente in ObjQuery)
             {
                 _results.Add(cliente.Nome);
@@ -154,9 +155,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private void LoadCliente() //Read
+        private async void LoadCliente() //Read
         {
-            lstClientes = new ObservableCollection<Clientes>(clientesEntities.Clientes);
+            clientesEntities = new OlharMeninaBDEntities();
+            var lista = await clientesEntities.Clientes.ToListAsync();
+            lstClientes = new ObservableCollection<Clientes>(lista);
         }
 
         #endregion Methods
