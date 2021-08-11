@@ -9,24 +9,89 @@
 
 namespace LojaOlharDeMenina_WPF.Model
 {
+    using LojaOlharDeMenina_WPF.Core;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Clientes
+    using System.ComponentModel.DataAnnotations;
+
+    public partial class Clientes : ObservableObject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clientes()
         {
             this.Venda = new HashSet<Venda>();
         }
-    
-        public int ID { get; set; }
-        public string Nome { get; set; }
-        public string CPF { get; set; }
-        public string Endereco { get; set; }
-        public string Telefone { get; set; }
-        public string DataNasc { get; set; }
-    
+
+        private int id;
+        private string nome;
+        private string cpf;
+        private string endereco;
+        private string telefone;
+        private string datanasc;
+
+        public int ID
+        {
+            get => id; set
+            {
+                id = value;
+                OnPropertyChanged(nameof(ID));
+            }
+        }
+
+
+        [Required(ErrorMessage = " O campo Nome é obrigatório.")]
+        public string Nome
+        {
+            get => nome; set
+            {
+                nome = value;
+                OnPropertyChanged(nameof(Nome));
+            }
+        }
+
+        [Required(ErrorMessage = " O campo CPF é obrigatório.")]
+        [RegularExpression(@"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})", ErrorMessage = "O CPF precisa estar no formato correto. (000.000.000-00)")]
+        public string CPF
+        {
+            get => cpf; set
+            {
+                cpf = value;
+                OnPropertyChanged(nameof(CPF));
+            }
+        }
+
+
+
+        [Required(ErrorMessage = " O campo Endereço é obrigatório.")]
+        public string Endereco
+        {
+            get => endereco; set
+            {
+                endereco = value;
+                OnPropertyChanged(nameof(Endereco));
+            }
+        }
+
+        [Required(ErrorMessage = " O campo Telefone é obrigatório.")]
+        [RegularExpression(@"(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})", ErrorMessage = "O Telefone precisa estar no formato correto. (00 00000-0000)")]
+        public string Telefone
+        {
+            get => telefone; set
+            {
+                telefone = value;
+                OnPropertyChanged(nameof(Telefone));
+            }
+        }
+
+        public string DataNasc
+        {
+            get => datanasc; set
+            {
+                datanasc = value;
+                OnPropertyChanged(nameof(DataNasc));
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
     }
