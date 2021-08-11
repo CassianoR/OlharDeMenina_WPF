@@ -1,6 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -110,7 +111,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
-        private void GetResults(string search)
+        private async void GetResults(string search)
         {
             if (_search == "*")
             {
@@ -121,7 +122,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstFuncionarios.Clear();
 
             lstFuncionarios = new ObservableCollection<Funcionarios>();
-            var ObjQuery = funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToList();
+            var ObjQuery = await funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(_search) || x.CPF.Contains(_search) || x.Telefone.Contains(_search)).ToListAsync();
             foreach (var funcionario in ObjQuery)
             {
                 lstFuncionarios.Add(funcionario);
@@ -157,10 +158,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstFuncionarios.Remove(fu);
         }
 
-        private void LoadFuncionario() //Read
+        private async void LoadFuncionario() //Read
         {
             funcionariosEntities = new OlharMeninaBDEntities();
-            lstFuncionarios = new ObservableCollection<Funcionarios>(funcionariosEntities.Funcionarios);
+            var lista = await funcionariosEntities.Funcionarios.ToListAsync();
+            lstFuncionarios = new ObservableCollection<Funcionarios>(lista);
         }
 
         #endregion Methods

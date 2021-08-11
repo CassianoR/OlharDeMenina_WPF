@@ -1,6 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -105,7 +106,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
-        private void GetResults(string search)
+        private async void GetResults(string search)
         {
             if (_search == "*")
             {
@@ -117,7 +118,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
             lstProdutos = new ObservableCollection<Produtos>();
             _results.Clear();
-            var ObjQuery = produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(_search) || x.Marca.Contains(_search) || x.FK_NomeCategoria.Contains(_search)).ToList();
+            var ObjQuery = await produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(_search) || x.Marca.Contains(_search) || x.FK_NomeCategoria.Contains(_search)).ToListAsync();
             foreach (var produto in ObjQuery)
             {
                 _results.Add(produto.NomeProduto);
@@ -155,9 +156,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private void LoadProdutos() //Read
+        private async void LoadProdutos() //Read
         {
-            lstProdutos = new ObservableCollection<Produtos>(produtosEntities.Produtos);
+            produtosEntities = new OlharMeninaBDEntities();
+            var lista = await produtosEntities.Produtos.ToListAsync();
+            lstProdutos = new ObservableCollection<Produtos>(lista);
         }
 
         #endregion Methods
