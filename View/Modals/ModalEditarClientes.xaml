@@ -6,7 +6,13 @@
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
-             Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104" Loaded="UserControl_Loaded">
+             Grid.ColumnSpan="2"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Center"
+             HorizontalContentAlignment="Center"
+             VerticalContentAlignment="Center"
+             BorderBrush="#FF2B0104"
+             Loaded="UserControl_Loaded">
     <Border CornerRadius="15" Background="#FFFFF6FA">
         <Grid>
             <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,73" Background="Transparent" Height="169">

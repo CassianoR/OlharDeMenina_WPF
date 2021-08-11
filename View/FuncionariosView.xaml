@@ -102,6 +102,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding ID,UpdateSourceTrigger=PropertyChanged}" Header="ID" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn Binding="{Binding Cargo,UpdateSourceTrigger=PropertyChanged}" Header="Cargo" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn Binding="{Binding LoginFuncionario,UpdateSourceTrigger=PropertyChanged}" Header="Email" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn Binding="{Binding Nome,UpdateSourceTrigger=PropertyChanged}" Header="Nome" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn Binding="{Binding CPF,UpdateSourceTrigger=PropertyChanged}" Header="CPF" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn Binding="{Binding Telefone,UpdateSourceTrigger=PropertyChanged}" Header="Telefone" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />

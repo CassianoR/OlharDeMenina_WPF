@@ -72,10 +72,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             try
             {
+                Hash _hash = new Hash();
+                var senha = _hash.Encrypt(Funcionarios.Senha.ToString());
                 var uRow = funcionariosEntities.Funcionarios.Where(w => w.ID == _codigo).FirstOrDefault();
                 uRow.Nome = Funcionarios.Nome;
                 uRow.Telefone = Funcionarios.Telefone;
                 uRow.Endereco = Funcionarios.Endereco;
+                uRow.Senha = senha;
+                uRow.Atividade = Funcionarios.Atividade;
+                uRow.LoginFuncionario = Funcionarios.LoginFuncionario;
                 funcionariosEntities.SaveChanges();
                 Funcionarios = new Funcionarios();
             }
