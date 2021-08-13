@@ -23,20 +23,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private decimal valorAntes;
-
-        public decimal ValorAntes
-        {
-            get
-            {
-                return valorAntes;
-            }
-            set
-            {
-                valorAntes = value;
-                OnPropertyChanged(nameof(ValorAntes));
-            }
-        }
 
         private decimal desconto;
 
@@ -52,6 +38,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Desconto));
             }
         }
+
+
 
 
         private string message;
@@ -105,6 +93,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 vendasEntities = new OlharMeninaBDEntities();
             Venda.CodigoVendas = vendasEntities.Clientes.Count();
             vendasEntities.Venda.Add(Venda);
+            if (Desconto != 0)
+            {
+                Venda.Valor = Venda.Valor - 00;
+                Venda.Valor = Venda.Valor - Desconto;
+            }
             try
             {
                 vendasEntities.SaveChanges();
@@ -118,13 +111,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        //private void DescontoMetodo (object obj)
-        //{
-        //    if (Desconto != null)
-        //    {
-        //        Venda.Valor = valorAntes - desconto;
-        //    }
-        //}
 
         #endregion Methods
 

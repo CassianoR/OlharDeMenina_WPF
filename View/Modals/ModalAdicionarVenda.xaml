@@ -50,13 +50,13 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Desconto:" />
-                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxDesconto" Text="{Binding Venda.Valor}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxDesconto" Text="{Binding Desconto}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
