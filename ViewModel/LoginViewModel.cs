@@ -132,7 +132,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     }
                     else
                     {
-                        //Fazer lógica de abrir a MainWindow aqui, talvez seja preciso fazer um sistema de navegação
                         var nomecargo = funcionariosEntities.Funcionarios.Where(o => o.LoginFuncionario == User.ToString())
                                                     .Where(o => o.Senha == senha)
                                                     .Select(o => o.Cargo).FirstOrDefault();
