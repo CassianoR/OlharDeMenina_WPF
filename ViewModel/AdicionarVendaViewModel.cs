@@ -88,7 +88,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             if (vendasEntities == null)
                 vendasEntities = new OlharMeninaBDEntities();
-            Venda.CodigoVendas = vendasEntities.Clientes.Count();
+            Venda.CodigoVendas = vendasEntities.Venda.Count();
             vendasEntities.Venda.Add(Venda);
             if (Desconto != 0)
             {
