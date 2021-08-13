@@ -23,7 +23,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-
         private decimal desconto;
 
         public decimal Desconto
@@ -38,9 +37,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Desconto));
             }
         }
-
-
-
 
         private string message;
 
@@ -58,6 +54,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         }
 
         private DateTime timer = DateTime.Now;
+
         public DateTime Timer
         {
             get
@@ -110,7 +107,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 vendasEntities = new OlharMeninaBDEntities();
             }
         }
-
 
         #endregion Methods
 
