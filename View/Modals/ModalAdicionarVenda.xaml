@@ -6,19 +6,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:viewmodel="clr-namespace:LojaOlharDeMenina_WPF.ViewModel"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
              d:DataContext="{d:DesignInstance Type=viewmodel:AdicionarVendaViewModel}"
              mc:Ignorable="d"
              Grid.Column="1"
              Grid.Row="2"
              Grid.RowSpan="3"
              Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF2B0104">
-    <Border CornerRadius="15" Background="#FFFFF6FA" Width="500">
+    <Border CornerRadius="15" Background="#FFFFF6FA" Height="280" Width="550">
         <Grid>
-            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="18,0,18,73" Background="Transparent" Height="169">
+            <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,104" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -29,53 +30,60 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label HorizontalAlignment="Right" Content="ID Cliente:" />
-                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Venda.FK_IDCliente}"
-                     VerticalAlignment="Center">
+                <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="ID Cliente:" />
+                <TextBox x:Name="tboxNome" Grid.Row="2" Grid.Column="1" Text="{Binding Venda.FK_IDCliente}"
+                     VerticalAlignment="Center" Margin="0,5,0,1" >
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="ID Funcionario:" />
-                <TextBox x:Name="cboxIDFuncionario" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <Label Height="24" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="ID Funcionario:" />
+                <TextBox x:Name="cboxIDFuncionario" Text="{Binding Venda.FK_IDFuncionario}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Código Produto:" />
-                <TextBox x:Name="cboxCodigoProduto" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <Label Height="24" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Código Produto:" />
+                <TextBox x:Name="cboxCodigoProduto" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
-                <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <xctk:MaskedTextBox Mask="00.00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Venda.Valor}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
-                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data:" />
-                <xctk:DateTimePicker Text="{Binding Venda.Data}" Format="Custom" x:Name="Timer" FormatString="dd-MM-yy hh:mm:ss tt" TimeFormat="Custom" TimeFormatString="hh:mm:ss tt" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Value="{Binding Path=Timer, Mode=TwoWay}" />
-                <Label Height="24" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="MetodoPagemnto:" />
-                <TextBox x:Name="cboxMetodoPagamento" Text="{Binding Venda.MetodoPagamento}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
-                    <TextBox.Background>
-                        <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
-                <Label Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Quantidade Produto" />
-                <xctk:MaskedTextBox Mask="000" x:Name="tboxQuantidade" Text="{Binding Venda.QuantidadeVendida}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center">
+                <Label Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Desconto:" />
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxDesconto" Text="{Binding Desconto}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center"  Margin="0,5,0,0">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
+                <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data:" Grid.Row="2" Grid.Column="2" Margin="0,3,0,0" Grid.RowSpan="2" />
+                <xctk:TimePicker Text="{Binding Venda.Data}" Value="{Binding CurrentDateTime}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,5,0,0" />
+                <Label Height="24" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="MetodoPagemnto:" Grid.Column="2" Margin="0,0,10,0" />
+                <ComboBox x:Name="cboxMetodosPagamento" Text="{Binding Venda.MetodoPagamento}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,4,0,3">
+                    <ComboBoxItem x:Name="cboxitemPixTransferencia" Content="Pix/Transferência" TextOptions.TextHintingMode="Animated" />
+                    <ComboBoxItem x:Name="cboxitemCredito" Content="Cartão de Crédito" TextOptions.TextHintingMode="Animated" />
+                    <ComboBoxItem x:Name="cboxitemDebito" Content="Cartão de Débito" TextOptions.TextHintingMode="Animated" />
+                    <ComboBoxItem x:Name="cboxitemAvista" Content="À vista" TextOptions.TextHintingMode="Animated" />
+                </ComboBox>
+                <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Quantidade Produto" Margin="0,2,4,0" Height="34" Grid.Column="2" Grid.RowSpan="2" />
+                <TextBox x:Name="cboxQuantidadeVendida" Text="{Binding Venda.QuantidadeVendida}" Grid.Row="4" Grid.Column="3" VerticalAlignment="Top" Margin="0,4,0,0" Height="21">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0.5" />
+                    </TextBox.Background>
+                </TextBox>
 
-                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
+                <Button Grid.Row="6" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
                 Command="{Binding AddVendaCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0,62,0,-65"
+                        Margin="68,35,65,-43"
                         Click="btnCadastrar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33" Grid.ColumnSpan="2" Grid.Column="1">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -99,11 +107,11 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="128" Margin="-02,10,0,0" Grid.RowSpan="6" VerticalAlignment="Top" Width="97"
-                                                    Foreground="PaleVioletRed" />
+                <iconPacks:PackIconMaterial Kind="Shopping" HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="28"
+                                                    Foreground="PaleVioletRed" Grid.Column="2" Margin="75,0,0,0" RenderTransformOrigin="3.815,0.52" Grid.RowSpan="2" />
             </Grid>
             <Label Grid.Row="0" Content="Cadastar Venda" FontSize="22" HorizontalAlignment="Center"
-                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="125,8,125,227" />
+                       VerticalAlignment="Center" x:Name="lblTitulo" Foreground="PaleVioletRed" FontFamily="Segoe UI Semilight" Margin="190,10,182,231" Width="178" />
 
             <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="btn_close" Click="btn_close_Click" BorderBrush="Transparent" Margin="10">
                 <iconPacks:PackIconMaterial Kind="CloseCircle"
@@ -126,7 +134,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <TextBlock HorizontalAlignment="Left" Margin="10,281,0,0" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Height="38" Width="373" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,0,0,61" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Bottom" Height="38" Width="175" />
         </Grid>
     </Border>
 </UserControl>

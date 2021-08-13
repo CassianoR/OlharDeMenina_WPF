@@ -80,7 +80,7 @@
             </Border>
             <Border Background="White" Grid.RowSpan="4">
 
-                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_venda" ItemsSource="{Binding lstVendas}" SelectedItem="{Binding FuncionarioSelecionado}">
+                <DataGrid Margin="10" AlternatingRowBackground="LightGray" Background="White" MinColumnWidth="90" BorderThickness="0" GridLinesVisibility="None" AutoGenerateColumns="False"  x:Name="datagrid_venda" ItemsSource="{Binding lstVendas}" SelectedItem="{Binding SelectedVenda}">
                     <DataGrid.Resources>
 
                         <Style x:Key="editStyle" TargetType="TextBox">
@@ -88,13 +88,14 @@
                         </Style>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding CodigoVendas,UpdateSourceTrigger=PropertyChanged}" Header="Código" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_IDFuncionario,UpdateSourceTrigger=PropertyChanged}" Header="Funcionario" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_IDCliente,UpdateSourceTrigger=PropertyChanged}" Header="Cliente" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_CódigoProduto,UpdateSourceTrigger=PropertyChanged}" Header="Produtos" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Quantidade, UpdateSourceTrigger=PropertyChanged}" Header="Quantidade" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_CodigoProduto,UpdateSourceTrigger=PropertyChanged}" Header="Produtos" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding QuantidadeVendida, UpdateSourceTrigger=PropertyChanged}" Header="Quantidade" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding MétodoPagamento,UpdateSourceTrigger=PropertyChanged}" Header="Método de Pagamento" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding DataHora,UpdateSourceTrigger=PropertyChanged}" Header="Horário" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding MetodoPagamento,UpdateSourceTrigger=PropertyChanged}" Header="Método de Pagamento" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Data,UpdateSourceTrigger=PropertyChanged}" Header="Horário" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

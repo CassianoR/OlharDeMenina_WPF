@@ -23,19 +23,24 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private DateTime _Timer = DateTime.Now;
 
-        public DateTime Time
+        private decimal desconto;
+
+        public decimal Desconto
         {
             get
             {
-                return _Timer;
+                return desconto;
             }
             set
             {
-                _Timer = value;
+                desconto = value;
+                OnPropertyChanged(nameof(Desconto));
             }
         }
+
+
+
 
         private string message;
 
@@ -49,6 +54,19 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 message = value;
                 OnPropertyChanged(nameof(Message));
+            }
+        }
+
+        private DateTime timer = DateTime.Now;
+        public DateTime Timer
+        {
+            get
+            {
+                return timer;
+            }
+            set
+            {
+                timer = value;
             }
         }
 
@@ -75,6 +93,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 vendasEntities = new OlharMeninaBDEntities();
             Venda.CodigoVendas = vendasEntities.Clientes.Count();
             vendasEntities.Venda.Add(Venda);
+            if (Desconto != 0)
+            {
+                Venda.Valor = Venda.Valor - 00;
+                Venda.Valor = Venda.Valor - Desconto;
+            }
             try
             {
                 vendasEntities.SaveChanges();
@@ -87,6 +110,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 vendasEntities = new OlharMeninaBDEntities();
             }
         }
+
 
         #endregion Methods
 
