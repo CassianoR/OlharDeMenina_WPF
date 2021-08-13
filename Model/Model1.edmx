@@ -71,7 +71,7 @@
           <Property Name="FK_IDFuncionario" Type="int" Nullable="false" />
           <Property Name="FK_IDCliente" Type="int" Nullable="false" />
           <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
-          <Property Name="Valor" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Data" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="QuantidadeVendida" Type="int" Nullable="false" />
@@ -242,7 +242,7 @@
           <Property Name="FK_IDFuncionario" Type="Int32" Nullable="false" />
           <Property Name="FK_IDCliente" Type="Int32" Nullable="false" />
           <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
-          <Property Name="Valor" Type="String" Nullable="false" FixedLength="false" Unicode="false" MaxLength="40" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <Property Name="MetodoPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Data" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
           <Property Name="QuantidadeVendida" Type="Int32" Nullable="false" />
