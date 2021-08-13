@@ -139,7 +139,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                             Message = "Login efetuado com sucesso!";
                             windowService.showWindow(nomecargo.ToString());
                             App.Current.MainWindow.Close();
-                        Console.WriteLine(nomecargo);
                     }
                 }
             }
