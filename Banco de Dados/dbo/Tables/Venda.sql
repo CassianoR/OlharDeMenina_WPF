@@ -5,7 +5,7 @@
     [FK_CodigoProduto]  INT             NOT NULL,
     [Valor]             DECIMAL (15, 2) NOT NULL,
     [MetodoPagamento]   VARCHAR (50)    NOT NULL,
-    [Data]              VARCHAR (20)    NOT NULL,
+    [Data]              VARCHAR (40)    NOT NULL,
     [QuantidadeVendida] INT             NOT NULL,
     PRIMARY KEY CLUSTERED ([CodigoVendas] ASC),
     CONSTRAINT [FK_Venda] FOREIGN KEY ([FK_IDFuncionario]) REFERENCES [dbo].[Funcionarios] ([ID]),
