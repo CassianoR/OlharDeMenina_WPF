@@ -16,10 +16,10 @@
         <Grid>
             <Grid Name="grid1" VerticalAlignment="Bottom" Margin="10,0,10,104" Background="Transparent" Height="169">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="ID Cliente:" />
                 <TextBox x:Name="tboxNome" Grid.Row="2" Grid.Column="1" Text="{Binding Venda.FK_IDCliente}"
-                     VerticalAlignment="Center" Margin="0,5,0,1" >
+                     VerticalAlignment="Center" Margin="0,5,0,1">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
