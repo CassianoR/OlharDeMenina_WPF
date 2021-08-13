@@ -85,12 +85,16 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #endregion Properties
 
+        #region Constructor
+
         public VendasViewModel()
         {
             vendaEntities = new OlharMeninaBDEntities();
             AddVendasCommand = new Command((s) => true, AddVendas);
             UpdateCommand = new Command((s) => true, Update);
         }
+
+        #endregion Constructor
 
         #region Methods
 
@@ -119,7 +123,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 LoadVendas();
             }
-            Venda.CodigoVendas = vendaEntities.Clientes.Count();
+            Venda.CodigoVendas = vendaEntities.Venda.Count();
             vendaEntities.Venda.Add(Venda);
             try
             {

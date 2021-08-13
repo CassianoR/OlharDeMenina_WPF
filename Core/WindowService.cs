@@ -12,8 +12,8 @@ namespace LojaOlharDeMenina_WPF.Core
     {
         public WindowService()
         {
-            
         }
+
         public void showWindow(object cargo)
         {
             if (cargo.ToString() == "Administrador")

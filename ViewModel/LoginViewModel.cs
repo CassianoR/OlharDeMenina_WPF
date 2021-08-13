@@ -135,9 +135,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                         var nomecargo = funcionariosEntities.Funcionarios.Where(o => o.LoginFuncionario == User.ToString())
                                                     .Where(o => o.Senha == senha)
                                                     .Select(o => o.Cargo).FirstOrDefault();
-                            Message = "Login efetuado com sucesso!";
-                            windowService.showWindow(nomecargo.ToString());
-                            App.Current.MainWindow.Close();
+                        Message = "Login efetuado com sucesso!";
+                        windowService.showWindow(nomecargo.ToString());
+                        App.Current.MainWindow.Close();
                     }
                 }
             }
