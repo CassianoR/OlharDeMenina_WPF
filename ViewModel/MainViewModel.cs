@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.ViewModel
 {
-    internal class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         public HomeViewModel HomeVM { get; set; }
         public FuncionariosViewModel FuncionariosVM { get; set; }
@@ -22,11 +22,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        public bool isEnabled { get; set; }
+
         public MainViewModel()
         {
             HomeVM = new HomeViewModel();
             CurrentView = HomeVM;
             IdentificaViewCommand = new Command((s) => true, BuscaView);
+        }
+
+        public MainViewModel(bool cargo)
+        {
+            HomeVM = new HomeViewModel();
+            CurrentView = HomeVM;
+            IdentificaViewCommand = new Command((s) => true, BuscaView);
+            isEnabled = cargo;
         }
 
         public ICommand IdentificaViewCommand { get; set; }

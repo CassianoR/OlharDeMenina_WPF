@@ -84,6 +84,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private string _cargo;
+
+        public string Cargo
+        {
+            get { return _cargo; }
+            set
+            {
+                _cargo = value;
+                OnPropertyChanged(nameof(Cargo));
+            }
+        }
+
         private int contador;
 
         #endregion Properties
@@ -120,10 +132,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                     }
                     else
                     {
-                        //Fazer lógica de abrir a MainWindow aqui, talvez seja preciso fazer um sistema de navegação
-                        Message = "Login efetuado com sucesso!";
-                        windowService.showWindow();
-                        App.Current.MainWindow.Close();
+                        var nomecargo = funcionariosEntities.Funcionarios.Where(o => o.LoginFuncionario == User.ToString())
+                                                    .Where(o => o.Senha == senha)
+                                                    .Select(o => o.Cargo).FirstOrDefault();
+                            Message = "Login efetuado com sucesso!";
+                            windowService.showWindow(nomecargo.ToString());
+                            App.Current.MainWindow.Close();
                     }
                 }
             }

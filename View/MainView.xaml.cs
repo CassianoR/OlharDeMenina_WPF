@@ -12,13 +12,13 @@ namespace LojaOlharDeMenina_WPF.View
         public Window1()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
+            this.DataContext = new MainViewModel(_cargo);
         }
 
         public string username { get; set; }
         public string password { get; set; }
         public string idFunc { get; set; }
-        public bool Adm { get; set; }
+        public bool _cargo { get; set; }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -55,6 +55,7 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            rbFunc.IsEnabled = _cargo;
             DataContext = new HomeViewModel();
         }
 
