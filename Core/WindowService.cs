@@ -5,15 +5,29 @@ namespace LojaOlharDeMenina_WPF.Core
 {
     internal interface IWindowService
     {
-        void showWindow();
+        void showWindow(object cargo);
     }
 
     internal class WindowService : IWindowService
     {
-        public void showWindow()
+        public WindowService()
         {
-            Window1 window = new Window1();
-            window.Show();
+            
+        }
+        public void showWindow(object cargo)
+        {
+            if (cargo.ToString() == "Administrador")
+            {
+                Window1 window = new Window1();
+                window._cargo = true;
+                window.Show();
+            }
+            else
+            {
+                Window1 window = new Window1();
+                window._cargo = false;
+                window.Show();
+            }
         }
 
         public void CloseWindow(Window login)
