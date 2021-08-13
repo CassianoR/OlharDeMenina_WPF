@@ -66,7 +66,7 @@ CREATE TABLE [dbo].[Venda] (
     [FK_IDFuncionario]  INT             NOT NULL,
     [FK_IDCliente]      INT             NOT NULL,
     [FK_CodigoProduto]  INT             NOT NULL,
-    [Valor]             VARCHAR (20)    NOT NULL,
+    [Valor]             DECIMAL (15, 2) NOT NULL,
     [MetodoPagamento]   VARCHAR (50)    NOT NULL,
     [Data]              VARCHAR (40)    NOT NULL,
     [QuantidadeVendida] INT             NOT NULL,
