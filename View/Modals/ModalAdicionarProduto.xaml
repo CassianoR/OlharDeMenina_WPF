@@ -28,14 +28,14 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label HorizontalAlignment="Right" Content="Nome:" />
-                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Produtos.NomeProduto}"
+                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
                      VerticalAlignment="Center" TextChanged="tboxNome_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="1" HorizontalAlignment="Right" Content="Marca:" />
-                <TextBox x:Name="tboxMarca" Text="{Binding Produtos.Marca}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxMarca_TextChanged">
+                <TextBox x:Name="tboxMarca" Text="{Binding Produtos.Marca, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxMarca_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
@@ -44,32 +44,26 @@
                 <ComboBox IsEditable="True"
                     ItemsSource="{Binding lstCategoria}" DisplayMemberPath="NomeCategoria"
                     x:Name="cboxCategoria" Text="{Binding Produtos.FK_NomeCategoria}"
-                    SelectedItem="{Binding Produtos.FK_NomeCategoria}"
+                    SelectedItem="{Binding Produtos.FK_NomeCategoria, UpdateSourceTrigger=PropertyChanged}"
                     Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
                 </ComboBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" />
-                <TextBox x:Name="tboxDesc" Text="{Binding Produtos.Descricao}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxDesc_TextChanged">
+                <TextBox x:Name="tboxDesc" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxDesc_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
 
-                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
-                Command="{Binding AddProdutoCommand}"
-                Content="Cadastrar"
-                Foreground="White"
-                        Margin="0,28,0,-33"
-                        Click="btnCadastrar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" Command="{Binding AddProdutoCommand}" IsEnabled="{Binding buttonenablebool}" Opacity="{Binding buttonopacidadedouble}" Content="Cadastrar" Foreground="White" Margin="0,28,0,-33" Click="btnCadastrar_Click" BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
