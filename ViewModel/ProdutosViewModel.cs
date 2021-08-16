@@ -104,6 +104,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 return;
             }
             lstProdutos = new ObservableCollection<Produtos>();
+            produtosEntities = new OlharMeninaBDEntities();
             var ObjQuery = await produtosEntities.Produtos.Where(x => x.NomeProduto.Contains(search) || x.Marca.Contains(search) || x.FK_NomeCategoria.Contains(search)).ToListAsync();
             foreach (var produto in ObjQuery)
             {
