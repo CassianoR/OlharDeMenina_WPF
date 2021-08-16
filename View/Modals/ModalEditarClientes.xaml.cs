@@ -1,7 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.View.Modals
 {
@@ -21,18 +20,9 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public string Telefone { get; set; }
         public string Endereco { get; set; }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-        }
-
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
-        }
-
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
         }
 
         private void LimparCampos()
@@ -49,6 +39,46 @@ namespace LojaOlharDeMenina_WPF.View.Modals
             tboxNome.Text = Nome;
             tboxEnde.Text = Endereco;
             tboxTelefone.Text = Telefone;
+        }
+
+        private void tboxNome_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxCPF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxEnde_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxTelefone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxData_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void LiberaButton()
+        {
+            if (btnEditar != null)
+            {
+                if (tboxNome.Text == null || tboxCPF.Text == null || tboxEnde.Text == null || tboxTelefone.Text == null || tboxData.Text == null || tboxNome.Text == string.Empty || tboxCPF.Text == string.Empty || tboxEnde.Text == string.Empty || tboxTelefone.Text == string.Empty || tboxData.Text == string.Empty)
+                {
+                    btnEditar.IsEnabled = false;
+                }
+                else
+                {
+                    btnEditar.IsEnabled = true;
+                }
+            }
         }
     }
 }

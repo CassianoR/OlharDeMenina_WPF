@@ -39,53 +39,53 @@
 
                 <TextBlock Text="{Binding Produtos.Codigo, UpdateSourceTrigger=PropertyChanged}" x:Name="ProdCodigo" Grid.ColumnSpan="2"></TextBlock>
                 <Label HorizontalAlignment="Right" Content="Nome:" Margin="0,-4,5,4" Grid.Column="2" />
-                <TextBox Grid.Row="0" Grid.Column="3" x:Name="ProdNome" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
-                     VerticalAlignment="Center" Margin="0,2,-1,10" Height="17">
+                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="3" Text="{Binding Produtos.NomeProduto, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalAlignment="Center" Margin="0,2,-1,10" Height="17" TextChanged="tboxNome_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label HorizontalAlignment="Right" Content="Marca:" Margin="0,19,5,10" Grid.RowSpan="2" Grid.Column="2" />
-                <TextBox x:Name="ProdMarca" Text="{Binding Produtos.Marca, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,24,-1,15" Grid.RowSpan="2">
+                <TextBox x:Name="tboxMarca" Text="{Binding Produtos.Marca, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,24,-1,15" Grid.RowSpan="2" TextChanged="tboxMarca_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Height="24" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Categoria:" Margin="0,19,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <ComboBox x:Name="ProdCategoria" IsEditable="True"
+                <ComboBox x:Name="cboxCategoria" IsEditable="True"
                     ItemsSource="{Binding lstCategoria}" DisplayMemberPath="NomeCategoria"
                     Text="{Binding Produtos.FK_NomeCategoria}"
                     SelectedItem="{Binding Produtos.FK_NomeCategoria}"
-                    Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="0,22,0,12" Grid.RowSpan="2">
+                    Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="0,22,0,12" Grid.RowSpan="2" SelectionChanged="cboxCategoria_SelectionChanged">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
                 </ComboBox>
                 <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Descrição:" Margin="0,20,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <TextBox x:Name="ProdDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,25,-1,13" Grid.RowSpan="2">
+                <TextBox x:Name="tboxDescricao" Text="{Binding Produtos.Descricao, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" Margin="0,25,-1,13" Grid.RowSpan="2" TextChanged="tboxDesc_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" Margin="0,17,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <xctk:MaskedTextBox Mask="00,00" x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:#.##}}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:#.##}}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label HorizontalAlignment="Right" Content="Unidade de Medida:" Margin="0,15,10,13" Grid.RowSpan="2" Grid.Row="4" Grid.Column="2" />
-                <TextBox x:Name="UnidMed" Text="{Binding Produtos.UnidadeMedida, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,21,-1,17" Grid.Row="4" Grid.RowSpan="2">
+                <TextBox x:Name="tboxUnidade" Text="{Binding Produtos.UnidadeMedida, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" VerticalAlignment="Center" Margin="0,21,-1,17" Grid.Row="4" Grid.RowSpan="2" TextChanged="tboxUnidadeMed_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Button Grid.Row="5" Grid.Column="3" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
-                Command="{Binding EditProdutoCommand}"
-                Content="Editar"
-                Foreground="White"
-                        Margin="0,20,-1,-25"
-                        Click="btnEditar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                    Command="{Binding EditProdutoCommand}"
+                    Content="Editar"
+                    Foreground="White"
+                    Margin="0,20,-1,-25"
+                    IsEnabled="False"
+                    BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -94,6 +94,12 @@
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="LightPink" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Background" Value="PaleVioletRed" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

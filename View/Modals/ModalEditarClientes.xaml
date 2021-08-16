@@ -30,42 +30,42 @@
                 </Grid.RowDefinitions>
                 <Label HorizontalAlignment="Right" Content="Nome:" Margin="0,20,0,8" Grid.RowSpan="2" />
                 <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Clientes.Nome}"
-                     VerticalAlignment="Center" Margin="0,26,0,13" Grid.RowSpan="2">
+                     VerticalAlignment="Center" Margin="0,26,0,13" Grid.RowSpan="2" TextChanged="tboxNome_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Content="CPF:" Margin="0,20,0,0" Grid.RowSpan="2" />
-                <xctk:MaskedTextBox Mask="000,000,000-00" x:Name="tboxCPF" Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2">
+                <xctk:MaskedTextBox Mask="000,000,000-00" x:Name="tboxCPF" Text="{Binding Clientes.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2" TextChanged="tboxCPF_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Endereço:" Margin="0,20,0,0" Grid.RowSpan="2" />
-                <TextBox x:Name="tboxEnde" Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2">
+                <TextBox x:Name="tboxEnde" Text="{Binding Clientes.Endereco}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2" TextChanged="tboxEnde_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" Margin="0,20,0,0" Grid.RowSpan="2" />
-                <xctk:MaskedTextBox Mask="(00) 00000-0000" x:Name="tboxTelefone" Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2">
+                <xctk:MaskedTextBox Mask="(00) 00000-0000" x:Name="tboxTelefone" Text="{Binding Clientes.Telefone}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2" TextChanged="tboxTelefone_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Data de nasc.:" Margin="0,20,0,0" Grid.RowSpan="2" />
-                <xctk:MaskedTextBox Mask="00/00/0000" x:Name="tboxData" Text="{Binding Clientes.DataNasc}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2">
+                <xctk:MaskedTextBox Mask="00/00/0000" x:Name="tboxData" Text="{Binding Clientes.DataNasc}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="0,25,0,13" Grid.RowSpan="2" TextChanged="tboxData_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Button Grid.Row="5" Grid.Column="1" x:Name="btnEditar" FontFamily="Segoe UI Semilight"
-                Command="{Binding EditClienteCommand}"
-                Content="Editar"
-                Foreground="White"
-                        Margin="0,49,0,-52"
-                        Click="btnEditar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium">
+                    Command="{Binding EditClienteCommand}"
+                    Content="Editar"
+                    Foreground="White"
+                    Margin="0,49,0,-52"
+                    IsEnabled="False"
+                    BorderThickness="0" FontSize="14" FontWeight="Medium">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -74,6 +74,12 @@
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="LightPink" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Background" Value="PaleVioletRed" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

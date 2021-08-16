@@ -17,27 +17,65 @@ namespace LojaOlharDeMenina_WPF.View.Modals
             this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-
-            //this.DragMove();
-        }
-
         private void HandleEsc(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
                 this.Visibility = Visibility.Collapsed;
         }
 
-        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
-        {
-            //Se o cadastro foi concluído com sucesso, fechar o dialog
-        }
-
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void tboxNome_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxCPF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxSenha_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxCargo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxEndereco_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxTele_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void LiberaButton()
+        {
+            if (btnCadastrar != null)
+            {
+                if (tboxNome.Text == null || tboxCPF.Text == null || tboxLogin.Text == null || tboxSenha.Text == null || tboxCargo.SelectedIndex == -1 || tboxEndereco.Text == null || tboxTele.Text == null || tboxNome.Text == string.Empty || tboxCPF.Text == string.Empty || tboxLogin.Text == string.Empty || tboxSenha.Text == string.Empty || tboxEndereco.Text == string.Empty || tboxTele.Text == string.Empty)
+                {
+                    btnCadastrar.IsEnabled = false;
+                }
+                else
+                {
+                    btnCadastrar.IsEnabled = true;
+                }
+            }
         }
     }
 }
