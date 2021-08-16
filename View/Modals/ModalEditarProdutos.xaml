@@ -68,7 +68,7 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" Margin="0,17,5,0" Grid.RowSpan="2" Grid.Column="2" />
-                <xctk:MaskedTextBox Mask="00,00" x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="ProdValor" Text="{Binding Produtos.Valor, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:#.##}}" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="0,23,-1,15" Grid.RowSpan="2">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
