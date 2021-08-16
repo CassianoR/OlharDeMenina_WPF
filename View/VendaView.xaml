@@ -89,8 +89,8 @@
                     </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding CodigoVendas,UpdateSourceTrigger=PropertyChanged}" Header="Código" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_IDFuncionario,UpdateSourceTrigger=PropertyChanged}" Header="Funcionario" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
-                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_IDCliente,UpdateSourceTrigger=PropertyChanged}" Header="Cliente" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Funcionarios.LoginFuncionario,UpdateSourceTrigger=PropertyChanged}" Header="Funcionario" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
+                        <DataGridTextColumn IsReadOnly="True" Binding="{Binding Clientes.CPF,UpdateSourceTrigger=PropertyChanged}" Header="Cliente" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding FK_CodigoProduto,UpdateSourceTrigger=PropertyChanged}" Header="Produtos" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding QuantidadeVendida, UpdateSourceTrigger=PropertyChanged}" Header="Quantidade" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />
                         <DataGridTextColumn IsReadOnly="True" Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" Header="Valor" Width="auto" FontSize="18" EditingElementStyle="{StaticResource editStyle}" />

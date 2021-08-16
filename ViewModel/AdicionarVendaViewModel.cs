@@ -1,6 +1,8 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -10,6 +12,36 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     internal class AdicionarVendaViewModel : ObservableObject
     {
         #region Properties
+
+        private ObservableCollection<Funcionarios> lstfuncionarios;
+
+        public ObservableCollection<Funcionarios> lstFuncionarios
+        {
+            get
+            {
+                return lstfuncionarios;
+            }
+            set
+            {
+                lstfuncionarios = value;
+                OnPropertyChanged(nameof(lstFuncionarios));
+            }
+        }
+        private ObservableCollection<Clientes> lstclientes;
+
+        public ObservableCollection<Clientes> lstClientes
+        {
+            get
+            {
+                return lstclientes;
+            }
+            set
+            {
+                lstclientes = value;
+                OnPropertyChanged(nameof(lstClientes));
+            }
+        }
+
 
         private Venda _venda = new Venda();
 
@@ -22,6 +54,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Venda));
             }
         }
+
 
         private decimal desconto;
 
@@ -67,7 +100,38 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlharMeninaBDEntities vendasEntities;
+        private string cpfCliente;
+
+        public string CpfCliente
+        {
+            get
+            {
+                return cpfCliente;
+            }
+            set
+            {
+                cpfCliente = value;
+                OnPropertyChanged(nameof(CpfCliente));
+            }
+        }
+
+        private string emailFuncionario;
+
+        public string EmailFuncionario
+        {
+            get
+            {
+                return emailFuncionario;
+            }
+            set
+            {
+                emailFuncionario = value;
+                OnPropertyChanged(nameof(EmailFuncionario));
+            }
+        }
+
+
+        private OlharMeninaBDEntities vendaEntities;
         private Exceptions exc = new Exceptions();
 
         #endregion Properties
@@ -76,8 +140,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public AdicionarVendaViewModel()
         {
-            vendasEntities = new OlharMeninaBDEntities();
+            vendaEntities = new OlharMeninaBDEntities();
             AddVendaCommand = new Command((s) => true, AddVenda);
+            LoadVendas();
         }
 
         #endregion Constructor
@@ -86,10 +151,39 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void AddVenda(object obj)
         {
-            if (vendasEntities == null)
-                vendasEntities = new OlharMeninaBDEntities();
-            Venda.CodigoVendas = vendasEntities.Venda.Count();
-            vendasEntities.Venda.Add(Venda);
+            if (vendaEntities == null)
+                vendaEntities = new OlharMeninaBDEntities();
+            Venda.CodigoVendas = vendaEntities.Venda.Count();
+            vendaEntities.Venda.Add(Venda);
+
+            //Funcionalidade para inserção de cpf e email e retornar ID para o banco
+            //var cpfcliente = clientesEntities.Clientes.Where(o => o.CPF == cpfCliente.ToString())
+            // .Select(o => o.ID).FirstOrDefault();
+
+            Funcionarios funcionarios = new Funcionarios();
+            Clientes clientes = new Clientes();
+
+            clientes.CPF = cpfCliente;
+
+            funcionarios.LoginFuncionario = emailFuncionario;
+
+            vendaEntities.Funcionarios.Add(funcionarios);
+            vendaEntities.Clientes.Add(clientes);
+
+            var cpfcliente = vendaEntities.Clientes.Where(o => o.CPF == cpfCliente.ToString())
+                                               .Select(o => o.ID).FirstOrDefault();
+
+            var emailFunc = vendaEntities.Funcionarios.Where(o => o.LoginFuncionario == emailFuncionario.ToString())
+                                                         .Select(o => o.ID).FirstOrDefault();
+            if (emailFunc != 0)
+            {
+                Venda.FK_IDFuncionario = emailFunc;
+            }
+            if (cpfcliente != 0)
+            {
+                Venda.FK_IDCliente = cpfcliente;
+            }
+
             if (Desconto != 0)
             {
                 Venda.Valor = Venda.Valor - 00;
@@ -97,15 +191,25 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
             try
             {
-                vendasEntities.SaveChanges();
+                vendaEntities.SaveChanges();
+                Venda = new Venda();
             }
             catch (DbEntityValidationException ex)
             {
                 string exceptionMessage = exc.concatenaExceptions(ex);
                 Message = exceptionMessage;
-                vendasEntities.Dispose();
-                vendasEntities = new OlharMeninaBDEntities();
+                vendaEntities.Dispose();
+                vendaEntities = new OlharMeninaBDEntities();
             }
+        }
+
+        private async void LoadVendas()
+        {
+            vendaEntities = new OlharMeninaBDEntities();
+            var listaf = await vendaEntities.Funcionarios.ToListAsync();
+            var listac = await vendaEntities.Clientes.ToListAsync();
+            lstFuncionarios = new ObservableCollection<Funcionarios>(listaf);
+            lstClientes = new ObservableCollection<Clientes>(listac);
         }
 
         #endregion Methods

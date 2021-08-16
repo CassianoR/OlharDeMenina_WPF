@@ -45,7 +45,7 @@
                     ItemsSource="{Binding lstCategoria}" DisplayMemberPath="NomeCategoria"
                     x:Name="cboxCategoria" Text="{Binding Produtos.FK_NomeCategoria}"
                     SelectedItem="{Binding Produtos.FK_NomeCategoria}"
-                    Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Margin="0,3,0,0">
                     <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </ComboBox.Background>
