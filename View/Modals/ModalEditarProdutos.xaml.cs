@@ -27,24 +27,12 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ProdCodigo.Text = Codigo.ToString();
-            ProdNome.Text = NomeProduto;
-            ProdMarca.Text = Marca;
-            ProdCategoria.Text = Categoria;
-            ProdDescricao.Text = Descricao;
-            ProdValor.Text = Valor.ToString();
+            tboxNome.Text = NomeProduto;
+            tboxMarca.Text = Marca;
+            cboxCategoria.Text = Categoria;
+            tboxDescricao.Text = Descricao;
+            tboxValor.Text = Valor.ToString();
             DataContext = new EditarProdutosViewModel(Codigo);
-        }
-
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
-            //this.Close();
-        }
-
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-
-            //this.DragMove();
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
@@ -56,6 +44,51 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Collapsed;
+        }
+
+        private void tboxNome_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxMarca_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxDesc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxValor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxUnidadeMed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void cboxCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void LiberaButton()
+        {
+            if (btnEditar != null)
+            {
+                if (tboxNome.Text == null || tboxMarca.Text == null || tboxDescricao.Text == null || tboxUnidade == null || tboxValor.Text == "0" || cboxCategoria.Text == null || tboxNome.Text == string.Empty || tboxMarca.Text == string.Empty || tboxDescricao.Text == string.Empty || tboxUnidade.Text == string.Empty || tboxValor.Text == string.Empty || cboxCategoria.Text == string.Empty)
+                {
+                    btnEditar.IsEnabled = false;
+                }
+                else
+                {
+                    btnEditar.IsEnabled = true;
+                }
+            }
         }
     }
 }

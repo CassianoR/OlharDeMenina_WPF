@@ -63,13 +63,13 @@
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
 
-                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
-                Command="{Binding AddProdutoCommand}"
-                Content="Cadastrar"
-                Foreground="White"
-                        Margin="0,28,0,-33"
-                        Click="btnCadastrar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                    Command="{Binding AddProdutoCommand}"
+                    Content="Cadastrar"
+                    Foreground="White"
+                    IsEnabled="False"
+                    Margin="0,28,0,-33"
+                    BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -78,6 +78,12 @@
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="LightPink" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Background" Value="PaleVioletRed" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

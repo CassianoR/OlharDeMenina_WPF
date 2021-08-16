@@ -1,7 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace LojaOlharDeMenina_WPF.View.Modals
 {
@@ -22,15 +21,6 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         public string Endereco { get; set; }
         public string Email { get; set; }
         public string Atividade { get; set; }
-
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-        }
-
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
-        }
 
         private void btn_close_Click(object sender, RoutedEventArgs e)
         {
@@ -56,8 +46,54 @@ namespace LojaOlharDeMenina_WPF.View.Modals
             cboxAtividade.SelectedItem = Atividade;
         }
 
-        private void btnEditar_Click_1(object sender, RoutedEventArgs e)
+        private void tboxNome_TextChanged(object sender, TextChangedEventArgs e)
         {
+            LiberaButton();
+        }
+
+        private void tboxCPF_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxSenha_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxEndereco_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void tboxTele_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void cboxAtividade_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LiberaButton();
+        }
+
+        private void LiberaButton()
+        {
+            if (btnEditar != null)
+            {
+                if (tboxNome.Text == null || tboxLogin.Text == null || tboxSenha.Text == null || tboxEnde.Text == null || tboxTele.Text == null || cboxAtividade.SelectedIndex == -1 || tboxNome.Text == string.Empty || tboxLogin.Text == string.Empty || tboxSenha.Text == string.Empty || tboxEnde.Text == string.Empty || tboxTele.Text == string.Empty)
+                {
+                    btnEditar.IsEnabled = false;
+                }
+                else
+                {
+                    btnEditar.IsEnabled = true;
+                }
+            }
         }
     }
 }
