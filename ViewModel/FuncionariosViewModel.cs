@@ -118,6 +118,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 LoadFuncionario();
                 return;
             }
+            funcionariosEntities = new OlharMeninaBDEntities();
             lstFuncionarios = new ObservableCollection<Funcionarios>();
             var ObjQuery = await funcionariosEntities.Funcionarios.Where(x => x.Nome.Contains(search) || x.CPF.Contains(search) || x.Telefone.Contains(search)).ToListAsync();
             foreach (var funcionario in ObjQuery)
