@@ -26,6 +26,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private Produtos _produtos = new Produtos();
 
+        public bool buttonenablebool = false;
+        public double buttonopacidadedouble = 0.5;
+
         public Produtos Produtos
         {
             get { return _produtos; }
@@ -82,6 +85,32 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         #endregion Constructor
 
         #region Methods
+
+
+        private void ButtonAtivado()
+        {
+            if (Produtos.NomeProduto.ToString() == null || Produtos.Marca.ToString() == null || Produtos.Descricao.ToString() == null || Produtos.UnidadeMedida == null || Produtos.Valor.ToString() == "00.00" || Produtos.Categoria == null)
+            {
+                buttonenablebool = false;
+            }
+            else
+            {
+                buttonenablebool = true;
+            }
+            //talvez tenha que dar tostring em tudo mas vamos ver
+            //o problema é que nem ta vindo nas funções
+        }
+        private void ButtonOpacidade()
+        {
+            if (Produtos.NomeProduto == null || Produtos.Marca == null || Produtos.Descricao == null || Produtos.UnidadeMedida == null || Produtos.Valor.ToString() == "00.00" || Produtos.Categoria == null)
+            {
+                buttonopacidadedouble = 0.5;
+            }
+            else
+            {
+                buttonopacidadedouble = 1;
+            }
+        }
 
         private void EditProduto(object obj)
         {

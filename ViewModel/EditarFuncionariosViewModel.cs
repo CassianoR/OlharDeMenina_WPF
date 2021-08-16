@@ -39,6 +39,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private Funcionarios _selectedProduto = new Funcionarios();
 
+
+        public bool buttonenablebool = false;
+        public double buttonopacidadedouble = 0.5;
         public Funcionarios SelectedFuncionario
         {
             get { return _selectedProduto; }
@@ -68,6 +71,31 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
+
+        private void ButtonAtivado()
+        {
+            if (Funcionarios.Nome == null || Funcionarios.CPF == null || Funcionarios.LoginFuncionario == null || Funcionarios.Cargo == null || Funcionarios.Senha == null || Funcionarios.Endereco == null || Funcionarios.Telefone == null || Funcionarios.Atividade == null)
+            {
+                buttonenablebool = false;
+            }
+            else
+            {
+                buttonenablebool = true;
+            }
+            //talvez tenha que dar tostring em tudo mas vamos ver
+            //o problema é que nem ta vindo nas funções
+        }
+        private void ButtonOpacidade()
+        {
+            if (Funcionarios.Nome == null || Funcionarios.CPF == null || Funcionarios.LoginFuncionario == null || Funcionarios.Cargo == null || Funcionarios.Senha == null || Funcionarios.Endereco == null || Funcionarios.Telefone == null || Funcionarios.Atividade == null)
+            {
+                buttonopacidadedouble = 0.5;
+            }
+            else
+            {
+                buttonopacidadedouble = 1;
+            }
+        }
         private void EditFuncionario(object obj)
         {
             try

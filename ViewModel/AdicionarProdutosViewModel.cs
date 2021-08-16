@@ -87,6 +87,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 buttonenablebool = true;
             }
             //talvez tenha que dar tostring em tudo mas vamos ver
+            //o problema é que nem ta vindo nas funções
         }
         private void ButtonOpacidade()
         {

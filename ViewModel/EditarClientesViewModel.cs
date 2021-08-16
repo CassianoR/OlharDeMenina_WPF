@@ -39,6 +39,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private Clientes _selectedCliente = new Clientes();
 
+        public bool buttonenablebool = false;
+        public double buttonopacidadedouble = 0.5;
+
         public Clientes SelectedCliente
         {
             get { return _selectedCliente; }
@@ -67,6 +70,31 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         #endregion Constructor
 
         #region Methods
+
+        private void ButtonAtivado()
+        {
+            if (Clientes.Nome == null || Clientes.CPF == null || Clientes.Endereco == null || Clientes.Telefone == null || Clientes.DataNasc == null)
+            {
+                buttonenablebool = false;
+            }
+            else
+            {
+                buttonenablebool = true;
+            }
+            //talvez tenha que dar tostring em tudo mas vamos ver
+            //o problema é que nem ta vindo nas funções
+        }
+        private void ButtonOpacidade()
+        {
+            if (Clientes.Nome == null || Clientes.CPF == null || Clientes.Endereco == null || Clientes.Telefone == null || Clientes.DataNasc == null)
+            {
+                buttonopacidadedouble = 0.5;
+            }
+            else
+            {
+                buttonopacidadedouble = 1;
+            }
+        }
 
         private void EditCliente(object obj)
         {
