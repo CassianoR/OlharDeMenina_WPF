@@ -26,10 +26,10 @@
     </Window.Resources>
     <Border CornerRadius="15">
         <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFDCF9FF" Offset="1" />
-                <GradientStop Color="White" Offset="0.838" />
-            </LinearGradientBrush>
+            <RadialGradientBrush GradientOrigin="0,0.6" RadiusX="3">
+                <GradientStop Color="LightGray" Offset="1" />
+                <GradientStop Color="White" Offset="0.914" />
+            </RadialGradientBrush>
         </Border.Background>
         <Grid>
 
