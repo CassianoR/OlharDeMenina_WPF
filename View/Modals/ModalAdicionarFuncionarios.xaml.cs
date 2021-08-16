@@ -67,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         {
             if (btnCadastrar != null)
             {
-                if (tboxNome.Text == null || tboxCPF.Text == null || tboxLogin.Text == null || tboxSenha.Text == null || tboxCargo.SelectedIndex == -1 || tboxEndereco.Text == null || tboxTele.Text == null || tboxNome.Text == string.Empty || tboxCPF.Text == string.Empty || tboxLogin.Text == string.Empty || tboxSenha.Text == string.Empty || tboxEndereco.Text == string.Empty || tboxTele.Text == string.Empty)
+                if (tboxNome.Text == null || tboxCPF.Text == null || tboxLogin.Text == null || tboxSenha.Text == null || tboxCargo.SelectedIndex == -1 || tboxEndereco.Text == null || tboxTele.Text == null || tboxNome.Text == string.Empty || tboxCPF.Text == string.Empty || tboxLogin.Text == string.Empty || tboxSenha.Text == string.Empty || tboxEndereco.Text == string.Empty || tboxTele.Text == string.Empty || tboxTele.Text == "(__) _____-____" || tboxCPF.Text == "___.___.___-__")
                 {
                     btnCadastrar.IsEnabled = false;
                 }
