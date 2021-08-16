@@ -70,7 +70,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         {
             if (btnEditar != null)
             {
-                if (tboxNome.Text == null || tboxCPF.Text == null || tboxEnde.Text == null || tboxTelefone.Text == null || tboxData.Text == null || tboxNome.Text == string.Empty || tboxCPF.Text == string.Empty || tboxEnde.Text == string.Empty || tboxTelefone.Text == string.Empty || tboxData.Text == string.Empty)
+                if (tboxNome.Text == null || tboxCPF.Text == null || tboxEnde.Text == null || tboxTelefone.Text == null || tboxData.Text == null || tboxNome.Text == string.Empty || tboxCPF.Text == string.Empty || tboxEnde.Text == string.Empty || tboxTelefone.Text == string.Empty || tboxData.Text == string.Empty || tboxTelefone.Text == "(__) _____-____" || tboxCPF.Text == "___.___.___-__" || tboxData.Text == "__/__/____")
                 {
                     btnEditar.IsEnabled = false;
                 }

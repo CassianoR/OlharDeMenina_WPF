@@ -85,7 +85,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
         {
             if (btnEditar != null)
             {
-                if (tboxNome.Text == null || tboxLogin.Text == null || tboxSenha.Text == null || tboxEnde.Text == null || tboxTele.Text == null || cboxAtividade.SelectedIndex == -1 || tboxNome.Text == string.Empty || tboxLogin.Text == string.Empty || tboxSenha.Text == string.Empty || tboxEnde.Text == string.Empty || tboxTele.Text == string.Empty)
+                if (tboxNome.Text == null || tboxLogin.Text == null || tboxSenha.Text == null || tboxEnde.Text == null || tboxTele.Text == null || cboxAtividade.SelectedIndex == -1 || tboxNome.Text == string.Empty || tboxLogin.Text == string.Empty || tboxSenha.Text == string.Empty || tboxEnde.Text == string.Empty || tboxTele.Text == string.Empty || tboxTele.Text == "(__) _____-____")
                 {
                     btnEditar.IsEnabled = false;
                 }
