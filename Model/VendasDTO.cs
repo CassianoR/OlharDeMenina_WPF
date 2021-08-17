@@ -57,7 +57,6 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-
         public decimal Valor
         {
             get => valor; set
@@ -66,7 +65,6 @@ namespace LojaOlharDeMenina_WPF.Model
                 OnPropertyChanged(nameof(Valor));
             }
         }
-
 
         public string MetodoPagamento
         {

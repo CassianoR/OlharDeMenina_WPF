@@ -13,6 +13,29 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     {
         #region Properties
 
+        private ObservableCollection<Clientes> _lstClientes;
+
+        public ObservableCollection<Clientes> lstClientes
+        {
+            get { return _lstClientes; }
+            set
+            {
+                _lstClientes = value;
+                OnPropertyChanged(nameof(lstClientes));
+            }
+        }
+
+        private ObservableCollection<Funcionarios> _lstFuncionarios;
+
+        public ObservableCollection<Funcionarios> lstFuncionarios
+        {
+            get { return _lstFuncionarios; }
+            set
+            {
+                _lstFuncionarios = value;
+                OnPropertyChanged(nameof(lstFuncionarios));
+            }
+        }
 
         private Venda _venda = new Venda();
 
@@ -25,7 +48,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Venda));
             }
         }
-
 
         private decimal desconto;
 
@@ -101,7 +123,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-
         private OlharMeninaBDEntities vendaEntities;
         private Exceptions exc = new Exceptions();
 
@@ -114,6 +135,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             vendaEntities = new OlharMeninaBDEntities();
             AddVendaCommand = new Command((s) => true, AddVenda);
             LoadVendas();
+            Load();
         }
 
         #endregion Constructor
@@ -126,7 +148,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 vendaEntities = new OlharMeninaBDEntities();
             if (emailFuncionario != null && cpfCliente != null)
             {
-
                 Venda.CodigoVendas = vendaEntities.Venda.Count();
                 vendaEntities.Venda.Add(Venda);
 
@@ -156,6 +177,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 }
                 catch (DbEntityValidationException ex)
                 {
+                    string exceptionMessage = exc.concatenaExceptions(ex);
+                    Message = exceptionMessage;
                     vendaEntities.Dispose();
                     vendaEntities = new OlharMeninaBDEntities();
                 }
@@ -172,9 +195,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 }
             }
         }
+
         private void LoadVendas()
         {
             vendaEntities = new OlharMeninaBDEntities();
+        }
+
+        private async void Load() //Read
+        {
+            vendaEntities = new OlharMeninaBDEntities();
+
+            var listaClientes = await vendaEntities.Clientes.ToListAsync();
+            lstClientes = new ObservableCollection<Clientes>(listaClientes);
+
+            var listaFuncionarios = await vendaEntities.Funcionarios.ToListAsync();
+            lstFuncionarios = new ObservableCollection<Funcionarios>(listaFuncionarios);
         }
 
         #endregion Methods

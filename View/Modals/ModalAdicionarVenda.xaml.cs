@@ -26,7 +26,6 @@ namespace LojaOlharDeMenina_WPF.View.Modals
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
