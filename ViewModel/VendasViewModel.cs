@@ -109,7 +109,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstVendas.Clear();
 
             lstVendas = new ObservableCollection<Venda>();
-            var ObjQuery = vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search)).ToList();
+            var ObjQuery = vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search) || x.Funcionarios.LoginFuncionario.Contains(_search) | x.Clientes.CPF.Contains(_search)).ToList();
             foreach (var venda in ObjQuery)
             {
                 lstVendas.Add(venda);

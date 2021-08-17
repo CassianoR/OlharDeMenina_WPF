@@ -13,35 +13,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     {
         #region Properties
 
-        private ObservableCollection<Funcionarios> lstfuncionarios;
-
-        public ObservableCollection<Funcionarios> lstFuncionarios
-        {
-            get
-            {
-                return lstfuncionarios;
-            }
-            set
-            {
-                lstfuncionarios = value;
-                OnPropertyChanged(nameof(lstFuncionarios));
-            }
-        }
-        private ObservableCollection<Clientes> lstclientes;
-
-        public ObservableCollection<Clientes> lstClientes
-        {
-            get
-            {
-                return lstclientes;
-            }
-            set
-            {
-                lstclientes = value;
-                OnPropertyChanged(nameof(lstClientes));
-            }
-        }
-
 
         private Venda _venda = new Venda();
 
@@ -153,63 +124,57 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             if (vendaEntities == null)
                 vendaEntities = new OlharMeninaBDEntities();
-            Venda.CodigoVendas = vendaEntities.Venda.Count();
-            vendaEntities.Venda.Add(Venda);
-
-            //Funcionalidade para inserção de cpf e email e retornar ID para o banco
-            //var cpfcliente = clientesEntities.Clientes.Where(o => o.CPF == cpfCliente.ToString())
-            // .Select(o => o.ID).FirstOrDefault();
-
-            Funcionarios funcionarios = new Funcionarios();
-            Clientes clientes = new Clientes();
-
-            clientes.CPF = cpfCliente;
-
-            funcionarios.LoginFuncionario = emailFuncionario;
-
-            vendaEntities.Funcionarios.Add(funcionarios);
-            vendaEntities.Clientes.Add(clientes);
-
-            var cpfcliente = vendaEntities.Clientes.Where(o => o.CPF == cpfCliente.ToString())
-                                               .Select(o => o.ID).FirstOrDefault();
-
-            var emailFunc = vendaEntities.Funcionarios.Where(o => o.LoginFuncionario == emailFuncionario.ToString())
-                                                         .Select(o => o.ID).FirstOrDefault();
-            if (emailFunc != 0)
+            if (emailFuncionario != null && cpfCliente != null)
             {
-                Venda.FK_IDFuncionario = emailFunc;
+
+                Venda.CodigoVendas = vendaEntities.Venda.Count();
+                vendaEntities.Venda.Add(Venda);
+
+                var cpfcliente = vendaEntities.Clientes.Where(o => o.CPF == cpfCliente.ToString())
+                                                   .Select(o => o.ID).FirstOrDefault();
+
+                var emailFunc = vendaEntities.Funcionarios.Where(o => o.LoginFuncionario == emailFuncionario.ToString())
+                                                             .Select(o => o.ID).FirstOrDefault();
+                if (emailFunc != 0)
+                {
+                    Venda.FK_IDFuncionario = emailFunc;
+                }
+                if (cpfcliente != 0)
+                {
+                    Venda.FK_IDCliente = cpfcliente;
+                }
+
+                if (Desconto != 0)
+                {
+                    Venda.Valor = Venda.Valor - 00;
+                    Venda.Valor = Venda.Valor - Desconto;
+                }
+                try
+                {
+                    vendaEntities.SaveChanges();
+                    Venda = new Venda();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    vendaEntities.Dispose();
+                    vendaEntities = new OlharMeninaBDEntities();
+                }
             }
-            if (cpfcliente != 0)
+            else
             {
-                Venda.FK_IDCliente = cpfcliente;
-            }
-
-            if (Desconto != 0)
-            {
-                Venda.Valor = Venda.Valor - 00;
-                Venda.Valor = Venda.Valor - Desconto;
-            }
-            try
-            {
-                vendaEntities.SaveChanges();
-                Venda = new Venda();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                vendaEntities.Dispose();
-                vendaEntities = new OlharMeninaBDEntities();
+                if (emailFuncionario == null)
+                {
+                    Message = "Email Inválido";
+                }
+                if (cpfCliente == null)
+                {
+                    Message = "CPF Inválido";
+                }
             }
         }
-
-        private async void LoadVendas()
+        private void LoadVendas()
         {
             vendaEntities = new OlharMeninaBDEntities();
-            var listaf = await vendaEntities.Funcionarios.ToListAsync();
-            var listac = await vendaEntities.Clientes.ToListAsync();
-            lstFuncionarios = new ObservableCollection<Funcionarios>(listaf);
-            lstClientes = new ObservableCollection<Clientes>(listac);
         }
 
         #endregion Methods

@@ -26,13 +26,7 @@ namespace LojaOlharDeMenina_WPF.View.Modals
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
-            tboxNome.Clear();
-            tboxValor.Clear();
-            tboxDesconto.Clear();
-            cboxIDFuncionario.Clear();
-            cboxQuantidadeVendida.Clear();
-            cboxCodigoProduto.Clear();
+            
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
