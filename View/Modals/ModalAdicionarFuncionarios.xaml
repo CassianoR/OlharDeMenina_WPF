@@ -29,50 +29,48 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" HorizontalAlignment="Right" Content="Nome:" />
-                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Funcionarios.Nome}" Margin="0,5,0,1">
+                <TextBox x:Name="tboxNome" Grid.Row="0" Grid.Column="1" Text="{Binding Funcionarios.Nome}" Margin="0,5,0,1" TextChanged="tboxNome_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="1" HorizontalAlignment="Right" Content="CPF:" />
-                <xctk:MaskedTextBox Mask="000,000,000-00" Text="{Binding Funcionarios.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"
-                         Margin="0,5,0,0">
+                <xctk:MaskedTextBox x:Name="tboxCPF" Mask="000,000,000-00" Text="{Binding Funcionarios.CPF}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"
+                         Margin="0,5,0,0" TextChanged="tboxCPF_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
                 <Label Grid.Row="2" HorizontalAlignment="Right" Content="Email:" />
-                <TextBox Text="{Binding Funcionarios.LoginFuncionario}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
-                         Margin="0,5,0,0">
+                <TextBox x:Name="tboxLogin" Text="{Binding Funcionarios.LoginFuncionario}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
+                         Margin="0,5,0,0" TextChanged="tboxLogin_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
                 <Label Grid.Row="3" HorizontalAlignment="Right" Content="Senha:" RenderTransformOrigin="0.522,1.804" />
-                <TextBox Text="{Binding Funcionarios.Senha}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0">
+                <TextBox x:Name="tboxSenha" Text="{Binding Funcionarios.Senha}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0" TextChanged="tboxSenha_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
 
                 <Label Grid.Row="4" HorizontalAlignment="Right" Content="Cargo:" Margin="0,0,1,0" RenderTransformOrigin="0.53,0.119" />
-                <TextBox Text="{Binding Funcionarios.Cargo}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0">
-                    <TextBox.Background>
-                        <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
-                <!--transformar em combobox-->
+                <ComboBox x:Name="tboxCargo" SelectedItem="{Binding Funcionarios.Cargo}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0" SelectionChanged="tboxCargo_SelectionChanged" BorderBrush="White">
+                    <ComboBoxItem Content="Funcionário" />
+                    <ComboBoxItem Content="Administrador" />
+                </ComboBox>
 
                 <Label Height="24" Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Endereço:" RenderTransformOrigin="0.486,2.839" />
-                <TextBox Text="{Binding Funcionarios.Endereco}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" RenderTransformOrigin="0.478,3.566" Margin="0,6,0,0">
+                <TextBox x:Name="tboxEndereco" Text="{Binding Funcionarios.Endereco}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" RenderTransformOrigin="0.478,3.566" Margin="0,6,0,0" TextChanged="tboxEndereco_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="5" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Telefone:" Margin="0,28,0,-22" />
-                <xctk:MaskedTextBox Mask="(00) 00000-0000" Text="{Binding Funcionarios.Telefone}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top"
-                         Margin="0,32,0,-22">
+                <xctk:MaskedTextBox x:Name="tboxTele" Mask="(00) 00000-0000" Text="{Binding Funcionarios.Telefone}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top"
+                         Margin="0,32,0,-22" TextChanged="tboxTele_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
@@ -82,8 +80,8 @@
                 Command="{Binding AddFuncionarioCommand}"
                 Content="Cadastrar"
                 Foreground="White"
-                        Margin="0,58,10,-56"
-                        Click="btnCadastrar_Click"
+                Margin="0,58,10,-56"
+                IsEnabled="False"
                 BorderThickness="0" FontSize="14" FontWeight="Medium" Grid.Column="1">
                     <Button.Style>
                         <Style TargetType="Button">
@@ -93,6 +91,12 @@
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="LightPink" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Background" Value="PaleVioletRed" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

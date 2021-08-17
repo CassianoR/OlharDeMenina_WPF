@@ -57,19 +57,19 @@
                     </TextBox.Background>
                 </TextBox>
                 <Label Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Valor:" />
-                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
+                <xctk:MaskedTextBox Mask="00,00" x:Name="tboxValor" Text="{Binding Produtos.Valor,StringFormat={}{0:#.##}}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextChanged="tboxValor_TextChanged">
                     <TextBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
                     </TextBox.Background>
                 </xctk:MaskedTextBox>
 
-                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight" IsEnabled="True"
-                Command="{Binding AddProdutoCommand}"
-                Content="Cadastrar"
-                Foreground="White"
-                        Margin="0,28,0,-33"
-                        Click="btnCadastrar_Click"
-                BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
+                <Button Grid.Row="5" Grid.Column="1" x:Name="btnCadastrar" FontFamily="Segoe UI Semilight"
+                    Command="{Binding AddProdutoCommand}"
+                    Content="Cadastrar"
+                    Foreground="White"
+                    IsEnabled="False"
+                    Margin="0,28,0,-33"
+                    BorderThickness="0" FontSize="14" FontWeight="Medium" Height="33">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis" />
@@ -78,6 +78,12 @@
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFFF849C" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="LightPink" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Background" Value="PaleVioletRed" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

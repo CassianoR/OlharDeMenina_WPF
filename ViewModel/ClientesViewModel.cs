@@ -103,6 +103,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 LoadCliente();
                 return;
             }
+            clientesEntities = new OlharMeninaBDEntities();
             lstClientes = new ObservableCollection<Clientes>();
             var ObjQuery = await clientesEntities.Clientes.Where(x => x.Nome.Contains(search) || x.CPF.Contains(search) || x.Telefone.Contains(search)).ToListAsync();
             foreach (var cliente in ObjQuery)
