@@ -9,7 +9,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class VendasViewModel : ObservableObject
     {
-        private Exceptions exc = new Exceptions();
 
         #region Properties
 
@@ -49,7 +48,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlharMeninaBDEntities vendaEntities;
 
         /// <summary>
         /// TO-DO: Colocar a propriedade Message e as demais que se remetem na BaseViewModel
@@ -83,6 +81,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private OlharMeninaBDEntities vendaEntities;
+        private Exceptions exc = new Exceptions();
+
         #endregion Properties
 
         #region Constructor
@@ -90,7 +91,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public VendasViewModel()
         {
             vendaEntities = new OlharMeninaBDEntities();
-            AddVendasCommand = new Command((s) => true, AddVendas);
             UpdateCommand = new Command((s) => true, Update);
         }
 
@@ -109,36 +109,13 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstVendas.Clear();
 
             lstVendas = new ObservableCollection<Venda>();
-            var ObjQuery = vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search)).ToList();
-            foreach (var funcionario in ObjQuery)
+            var ObjQuery = vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search) || x.Funcionarios.LoginFuncionario.Contains(_search) | x.Clientes.CPF.Contains(_search)).ToList();
+            foreach (var venda in ObjQuery)
             {
-                lstVendas.Add(funcionario);
+                lstVendas.Add(venda);
             }
         }
 
-        private void AddVendas(object obj)
-        {
-            LoadVendas();
-            if (lstVendas == null)
-            {
-                LoadVendas();
-            }
-            Venda.CodigoVendas = vendaEntities.Venda.Count();
-            vendaEntities.Venda.Add(Venda);
-            try
-            {
-                vendaEntities.SaveChanges();
-                lstVendas.Add(Venda);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                vendaEntities.Dispose();
-                vendaEntities = new OlharMeninaBDEntities();
-            }
-            Venda = new Venda();
-        }
 
         private void Update(object obj) //Update, recarrega
         {
@@ -156,7 +133,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Commands
 
-        public ICommand AddVendasCommand { get; set; }
         public ICommand UpdateCommand { get; set; }
 
         #endregion Commands

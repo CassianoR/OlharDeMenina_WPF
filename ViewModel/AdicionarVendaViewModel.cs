@@ -1,6 +1,8 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Input;
@@ -10,6 +12,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
     internal class AdicionarVendaViewModel : ObservableObject
     {
         #region Properties
+
 
         private Venda _venda = new Venda();
 
@@ -22,6 +25,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Venda));
             }
         }
+
 
         private decimal desconto;
 
@@ -67,7 +71,38 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        private OlharMeninaBDEntities vendasEntities;
+        private string cpfCliente;
+
+        public string CpfCliente
+        {
+            get
+            {
+                return cpfCliente;
+            }
+            set
+            {
+                cpfCliente = value;
+                OnPropertyChanged(nameof(CpfCliente));
+            }
+        }
+
+        private string emailFuncionario;
+
+        public string EmailFuncionario
+        {
+            get
+            {
+                return emailFuncionario;
+            }
+            set
+            {
+                emailFuncionario = value;
+                OnPropertyChanged(nameof(EmailFuncionario));
+            }
+        }
+
+
+        private OlharMeninaBDEntities vendaEntities;
         private Exceptions exc = new Exceptions();
 
         #endregion Properties
@@ -76,8 +111,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public AdicionarVendaViewModel()
         {
-            vendasEntities = new OlharMeninaBDEntities();
+            vendaEntities = new OlharMeninaBDEntities();
             AddVendaCommand = new Command((s) => true, AddVenda);
+            LoadVendas();
         }
 
         #endregion Constructor
@@ -86,26 +122,59 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private void AddVenda(object obj)
         {
-            if (vendasEntities == null)
-                vendasEntities = new OlharMeninaBDEntities();
-            Venda.CodigoVendas = vendasEntities.Venda.Count();
-            vendasEntities.Venda.Add(Venda);
-            if (Desconto != 0)
+            if (vendaEntities == null)
+                vendaEntities = new OlharMeninaBDEntities();
+            if (emailFuncionario != null && cpfCliente != null)
             {
-                Venda.Valor = Venda.Valor - 00;
-                Venda.Valor = Venda.Valor - Desconto;
+
+                Venda.CodigoVendas = vendaEntities.Venda.Count();
+                vendaEntities.Venda.Add(Venda);
+
+                var cpfcliente = vendaEntities.Clientes.Where(o => o.CPF == cpfCliente.ToString())
+                                                   .Select(o => o.ID).FirstOrDefault();
+
+                var emailFunc = vendaEntities.Funcionarios.Where(o => o.LoginFuncionario == emailFuncionario.ToString())
+                                                             .Select(o => o.ID).FirstOrDefault();
+                if (emailFunc != 0)
+                {
+                    Venda.FK_IDFuncionario = emailFunc;
+                }
+                if (cpfcliente != 0)
+                {
+                    Venda.FK_IDCliente = cpfcliente;
+                }
+
+                if (Desconto != 0)
+                {
+                    Venda.Valor = Venda.Valor - 00;
+                    Venda.Valor = Venda.Valor - Desconto;
+                }
+                try
+                {
+                    vendaEntities.SaveChanges();
+                    Venda = new Venda();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    vendaEntities.Dispose();
+                    vendaEntities = new OlharMeninaBDEntities();
+                }
             }
-            try
+            else
             {
-                vendasEntities.SaveChanges();
+                if (emailFuncionario == null)
+                {
+                    Message = "Email Inválido";
+                }
+                if (cpfCliente == null)
+                {
+                    Message = "CPF Inválido";
+                }
             }
-            catch (DbEntityValidationException ex)
-            {
-                string exceptionMessage = exc.concatenaExceptions(ex);
-                Message = exceptionMessage;
-                vendasEntities.Dispose();
-                vendasEntities = new OlharMeninaBDEntities();
-            }
+        }
+        private void LoadVendas()
+        {
+            vendaEntities = new OlharMeninaBDEntities();
         }
 
         #endregion Methods

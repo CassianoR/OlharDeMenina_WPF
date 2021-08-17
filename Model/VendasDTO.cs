@@ -57,7 +57,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        //[Required(ErrorMessage = " O campo Valor é obrigatório.")]
+
         public decimal Valor
         {
             get => valor; set
@@ -67,7 +67,7 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        //[Required(ErrorMessage = " O campo Metodo de Pagamento é obrigatório.")]
+
         public string MetodoPagamento
         {
             get => metodopagamento; set
@@ -86,7 +86,6 @@ namespace LojaOlharDeMenina_WPF.Model
             }
         }
 
-        //[Required(ErrorMessage = " O campo Quantidade é obrigatório.")]
         public int QuantidadeVendida
         {
             get => quantidadevendida; set
