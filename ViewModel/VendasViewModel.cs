@@ -1,7 +1,7 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
 using System.Collections.ObjectModel;
-using System.Data.Entity.Validation;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Input;
 
@@ -9,7 +9,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 {
     public class VendasViewModel : ObservableObject
     {
-
         #region Properties
 
         private ObservableCollection<Venda> _lstVendas;
@@ -47,7 +46,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 OnPropertyChanged(nameof(Venda));
             }
         }
-
 
         /// <summary>
         /// TO-DO: Colocar a propriedade Message e as demais que se remetem na BaseViewModel
@@ -98,7 +96,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         #region Methods
 
-        private void GetResults(string search)
+        private async void GetResults(string search)
         {
             if (_search == "*")
             {
@@ -109,13 +107,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstVendas.Clear();
 
             lstVendas = new ObservableCollection<Venda>();
-            var ObjQuery = vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search) || x.Funcionarios.LoginFuncionario.Contains(_search) | x.Clientes.CPF.Contains(_search)).ToList();
+            var ObjQuery = await vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search) || x.Funcionarios.LoginFuncionario.Contains(_search) | x.Clientes.CPF.Contains(_search)).ToListAsync();
             foreach (var venda in ObjQuery)
             {
                 lstVendas.Add(venda);
             }
         }
-
 
         private void Update(object obj) //Update, recarrega
         {
@@ -123,10 +120,11 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             LoadVendas();
         }
 
-        private void LoadVendas() //Read
+        private async void LoadVendas() //Read
         {
             vendaEntities = new OlharMeninaBDEntities();
-            lstVendas = new ObservableCollection<Venda>(vendaEntities.Venda);
+            var lista = await vendaEntities.Venda.ToListAsync();
+            lstVendas = new ObservableCollection<Venda>(lista);
         }
 
         #endregion Methods

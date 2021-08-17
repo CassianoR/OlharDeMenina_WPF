@@ -31,18 +31,18 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Label Height="24" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Content="CPF Cliente:" Margin="0,0,25,0" />
-                <TextBox x:Name="tboxCPFCliente" Grid.Row="2" Text="{Binding CpfCliente}"
+                <ComboBox x:Name="tboxCPFCliente" Grid.Row="2" Text="{Binding CpfCliente}" IsEditable="True" ItemsSource="{Binding lstClientes}"  DisplayMemberPath="CPF" SelectedItem="{Binding CpfCliente}"
                      VerticalAlignment="Center" Margin="107,0,25,0" Height="24" Grid.ColumnSpan="2">
-                    <TextBox.Background>
+                    <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
+                    </ComboBox.Background>
+                </ComboBox>
                 <Label Height="24" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Email Funcionario:" Margin="0,2,116,0" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="149" />
-                <TextBox x:Name="tboxEmailFuncionario" Text="{Binding EmailFuncionario}" Grid.Row="3" VerticalAlignment="Center"  Margin="107,2,25,21" Height="25" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                    <TextBox.Background>
+                <ComboBox x:Name="tboxEmailFuncionario" Text="{Binding EmailFuncionario}" Grid.Row="3" VerticalAlignment="Center"  Margin="107,2,25,21" Height="25" Grid.RowSpan="2" Grid.ColumnSpan="2" IsEditable="True" ItemsSource="{Binding lstFuncionarios}" DisplayMemberPath="LoginFuncionario" SelectedItem="{Binding EmailFuncionario}">
+                    <ComboBox.Background>
                         <SolidColorBrush Color="White" Opacity="0.5" />
-                    </TextBox.Background>
-                </TextBox>
+                    </ComboBox.Background>
+                </ComboBox>
                 <Label Height="24" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Código Produto:" Margin="0,3,25,0" Grid.RowSpan="2" />
                 <TextBox x:Name="cboxCodigoProduto" Text="{Binding Venda.FK_CodigoProduto}" Grid.Row="4" VerticalAlignment="Center"  Margin="107,3,25,0" Height="21" Grid.ColumnSpan="2">
                     <TextBox.Background>
