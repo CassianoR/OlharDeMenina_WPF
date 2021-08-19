@@ -42,14 +42,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoginFuncionario" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Cargo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginFuncionario" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CPF" Type="char" MaxLength="14" Nullable="false" />
-          <Property Name="Senha" Type="nchar" MaxLength="64" />
+          <Property Name="Senha" Type="nvarchar" MaxLength="68" Nullable="false" />
           <Property Name="Endereco" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="Telefone" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Atividade" Type="varchar" MaxLength="20" Nullable="false"/>
+          <Property Name="Atividade" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Produtos">
           <Key>
@@ -69,12 +69,19 @@
           </Key>
           <Property Name="CodigoVendas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FK_IDFuncionario" Type="int" Nullable="false" />
-          <Property Name="FK_IDCliente" Type="int" Nullable="false" />
-          <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
+          <Property Name="FK_IDCliente" Type="int" />
           <Property Name="Valor" Type="decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Data" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="QuantidadeVendida" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VendaDetalhes">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_CodigoVendas" Type="int" Nullable="false" />
+          <Property Name="FK_CodigoProduto" Type="int" Nullable="false" />
+          <Property Name="Quantidade" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Estoque">
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
@@ -113,7 +120,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Venda2">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clientes">
@@ -124,14 +131,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Venda3">
+        <Association Name="FK_VendaDetalhes1">
+          <End Role="Venda" Type="Self.Venda" Multiplicity="1" />
+          <End Role="VendaDetalhes" Type="Self.VendaDetalhes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venda">
+              <PropertyRef Name="CodigoVendas" />
+            </Principal>
+            <Dependent Role="VendaDetalhes">
+              <PropertyRef Name="FK_CodigoVendas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendaDetalhes2">
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
-          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <End Role="VendaDetalhes" Type="Self.VendaDetalhes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Produtos">
               <PropertyRef Name="Codigo" />
             </Principal>
-            <Dependent Role="Venda">
+            <Dependent Role="VendaDetalhes">
               <PropertyRef Name="FK_CodigoProduto" />
             </Dependent>
           </ReferentialConstraint>
@@ -143,6 +162,7 @@
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produtos" EntityType="Self.Produtos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Venda" EntityType="Self.Venda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendaDetalhes" EntityType="Self.VendaDetalhes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Estoque" Association="Self.FK_Estoque">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Estoque" EntitySet="Estoque" />
@@ -159,9 +179,13 @@
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Venda" EntitySet="Venda" />
           </AssociationSet>
-          <AssociationSet Name="FK_Venda3" Association="Self.FK_Venda3">
-            <End Role="Produtos" EntitySet="Produtos" />
+          <AssociationSet Name="FK_VendaDetalhes1" Association="Self.FK_VendaDetalhes1">
             <End Role="Venda" EntitySet="Venda" />
+            <End Role="VendaDetalhes" EntitySet="VendaDetalhes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendaDetalhes2" Association="Self.FK_VendaDetalhes2">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="VendaDetalhes" EntitySet="VendaDetalhes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -185,7 +209,7 @@
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataNasc" Type="String" MaxLength="10" Nullable="false" />
+          <Property Name="DataNasc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda2" FromRole="Clientes" ToRole="Venda" />
         </EntityType>
         <EntityType Name="Estoque">
@@ -195,12 +219,12 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NumLote" Type="Int32" Nullable="false" />
           <Property Name="TotalProdutosLote" Type="Int32" Nullable="false" />
-          <Property Name="Frete" Type="String" Nullable="false" FixedLength="false" Unicode="false" MaxLength="20" />
+          <Property Name="Frete" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Fornecedor" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DataCompra" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
-          <Property Name="PrecoLote" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="20" />
+          <Property Name="DataCompra" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrecoLote" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="QuantidadeEstoque" Type="Int32" Nullable="false" />
-          <Property Name="Validade" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
+          <Property Name="Validade" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Produtos" Relationship="Self.FK_Estoque" FromRole="Estoque" ToRole="Produtos" />
         </EntityType>
@@ -209,14 +233,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoginFuncionario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoginFuncionario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CPF" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Senha" Type="String" MaxLength="68" FixedLength="true" Unicode="true" />
+          <Property Name="Senha" Type="String" MaxLength="68" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Endereco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Atividade" Type="String" MaxLength="20" Nullable="false" FixedLength="false" Unicode="false"/>
+          <Property Name="Atividade" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Venda" Relationship="Self.FK_Venda" FromRole="Funcionarios" ToRole="Venda" />
         </EntityType>
         <EntityType Name="Produtos">
@@ -232,7 +256,7 @@
           <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <NavigationProperty Name="Categoria" Relationship="Self.fk_produtos" FromRole="Produtos" ToRole="Categoria" />
           <NavigationProperty Name="Estoque" Relationship="Self.FK_Estoque" FromRole="Produtos" ToRole="Estoque" />
-          <NavigationProperty Name="Venda" Relationship="Self.FK_Venda3" FromRole="Produtos" ToRole="Venda" />
+          <NavigationProperty Name="VendaDetalhes" Relationship="Self.FK_VendaDetalhes2" FromRole="Produtos" ToRole="VendaDetalhes" />
         </EntityType>
         <EntityType Name="Venda">
           <Key>
@@ -240,15 +264,24 @@
           </Key>
           <Property Name="CodigoVendas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FK_IDFuncionario" Type="Int32" Nullable="false" />
-          <Property Name="FK_IDCliente" Type="Int32" Nullable="false" />
-          <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
-          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="FK_IDCliente" Type="Int32" />
+          <Property Name="Valor" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
           <Property Name="MetodoPagamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Data" Type="String" Nullable="false" Unicode="false" FixedLength="false" MaxLength="40" />
-          <Property Name="QuantidadeVendida" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Clientes" Relationship="Self.FK_Venda2" FromRole="Venda" ToRole="Clientes" />
           <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Venda" FromRole="Venda" ToRole="Funcionarios" />
-          <NavigationProperty Name="Produtos" Relationship="Self.FK_Venda3" FromRole="Venda" ToRole="Produtos" />
+          <NavigationProperty Name="VendaDetalhes" Relationship="Self.FK_VendaDetalhes1" FromRole="Venda" ToRole="VendaDetalhes" />
+        </EntityType>
+        <EntityType Name="VendaDetalhes">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_CodigoVendas" Type="Int32" Nullable="false" />
+          <Property Name="FK_CodigoProduto" Type="Int32" Nullable="false" />
+          <Property Name="Quantidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Produtos" Relationship="Self.FK_VendaDetalhes2" FromRole="VendaDetalhes" ToRole="Produtos" />
+          <NavigationProperty Name="Venda" Relationship="Self.FK_VendaDetalhes1" FromRole="VendaDetalhes" ToRole="Venda" />
         </EntityType>
         <Association Name="fk_produtos">
           <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
@@ -263,7 +296,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Venda2">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clientes">
@@ -298,15 +331,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Venda3">
+        <Association Name="FK_VendaDetalhes2">
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
-          <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+          <End Role="VendaDetalhes" Type="Self.VendaDetalhes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Produtos">
               <PropertyRef Name="Codigo" />
             </Principal>
-            <Dependent Role="Venda">
+            <Dependent Role="VendaDetalhes">
               <PropertyRef Name="FK_CodigoProduto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendaDetalhes1">
+          <End Role="Venda" Type="Self.Venda" Multiplicity="1" />
+          <End Role="VendaDetalhes" Type="Self.VendaDetalhes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venda">
+              <PropertyRef Name="CodigoVendas" />
+            </Principal>
+            <Dependent Role="VendaDetalhes">
+              <PropertyRef Name="FK_CodigoVendas" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -317,6 +362,7 @@
           <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" />
           <EntitySet Name="Produtos" EntityType="Self.Produtos" />
           <EntitySet Name="Venda" EntityType="Self.Venda" />
+          <EntitySet Name="VendaDetalhes" EntityType="Self.VendaDetalhes" />
           <AssociationSet Name="fk_produtos" Association="Self.fk_produtos">
             <End Role="Categoria" EntitySet="Categoria" />
             <End Role="Produtos" EntitySet="Produtos" />
@@ -333,9 +379,13 @@
             <End Role="Funcionarios" EntitySet="Funcionarios" />
             <End Role="Venda" EntitySet="Venda" />
           </AssociationSet>
-          <AssociationSet Name="FK_Venda3" Association="Self.FK_Venda3">
+          <AssociationSet Name="FK_VendaDetalhes2" Association="Self.FK_VendaDetalhes2">
             <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="VendaDetalhes" EntitySet="VendaDetalhes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendaDetalhes1" Association="Self.FK_VendaDetalhes1">
             <End Role="Venda" EntitySet="Venda" />
+            <End Role="VendaDetalhes" EntitySet="VendaDetalhes" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -383,14 +433,14 @@
             <EntityTypeMapping TypeName="OlharMeninaBDModel.Funcionarios">
               <MappingFragment StoreEntitySet="Funcionarios">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LoginFuncionario" ColumnName="LoginFuncionario" />
                 <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="LoginFuncionario" ColumnName="LoginFuncionario" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="CPF" ColumnName="CPF" />
                 <ScalarProperty Name="Senha" ColumnName="Senha" />
                 <ScalarProperty Name="Endereco" ColumnName="Endereco" />
                 <ScalarProperty Name="Telefone" ColumnName="Telefone" />
-                <ScalarProperty Name="Atividade" ColumnName="Atividade"/>
+                <ScalarProperty Name="Atividade" ColumnName="Atividade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -413,11 +463,19 @@
                 <ScalarProperty Name="CodigoVendas" ColumnName="CodigoVendas" />
                 <ScalarProperty Name="FK_IDFuncionario" ColumnName="FK_IDFuncionario" />
                 <ScalarProperty Name="FK_IDCliente" ColumnName="FK_IDCliente" />
-                <ScalarProperty Name="FK_CodigoProduto" ColumnName="FK_CodigoProduto" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="MetodoPagamento" ColumnName="MetodoPagamento" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="QuantidadeVendida" ColumnName="QuantidadeVendida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendaDetalhes">
+            <EntityTypeMapping TypeName="OlharMeninaBDModel.VendaDetalhes">
+              <MappingFragment StoreEntitySet="VendaDetalhes">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="FK_CodigoVendas" ColumnName="FK_CodigoVendas" />
+                <ScalarProperty Name="FK_CodigoProduto" ColumnName="FK_CodigoProduto" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

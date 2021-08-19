@@ -31,5 +31,6 @@ namespace LojaOlharDeMenina_WPF.Model
         public virtual DbSet<Funcionarios> Funcionarios { get; set; }
         public virtual DbSet<Produtos> Produtos { get; set; }
         public virtual DbSet<Venda> Venda { get; set; }
+        public virtual DbSet<VendaDetalhes> VendaDetalhes { get; set; }
     }
 }

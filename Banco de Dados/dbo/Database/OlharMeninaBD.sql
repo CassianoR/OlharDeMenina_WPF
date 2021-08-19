@@ -34,7 +34,7 @@ CREATE TABLE [dbo].[Categoria] (
 
 CREATE TABLE [dbo].[Produtos] (
     [Codigo]             INT             IDENTITY (1, 1) NOT NULL,
-    FK_NomeCategoria     VARCHAR(40)    NOT NULL,
+    [FK_NomeCategoria]    VARCHAR(40)    NOT NULL,
     [NomeProduto]        VARCHAR (50)    NOT NULL,
     [UnidadeMedida]      VARCHAR (15)    NOT NULL,
     [Marca]              VARCHAR (100)   NOT NULL,
@@ -64,16 +64,23 @@ CREATE TABLE [dbo].[Estoque] (
 CREATE TABLE [dbo].[Venda] (
     [CodigoVendas]      INT             IDENTITY (1, 1) NOT NULL,
     [FK_IDFuncionario]  INT             NOT NULL,
-    [FK_IDCliente]      INT             NOT NULL,
-    [FK_CodigoProduto]  INT             NOT NULL,
+    [FK_IDCliente]      INT                     ,
     [Valor]             DECIMAL (15, 2) NOT NULL,
     [MetodoPagamento]   VARCHAR (50)    NOT NULL,
     [Data]              VARCHAR (40)    NOT NULL,
-    [QuantidadeVendida] INT             NOT NULL,
     PRIMARY KEY CLUSTERED ([CodigoVendas] ASC),
     CONSTRAINT [FK_Venda] FOREIGN KEY ([FK_IDFuncionario]) REFERENCES [dbo].[Funcionarios] ([ID]),
-    CONSTRAINT [FK_Venda2] FOREIGN KEY ([FK_IDCliente]) REFERENCES [dbo].[Clientes] ([ID]),
-    CONSTRAINT [FK_Venda3] FOREIGN KEY ([FK_CodigoProduto]) REFERENCES [dbo].[Produtos] ([Codigo])
+    CONSTRAINT [FK_Venda2] FOREIGN KEY ([FK_IDCliente]) REFERENCES [dbo].[Clientes] ([ID])
+);
+
+CREATE TABLE [dbo].[VendaDetalhes] (
+    [Codigo]            INT IDENTITY (1, 1) NOT NULL,
+    [FK_CodigoVendas]       INT             NOT NULL,
+    [FK_CodigoProduto]      INT             NOT NULL,
+    [Quantidade]            INT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([Codigo] ASC),
+    CONSTRAINT [FK_VendaDetalhes1] FOREIGN KEY ([FK_CodigoVendas]) REFERENCES [dbo].[Venda] ([CodigoVendas]),
+    CONSTRAINT [FK_VendaDetalhes2] FOREIGN KEY ([FK_CodigoProduto]) REFERENCES [dbo].[Produtos] ([Codigo])
 );
 
 insert into Funcionarios (LoginFuncionario,Cargo, Nome, CPF, Senha, Endereco, Telefone, Atividade) values ('João@gmail.com','Administrador', 'João','111.111.111-11', 'gdyb21LQTcIANtvYMT7QVQ==                                        ', 'Rua do Palmito','99999-9999','Ativo');

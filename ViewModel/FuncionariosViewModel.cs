@@ -63,14 +63,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set { message = value; OnPropertyChanged("Message"); }
         }
 
-        private FuncionariosDTO currentEmployee;
-
-        public FuncionariosDTO CurrentEmployee
-        {
-            get { return currentEmployee; }
-            set { currentEmployee = value; OnPropertyChanged("CurrentEmployee"); }
-        }
-
         private string _search;
 
         public string Search
@@ -102,7 +94,6 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             funcionariosEntities = new OlharMeninaBDEntities();
             //LoadFuncionario();
-            CurrentEmployee = new FuncionariosDTO();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
         }
