@@ -14,17 +14,22 @@ namespace LojaOlharDeMenina_WPF.Model
     
     public partial class Venda
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Venda()
+        {
+            this.VendaDetalhes = new HashSet<VendaDetalhes>();
+        }
+    
         public int CodigoVendas { get; set; }
         public int FK_IDFuncionario { get; set; }
-        public int FK_IDCliente { get; set; }
-        public int FK_CodigoProduto { get; set; }
+        public Nullable<int> FK_IDCliente { get; set; }
         public decimal Valor { get; set; }
         public string MetodoPagamento { get; set; }
         public string Data { get; set; }
-        public int QuantidadeVendida { get; set; }
     
         public virtual Clientes Clientes { get; set; }
         public virtual Funcionarios Funcionarios { get; set; }
-        public virtual Produtos Produtos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VendaDetalhes> VendaDetalhes { get; set; }
     }
 }

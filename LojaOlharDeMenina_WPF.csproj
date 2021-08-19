@@ -208,15 +208,13 @@
     <Compile Include="Model\Clientes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ClientesDTO.cs" />
+    <Compile Include="Model\Conexao.cs" />
     <Compile Include="Model\Estoque.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\EstoqueDTO.cs" />
     <Compile Include="Model\Funcionarios.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\FuncionariosDTO.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -235,12 +233,12 @@
     <Compile Include="Model\Produtos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProdutosDTO.cs" />
-    <Compile Include="Model\QuantidadeDTO.cs" />
     <Compile Include="Model\Venda.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\VendasDTO.cs" />
+    <Compile Include="Model\VendaDetalhes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AdicionarClientesViewModel.cs" />
     <Compile Include="ViewModel\AdicionarFuncionariosViewModel.cs" />
     <Compile Include="ViewModel\AdicionarProdutosViewModel.cs" />
@@ -257,18 +255,6 @@
     <Compile Include="ViewModel\VendasViewModel.cs" />
     <Compile Include="View\ClientesView.xaml.cs">
       <DependentUpon>ClientesView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dialogs\AdicionarProdutosDialog.xaml.cs">
-      <DependentUpon>AdicionarProdutosDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dialogs\AdicionarClientesDialog.xaml.cs">
-      <DependentUpon>AdicionarClientesDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dialogs\AdicionarFuncionariosDialog.xaml.cs">
-      <DependentUpon>AdicionarFuncionariosDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dialogs\EditaProdutosDialog.xaml.cs">
-      <DependentUpon>EditaProdutosDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FuncionariosView.xaml.cs">
       <DependentUpon>FuncionariosView.xaml</DependentUpon>
@@ -317,22 +303,6 @@
     <Page Include="View\ClientesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Dialogs\AdicionarProdutosDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\Dialogs\AdicionarClientesDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Dialogs\AdicionarFuncionariosDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Dialogs\EditaProdutosDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FuncionariosView.xaml">
       <SubType>Designer</SubType>
@@ -404,7 +374,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Conexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -489,6 +458,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\tgBtn_default_black.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
