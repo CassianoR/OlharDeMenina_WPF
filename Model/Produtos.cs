@@ -9,26 +9,91 @@
 
 namespace LojaOlharDeMenina_WPF.Model
 {
+    using LojaOlharDeMenina_WPF.Core;
     using System;
     using System.Collections.Generic;
-    
-    public partial class Produtos
+
+    public partial class Produtos : ObservableObject
     {
+        private int codigo;
+        private string fK_NomeCategoria;
+        private string nomeProduto;
+        private string unidadeMedida;
+        private string marca;
+        private string descricao;
+        private decimal valor;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Produtos()
         {
             this.Estoque = new HashSet<Estoque>();
             this.VendaDetalhes = new HashSet<VendaDetalhes>();
         }
-    
-        public int Codigo { get; set; }
-        public string FK_NomeCategoria { get; set; }
-        public string NomeProduto { get; set; }
-        public string UnidadeMedida { get; set; }
-        public string Marca { get; set; }
-        public string Descricao { get; set; }
-        public decimal Valor { get; set; }
-    
+
+        public int Codigo 
+        { 
+            get => codigo;
+            set
+            {
+                codigo = value;
+                OnPropertyChanged(nameof(Codigo));
+            } 
+        }
+        public string FK_NomeCategoria
+        {
+            get => fK_NomeCategoria;
+            set
+            {
+                fK_NomeCategoria = value;
+                OnPropertyChanged(nameof(FK_NomeCategoria));
+            }
+        }
+        public string NomeProduto 
+        { 
+            get => nomeProduto;
+            set 
+            {
+                nomeProduto = value;
+                OnPropertyChanged(nameof(NomeProduto));
+            }
+        }
+        public string UnidadeMedida 
+        { 
+            get => unidadeMedida;
+            set 
+            {
+                unidadeMedida = value;
+                OnPropertyChanged(nameof(UnidadeMedida));
+            }
+        }
+        public string Marca 
+        { 
+            get => marca;
+            set 
+            {
+                marca = value;
+                OnPropertyChanged(nameof(Marca));
+            }
+        }
+        public string Descricao 
+        { 
+            get => descricao;
+            set 
+            {
+                descricao = value;
+                OnPropertyChanged(nameof(Descricao));
+            }
+        }
+        public decimal Valor 
+        { 
+            get => valor;
+            set 
+            {
+                valor = value;
+                OnPropertyChanged(nameof(Valor));
+            }
+        }
+
         public virtual Categoria Categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque> Estoque { get; set; }
