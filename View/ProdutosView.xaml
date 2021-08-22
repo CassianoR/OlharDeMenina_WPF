@@ -132,6 +132,32 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            
+            <!--esse aqui tem que por de um jeito que fique lateral-->
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="6" x:Name="stkPanel1">
+            <Border Background="White" Grid.RowSpan="4">
+                <DataGrid tz:Transitionz.Opacity="{tz:OpacityParams Duration=1000, From=0, To=1, TransitionOn=Visibility}"
+                          Margin="10"
+                          AlternatingRowBackground="LightGray"
+                          Background="White" MinColumnWidth="90"
+                          BorderThickness="0"
+                          GridLinesVisibility="None"
+                          AutoGenerateColumns="False"
+                          x:Name="datagrid_carrinho"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="NomeProd" Header="Nome" Width="auto" FontSize="18">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="Quantidade" Header="Qtd" Width="auto" FontSize="18">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="PreçoIndividual" Header="Preço Ind." Width="auto" FontSize="18">
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Categoria.NomeCategoria,UpdateSourceTrigger=PropertyChanged}" x:Name="ValorTotal" Header="Valor Total" Width="auto" FontSize="18">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>
