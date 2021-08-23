@@ -98,6 +98,20 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private int contador;
 
+        private Funcionarios _funcionarios = new Funcionarios();
+
+        public Funcionarios Funcionarios
+        {
+            get { return _funcionarios; }
+            set
+            {
+                _funcionarios = value;
+                OnPropertyChanged(nameof(Funcionarios));
+            }
+        }
+
+        private Exceptions exc = new Exceptions();
+
         #endregion Properties
 
         public LoginViewModel()
@@ -106,6 +120,40 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             funcionariosEntities = new OlharMeninaBDEntities();
             LoadFuncionario();
             LoginCommand = new RelayCommand(DoLogin, CanLogin => true);
+            ChecaAdmin();
+        }
+
+        private void ChecaAdmin()
+        {
+            var count = funcionariosEntities.Funcionarios
+                                .Where(o => o.LoginFuncionario == "admin").Count();
+            if (count == 0)
+            {
+                Funcionarios.ID = funcionariosEntities.Funcionarios.Count();
+                _hash = new Hash();
+                var senha = _hash.Encrypt("1234");
+                Funcionarios.Cargo = "Administrador";
+                Funcionarios.LoginFuncionario = "admin";
+                Funcionarios.Nome = "ADMIN";
+                Funcionarios.Telefone = "0";
+                Funcionarios.CPF = "000.000.000-00";
+                Funcionarios.Senha = senha;
+                Funcionarios.Atividade = "Ativo";
+                Funcionarios.Endereco = "Olhar de Menina";
+                funcionariosEntities.Funcionarios.Add(Funcionarios);
+                try
+                {
+                    funcionariosEntities.SaveChanges();
+                    Funcionarios = new Funcionarios();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    string exceptionMessage = exc.concatenaExceptions(ex);
+                    Message = exceptionMessage;
+                    funcionariosEntities.Dispose();
+                    funcionariosEntities = new OlharMeninaBDEntities();
+                }
+            }
         }
 
         #region Methods
