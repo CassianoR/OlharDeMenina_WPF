@@ -57,7 +57,7 @@
                 </TextBox>
 
                 <Label Grid.Row="4" HorizontalAlignment="Right" Content="Cargo:" Margin="0,0,1,0" RenderTransformOrigin="0.53,0.119" />
-                <ComboBox x:Name="tboxCargo" SelectedItem="{Binding Funcionarios.Cargo}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0" SelectionChanged="tboxCargo_SelectionChanged" BorderBrush="White">
+                <ComboBox x:Name="tboxCargo" Text="{Binding Funcionarios.Cargo, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Margin="0,5,0,0" SelectionChanged="tboxCargo_SelectionChanged" BorderBrush="White">
                     <ComboBoxItem Content="Funcionário" />
                     <ComboBoxItem Content="Administrador" />
                 </ComboBox>
