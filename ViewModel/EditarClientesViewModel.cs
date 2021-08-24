@@ -78,6 +78,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 uRow.Endereco = Clientes.Endereco;
                 clientesEntities.SaveChanges();
                 Clientes = new Clientes();
+                Message = "Editado com sucesso!";
             }
             catch (DbEntityValidationException ex)
             {

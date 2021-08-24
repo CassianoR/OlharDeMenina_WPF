@@ -83,6 +83,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 uRow.LoginFuncionario = Funcionarios.LoginFuncionario;
                 funcionariosEntities.SaveChanges();
                 Funcionarios = new Funcionarios();
+                Message = "Editado com sucesso!";
             }
             catch (DbEntityValidationException ex)
             {

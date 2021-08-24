@@ -174,6 +174,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 {
                     vendaEntities.SaveChanges();
                     Venda = new Venda();
+                    Message = "Cadastrado com sucesso!";
                 }
                 catch (DbEntityValidationException ex)
                 {
