@@ -94,6 +94,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 uRow.Valor = Produtos.Valor;
                 produtosEntities.SaveChanges();
                 Produtos = new Produtos();
+                Message = "Editado com sucesso!";
             }
             catch (DbEntityValidationException ex)
             {

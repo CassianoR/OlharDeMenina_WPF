@@ -94,6 +94,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             {
                 produtosEntities.SaveChanges();
                 Produtos = new Produtos();
+                Message = "Cadastrado com sucesso!";
             }
             catch (DbEntityValidationException ex)
             {

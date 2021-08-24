@@ -67,6 +67,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 {
                     clientesEntities.SaveChanges();
                     Clientes = new Clientes();
+                    Message = "Cadastrado com sucesso!";
                 }
                 catch (DbEntityValidationException ex)
                 {
