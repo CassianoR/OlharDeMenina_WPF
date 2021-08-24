@@ -394,31 +394,16 @@
                         <!--// Messages //-->
 
                         <ListViewItem HorizontalAlignment="Left" x:Name="rbFunc"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Cursor="Hand" PreviewMouseDown="btnFuncionarios_PreviewMouseDown" IsEnabled="{Binding isEnabled}">
-                            <ListViewItem.Style>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Cursor" Value="Hand" />
-                                    <Style.Triggers>
-                                        <Trigger Property="IsEnabled" Value="False">
-                                            <Setter Property="Opacity" Value="0.4" />
-                                        </Trigger>
-                                        <Trigger Property="IsEnabled" Value="True">
-                                            <Setter Property="Opacity" Value="1" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ListViewItem.Style>
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Cursor="Hand" PreviewMouseDown="btnFuncionarios_PreviewMouseDown">
+
                             <StackPanel Orientation="Horizontal" x:Name="btnFuncionarios"
                                         Width="230">
 
-                                <!--<Image Source="/LojaOlharDeMenina_WPF;component/Images/img_message.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0" />-->
                                 <iconPacks:PackIconMaterial Kind="AccountSupervisor"
                                                 Margin="12,0,0,0"
-                                                            Width="30"
-                                                            Height="auto"
-                                                Foreground="#FFBFD0FD" />
+                                                Foreground="#FFBFD0FD"
+                                                            MinHeight="45"
+                                                            MinWidth="30" />
 
                                 <TextBlock Text="Funcionários"
                                            Margin="25,0,0,0"

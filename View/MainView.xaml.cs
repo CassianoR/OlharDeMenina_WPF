@@ -55,7 +55,10 @@ namespace LojaOlharDeMenina_WPF.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            rbFunc.IsEnabled = _cargo;
+            if (_cargo == false)
+            {
+                LV.Items.Remove(rbFunc);
+            }
             DataContext = new HomeViewModel();
         }
 
