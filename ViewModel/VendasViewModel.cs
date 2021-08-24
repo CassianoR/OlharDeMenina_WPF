@@ -1,5 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
@@ -47,6 +48,30 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private ObservableCollection<Clientes> _lstClientes;
+
+        public ObservableCollection<Clientes> lstClientes
+        {
+            get { return _lstClientes; }
+            set
+            {
+                _lstClientes = value;
+                OnPropertyChanged(nameof(lstClientes));
+            }
+        }
+
+        private ObservableCollection<Funcionarios> _lstFuncionarios;
+
+        public ObservableCollection<Funcionarios> lstFuncionarios
+        {
+            get { return _lstFuncionarios; }
+            set
+            {
+                _lstFuncionarios = value;
+                OnPropertyChanged(nameof(lstFuncionarios));
+            }
+        }
+
         private Venda _selectedVenda;
 
         public Venda SelectedVenda
@@ -83,9 +108,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
-        /// <summary>
-        /// TO-DO: Colocar a propriedade Message e as demais que se remetem na BaseViewModel
-        /// </summary>
+        // Mensagem
         private string message;
 
         public string Message
@@ -94,6 +117,55 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             set { message = value; OnPropertyChanged("Message"); }
         }
 
+        // Valor líquido
+        private decimal valorLiquido;
+
+        public decimal ValorLiquido
+        {
+            get
+            {
+                return valorLiquido;
+            }
+            set
+            {
+                valorLiquido = value;
+                OnPropertyChanged("ValorLiquido");
+            }
+        }
+
+        // Valor pago
+        private decimal valorPago;
+
+        public decimal ValorPago
+        {
+            get
+            {
+                return valorPago;
+            }
+            set
+            {
+                valorPago = value;
+                OnPropertyChanged("ValorPago");
+            }
+        }
+
+        // Troco
+        private decimal troco;
+
+        public decimal Troco
+        {
+            get
+            {
+                return troco;
+            }
+            set
+            {
+                troco = value;
+                OnPropertyChanged("Troco");
+            }
+        }
+
+        // Pesquisa
         private string _search;
 
         public string Search
@@ -135,7 +207,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private async void GetResults(string search)
         {
-            if (_search == "*")
+            if (search == "*")
             {
                 LoadVendas();
                 return;
@@ -144,7 +216,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstVendas.Clear();
 
             lstVendas = new ObservableCollection<Venda>();
-            var ObjQuery = await vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(_search) || x.Funcionarios.LoginFuncionario.Contains(_search) | x.Clientes.CPF.Contains(_search)).ToListAsync();
+            var ObjQuery = await vendaEntities.Venda.Where(x => x.MetodoPagamento.Contains(search) || x.Funcionarios.LoginFuncionario.Contains(search) | x.Clientes.CPF.Contains(search)).ToListAsync();
             foreach (var venda in ObjQuery)
             {
                 lstVendas.Add(venda);
@@ -165,6 +237,12 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
             var lista2 = await vendaEntities.Produtos.ToListAsync();
             lstProdutos = new ObservableCollection<Produtos>(lista2);
+
+            var listaClientes = await vendaEntities.Clientes.ToListAsync();
+            lstClientes = new ObservableCollection<Clientes>(listaClientes);
+
+            var listaFuncionarios = await vendaEntities.Funcionarios.ToListAsync();
+            lstFuncionarios = new ObservableCollection<Funcionarios>(listaFuncionarios);
         }
 
         private void UpdateGrid(object obj)
@@ -176,6 +254,15 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             var grid = await vendaEntities.Produtos.Where(o => o.Codigo == Produtos.Codigo).FirstOrDefaultAsync();
             lstProdutos2.Add(grid);
+        }
+
+        private void CalculaVendas()
+        {
+            foreach (var item in lstProdutos2)
+            {
+                ValorLiquido += item.Valor;
+            }
+            Troco = ValorPago - ValorLiquido;
         }
 
         #endregion Methods
