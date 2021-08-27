@@ -108,6 +108,18 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private Produtos _selectedprodutos = new Produtos();
+
+        public Produtos SelectedProdutos
+        {
+            get { return _selectedprodutos; }
+            set
+            {
+                _selectedprodutos = value;
+                OnPropertyChanged(nameof(SelectedProdutos));
+            }
+        }
+
         // Mensagem
         private string message;
 
@@ -213,8 +225,9 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         {
             vendaEntities = new OlharMeninaBDEntities();
             UpdateCommand = new Command((s) => true, Update);
-            UpdateGridCommand = new Command((s) => true, UpdateGrid);
-            LimparCommand = new Command((s) => true, Limpar);
+            UpdateGridCommand = new Command((s) => true, LoadGridVendas);
+            LimparCommand = new Command((s) => true, LimparCarrinho);
+            RemoveGridCommand = new Command((s) => true, RemoverCarrinho);
             LoadClientes();
         }
 
@@ -266,12 +279,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             lstClientes = new ObservableCollection<Clientes>(listaClientes);
         }
 
-        private void UpdateGrid(object obj)
-        {
-            LoadGridVendas();
-        }
-
-        private async void LoadGridVendas()
+        private async void LoadGridVendas(object obj)
         {
             if (lstProdutos2 == null)
                 lstProdutos2 = new ObservableCollection<Produtos>();
@@ -280,15 +288,17 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             ValorFinal += grid.Valor;
         }
 
-        private void LimparCarrinho()
+        private void LimparCarrinho(object obj)
         {
             lstProdutos2.Clear();
             ValorFinal = 0;
         }
 
-        private void Limpar(object obj) //Update, recarrega
+        private void RemoverCarrinho(object obj)
         {
-            LimparCarrinho();
+            var remove = obj as Produtos;
+            lstProdutos2.Remove(remove);
+            ValorFinal -= remove.Valor;
         }
 
         private void CalculaVendas()
@@ -306,6 +316,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         public ICommand UpdateCommand { get; set; }
         public ICommand LimparCommand { get; set; }
+        public ICommand RemoveGridCommand { get; set; }
 
         public ICommand UpdateGridCommand { get; set; }
 
