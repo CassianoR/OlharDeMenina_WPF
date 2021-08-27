@@ -186,6 +186,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             }
         }
 
+        private decimal _valorFinal;
+
+        public decimal ValorFinal
+        {
+            get
+            {
+                return _valorFinal;
+            }
+            set
+            {
+                _valorFinal = value;
+                OnPropertyChanged(nameof(ValorFinal));
+            }
+        }
+
         private OlharMeninaBDEntities vendaEntities;
         private Exceptions exc = new Exceptions();
 
@@ -260,6 +275,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
                 lstProdutos2 = new ObservableCollection<Produtos>();
             var grid = await vendaEntities.Produtos.Where(o => o.Codigo == Produtos.Codigo).FirstOrDefaultAsync();
             lstProdutos2.Add(grid);
+            ValorFinal += grid.Valor;
         }
 
         private void CalculaVendas()
