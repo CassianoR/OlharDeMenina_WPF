@@ -45,7 +45,7 @@
         <TextBlock x:Name="tnoxNomeFunc" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text=""></TextBlock>
         </StackPanel>-->
         <TextBlock Grid.Row="0" Grid.Column="2" Margin="19 0 0 0"  Text="Cliente" Foreground="White" FontSize="18" VerticalAlignment="Bottom"/>
-        <ComboBox x:Name="tboxCPFCliente" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="19 10 0 0" Text="{Binding CpfCliente}" IsEditable="True" ItemsSource="{Binding lstClientes}"  DisplayMemberPath="CPF" SelectedItem="{Binding CpfCliente}"/>
+        <ComboBox x:Name="tboxCPFCliente" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="200" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="19 10 0 0" Text="{Binding lstClientes}" IsEditable="True" ItemsSource="{Binding lstClientes}"  DisplayMemberPath="CPF" SelectedItem="{Binding lstClientes}"/>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="6" x:Name="stkPanelVendas">
 
@@ -77,7 +77,7 @@
                           AutoGenerateColumns="False"
                           x:Name="datagrid_produto"
                           ItemsSource="{Binding lstProdutos}"
-                          SelectedItem="{Binding SelectedProduto}"
+                          SelectedItem="{Binding lstProdutos2}"
                           IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Codigo, UpdateSourceTrigger=PropertyChanged}" x:Name="Codigo" Header="Codigo" Width="auto" FontSize="18" />
@@ -125,16 +125,22 @@
                 </DataGrid>
 
             </Border>
-
-            <Button Content="Finalizar" Height="55" FontSize="22" Foreground="White" Margin="20 0 0 0" Width="200" HorizontalAlignment="Right">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFFF8BB5"/>
-                        <GradientStop Color="#FFCF1145" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
         </StackPanel>
-
+        <Button Content="Finalizar" Height="55" FontSize="22" Foreground="White" Margin="20 0 0 0" Width="200" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="3" HorizontalContentAlignment="Center">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#cef6c8"/>
+                    <GradientStop Color="#60d84d" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Limpar Carrinho" Height="55" FontSize="22" Foreground="White" Margin="20 0 0 0" Width="200" Grid.Row="5" Grid.Column="2"  HorizontalContentAlignment="Center">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#dbdbdb"/>
+                    <GradientStop Color="#5e5e5e" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </UserControl>

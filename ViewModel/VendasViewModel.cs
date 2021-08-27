@@ -199,11 +199,17 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             vendaEntities = new OlharMeninaBDEntities();
             UpdateCommand = new Command((s) => true, Update);
             UpdateGridCommand = new Command((s) => true, UpdateGrid);
+            LimpaCarrinhoCommand = new Command((s) => true, LimpaCarrinho);
         }
 
         #endregion Constructor
 
         #region Methods
+
+        private void LimpaCarrinho(object obj)
+        {
+            Produtos = new Produtos();
+        }
 
         private async void GetResults(string search)
         {
@@ -272,6 +278,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         public ICommand UpdateCommand { get; set; }
 
         public ICommand UpdateGridCommand { get; set; }
+
+        public ICommand LimpaCarrinhoCommand { get; set; }
 
         #endregion Commands
     }
