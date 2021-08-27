@@ -123,15 +123,22 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            <DockPanel Margin="20">
+                <TextBlock Padding="5" x:Name="ValorFinal" Text="{Binding ValorFinal}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" FontSize="36" Margin="10">
+                    <TextBlock.Background>
+                        <SolidColorBrush Color="Gray" Opacity="0.4" />
+                    </TextBlock.Background>
+                </TextBlock>
 
-            <Button Content="Finalizar" Height="55" FontSize="22" Foreground="White" Margin="20 0 0 0" Width="200" HorizontalAlignment="Right">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFFF8BB5" />
-                        <GradientStop Color="#FFCF1145" Offset="1" />
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
+                <Button Content="Finalizar" Height="55" FontSize="22" Foreground="White" Margin="10" Width="200" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFF8BB5" />
+                            <GradientStop Color="#FFCF1145" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
         </StackPanel>
     </Grid>
 </UserControl>
