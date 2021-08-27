@@ -45,10 +45,10 @@ namespace LojaOlharDeMenina_WPF.View
             tboxVendasTitulo.Effect = null;
         }
 
-
         private void btnadd_produto_Click(object sender, RoutedEventArgs e)
         {
         }
+
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
         }

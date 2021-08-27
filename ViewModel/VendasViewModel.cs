@@ -1,6 +1,5 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
-using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
@@ -199,6 +198,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             vendaEntities = new OlharMeninaBDEntities();
             UpdateCommand = new Command((s) => true, Update);
             UpdateGridCommand = new Command((s) => true, UpdateGrid);
+            LoadClientes();
         }
 
         #endregion Constructor
@@ -232,17 +232,21 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         private async void LoadVendas() //Read
         {
             vendaEntities = new OlharMeninaBDEntities();
+
             var lista1 = await vendaEntities.Venda.ToListAsync();
             lstVendas = new ObservableCollection<Venda>(lista1);
 
             var lista2 = await vendaEntities.Produtos.ToListAsync();
             lstProdutos = new ObservableCollection<Produtos>(lista2);
 
-            var listaClientes = await vendaEntities.Clientes.ToListAsync();
-            lstClientes = new ObservableCollection<Clientes>(listaClientes);
-
             var listaFuncionarios = await vendaEntities.Funcionarios.ToListAsync();
             lstFuncionarios = new ObservableCollection<Funcionarios>(listaFuncionarios);
+        }
+
+        private async void LoadClientes()
+        {
+            var listaClientes = await vendaEntities.Clientes.ToListAsync();
+            lstClientes = new ObservableCollection<Clientes>(listaClientes);
         }
 
         private void UpdateGrid(object obj)
@@ -252,6 +256,8 @@ namespace LojaOlharDeMenina_WPF.ViewModel
 
         private async void LoadGridVendas()
         {
+            if (lstProdutos2 == null)
+                lstProdutos2 = new ObservableCollection<Produtos>();
             var grid = await vendaEntities.Produtos.Where(o => o.Codigo == Produtos.Codigo).FirstOrDefaultAsync();
             lstProdutos2.Add(grid);
         }
