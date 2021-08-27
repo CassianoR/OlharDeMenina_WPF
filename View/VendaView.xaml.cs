@@ -25,8 +25,6 @@ namespace LojaOlharDeMenina_WPF.View
             //acd.ShowDialog();
             stkPanelVendas.Effect = new BlurEffect();
             tboxVendasTitulo.Effect = new BlurEffect();
-            btnCadastrar.Effect = new BlurEffect();
-            btnRecarregar.Effect = new BlurEffect();
             if (MainGridVendas.Children.Contains(mav) == true)
             {
                 mav.Visibility = Visibility.Visible;
@@ -45,10 +43,12 @@ namespace LojaOlharDeMenina_WPF.View
         {
             stkPanelVendas.Effect = null;
             tboxVendasTitulo.Effect = null;
-            btnCadastrar.Effect = null;
-            btnRecarregar.Effect = null;
         }
 
+
+        private void btnadd_produto_Click(object sender, RoutedEventArgs e)
+        {
+        }
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
         }
