@@ -116,7 +116,7 @@
                         </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding Quantidade,UpdateSourceTrigger=PropertyChanged}" x:Name="Quantidade" Header="Qtd" Width="auto" FontSize="18">
                         </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Valor,UpdateSourceTrigger=PropertyChanged}" x:Name="PrcoIndividual" Header="Preco Ind" Width="auto" FontSize="18">
+                        <DataGridTextColumn Binding="{Binding Valor,StringFormat=R$ \{0:#\,00.00\},UpdateSourceTrigger=PropertyChanged}" x:Name="PrcoIndividual" Header="Preco Ind" Width="auto" FontSize="18">
                         </DataGridTextColumn>
                         <!--O valor total não vai na datagrid, pq ficaria repetindo pra cada linha<DataGridTextColumn Binding="{Binding ValorTotal,UpdateSourceTrigger=PropertyChanged}" x:Name="ValorTotal" Header="Valor Total" Width="auto" FontSize="18" Foreground="#FF0BB40B" FontWeight="Bold">
                         </DataGridTextColumn>-->
@@ -124,7 +124,7 @@
                 </DataGrid>
             </Border>
             <DockPanel Margin="20">
-                <TextBlock Padding="5" x:Name="ValorFinal" Text="{Binding ValorFinal}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" FontSize="36" Margin="10">
+                <TextBlock Padding="5" x:Name="ValorFinal" Text="{Binding ValorFinal,StringFormat=R$ \{0:#\,00.00\}}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" FontSize="36" Margin="10">
                     <TextBlock.Background>
                         <SolidColorBrush Color="Gray" Opacity="0.4" />
                     </TextBlock.Background>
