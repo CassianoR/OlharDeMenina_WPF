@@ -139,6 +139,14 @@
                     </Button.Background>
                 </Button>
             </DockPanel>
+            <Button Content="Limpar Carrinho" Height="55" FontSize="22" Foreground="White" Margin="20 0 0 0" Width="200" Grid.Row="5" Grid.Column="2"  HorizontalContentAlignment="Center" Command="{Binding LimparCommand}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#dbdbdb" />
+                        <GradientStop Color="#5e5e5e" Offset="1" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

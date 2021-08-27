@@ -1,5 +1,6 @@
 ﻿using LojaOlharDeMenina_WPF.Core;
 using LojaOlharDeMenina_WPF.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
@@ -213,6 +214,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             vendaEntities = new OlharMeninaBDEntities();
             UpdateCommand = new Command((s) => true, Update);
             UpdateGridCommand = new Command((s) => true, UpdateGrid);
+            LimparCommand = new Command((s) => true, Limpar);
             LoadClientes();
         }
 
@@ -278,6 +280,17 @@ namespace LojaOlharDeMenina_WPF.ViewModel
             ValorFinal += grid.Valor;
         }
 
+        private void LimparCarrinho()
+        {
+            lstProdutos2.Clear();
+            ValorFinal = 0;
+        }
+
+        private void Limpar(object obj) //Update, recarrega
+        {
+            LimparCarrinho();
+        }
+
         private void CalculaVendas()
         {
             foreach (var item in lstProdutos2)
@@ -292,6 +305,7 @@ namespace LojaOlharDeMenina_WPF.ViewModel
         #region Commands
 
         public ICommand UpdateCommand { get; set; }
+        public ICommand LimparCommand { get; set; }
 
         public ICommand UpdateGridCommand { get; set; }
 
